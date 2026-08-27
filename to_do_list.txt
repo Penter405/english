@@ -1,0 +1,12 @@
+from logic_word.txt , we will get a web with backend 
+(tell me what env variable you need in api_name.txt)
+and a UI local app in Python as main language
+for web , i hop all in one website, rather than app, the app will be one feture one child folder in folder local_app
+as all in one, we should ask user what they wanna do in first
+now , base on logic_word.txt , we will develop a tool that people can search root word to these word that root word comed from
+and i think the word database would be these word under 6 (maybe you can find a 10 letters word without root word in it,
+but that could be unnecessary?)
+it might be a bfs game or much harder? but we need to make sure user can get result in 5 seconds
+(thay can ask a really long word and we need separate to root_of_word and affix, and telling user every root of word which word  they comed from)
+{ also from every root word, we can output his every logical(which issaved on dictionary) word  }
+(the backend we use is vercel, the web front end we use is github page or vercel)

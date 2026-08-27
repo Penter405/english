@@ -1,0 +1,4 @@
+Environment Variables:
+  PORT=8000          (default: 8000) - Server port
+  HOST=0.0.0.0       (default: 0.0.0.0) - Server host
+  WORD_DB_PATH=...   (default: api/word_database.json) - Path to word database

@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+*.pyo
+.env
+.vercel
+node_modules/
+.DS_Store
+*.egg-info/
+dist/
+build/
+get-pip.py

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore English word origins through Indo-European sound change rules. Decompose any word into roots, prefixes, and suffixes, and trace each root to its simple English origin.">
+  <title>Root Word Explorer — Discover English Word Origins</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <h1 class="app-title">Root Word Explorer</h1>
+      <p class="app-subtitle">
+        Type any English word to discover its roots, trace each root to the simple word it evolved from, and explore its entire word family.
+      </p>
+    </header>
+
+    <!-- Search -->
+    <div class="search-container">
+      <div class="search-wrapper">
+        <span class="search-icon">🔍</span>
+        <input
+          id="search-input"
+          type="text"
+          placeholder="Enter a word to explore..."
+          autocomplete="off"
+          autofocus
+        >
+        <button class="search-btn" id="search-btn" onclick="analyzeWord()">Explore</button>
+      </div>
+      <div class="examples">
+        <span class="example-chip" onclick="quickSearch('benevolence')">benevolence</span>
+        <span class="example-chip" onclick="quickSearch('innovation')">innovation</span>
+        <span class="example-chip" onclick="quickSearch('unicorn')">unicorn</span>
+        <span class="example-chip" onclick="quickSearch('volunteer')">volunteer</span>
+        <span class="example-chip" onclick="quickSearch('solar')">solar</span>
+        <span class="example-chip" onclick="quickSearch('sun')">sun</span>
+        <span class="example-chip" onclick="quickSearch('dental')">dental</span>
+        <span class="example-chip" onclick="quickSearch('transport')">transport</span>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div id="results-container"></div>
+
+    <!-- Sound Change Rules Reference -->
+    <div class="rules-panel" id="rules-panel">
+      <div class="section-title">
+        <span class="icon">📖</span>
+        The 6 Sound Interchange Rules (六大口訣)
+      </div>
+      <div class="rules-grid" id="rules-grid">
+        <!-- Populated by JS -->
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>Based on Indo-European sound change patterns · 印歐語音變規律</p>
+    </footer>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
