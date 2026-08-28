@@ -10,3 +10,4 @@ it might be a bfs game or much harder? but we need to make sure user can get res
 (thay can ask a really long word and we need separate to root_of_word and affix, and telling user every root of word which word  they comed from)
 { also from every root word, we can output his every logical(which issaved on dictionary) word  }
 (the backend we use is vercel, the web front end we use is github page or vercel)
+ expect the engine like this:  get user's word , correctly separte root of word and affix. from word of root get real words( you can tell them many)  show user root of word and its close, and affix

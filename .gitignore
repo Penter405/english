@@ -9,3 +9,16 @@ node_modules/
 dist/
 build/
 get-pip.py
+
+# Raw datasets (too large to commit, re-download with scripts/download_datasets.py)
+data/raw/
+
+# Processed databases (regenerate with import scripts)
+data/processed/*.db
+
+# Virtual environment
+venv/
+.venv/
+
+# NLTK data
+nltk_data/

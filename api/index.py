@@ -10,8 +10,9 @@ import sys
 # Ensure api/ directory is in path for imports
 sys.path.insert(0, os.path.dirname(__file__))
 
-from fastapi import FastAPI, Query
+from fastapi import FastAPI, Query, HTTPException, status
 from fastapi.middleware.cors import CORSMiddleware
+import re
 
 from decomposer import Decomposer
 from graph_engine import WordGraph
@@ -38,6 +39,11 @@ decomposer = Decomposer(DB_PATH)
 word_graph = WordGraph(DB_PATH)
 
 
+# In-memory DP / Caching (persists for the lifetime of the Vercel serverless instance)
+analysis_cache = {}
+unknown_words_space = set()
+attack_attempts = 0
+
 @app.get("/api/analyze")
 async def analyze_word(word: str = Query(..., description="The word to analyze and decompose")):
     """
@@ -45,7 +51,45 @@ async def analyze_word(word: str = Query(..., description="The word to analyze a
     trace each root to its simple origin word,
     and list all dictionary words sharing those roots.
     """
-    return decomposer.decompose(word)
+    global attack_attempts
+    
+    # 1. Input Sanitization & Security
+    word = word.strip()
+    # Only allow alphabetic characters and hyphens, max 50 chars
+    if not re.match(r"^[A-Za-z\-]+$", word) or len(word) > 50:
+        attack_attempts += 1
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Invalid input. Only alphabetic characters and hyphens are allowed (max 50 characters)."
+        )
+        
+    word_lower = word.lower()
+    
+    # 2. DP / Caching check
+    if word_lower in analysis_cache:
+        return analysis_cache[word_lower]
+        
+    # 3. Analyze
+    result = decomposer.decompose(word)
+    
+    # 4. Save to cache
+    analysis_cache[word_lower] = result
+    
+    # 5. Track unknown/failed words in the "wrong space"
+    if not result.get("found"):
+        unknown_words_space.add(word_lower)
+        
+    return result
+
+@app.get("/api/system_stats")
+async def get_system_stats():
+    """Endpoint to view cache stats and the 'wrong space' (unknown words)."""
+    return {
+        "cached_queries_count": len(analysis_cache),
+        "unknown_words_count": len(unknown_words_space),
+        "unknown_words": list(unknown_words_space),
+        "blocked_attack_attempts": attack_attempts
+    }
 
 
 @app.get("/api/search")

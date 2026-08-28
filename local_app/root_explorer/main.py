@@ -124,6 +124,20 @@ def print_analysis(result: dict):
                   f"  {Colors.RULE}[Rule {rule}: {rule_name}]{Colors.RESET}")
             print(f"    {Colors.DIM}{explanation}{Colors.RESET}")
 
+    # Friend words (from sound change search)
+    friend_words = result.get("friend_words", [])
+    if friend_words:
+        print(f"\n  {Colors.MUTED}{'─' * 44}{Colors.RESET}")
+        print(f"  {Colors.BOLD}✨ Friend Words (Sound Change Search){Colors.RESET}")
+        print(f"  {Colors.MUTED}{'─' * 44}{Colors.RESET}")
+
+        for fw in friend_words:
+            print(f"\n    {Colors.ORIGIN}{Colors.BOLD}{fw['path_display']}{Colors.RESET}")
+            if fw['rules_used']:
+                print(f"    {Colors.DIM}{fw['rules_used']}{Colors.RESET}")
+            else:
+                print(f"    {Colors.DIM}Basic Word (Direct Match){Colors.RESET}")
+
     # Word families
     families = result.get("word_family", {})
     if families:

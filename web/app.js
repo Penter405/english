@@ -89,6 +89,11 @@ function renderResults(data) {
     html += renderOriginTrace(data);
   }
 
+  // Friend words (from graph search)
+  if (data.friend_words && data.friend_words.length > 0) {
+    html += renderFriendWords(data);
+  }
+
   // Word families
   if (data.word_family && Object.keys(data.word_family).length > 0) {
     html += renderWordFamily(data);
@@ -108,9 +113,17 @@ function renderWordBreakdown(data) {
     return `<span class="meaning-chip ${comp.type}">${comp.text} = ${comp.meaning}${zhText}</span>`;
   }).join('');
 
+  const confidenceMap = {
+    "HIGH_CONFIDENCE": { label: "High Confidence", color: "rgba(74, 222, 128, 0.9)", bg: "rgba(74, 222, 128, 0.1)" },
+    "MEDIUM_CONFIDENCE": { label: "Medium Confidence", color: "rgba(250, 204, 21, 0.9)", bg: "rgba(250, 204, 21, 0.1)" },
+    "LOW_CONFIDENCE": { label: "Low Confidence", color: "rgba(248, 113, 113, 0.9)", bg: "rgba(248, 113, 113, 0.1)" }
+  };
+  const conf = data.confidence ? confidenceMap[data.confidence] : null;
+  const confBadge = conf ? `<span style="color: ${conf.color}; background: ${conf.bg}; border: 1px solid ${conf.color}; padding: 3px 10px; border-radius: 12px; font-size: 0.75em; margin-left: 12px; vertical-align: middle;">${conf.label}</span>` : '';
+
   return `
     <div class="word-breakdown">
-      <div class="word-breakdown-title">Word Decomposition</div>
+      <div class="word-breakdown-title" style="display: flex; align-items: center;">Word Decomposition ${confBadge}</div>
       <div class="word-segments">${segments}</div>
       <div class="word-meaning-row">${meanings}</div>
       <div class="legend">
@@ -146,6 +159,28 @@ function renderOriginTrace(data) {
     <div class="origin-trace">
       <div class="section-title">
         ${title}
+      </div>
+      <div class="trace-cards">${cards}</div>
+    </div>
+  `;
+}
+
+function renderFriendWords(data) {
+  const cards = data.friend_words.map((fw, i) => `
+    <div class="trace-card stagger-${i + 1}">
+      <div class="trace-card-header">
+        <div class="trace-arrow">
+          <span class="trace-root">${fw.path_display}</span>
+        </div>
+      </div>
+      <div class="trace-explanation">${fw.rules_used || 'Basic Word (Direct Match)'}</div>
+    </div>
+  `).join('');
+
+  return `
+    <div class="origin-trace">
+      <div class="section-title">
+        <span class="icon">✨</span> Friend Words (Sound Change Search)
       </div>
       <div class="trace-cards">${cards}</div>
     </div>
