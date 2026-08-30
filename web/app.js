@@ -40,7 +40,11 @@ async function analyzeWord() {
   `;
 
   try {
-    const res = await fetch(`${API_BASE}/api/analyze?word=${encodeURIComponent(word)}`);
+    const res = await fetch(`${API_BASE}/api/analyze`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ word })
+    });
     const data = await res.json();
     renderResults(data);
   } catch (err) {
@@ -62,7 +66,9 @@ function renderResults(data) {
     container.innerHTML = `
       <div class="error-message">
         <span class="emoji">🤔</span>
-        <p>${data.message || `No root word decomposition found for "${data.word}". Try another word!`}</p>
+        <p>${data.message || `No root word decomposition found for "${data.word}".`}</p>
+        <p style="font-size: 0.85em; opacity: 0.7; margin-top: 8px;">This word is too complex for the deterministic engine. An AI assistant may provide a deeper etymological explanation.</p>
+        ${data.search_time ? `<p style="font-size: 0.75em; opacity: 0.5; margin-top: 4px;">Search time: ${data.search_time}s</p>` : ''}
       </div>
     `;
     return;
@@ -137,19 +143,25 @@ function renderWordBreakdown(data) {
 }
 
 function renderOriginTrace(data) {
-  const cards = data.origin_trace.map((trace, i) => `
-    <div class="trace-card stagger-${i + 1}">
-      <div class="trace-card-header">
-        <div class="trace-arrow">
-          <span class="trace-origin">${trace.origin_word}</span>
-          <span class="trace-arrow-icon">→</span>
-          <span class="trace-root">${trace.root}</span>
+  const cards = data.origin_trace.map((trace, i) => {
+    const langBadge = trace.language ? `<span class="trace-lang-badge" style="font-size: 0.7em; opacity: 0.7; margin-left: 8px;">(${trace.language})</span>` : '';
+    const ruleBadge = trace.rule ? `<span class="trace-rule-badge">Rule ${trace.rule}: ${trace.rule_name}</span>` : 
+      (trace.language ? `<span class="trace-rule-badge">${trace.language}</span>` : '');
+    const originDisplay = trace.origin_word || trace.root;
+    return `
+      <div class="trace-card stagger-${i + 1}">
+        <div class="trace-card-header">
+          <div class="trace-arrow">
+            <span class="trace-origin">${originDisplay}</span>
+            <span class="trace-arrow-icon">→</span>
+            <span class="trace-root">${trace.root}</span>${langBadge}
+          </div>
+          ${ruleBadge}
         </div>
-        <span class="trace-rule-badge">Rule ${trace.rule}: ${trace.rule_name}</span>
+        <div class="trace-explanation">${trace.explanation || trace.meaning || ''}</div>
       </div>
-      <div class="trace-explanation">${trace.explanation}</div>
-    </div>
-  `).join('');
+    `;
+  }).join('');
 
   const title = data.is_simple_word
     ? '🔗 Roots Evolved From This Word'

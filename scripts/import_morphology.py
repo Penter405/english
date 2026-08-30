@@ -2,15 +2,22 @@
 """
 Import MorphoLex-en morphological decompositions into the SQLite database.
 
-Reads MorphoLEX_en.xlsx and extracts:
-  - Word entries with morphological segmentations
-  - Prefix, root, suffix identification
-  - Morpheme counts and structures
+Reads MorphoLEX_en.xlsx which contains multiple sheets organized by
+morpheme pattern. Key columns: Word, MorphoLexSegm, POS, Nmorph.
+
+Segmentation format: <un<{<ob<(trude)}>ive>>ness>
+  - <...< = prefix
+  - (...) = root
+  - >...> = suffix
+  - {...} = groups
+
+Also imports the "All prefixes", "All suffixes", "All roots" sheets.
 """
 
 import os
 import sys
 import json
+import re
 
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(PROJECT_ROOT, "api"))
@@ -33,15 +40,14 @@ def import_morphology(db_path: str = DEFAULT_DB_PATH, xlsx_path: str = RAW_XLSX)
         print("  ✗ pandas not installed. Run: pip install pandas openpyxl")
         return False
 
-    print("  📖 Reading MorphoLEX_en.xlsx...")
+    print("  📖 Reading MorphoLEX_en.xlsx (all sheets)...")
     try:
-        df = pd.read_excel(xlsx_path, engine="openpyxl")
+        all_sheets = pd.read_excel(xlsx_path, engine="openpyxl", sheet_name=None)
     except Exception as e:
         print(f"  ✗ Failed to read Excel file: {e}")
         return False
 
-    print(f"  📊 Total entries: {len(df):,}")
-    print(f"  📋 Columns: {list(df.columns)}")
+    print(f"  📋 Found {len(all_sheets)} sheets: {list(all_sheets.keys())}")
 
     conn = create_database(db_path)
     conn.execute("PRAGMA synchronous=OFF")
@@ -49,40 +55,50 @@ def import_morphology(db_path: str = DEFAULT_DB_PATH, xlsx_path: str = RAW_XLSX)
 
     morph_count = 0
     word_count = 0
-    affix_set = set()
 
+    # === Import word decompositions from numbered sheets ===
     morph_batch = []
     word_batch = []
 
-    for _, row in df.iterrows():
-        try:
-            # MorphoLex columns typically include:
-            # Word, MorphoLexSegm (segmentation), nMorph, etc.
-            word = None
-            segmentation = None
+    for sheet_name, df in all_sheets.items():
+        # Skip the summary sheets (handled separately below)
+        if sheet_name.startswith("All "):
+            continue
 
-            # Try common column names
-            for col in df.columns:
-                col_lower = str(col).lower().strip()
-                if col_lower in ("word", "item", "entry"):
-                    word = str(row[col]).strip().lower()
-                elif "segm" in col_lower or "morpho" in col_lower:
-                    val = str(row[col]).strip()
-                    if val and val != "nan":
-                        segmentation = val
+        cols = [str(c).strip() for c in df.columns]
 
-            if not word or word == "nan":
-                continue
+        # Find the Word and MorphoLexSegm columns
+        word_col = None
+        segm_col = None
+        pos_col = None
+        for c in cols:
+            cl = c.lower()
+            if cl == "word":
+                word_col = c
+            elif "morpholexsegm" in cl or "segm" in cl:
+                segm_col = c
+            elif cl == "pos":
+                pos_col = c
 
-            # Add word
-            word_batch.append((word, "en", "", "", "morpholex"))
-            word_count += 1
+        if word_col is None or segm_col is None:
+            continue
 
-            # Parse segmentation if available
-            if segmentation:
-                morphemes = _parse_segmentation(segmentation)
-                if morphemes and len(morphemes) > 1:
-                    structure = _classify_structure(morphemes)
+        for _, row in df.iterrows():
+            try:
+                word = str(row[word_col]).strip().lower()
+                segm = str(row[segm_col]).strip()
+
+                if not word or word == "nan" or not segm or segm == "nan":
+                    continue
+
+                pos = str(row[pos_col]).strip() if pos_col else ""
+                if pos == "nan":
+                    pos = ""
+
+                # Parse the segmentation
+                morphemes = _parse_morpholex_segm(segm)
+                if morphemes and len(morphemes) >= 1:
+                    structure = _build_structure(segm)
                     morph_batch.append((
                         word,
                         json.dumps(morphemes),
@@ -91,84 +107,134 @@ def import_morphology(db_path: str = DEFAULT_DB_PATH, xlsx_path: str = RAW_XLSX)
                     ))
                     morph_count += 1
 
-                    # Extract affixes
-                    for m in morphemes:
-                        m_clean = m.strip("{}<>()").lower()
-                        if m.startswith("{") or m.startswith("<"):
-                            affix_set.add(("prefix", m_clean))
-                        elif m.endswith("}") or m.endswith(">"):
-                            affix_set.add(("suffix", m_clean))
+                # Add word
+                word_batch.append((word, "en", pos, "", "morpholex"))
+                word_count += 1
 
-        except Exception:
-            continue
+            except Exception:
+                continue
 
-        # Flush every 5000 rows
+        # Flush periodically
         if len(morph_batch) >= 5000:
             _flush_morph_batch(conn, word_batch, morph_batch)
             word_batch.clear()
             morph_batch.clear()
 
-    # Final flush
+    # Final flush for decompositions
     _flush_morph_batch(conn, word_batch, morph_batch)
+    word_batch.clear()
+    morph_batch.clear()
 
-    # Import discovered affixes
-    affix_count = 0
-    for affix_type, affix_text in affix_set:
-        if len(affix_text) >= 2:
+    # === Import "All prefixes" sheet ===
+    prefix_count = 0
+    if "All prefixes" in all_sheets:
+        pfx_df = all_sheets["All prefixes"]
+        for _, row in pfx_df.iterrows():
             try:
-                conn.execute(
-                    "INSERT OR IGNORE INTO affixes (text, type, meaning, meaning_zh, source) "
-                    "VALUES (?, ?, '', '', 'morpholex')",
-                    (affix_text, affix_type)
-                )
-                affix_count += 1
+                morpheme = str(row.get("morpheme", "")).strip()
+                # Clean: remove < > markers
+                clean = morpheme.strip("<>").lower()
+                if clean and len(clean) >= 1 and clean.isalpha():
+                    conn.execute(
+                        "INSERT OR IGNORE INTO affixes (text, type, meaning, meaning_zh, source) "
+                        "VALUES (?, 'prefix', '', '', 'morpholex')",
+                        (clean,)
+                    )
+                    prefix_count += 1
             except Exception:
-                pass
+                continue
+        print(f"  ✓ Imported {prefix_count} prefixes from MorphoLex")
+
+    # === Import "All suffixes" sheet ===
+    suffix_count = 0
+    if "All suffixes" in all_sheets:
+        sfx_df = all_sheets["All suffixes"]
+        for _, row in sfx_df.iterrows():
+            try:
+                morpheme = str(row.get("morpheme", "")).strip()
+                clean = morpheme.strip("<>").lower()
+                if clean and len(clean) >= 1 and clean.isalpha():
+                    conn.execute(
+                        "INSERT OR IGNORE INTO affixes (text, type, meaning, meaning_zh, source) "
+                        "VALUES (?, 'suffix', '', '', 'morpholex')",
+                        (clean,)
+                    )
+                    suffix_count += 1
+            except Exception:
+                continue
+        print(f"  ✓ Imported {suffix_count} suffixes from MorphoLex")
+
+    # === Import "All roots" sheet ===
+    root_count = 0
+    if "All roots" in all_sheets:
+        root_df = all_sheets["All roots"]
+        for _, row in root_df.iterrows():
+            try:
+                morpheme = str(row.get("morpheme", "")).strip()
+                clean = morpheme.strip("()").lower()
+                if clean and len(clean) >= 2 and clean.isalpha():
+                    conn.execute(
+                        "INSERT OR IGNORE INTO roots "
+                        "(canonical_form, language, meaning, meaning_zh, description, "
+                        "reconstructed, confidence, source) "
+                        "VALUES (?, 'English', '', '', '', 0, 0.4, 'morpholex')",
+                        (clean,)
+                    )
+                    root_count += 1
+            except Exception:
+                continue
+        print(f"  ✓ Imported {root_count} roots from MorphoLex")
 
     conn.commit()
 
-    print(f"  ✓ Imported {word_count:,} words")
-    print(f"  ✓ Imported {morph_count:,} morphological decompositions")
-    print(f"  ✓ Discovered {affix_count} affixes")
+    print(f"  ✓ Total: {word_count:,} words, {morph_count:,} decompositions")
     conn.close()
     return True
 
 
-def _parse_segmentation(seg: str) -> list:
-    """Parse MorphoLex segmentation format into morpheme list.
-    
-    MorphoLex uses formats like:
-      {un}{happi}<ness>  (prefix, root, suffix)
-      {re}{act}<ion>
-      happy              (no segmentation = single morpheme)
+def _parse_morpholex_segm(segm: str) -> list:
+    """Parse MorphoLex segmentation format into a flat list of morphemes.
+
+    Format: <un<{<ob<(trude)}>ive>>ness>
+    - (xxx) = root morpheme
+    - <xxx< = prefix
+    - >xxx> = suffix
     """
-    if not seg or seg == "nan":
-        return []
-
+    # Extract all morphemes using regex
+    # Roots are in parentheses: (word)
+    # Prefixes are between < markers
+    # Suffixes are between > markers
     morphemes = []
-    current = ""
-    for ch in seg:
-        if ch in "{}()<>":
-            if current.strip():
-                morphemes.append(current.strip())
-            current = ""
-        else:
-            current += ch
-    if current.strip():
-        morphemes.append(current.strip())
 
-    # Filter out empty morphemes
-    return [m for m in morphemes if m and m != "nan"]
+    # Find roots first: (morpheme)
+    roots = re.findall(r'\(([^)]+)\)', segm)
+    morphemes.extend(roots)
+
+    # Find prefixes: text between < and <
+    prefixes = re.findall(r'<([a-zA-Z]+)<', segm)
+    for p in prefixes:
+        if p not in morphemes:
+            morphemes.insert(0, p)
+
+    # Find suffixes: text between > and >
+    suffixes = re.findall(r'>([a-zA-Z]+)>', segm)
+    for s in suffixes:
+        if s not in morphemes:
+            morphemes.append(s)
+
+    return [m.lower() for m in morphemes if m]
 
 
-def _classify_structure(morphemes: list) -> str:
-    """Classify the morphological structure (e.g. 'prefix+root+suffix')."""
-    if len(morphemes) == 1:
-        return "root"
-    elif len(morphemes) == 2:
-        return "prefix+root" if len(morphemes[0]) <= 3 else "root+suffix"
-    else:
-        return "+".join(["morpheme"] * len(morphemes))
+def _build_structure(segm: str) -> str:
+    """Build a structure string like 'prefix+root+suffix'."""
+    parts = []
+    if '<' in segm and re.search(r'<[a-zA-Z]+<', segm):
+        parts.append("prefix")
+    if '(' in segm:
+        parts.append("root")
+    if '>' in segm and re.search(r'>[a-zA-Z]+>', segm):
+        parts.append("suffix")
+    return "+".join(parts) if parts else "root"
 
 
 def _flush_morph_batch(conn, word_batch, morph_batch):

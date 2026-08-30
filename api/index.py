@@ -1,7 +1,8 @@
 """
-English Root Word Explorer — API Server (Vercel Serverless)
+English Root Word Explorer — API Server (Vercel Serverless) v2
 
 FastAPI backend deployed as Vercel serverless function.
+Updated to support POST /api/analyze and use the new SQLite database engine.
 """
 
 import os
@@ -10,22 +11,27 @@ import sys
 # Ensure api/ directory is in path for imports
 sys.path.insert(0, os.path.dirname(__file__))
 
-from fastapi import FastAPI, Query, HTTPException, status
+from fastapi import FastAPI, Query, HTTPException, status, Body
 from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel, Field
+from typing import Optional
 import re
 
 from decomposer import Decomposer
 from graph_engine import WordGraph
 from sound_rules import get_all_rules
+from models import DEFAULT_DB_PATH
 
-# Config
-DB_PATH = os.environ.get("WORD_DB_PATH", os.path.join(os.path.dirname(__file__), "word_database.json"))
+# Config — use SQLite database if available, fallback to JSON
+DB_PATH = os.environ.get("WORD_DB_PATH", DEFAULT_DB_PATH)
+LEGACY_DB_PATH = os.environ.get("LEGACY_DB_PATH",
+    os.path.join(os.path.dirname(__file__), "word_database.json"))
 
 # Initialize FastAPI app (Vercel looks for `app` variable)
 app = FastAPI(
     title="English Root Word Explorer",
-    description="Explore English word origins through Indo-European sound change rules",
-    version="1.0.0"
+    description="Explore English word origins through linguistic data and Indo-European sound change rules",
+    version="2.0.0"
 )
 
 app.add_middleware(
@@ -35,61 +41,101 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Initialize engine
 decomposer = Decomposer(DB_PATH)
-word_graph = WordGraph(DB_PATH)
+word_graph = WordGraph(LEGACY_DB_PATH)
 
-
-# In-memory DP / Caching (persists for the lifetime of the Vercel serverless instance)
+# In-memory cache (persists for the lifetime of the Vercel serverless instance)
 analysis_cache = {}
-unknown_words_space = set()
 attack_attempts = 0
 
-@app.get("/api/analyze")
-async def analyze_word(word: str = Query(..., description="The word to analyze and decompose")):
-    """
-    Main endpoint: decompose a word into roots + affixes,
-    trace each root to its simple origin word,
-    and list all dictionary words sharing those roots.
-    """
+
+# === Request/Response Models ===
+
+class AnalyzeRequest(BaseModel):
+    """POST /api/analyze request body."""
+    word: str = Field(..., description="The word to analyze", max_length=50)
+
+
+def _validate_word(word: str) -> str:
+    """Validate and normalize input word (spec Section 26)."""
     global attack_attempts
-    
-    # 1. Input Sanitization & Security
-    word = word.strip()
-    # Only allow alphabetic characters and hyphens, max 50 chars
-    if not re.match(r"^[A-Za-z\-]+$", word) or len(word) > 50:
+    word = word.strip().lower()
+    if not re.match(r"^[a-z\-]+$", word) or len(word) > 50 or len(word) < 1:
         attack_attempts += 1
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail="Invalid input. Only alphabetic characters and hyphens are allowed (max 50 characters)."
+            detail="Invalid input. Only alphabetic characters and hyphens are allowed (1-50 characters)."
         )
-        
-    word_lower = word.lower()
+    return word
+
+
+# === Endpoints ===
+
+@app.post("/api/analyze")
+async def analyze_word_post(request: AnalyzeRequest):
+    """
+    POST endpoint: decompose a word into roots + affixes (spec Section 23).
     
-    # 2. DP / Caching check
-    if word_lower in analysis_cache:
-        return analysis_cache[word_lower]
-        
-    # 3. Analyze
+    Returns structured JSON with:
+      - status: FOUND | TOO_HARD
+      - confidence: HIGH_CONFIDENCE | MEDIUM_CONFIDENCE | LOW_CONFIDENCE | TOO_HARD
+      - components, roots, affixes, origin_trace, friend_words
+    """
+    word = _validate_word(request.word)
+    return _analyze(word)
+
+
+@app.get("/api/analyze")
+async def analyze_word_get(word: str = Query(..., description="The word to analyze and decompose")):
+    """
+    GET endpoint (backward compatible): decompose a word into roots + affixes.
+    """
+    word = _validate_word(word)
+    return _analyze(word)
+
+
+def _analyze(word: str) -> dict:
+    """Core analysis logic shared by GET and POST endpoints."""
+    # Check cache
+    if word in analysis_cache:
+        return analysis_cache[word]
+
+    # Analyze
     result = decomposer.decompose(word)
-    
-    # 4. Save to cache
-    analysis_cache[word_lower] = result
-    
-    # 5. Track unknown/failed words in the "wrong space"
-    if not result.get("found"):
-        unknown_words_space.add(word_lower)
-        
+
+    # Cache result
+    analysis_cache[word] = result
+
     return result
+
 
 @app.get("/api/system_stats")
 async def get_system_stats():
-    """Endpoint to view cache stats and the 'wrong space' (unknown words)."""
-    return {
+    """Endpoint to view cache stats, database stats, and unknown words."""
+    stats = {
         "cached_queries_count": len(analysis_cache),
-        "unknown_words_count": len(unknown_words_space),
-        "unknown_words": list(unknown_words_space),
-        "blocked_attack_attempts": attack_attempts
+        "blocked_attack_attempts": attack_attempts,
+        "engine_version": Decomposer.ENGINE_VERSION,
     }
+
+    # Add database stats if available
+    if decomposer.db:
+        try:
+            db_stats = decomposer.db.get_stats()
+            stats["database"] = db_stats
+        except Exception:
+            pass
+
+        # Get recent unknown words
+        try:
+            unknowns = decomposer.db.get_unknown_words(limit=50)
+            stats["unknown_words"] = unknowns
+            stats["unknown_words_count"] = len(unknowns)
+        except Exception:
+            pass
+
+    return stats
 
 
 @app.get("/api/search")
@@ -134,8 +180,27 @@ async def get_rules():
 
 @app.get("/api/stats")
 async def get_stats():
-    """Get statistics about the word graph."""
-    return word_graph.get_stats()
+    """Get statistics about the word graph and database."""
+    result = word_graph.get_stats()
+
+    # Add database stats
+    if decomposer.db:
+        try:
+            result["database"] = decomposer.db.get_stats()
+        except Exception:
+            pass
+
+    return result
+
+
+@app.get("/api/health")
+async def health_check():
+    """Health check endpoint."""
+    return {
+        "status": "ok",
+        "engine_version": Decomposer.ENGINE_VERSION,
+        "database_available": decomposer.db is not None,
+    }
 
 
 # Local development server

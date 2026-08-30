@@ -1,14 +1,15 @@
 """
-Root Word Explorer — Local CLI App
+Root Word Explorer — Local CLI App (v2)
 
 A command-line tool for exploring English word origins
-through Indo-European sound change rules.
+through linguistic data and Indo-European sound change rules.
 
 Usage:
     python3 main.py                    # Interactive mode
     python3 main.py analyze <word>     # Analyze a single word
     python3 main.py family <root>      # Show word family for a root
     python3 main.py rules              # Show all 6 sound change rules
+    python3 main.py stats              # Show database statistics
 """
 
 import sys
@@ -21,6 +22,7 @@ sys.path.insert(0, API_DIR)
 
 from decomposer import Decomposer
 from sound_rules import get_all_rules
+from models import DEFAULT_DB_PATH
 
 # ANSI color codes for terminal output
 class Colors:
@@ -52,9 +54,25 @@ def print_analysis(result: dict):
     """Print word analysis results in a formatted way."""
     word = result["word"]
 
+    # Confidence badge
+    conf = result.get("confidence", "")
+    search_time = result.get("search_time", 0)
+    time_str = f" ({search_time:.3f}s)" if search_time else ""
+
     if not result.get("found"):
         print(f"\n  {Colors.MUTED}❌ {result.get('message', f'No decomposition found for \"{word}\"')}{Colors.RESET}")
+        print(f"  {Colors.DIM}Confidence: TOO_HARD{time_str}{Colors.RESET}")
+        print(f"  {Colors.DIM}Try an AI assistant for a deeper etymological explanation.{Colors.RESET}")
         return
+
+    # Confidence line
+    conf_colors = {
+        "HIGH_CONFIDENCE": Colors.PREFIX,
+        "MEDIUM_CONFIDENCE": Colors.ROOT,
+        "LOW_CONFIDENCE": Colors.SUFFIX,
+    }
+    conf_color = conf_colors.get(conf, Colors.MUTED)
+    print(f"\n  {conf_color}⬤ {conf.replace('_', ' ').title()}{Colors.RESET}{Colors.DIM}{time_str}{Colors.RESET}")
 
     # Simple word banner
     if result.get("is_simple_word"):
@@ -112,31 +130,51 @@ def print_analysis(result: dict):
         print(f"  {Colors.MUTED}{'─' * 44}{Colors.RESET}")
 
         for trace in traces:
-            origin = trace["origin_word"]
-            root = trace["root"]
+            origin = trace.get("origin_word", "") or trace.get("root", "")
+            root = trace.get("root", "")
             rule = trace.get("rule", "")
             rule_name = trace.get("rule_name", "")
-            explanation = trace.get("explanation", "")
+            explanation = trace.get("explanation", "") or trace.get("meaning", "")
+            language = trace.get("language", "")
+
+            # Build rule/language badge
+            if rule:
+                badge = f"{Colors.RULE}[Rule {rule}: {rule_name}]{Colors.RESET}"
+            elif language:
+                badge = f"{Colors.RULE}[{language}]{Colors.RESET}"
+            else:
+                badge = ""
 
             print(f"\n    {Colors.ORIGIN}{Colors.BOLD}{origin}{Colors.RESET}"
                   f" {Colors.MUTED}→{Colors.RESET} "
                   f"{Colors.ROOT}{Colors.BOLD}{root}{Colors.RESET}"
-                  f"  {Colors.RULE}[Rule {rule}: {rule_name}]{Colors.RESET}")
-            print(f"    {Colors.DIM}{explanation}{Colors.RESET}")
+                  f"  {badge}")
+            if explanation:
+                print(f"    {Colors.DIM}{explanation}{Colors.RESET}")
 
-    # Friend words (from sound change search)
+    # Friend words (from root-level BFS search)
     friend_words = result.get("friend_words", [])
     if friend_words:
         print(f"\n  {Colors.MUTED}{'─' * 44}{Colors.RESET}")
-        print(f"  {Colors.BOLD}✨ Friend Words (Sound Change Search){Colors.RESET}")
+        print(f"  {Colors.BOLD}✨ Friend Words (Root Sound Change Search){Colors.RESET}")
         print(f"  {Colors.MUTED}{'─' * 44}{Colors.RESET}")
 
+        # Group friend words by their source root
+        by_root = {}
         for fw in friend_words:
-            print(f"\n    {Colors.ORIGIN}{Colors.BOLD}{fw['path_display']}{Colors.RESET}")
-            if fw['rules_used']:
-                print(f"    {Colors.DIM}{fw['rules_used']}{Colors.RESET}")
-            else:
-                print(f"    {Colors.DIM}Basic Word (Direct Match){Colors.RESET}")
+            root_src = fw.get('from_root', '?')
+            by_root.setdefault(root_src, []).append(fw)
+
+        for root_src, friends in by_root.items():
+            print(f"\n    {Colors.ROOT}{Colors.BOLD}from root '{root_src}':{Colors.RESET}")
+            for fw in friends[:10]:  # Limit per root
+                friend = fw.get('basic_word', fw.get('friend', ''))
+                path_display = fw.get('path_display', '')
+                rules = fw.get('rules_used', '')
+                print(f"      {Colors.ORIGIN}{Colors.BOLD}{friend}{Colors.RESET}"
+                      f"  {Colors.DIM}({path_display}){Colors.RESET}")
+                if rules:
+                    print(f"        {Colors.RULE}{rules}{Colors.RESET}")
 
     # Word families
     families = result.get("word_family", {})
@@ -177,12 +215,27 @@ def print_rules():
     print()
 
 
+def print_stats(decomposer: Decomposer):
+    """Print database statistics."""
+    print(f"\n  {Colors.MUTED}{'─' * 44}{Colors.RESET}")
+    print(f"  {Colors.BOLD}📊 Database Statistics{Colors.RESET}")
+    print(f"  {Colors.MUTED}{'─' * 44}{Colors.RESET}")
+    print(f"  Engine version: {Colors.BOLD}{Decomposer.ENGINE_VERSION}{Colors.RESET}")
+    print(f"  Database: {Colors.BOLD}{'SQLite ✓' if decomposer.db else 'Legacy JSON'}{Colors.RESET}")
+    if decomposer.db:
+        stats = decomposer.db.get_stats()
+        for table, count in stats.items():
+            print(f"    {Colors.MUTED}{table:.<25}{Colors.RESET} {Colors.BOLD}{count:>10,}{Colors.RESET}")
+    print()
+
+
 def interactive_mode(decomposer: Decomposer):
     """Run in interactive mode."""
     print_header()
     print(f"  {Colors.MUTED}Type a word to analyze, or use commands:{Colors.RESET}")
     print(f"  {Colors.MUTED}  rules      — show the 6 sound change rules{Colors.RESET}")
     print(f"  {Colors.MUTED}  family <r> — show word family for root <r>{Colors.RESET}")
+    print(f"  {Colors.MUTED}  stats      — show database statistics{Colors.RESET}")
     print(f"  {Colors.MUTED}  quit       — exit{Colors.RESET}")
     print()
 
@@ -204,12 +257,21 @@ def interactive_mode(decomposer: Decomposer):
             print_rules()
             continue
 
+        if user_input.lower() == "stats":
+            print_stats(decomposer)
+            continue
+
         if user_input.lower().startswith("family "):
             root = user_input[7:].strip()
             result = decomposer.get_word_family(root)
             if result.get("found"):
-                print(f"\n    {Colors.ROOT}📚 {result['root']}{Colors.RESET} ({result['meaning']})")
-                print(f"    {Colors.MUTED}Origin: {result['origin_word']} — {result['explanation']}{Colors.RESET}")
+                print(f"\n    {Colors.ROOT}📚 {result['root']}{Colors.RESET} ({result.get('meaning', '')})")
+                origin = result.get('origin_word', '')
+                explanation = result.get('explanation', '')
+                if origin:
+                    print(f"    {Colors.MUTED}Origin: {origin} — {explanation}{Colors.RESET}")
+                elif explanation:
+                    print(f"    {Colors.MUTED}{explanation}{Colors.RESET}")
                 words = result.get("derived_words", [])
                 for i in range(0, len(words), 4):
                     row = words[i:i + 4]
@@ -226,7 +288,8 @@ def interactive_mode(decomposer: Decomposer):
 
 
 def main():
-    db_path = os.path.join(API_DIR, "word_database.json")
+    # Use SQLite database if available, otherwise fall back to JSON
+    db_path = DEFAULT_DB_PATH if os.path.exists(DEFAULT_DB_PATH) else os.path.join(API_DIR, "word_database.json")
     decomposer = Decomposer(db_path)
 
     if len(sys.argv) < 2:
@@ -244,8 +307,13 @@ def main():
         root = sys.argv[2]
         result = decomposer.get_word_family(root)
         if result.get("found"):
-            print(f"\n  📚 {result['root']} ({result['meaning']})")
-            print(f"  Origin: {result['origin_word']} — {result['explanation']}")
+            print(f"\n  📚 {result.get('root', root)} ({result.get('meaning', '')})")
+            origin = result.get('origin_word', '')
+            explanation = result.get('explanation', '')
+            if origin:
+                print(f"  Origin: {origin} — {explanation}")
+            elif explanation:
+                print(f"  {explanation}")
             for w in result.get("derived_words", []):
                 print(f"    • {w}")
             print()
@@ -255,9 +323,13 @@ def main():
     elif command == "rules":
         print_rules()
 
+    elif command == "stats":
+        print_stats(decomposer)
+
     else:
         print(__doc__)
 
 
 if __name__ == "__main__":
     main()
+
