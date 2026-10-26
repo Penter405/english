@@ -1,0 +1,1739 @@
+{
+  "graph": {
+    "description": "A navigable topic graph. Life is the central root; broad domains surround it; each domain connects to its ten topic groups.",
+    "coordinate_system": {
+      "type": "2d_cartesian",
+      "origin": "Life node at (0, 0)",
+      "x_axis": "positive = right, negative = left",
+      "y_axis": "positive = down, negative = up",
+      "units": "abstract layout units",
+      "note": "A website can scale these coordinates to its canvas. Nodes may be dragged; save updated x/y values to persist layout."
+    },
+    "root_node_id": "life",
+    "nodes": [
+      {
+        "id": "life",
+        "label": "Life",
+        "type": "root",
+        "x": 0,
+        "y": 0,
+        "position": "center",
+        "description": "Central root topic"
+      },
+      {
+        "id": "home_life",
+        "label": "Home & Daily Life",
+        "type": "domain",
+        "x": -200.7,
+        "y": -140.5,
+        "angle_degrees": -145,
+        "relative_to": "life",
+        "position": "above"
+      },
+      {
+        "id": "food",
+        "label": "Food",
+        "type": "domain",
+        "x": -75.7,
+        "y": -233.0,
+        "angle_degrees": -108,
+        "relative_to": "life",
+        "position": "above"
+      },
+      {
+        "id": "transport",
+        "label": "Transport",
+        "type": "domain",
+        "x": 75.7,
+        "y": -233.0,
+        "angle_degrees": -72,
+        "relative_to": "life",
+        "position": "above"
+      },
+      {
+        "id": "technology",
+        "label": "Technology",
+        "type": "domain",
+        "x": 200.7,
+        "y": -140.5,
+        "angle_degrees": -35,
+        "relative_to": "life",
+        "position": "above"
+      },
+      {
+        "id": "education",
+        "label": "School & Learning",
+        "type": "domain",
+        "x": 242.6,
+        "y": -34.1,
+        "angle_degrees": -8,
+        "relative_to": "life",
+        "position": "right"
+      },
+      {
+        "id": "work",
+        "label": "Work & Business",
+        "type": "domain",
+        "x": 233.0,
+        "y": 75.7,
+        "angle_degrees": 18,
+        "relative_to": "life",
+        "position": "below"
+      },
+      {
+        "id": "society",
+        "label": "People & Society",
+        "type": "domain",
+        "x": 150.8,
+        "y": 193.1,
+        "angle_degrees": 52,
+        "relative_to": "life",
+        "position": "below"
+      },
+      {
+        "id": "abstract",
+        "label": "Ideas & Reasoning",
+        "type": "domain",
+        "x": 8.6,
+        "y": 244.9,
+        "angle_degrees": 88,
+        "relative_to": "life",
+        "position": "below"
+      },
+      {
+        "id": "science",
+        "label": "Science",
+        "type": "domain",
+        "x": -144.0,
+        "y": 198.2,
+        "angle_degrees": 126,
+        "relative_to": "life",
+        "position": "below"
+      },
+      {
+        "id": "nature",
+        "label": "Nature & Environment",
+        "type": "domain",
+        "x": -234.3,
+        "y": 71.6,
+        "angle_degrees": 163,
+        "relative_to": "life",
+        "position": "below"
+      },
+      {
+        "id": "group_001",
+        "label": "Home & Rooms",
+        "type": "topic",
+        "group_id": 1,
+        "x": -200.7,
+        "y": -252.5,
+        "angle_degrees": -90.0,
+        "relative_to": "home_life"
+      },
+      {
+        "id": "group_002",
+        "label": "Furniture",
+        "type": "topic",
+        "group_id": 2,
+        "x": -134.9,
+        "y": -231.1,
+        "angle_degrees": -54.0,
+        "relative_to": "home_life"
+      },
+      {
+        "id": "group_003",
+        "label": "Kitchen Items",
+        "type": "topic",
+        "group_id": 3,
+        "x": -94.2,
+        "y": -175.1,
+        "angle_degrees": -18.0,
+        "relative_to": "home_life"
+      },
+      {
+        "id": "group_004",
+        "label": "Bathroom",
+        "type": "topic",
+        "group_id": 4,
+        "x": -94.2,
+        "y": -105.9,
+        "angle_degrees": 18.0,
+        "relative_to": "home_life"
+      },
+      {
+        "id": "group_005",
+        "label": "Cleaning",
+        "type": "topic",
+        "group_id": 5,
+        "x": -134.9,
+        "y": -49.9,
+        "angle_degrees": 54.0,
+        "relative_to": "home_life"
+      },
+      {
+        "id": "group_006",
+        "label": "Clothes & Accessories",
+        "type": "topic",
+        "group_id": 6,
+        "x": -200.7,
+        "y": -28.5,
+        "angle_degrees": 90.0,
+        "relative_to": "home_life"
+      },
+      {
+        "id": "group_007",
+        "label": "Personal Belongings",
+        "type": "topic",
+        "group_id": 7,
+        "x": -266.5,
+        "y": -49.9,
+        "angle_degrees": 126.0,
+        "relative_to": "home_life"
+      },
+      {
+        "id": "group_008",
+        "label": "Daily Routine",
+        "type": "topic",
+        "group_id": 8,
+        "x": -307.2,
+        "y": -105.9,
+        "angle_degrees": 162.0,
+        "relative_to": "home_life"
+      },
+      {
+        "id": "group_009",
+        "label": "Home Repairs",
+        "type": "topic",
+        "group_id": 9,
+        "x": -307.2,
+        "y": -175.1,
+        "angle_degrees": 198.0,
+        "relative_to": "home_life"
+      },
+      {
+        "id": "group_010",
+        "label": "Household Appliances",
+        "type": "topic",
+        "group_id": 10,
+        "x": -266.5,
+        "y": -231.1,
+        "angle_degrees": 234.0,
+        "relative_to": "home_life"
+      },
+      {
+        "id": "group_011",
+        "label": "Fruits",
+        "type": "topic",
+        "group_id": 11,
+        "x": -75.7,
+        "y": -345.0,
+        "angle_degrees": -90.0,
+        "relative_to": "food"
+      },
+      {
+        "id": "group_012",
+        "label": "Vegetables",
+        "type": "topic",
+        "group_id": 12,
+        "x": -9.9,
+        "y": -323.6,
+        "angle_degrees": -54.0,
+        "relative_to": "food"
+      },
+      {
+        "id": "group_013",
+        "label": "Meat & Seafood",
+        "type": "topic",
+        "group_id": 13,
+        "x": 30.8,
+        "y": -267.6,
+        "angle_degrees": -18.0,
+        "relative_to": "food"
+      },
+      {
+        "id": "group_014",
+        "label": "Bread & Grains",
+        "type": "topic",
+        "group_id": 14,
+        "x": 30.8,
+        "y": -198.4,
+        "angle_degrees": 18.0,
+        "relative_to": "food"
+      },
+      {
+        "id": "group_015",
+        "label": "Dairy Products",
+        "type": "topic",
+        "group_id": 15,
+        "x": -9.9,
+        "y": -142.4,
+        "angle_degrees": 54.0,
+        "relative_to": "food"
+      },
+      {
+        "id": "group_016",
+        "label": "Drinks",
+        "type": "topic",
+        "group_id": 16,
+        "x": -75.7,
+        "y": -121.0,
+        "angle_degrees": 90.0,
+        "relative_to": "food"
+      },
+      {
+        "id": "group_017",
+        "label": "Cooking Methods",
+        "type": "topic",
+        "group_id": 17,
+        "x": -141.5,
+        "y": -142.4,
+        "angle_degrees": 126.0,
+        "relative_to": "food"
+      },
+      {
+        "id": "group_018",
+        "label": "Taste & Texture",
+        "type": "topic",
+        "group_id": 18,
+        "x": -182.2,
+        "y": -198.4,
+        "angle_degrees": 162.0,
+        "relative_to": "food"
+      },
+      {
+        "id": "group_019",
+        "label": "Restaurant",
+        "type": "topic",
+        "group_id": 19,
+        "x": -182.2,
+        "y": -267.6,
+        "angle_degrees": 198.0,
+        "relative_to": "food"
+      },
+      {
+        "id": "group_020",
+        "label": "Nutrition & Food Science",
+        "type": "topic",
+        "group_id": 20,
+        "x": -141.5,
+        "y": -323.6,
+        "angle_degrees": 234.0,
+        "relative_to": "food"
+      },
+      {
+        "id": "group_021",
+        "label": "Cars",
+        "type": "topic",
+        "group_id": 21,
+        "x": 75.7,
+        "y": -345.0,
+        "angle_degrees": -90.0,
+        "relative_to": "transport"
+      },
+      {
+        "id": "group_022",
+        "label": "Roads & Traffic",
+        "type": "topic",
+        "group_id": 22,
+        "x": 141.5,
+        "y": -323.6,
+        "angle_degrees": -54.0,
+        "relative_to": "transport"
+      },
+      {
+        "id": "group_023",
+        "label": "Public Transport",
+        "type": "topic",
+        "group_id": 23,
+        "x": 182.2,
+        "y": -267.6,
+        "angle_degrees": -18.0,
+        "relative_to": "transport"
+      },
+      {
+        "id": "group_024",
+        "label": "Air Travel",
+        "type": "topic",
+        "group_id": 24,
+        "x": 182.2,
+        "y": -198.4,
+        "angle_degrees": 18.0,
+        "relative_to": "transport"
+      },
+      {
+        "id": "group_025",
+        "label": "Ships & Boats",
+        "type": "topic",
+        "group_id": 25,
+        "x": 141.5,
+        "y": -142.4,
+        "angle_degrees": 54.0,
+        "relative_to": "transport"
+      },
+      {
+        "id": "group_026",
+        "label": "Bicycles",
+        "type": "topic",
+        "group_id": 26,
+        "x": 75.7,
+        "y": -121.0,
+        "angle_degrees": 90.0,
+        "relative_to": "transport"
+      },
+      {
+        "id": "group_027",
+        "label": "Road Signs & Rules",
+        "type": "topic",
+        "group_id": 27,
+        "x": 9.9,
+        "y": -142.4,
+        "angle_degrees": 126.0,
+        "relative_to": "transport"
+      },
+      {
+        "id": "group_028",
+        "label": "Travel Planning",
+        "type": "topic",
+        "group_id": 28,
+        "x": -30.8,
+        "y": -198.4,
+        "angle_degrees": 162.0,
+        "relative_to": "transport"
+      },
+      {
+        "id": "group_029",
+        "label": "Freight & Delivery",
+        "type": "topic",
+        "group_id": 29,
+        "x": -30.8,
+        "y": -267.6,
+        "angle_degrees": 198.0,
+        "relative_to": "transport"
+      },
+      {
+        "id": "group_030",
+        "label": "Navigation & Routes",
+        "type": "topic",
+        "group_id": 30,
+        "x": 9.9,
+        "y": -323.6,
+        "angle_degrees": 234.0,
+        "relative_to": "transport"
+      },
+      {
+        "id": "group_031",
+        "label": "Computers",
+        "type": "topic",
+        "group_id": 31,
+        "x": 200.7,
+        "y": -252.5,
+        "angle_degrees": -90.0,
+        "relative_to": "technology"
+      },
+      {
+        "id": "group_032",
+        "label": "Phones",
+        "type": "topic",
+        "group_id": 32,
+        "x": 266.5,
+        "y": -231.1,
+        "angle_degrees": -54.0,
+        "relative_to": "technology"
+      },
+      {
+        "id": "group_033",
+        "label": "Computer Hardware",
+        "type": "topic",
+        "group_id": 33,
+        "x": 307.2,
+        "y": -175.1,
+        "angle_degrees": -18.0,
+        "relative_to": "technology"
+      },
+      {
+        "id": "group_034",
+        "label": "Software",
+        "type": "topic",
+        "group_id": 34,
+        "x": 307.2,
+        "y": -105.9,
+        "angle_degrees": 18.0,
+        "relative_to": "technology"
+      },
+      {
+        "id": "group_035",
+        "label": "Internet",
+        "type": "topic",
+        "group_id": 35,
+        "x": 266.5,
+        "y": -49.9,
+        "angle_degrees": 54.0,
+        "relative_to": "technology"
+      },
+      {
+        "id": "group_036",
+        "label": "Networking",
+        "type": "topic",
+        "group_id": 36,
+        "x": 200.7,
+        "y": -28.5,
+        "angle_degrees": 90.0,
+        "relative_to": "technology"
+      },
+      {
+        "id": "group_037",
+        "label": "Cybersecurity",
+        "type": "topic",
+        "group_id": 37,
+        "x": 134.9,
+        "y": -49.9,
+        "angle_degrees": 126.0,
+        "relative_to": "technology"
+      },
+      {
+        "id": "group_038",
+        "label": "Data & Files",
+        "type": "topic",
+        "group_id": 38,
+        "x": 94.2,
+        "y": -105.9,
+        "angle_degrees": 162.0,
+        "relative_to": "technology"
+      },
+      {
+        "id": "group_039",
+        "label": "Programming Tools",
+        "type": "topic",
+        "group_id": 39,
+        "x": 94.2,
+        "y": -175.1,
+        "angle_degrees": 198.0,
+        "relative_to": "technology"
+      },
+      {
+        "id": "group_040",
+        "label": "AI & Computing",
+        "type": "topic",
+        "group_id": 40,
+        "x": 134.9,
+        "y": -231.1,
+        "angle_degrees": 234.0,
+        "relative_to": "technology"
+      },
+      {
+        "id": "group_041",
+        "label": "School",
+        "type": "topic",
+        "group_id": 41,
+        "x": 242.6,
+        "y": -146.1,
+        "angle_degrees": -90.0,
+        "relative_to": "education"
+      },
+      {
+        "id": "group_042",
+        "label": "Classroom",
+        "type": "topic",
+        "group_id": 42,
+        "x": 308.4,
+        "y": -124.7,
+        "angle_degrees": -54.0,
+        "relative_to": "education"
+      },
+      {
+        "id": "group_043",
+        "label": "School Subjects",
+        "type": "topic",
+        "group_id": 43,
+        "x": 349.1,
+        "y": -68.7,
+        "angle_degrees": -18.0,
+        "relative_to": "education"
+      },
+      {
+        "id": "group_044",
+        "label": "Exams & Tests",
+        "type": "topic",
+        "group_id": 44,
+        "x": 349.1,
+        "y": 0.5,
+        "angle_degrees": 18.0,
+        "relative_to": "education"
+      },
+      {
+        "id": "group_045",
+        "label": "Books & Reading",
+        "type": "topic",
+        "group_id": 45,
+        "x": 308.4,
+        "y": 56.5,
+        "angle_degrees": 54.0,
+        "relative_to": "education"
+      },
+      {
+        "id": "group_046",
+        "label": "Writing",
+        "type": "topic",
+        "group_id": 46,
+        "x": 242.6,
+        "y": 77.9,
+        "angle_degrees": 90.0,
+        "relative_to": "education"
+      },
+      {
+        "id": "group_047",
+        "label": "University",
+        "type": "topic",
+        "group_id": 47,
+        "x": 176.8,
+        "y": 56.5,
+        "angle_degrees": 126.0,
+        "relative_to": "education"
+      },
+      {
+        "id": "group_048",
+        "label": "Research",
+        "type": "topic",
+        "group_id": 48,
+        "x": 136.1,
+        "y": 0.5,
+        "angle_degrees": 162.0,
+        "relative_to": "education"
+      },
+      {
+        "id": "group_049",
+        "label": "Learning Skills",
+        "type": "topic",
+        "group_id": 49,
+        "x": 136.1,
+        "y": -68.7,
+        "angle_degrees": 198.0,
+        "relative_to": "education"
+      },
+      {
+        "id": "group_050",
+        "label": "Academic Language",
+        "type": "topic",
+        "group_id": 50,
+        "x": 176.8,
+        "y": -124.7,
+        "angle_degrees": 234.0,
+        "relative_to": "education"
+      },
+      {
+        "id": "group_081",
+        "label": "Jobs & Careers",
+        "type": "topic",
+        "group_id": 81,
+        "x": 233.0,
+        "y": -36.3,
+        "angle_degrees": -90.0,
+        "relative_to": "work"
+      },
+      {
+        "id": "group_082",
+        "label": "Office",
+        "type": "topic",
+        "group_id": 82,
+        "x": 298.8,
+        "y": -14.9,
+        "angle_degrees": -54.0,
+        "relative_to": "work"
+      },
+      {
+        "id": "group_083",
+        "label": "Business",
+        "type": "topic",
+        "group_id": 83,
+        "x": 339.5,
+        "y": 41.1,
+        "angle_degrees": -18.0,
+        "relative_to": "work"
+      },
+      {
+        "id": "group_084",
+        "label": "Shopping & Sales",
+        "type": "topic",
+        "group_id": 84,
+        "x": 339.5,
+        "y": 110.3,
+        "angle_degrees": 18.0,
+        "relative_to": "work"
+      },
+      {
+        "id": "group_085",
+        "label": "Money & Budgeting",
+        "type": "topic",
+        "group_id": 85,
+        "x": 298.8,
+        "y": 166.3,
+        "angle_degrees": 54.0,
+        "relative_to": "work"
+      },
+      {
+        "id": "group_086",
+        "label": "Banking",
+        "type": "topic",
+        "group_id": 86,
+        "x": 233.0,
+        "y": 187.7,
+        "angle_degrees": 90.0,
+        "relative_to": "work"
+      },
+      {
+        "id": "group_087",
+        "label": "Projects & Planning",
+        "type": "topic",
+        "group_id": 87,
+        "x": 167.2,
+        "y": 166.3,
+        "angle_degrees": 126.0,
+        "relative_to": "work"
+      },
+      {
+        "id": "group_088",
+        "label": "Meetings",
+        "type": "topic",
+        "group_id": 88,
+        "x": 126.5,
+        "y": 110.3,
+        "angle_degrees": 162.0,
+        "relative_to": "work"
+      },
+      {
+        "id": "group_089",
+        "label": "Management",
+        "type": "topic",
+        "group_id": 89,
+        "x": 126.5,
+        "y": 41.1,
+        "angle_degrees": 198.0,
+        "relative_to": "work"
+      },
+      {
+        "id": "group_090",
+        "label": "Economics",
+        "type": "topic",
+        "group_id": 90,
+        "x": 167.2,
+        "y": -14.9,
+        "angle_degrees": 234.0,
+        "relative_to": "work"
+      },
+      {
+        "id": "group_071",
+        "label": "Family & Relationships",
+        "type": "topic",
+        "group_id": 71,
+        "x": 150.8,
+        "y": 81.1,
+        "angle_degrees": -90.0,
+        "relative_to": "society"
+      },
+      {
+        "id": "group_072",
+        "label": "People & Roles",
+        "type": "topic",
+        "group_id": 72,
+        "x": 216.6,
+        "y": 102.5,
+        "angle_degrees": -54.0,
+        "relative_to": "society"
+      },
+      {
+        "id": "group_073",
+        "label": "Communication",
+        "type": "topic",
+        "group_id": 73,
+        "x": 257.3,
+        "y": 158.5,
+        "angle_degrees": -18.0,
+        "relative_to": "society"
+      },
+      {
+        "id": "group_074",
+        "label": "Languages",
+        "type": "topic",
+        "group_id": 74,
+        "x": 257.3,
+        "y": 227.7,
+        "angle_degrees": 18.0,
+        "relative_to": "society"
+      },
+      {
+        "id": "group_075",
+        "label": "Cities & Places",
+        "type": "topic",
+        "group_id": 75,
+        "x": 216.6,
+        "y": 283.7,
+        "angle_degrees": 54.0,
+        "relative_to": "society"
+      },
+      {
+        "id": "group_076",
+        "label": "Government",
+        "type": "topic",
+        "group_id": 76,
+        "x": 150.8,
+        "y": 305.1,
+        "angle_degrees": 90.0,
+        "relative_to": "society"
+      },
+      {
+        "id": "group_077",
+        "label": "Law & Justice",
+        "type": "topic",
+        "group_id": 77,
+        "x": 85.0,
+        "y": 283.7,
+        "angle_degrees": 126.0,
+        "relative_to": "society"
+      },
+      {
+        "id": "group_078",
+        "label": "Politics",
+        "type": "topic",
+        "group_id": 78,
+        "x": 44.3,
+        "y": 227.7,
+        "angle_degrees": 162.0,
+        "relative_to": "society"
+      },
+      {
+        "id": "group_079",
+        "label": "Culture",
+        "type": "topic",
+        "group_id": 79,
+        "x": 44.3,
+        "y": 158.5,
+        "angle_degrees": 198.0,
+        "relative_to": "society"
+      },
+      {
+        "id": "group_080",
+        "label": "Social Issues",
+        "type": "topic",
+        "group_id": 80,
+        "x": 85.0,
+        "y": 102.5,
+        "angle_degrees": 234.0,
+        "relative_to": "society"
+      },
+      {
+        "id": "group_091",
+        "label": "Emotions",
+        "type": "topic",
+        "group_id": 91,
+        "x": 8.6,
+        "y": 132.9,
+        "angle_degrees": -90.0,
+        "relative_to": "abstract"
+      },
+      {
+        "id": "group_092",
+        "label": "Thinking",
+        "type": "topic",
+        "group_id": 92,
+        "x": 74.4,
+        "y": 154.3,
+        "angle_degrees": -54.0,
+        "relative_to": "abstract"
+      },
+      {
+        "id": "group_093",
+        "label": "Goals & Decisions",
+        "type": "topic",
+        "group_id": 93,
+        "x": 115.1,
+        "y": 210.3,
+        "angle_degrees": -18.0,
+        "relative_to": "abstract"
+      },
+      {
+        "id": "group_094",
+        "label": "Time & Sequence",
+        "type": "topic",
+        "group_id": 94,
+        "x": 115.1,
+        "y": 279.5,
+        "angle_degrees": 18.0,
+        "relative_to": "abstract"
+      },
+      {
+        "id": "group_095",
+        "label": "Position & Direction",
+        "type": "topic",
+        "group_id": 95,
+        "x": 74.4,
+        "y": 335.5,
+        "angle_degrees": 54.0,
+        "relative_to": "abstract"
+      },
+      {
+        "id": "group_096",
+        "label": "Change & Development",
+        "type": "topic",
+        "group_id": 96,
+        "x": 8.6,
+        "y": 356.9,
+        "angle_degrees": 90.0,
+        "relative_to": "abstract"
+      },
+      {
+        "id": "group_097",
+        "label": "Comparison",
+        "type": "topic",
+        "group_id": 97,
+        "x": -57.2,
+        "y": 335.5,
+        "angle_degrees": 126.0,
+        "relative_to": "abstract"
+      },
+      {
+        "id": "group_098",
+        "label": "Cause & Effect",
+        "type": "topic",
+        "group_id": 98,
+        "x": -97.9,
+        "y": 279.5,
+        "angle_degrees": 162.0,
+        "relative_to": "abstract"
+      },
+      {
+        "id": "group_099",
+        "label": "Logic & Reasoning",
+        "type": "topic",
+        "group_id": 99,
+        "x": -97.9,
+        "y": 210.3,
+        "angle_degrees": 198.0,
+        "relative_to": "abstract"
+      },
+      {
+        "id": "group_100",
+        "label": "Algorithms & Problem Solving",
+        "type": "topic",
+        "group_id": 100,
+        "x": -57.2,
+        "y": 154.3,
+        "angle_degrees": 234.0,
+        "relative_to": "abstract"
+      },
+      {
+        "id": "group_061",
+        "label": "Physics",
+        "type": "topic",
+        "group_id": 61,
+        "x": -144.0,
+        "y": 86.2,
+        "angle_degrees": -90.0,
+        "relative_to": "science"
+      },
+      {
+        "id": "group_062",
+        "label": "Chemistry",
+        "type": "topic",
+        "group_id": 62,
+        "x": -78.2,
+        "y": 107.6,
+        "angle_degrees": -54.0,
+        "relative_to": "science"
+      },
+      {
+        "id": "group_063",
+        "label": "Biology",
+        "type": "topic",
+        "group_id": 63,
+        "x": -37.5,
+        "y": 163.6,
+        "angle_degrees": -18.0,
+        "relative_to": "science"
+      },
+      {
+        "id": "group_064",
+        "label": "Space & Astronomy",
+        "type": "topic",
+        "group_id": 64,
+        "x": -37.5,
+        "y": 232.8,
+        "angle_degrees": 18.0,
+        "relative_to": "science"
+      },
+      {
+        "id": "group_065",
+        "label": "Energy",
+        "type": "topic",
+        "group_id": 65,
+        "x": -78.2,
+        "y": 288.8,
+        "angle_degrees": 54.0,
+        "relative_to": "science"
+      },
+      {
+        "id": "group_066",
+        "label": "Laboratory",
+        "type": "topic",
+        "group_id": 66,
+        "x": -144.0,
+        "y": 310.2,
+        "angle_degrees": 90.0,
+        "relative_to": "science"
+      },
+      {
+        "id": "group_067",
+        "label": "Scientific Method",
+        "type": "topic",
+        "group_id": 67,
+        "x": -209.8,
+        "y": 288.8,
+        "angle_degrees": 126.0,
+        "relative_to": "science"
+      },
+      {
+        "id": "group_068",
+        "label": "Human Body Science",
+        "type": "topic",
+        "group_id": 68,
+        "x": -250.5,
+        "y": 232.8,
+        "angle_degrees": 162.0,
+        "relative_to": "science"
+      },
+      {
+        "id": "group_069",
+        "label": "Genetics",
+        "type": "topic",
+        "group_id": 69,
+        "x": -250.5,
+        "y": 163.6,
+        "angle_degrees": 198.0,
+        "relative_to": "science"
+      },
+      {
+        "id": "group_070",
+        "label": "Earth Science",
+        "type": "topic",
+        "group_id": 70,
+        "x": -209.8,
+        "y": 107.6,
+        "angle_degrees": 234.0,
+        "relative_to": "science"
+      },
+      {
+        "id": "group_051",
+        "label": "Trees & Plants",
+        "type": "topic",
+        "group_id": 51,
+        "x": -234.3,
+        "y": -40.4,
+        "angle_degrees": -90.0,
+        "relative_to": "nature"
+      },
+      {
+        "id": "group_052",
+        "label": "Flowers",
+        "type": "topic",
+        "group_id": 52,
+        "x": -168.5,
+        "y": -19.0,
+        "angle_degrees": -54.0,
+        "relative_to": "nature"
+      },
+      {
+        "id": "group_053",
+        "label": "Animals",
+        "type": "topic",
+        "group_id": 53,
+        "x": -127.8,
+        "y": 37.0,
+        "angle_degrees": -18.0,
+        "relative_to": "nature"
+      },
+      {
+        "id": "group_054",
+        "label": "Birds",
+        "type": "topic",
+        "group_id": 54,
+        "x": -127.8,
+        "y": 106.2,
+        "angle_degrees": 18.0,
+        "relative_to": "nature"
+      },
+      {
+        "id": "group_055",
+        "label": "Insects",
+        "type": "topic",
+        "group_id": 55,
+        "x": -168.5,
+        "y": 162.2,
+        "angle_degrees": 54.0,
+        "relative_to": "nature"
+      },
+      {
+        "id": "group_056",
+        "label": "Ocean Life",
+        "type": "topic",
+        "group_id": 56,
+        "x": -234.3,
+        "y": 183.6,
+        "angle_degrees": 90.0,
+        "relative_to": "nature"
+      },
+      {
+        "id": "group_057",
+        "label": "Landforms",
+        "type": "topic",
+        "group_id": 57,
+        "x": -300.1,
+        "y": 162.2,
+        "angle_degrees": 126.0,
+        "relative_to": "nature"
+      },
+      {
+        "id": "group_058",
+        "label": "Weather",
+        "type": "topic",
+        "group_id": 58,
+        "x": -340.8,
+        "y": 106.2,
+        "angle_degrees": 162.0,
+        "relative_to": "nature"
+      },
+      {
+        "id": "group_059",
+        "label": "Climate",
+        "type": "topic",
+        "group_id": 59,
+        "x": -340.8,
+        "y": 37.0,
+        "angle_degrees": 198.0,
+        "relative_to": "nature"
+      },
+      {
+        "id": "group_060",
+        "label": "Environment",
+        "type": "topic",
+        "group_id": 60,
+        "x": -300.1,
+        "y": -19.0,
+        "angle_degrees": 234.0,
+        "relative_to": "nature"
+      }
+    ],
+    "edges": [
+      {
+        "source": "life",
+        "target": "home_life",
+        "type": "contains"
+      },
+      {
+        "source": "life",
+        "target": "food",
+        "type": "contains"
+      },
+      {
+        "source": "life",
+        "target": "transport",
+        "type": "contains"
+      },
+      {
+        "source": "life",
+        "target": "technology",
+        "type": "contains"
+      },
+      {
+        "source": "life",
+        "target": "education",
+        "type": "contains"
+      },
+      {
+        "source": "life",
+        "target": "work",
+        "type": "contains"
+      },
+      {
+        "source": "life",
+        "target": "society",
+        "type": "contains"
+      },
+      {
+        "source": "life",
+        "target": "abstract",
+        "type": "contains"
+      },
+      {
+        "source": "life",
+        "target": "science",
+        "type": "contains"
+      },
+      {
+        "source": "life",
+        "target": "nature",
+        "type": "contains"
+      },
+      {
+        "source": "home_life",
+        "target": "group_001",
+        "type": "contains"
+      },
+      {
+        "source": "home_life",
+        "target": "group_002",
+        "type": "contains"
+      },
+      {
+        "source": "home_life",
+        "target": "group_003",
+        "type": "contains"
+      },
+      {
+        "source": "home_life",
+        "target": "group_004",
+        "type": "contains"
+      },
+      {
+        "source": "home_life",
+        "target": "group_005",
+        "type": "contains"
+      },
+      {
+        "source": "home_life",
+        "target": "group_006",
+        "type": "contains"
+      },
+      {
+        "source": "home_life",
+        "target": "group_007",
+        "type": "contains"
+      },
+      {
+        "source": "home_life",
+        "target": "group_008",
+        "type": "contains"
+      },
+      {
+        "source": "home_life",
+        "target": "group_009",
+        "type": "contains"
+      },
+      {
+        "source": "home_life",
+        "target": "group_010",
+        "type": "contains"
+      },
+      {
+        "source": "food",
+        "target": "group_011",
+        "type": "contains"
+      },
+      {
+        "source": "food",
+        "target": "group_012",
+        "type": "contains"
+      },
+      {
+        "source": "food",
+        "target": "group_013",
+        "type": "contains"
+      },
+      {
+        "source": "food",
+        "target": "group_014",
+        "type": "contains"
+      },
+      {
+        "source": "food",
+        "target": "group_015",
+        "type": "contains"
+      },
+      {
+        "source": "food",
+        "target": "group_016",
+        "type": "contains"
+      },
+      {
+        "source": "food",
+        "target": "group_017",
+        "type": "contains"
+      },
+      {
+        "source": "food",
+        "target": "group_018",
+        "type": "contains"
+      },
+      {
+        "source": "food",
+        "target": "group_019",
+        "type": "contains"
+      },
+      {
+        "source": "food",
+        "target": "group_020",
+        "type": "contains"
+      },
+      {
+        "source": "transport",
+        "target": "group_021",
+        "type": "contains"
+      },
+      {
+        "source": "transport",
+        "target": "group_022",
+        "type": "contains"
+      },
+      {
+        "source": "transport",
+        "target": "group_023",
+        "type": "contains"
+      },
+      {
+        "source": "transport",
+        "target": "group_024",
+        "type": "contains"
+      },
+      {
+        "source": "transport",
+        "target": "group_025",
+        "type": "contains"
+      },
+      {
+        "source": "transport",
+        "target": "group_026",
+        "type": "contains"
+      },
+      {
+        "source": "transport",
+        "target": "group_027",
+        "type": "contains"
+      },
+      {
+        "source": "transport",
+        "target": "group_028",
+        "type": "contains"
+      },
+      {
+        "source": "transport",
+        "target": "group_029",
+        "type": "contains"
+      },
+      {
+        "source": "transport",
+        "target": "group_030",
+        "type": "contains"
+      },
+      {
+        "source": "technology",
+        "target": "group_031",
+        "type": "contains"
+      },
+      {
+        "source": "technology",
+        "target": "group_032",
+        "type": "contains"
+      },
+      {
+        "source": "technology",
+        "target": "group_033",
+        "type": "contains"
+      },
+      {
+        "source": "technology",
+        "target": "group_034",
+        "type": "contains"
+      },
+      {
+        "source": "technology",
+        "target": "group_035",
+        "type": "contains"
+      },
+      {
+        "source": "technology",
+        "target": "group_036",
+        "type": "contains"
+      },
+      {
+        "source": "technology",
+        "target": "group_037",
+        "type": "contains"
+      },
+      {
+        "source": "technology",
+        "target": "group_038",
+        "type": "contains"
+      },
+      {
+        "source": "technology",
+        "target": "group_039",
+        "type": "contains"
+      },
+      {
+        "source": "technology",
+        "target": "group_040",
+        "type": "contains"
+      },
+      {
+        "source": "education",
+        "target": "group_041",
+        "type": "contains"
+      },
+      {
+        "source": "education",
+        "target": "group_042",
+        "type": "contains"
+      },
+      {
+        "source": "education",
+        "target": "group_043",
+        "type": "contains"
+      },
+      {
+        "source": "education",
+        "target": "group_044",
+        "type": "contains"
+      },
+      {
+        "source": "education",
+        "target": "group_045",
+        "type": "contains"
+      },
+      {
+        "source": "education",
+        "target": "group_046",
+        "type": "contains"
+      },
+      {
+        "source": "education",
+        "target": "group_047",
+        "type": "contains"
+      },
+      {
+        "source": "education",
+        "target": "group_048",
+        "type": "contains"
+      },
+      {
+        "source": "education",
+        "target": "group_049",
+        "type": "contains"
+      },
+      {
+        "source": "education",
+        "target": "group_050",
+        "type": "contains"
+      },
+      {
+        "source": "work",
+        "target": "group_081",
+        "type": "contains"
+      },
+      {
+        "source": "work",
+        "target": "group_082",
+        "type": "contains"
+      },
+      {
+        "source": "work",
+        "target": "group_083",
+        "type": "contains"
+      },
+      {
+        "source": "work",
+        "target": "group_084",
+        "type": "contains"
+      },
+      {
+        "source": "work",
+        "target": "group_085",
+        "type": "contains"
+      },
+      {
+        "source": "work",
+        "target": "group_086",
+        "type": "contains"
+      },
+      {
+        "source": "work",
+        "target": "group_087",
+        "type": "contains"
+      },
+      {
+        "source": "work",
+        "target": "group_088",
+        "type": "contains"
+      },
+      {
+        "source": "work",
+        "target": "group_089",
+        "type": "contains"
+      },
+      {
+        "source": "work",
+        "target": "group_090",
+        "type": "contains"
+      },
+      {
+        "source": "society",
+        "target": "group_071",
+        "type": "contains"
+      },
+      {
+        "source": "society",
+        "target": "group_072",
+        "type": "contains"
+      },
+      {
+        "source": "society",
+        "target": "group_073",
+        "type": "contains"
+      },
+      {
+        "source": "society",
+        "target": "group_074",
+        "type": "contains"
+      },
+      {
+        "source": "society",
+        "target": "group_075",
+        "type": "contains"
+      },
+      {
+        "source": "society",
+        "target": "group_076",
+        "type": "contains"
+      },
+      {
+        "source": "society",
+        "target": "group_077",
+        "type": "contains"
+      },
+      {
+        "source": "society",
+        "target": "group_078",
+        "type": "contains"
+      },
+      {
+        "source": "society",
+        "target": "group_079",
+        "type": "contains"
+      },
+      {
+        "source": "society",
+        "target": "group_080",
+        "type": "contains"
+      },
+      {
+        "source": "abstract",
+        "target": "group_091",
+        "type": "contains"
+      },
+      {
+        "source": "abstract",
+        "target": "group_092",
+        "type": "contains"
+      },
+      {
+        "source": "abstract",
+        "target": "group_093",
+        "type": "contains"
+      },
+      {
+        "source": "abstract",
+        "target": "group_094",
+        "type": "contains"
+      },
+      {
+        "source": "abstract",
+        "target": "group_095",
+        "type": "contains"
+      },
+      {
+        "source": "abstract",
+        "target": "group_096",
+        "type": "contains"
+      },
+      {
+        "source": "abstract",
+        "target": "group_097",
+        "type": "contains"
+      },
+      {
+        "source": "abstract",
+        "target": "group_098",
+        "type": "contains"
+      },
+      {
+        "source": "abstract",
+        "target": "group_099",
+        "type": "contains"
+      },
+      {
+        "source": "abstract",
+        "target": "group_100",
+        "type": "contains"
+      },
+      {
+        "source": "science",
+        "target": "group_061",
+        "type": "contains"
+      },
+      {
+        "source": "science",
+        "target": "group_062",
+        "type": "contains"
+      },
+      {
+        "source": "science",
+        "target": "group_063",
+        "type": "contains"
+      },
+      {
+        "source": "science",
+        "target": "group_064",
+        "type": "contains"
+      },
+      {
+        "source": "science",
+        "target": "group_065",
+        "type": "contains"
+      },
+      {
+        "source": "science",
+        "target": "group_066",
+        "type": "contains"
+      },
+      {
+        "source": "science",
+        "target": "group_067",
+        "type": "contains"
+      },
+      {
+        "source": "science",
+        "target": "group_068",
+        "type": "contains"
+      },
+      {
+        "source": "science",
+        "target": "group_069",
+        "type": "contains"
+      },
+      {
+        "source": "science",
+        "target": "group_070",
+        "type": "contains"
+      },
+      {
+        "source": "nature",
+        "target": "group_051",
+        "type": "contains"
+      },
+      {
+        "source": "nature",
+        "target": "group_052",
+        "type": "contains"
+      },
+      {
+        "source": "nature",
+        "target": "group_053",
+        "type": "contains"
+      },
+      {
+        "source": "nature",
+        "target": "group_054",
+        "type": "contains"
+      },
+      {
+        "source": "nature",
+        "target": "group_055",
+        "type": "contains"
+      },
+      {
+        "source": "nature",
+        "target": "group_056",
+        "type": "contains"
+      },
+      {
+        "source": "nature",
+        "target": "group_057",
+        "type": "contains"
+      },
+      {
+        "source": "nature",
+        "target": "group_058",
+        "type": "contains"
+      },
+      {
+        "source": "nature",
+        "target": "group_059",
+        "type": "contains"
+      },
+      {
+        "source": "nature",
+        "target": "group_060",
+        "type": "contains"
+      },
+      {
+        "source": "education",
+        "target": "work",
+        "type": "related"
+      },
+      {
+        "source": "technology",
+        "target": "education",
+        "type": "related"
+      },
+      {
+        "source": "technology",
+        "target": "work",
+        "type": "related"
+      },
+      {
+        "source": "science",
+        "target": "nature",
+        "type": "related"
+      },
+      {
+        "source": "science",
+        "target": "technology",
+        "type": "related"
+      },
+      {
+        "source": "food",
+        "target": "nature",
+        "type": "related"
+      },
+      {
+        "source": "transport",
+        "target": "technology",
+        "type": "related"
+      },
+      {
+        "source": "society",
+        "target": "work",
+        "type": "related"
+      },
+      {
+        "source": "abstract",
+        "target": "education",
+        "type": "related"
+      },
+      {
+        "source": "abstract",
+        "target": "technology",
+        "type": "related"
+      }
+    ],
+    "layout_defaults": {
+      "root_position": {
+        "x": 0,
+        "y": 0
+      },
+      "domain_radius": 245,
+      "topic_offset_from_domain": 112,
+      "edge_types": {
+        "contains": "hierarchical membership",
+        "related": "cross-topic relationship"
+      }
+    }
+  }
+}

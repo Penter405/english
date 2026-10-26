@@ -1,0 +1,63 @@
+{
+  "id": 40,
+  "topic": "AI & Computing",
+  "levels": {
+    "easy": [
+      "computer",
+      "phone",
+      "screen",
+      "keyboard",
+      "mouse",
+      "camera",
+      "battery",
+      "charger",
+      "cable",
+      "speaker",
+      "software",
+      "hardware",
+      "program",
+      "file",
+      "folder",
+      "memory",
+      "storage",
+      "processor",
+      "monitor",
+      "printer"
+    ],
+    "medium": [
+      "motherboard",
+      "graphics",
+      "network",
+      "router",
+      "browser",
+      "website",
+      "server",
+      "database",
+      "password",
+      "account",
+      "firmware",
+      "bandwidth",
+      "encryption",
+      "protocol",
+      "virtualization",
+      "peripheral",
+      "semiconductor",
+      "microarchitecture",
+      "authentication",
+      "latency"
+    ],
+    "hard": [
+      "throughput",
+      "interoperability",
+      "decryption",
+      "cryptography",
+      "telemetry",
+      "microcontroller",
+      "transistor",
+      "middleware",
+      "containerization",
+      "scalability"
+    ]
+  },
+  "word_count": 50
+}

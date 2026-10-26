@@ -1,0 +1,63 @@
+{
+  "id": 55,
+  "topic": "Insects",
+  "levels": {
+    "easy": [
+      "tree",
+      "leaf",
+      "flower",
+      "grass",
+      "root",
+      "seed",
+      "forest",
+      "river",
+      "lake",
+      "ocean",
+      "mountain",
+      "hill",
+      "valley",
+      "island",
+      "beach",
+      "rain",
+      "snow",
+      "wind",
+      "cloud",
+      "storm"
+    ],
+    "medium": [
+      "animal",
+      "bird",
+      "fish",
+      "insect",
+      "plant",
+      "soil",
+      "rock",
+      "sand",
+      "weather",
+      "season",
+      "ecosystem",
+      "habitat",
+      "biodiversity",
+      "pollution",
+      "erosion",
+      "drought",
+      "humidity",
+      "precipitation",
+      "conservation",
+      "wildlife"
+    ],
+    "hard": [
+      "photosynthesis",
+      "decomposition",
+      "watershed",
+      "sediment",
+      "estuary",
+      "succession",
+      "adaptation",
+      "migration",
+      "deforestation",
+      "biome"
+    ]
+  },
+  "word_count": 50
+}

@@ -1,0 +1,63 @@
+{
+  "id": 49,
+  "topic": "Learning Skills",
+  "levels": {
+    "easy": [
+      "school",
+      "class",
+      "teacher",
+      "student",
+      "book",
+      "paper",
+      "pen",
+      "pencil",
+      "lesson",
+      "homework",
+      "question",
+      "answer",
+      "exam",
+      "test",
+      "grade",
+      "subject",
+      "library",
+      "course",
+      "college",
+      "university"
+    ],
+    "medium": [
+      "lecture",
+      "textbook",
+      "notebook",
+      "classroom",
+      "assignment",
+      "semester",
+      "degree",
+      "campus",
+      "research",
+      "scholarship",
+      "curriculum",
+      "pedagogy",
+      "assessment",
+      "dissertation",
+      "methodology",
+      "citation",
+      "thesis",
+      "accreditation",
+      "interdisciplinary",
+      "epistemology"
+    ],
+    "hard": [
+      "syllabus",
+      "comprehension",
+      "proficiency",
+      "evaluation",
+      "credential",
+      "plagiarism",
+      "matriculation",
+      "didactics",
+      "scholarly",
+      "qualification"
+    ]
+  },
+  "word_count": 50
+}

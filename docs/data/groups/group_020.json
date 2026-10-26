@@ -1,0 +1,63 @@
+{
+  "id": 20,
+  "topic": "Nutrition & Food Science",
+  "levels": {
+    "easy": [
+      "apple",
+      "banana",
+      "orange",
+      "bread",
+      "rice",
+      "egg",
+      "milk",
+      "water",
+      "meat",
+      "fish",
+      "carrot",
+      "potato",
+      "onion",
+      "tomato",
+      "cheese",
+      "butter",
+      "soup",
+      "salad",
+      "sugar",
+      "salt"
+    ],
+    "medium": [
+      "cabbage",
+      "lettuce",
+      "spinach",
+      "broccoli",
+      "cucumber",
+      "pumpkin",
+      "mushroom",
+      "strawberry",
+      "grape",
+      "lemon",
+      "flour",
+      "yeast",
+      "ingredient",
+      "recipe",
+      "portion",
+      "flavor",
+      "seasoning",
+      "boil",
+      "fry",
+      "bake"
+    ],
+    "hard": [
+      "fermentation",
+      "pasteurization",
+      "emulsify",
+      "caramelization",
+      "marinade",
+      "consistency",
+      "nutrient",
+      "preservative",
+      "culinary",
+      "gastronomy"
+    ]
+  },
+  "word_count": 50
+}

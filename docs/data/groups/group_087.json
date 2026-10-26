@@ -1,0 +1,63 @@
+{
+  "id": 87,
+  "topic": "Projects & Planning",
+  "levels": {
+    "easy": [
+      "work",
+      "job",
+      "office",
+      "company",
+      "worker",
+      "manager",
+      "employee",
+      "boss",
+      "task",
+      "career",
+      "customer",
+      "product",
+      "service",
+      "market",
+      "sale",
+      "price",
+      "cost",
+      "profit",
+      "meeting",
+      "schedule"
+    ],
+    "medium": [
+      "salary",
+      "budget",
+      "business",
+      "contract",
+      "invoice",
+      "project",
+      "deadline",
+      "teamwork",
+      "promotion",
+      "interview",
+      "revenue",
+      "expenditure",
+      "procurement",
+      "stakeholder",
+      "entrepreneur",
+      "productivity",
+      "negotiation",
+      "benchmark",
+      "allocation",
+      "forecast"
+    ],
+    "hard": [
+      "depreciation",
+      "liability",
+      "solvency",
+      "dividend",
+      "amortization",
+      "merger",
+      "compliance",
+      "optimization",
+      "deliverable",
+      "scalability"
+    ]
+  },
+  "word_count": 50
+}

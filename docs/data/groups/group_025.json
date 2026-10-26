@@ -1,0 +1,63 @@
+{
+  "id": 25,
+  "topic": "Ships & Boats",
+  "levels": {
+    "easy": [
+      "car",
+      "bus",
+      "truck",
+      "bike",
+      "road",
+      "street",
+      "train",
+      "plane",
+      "boat",
+      "driver",
+      "traffic",
+      "ticket",
+      "station",
+      "airport",
+      "bridge",
+      "wheel",
+      "tire",
+      "brake",
+      "engine",
+      "passenger"
+    ],
+    "medium": [
+      "highway",
+      "intersection",
+      "sidewalk",
+      "crosswalk",
+      "lane",
+      "roundabout",
+      "platform",
+      "terminal",
+      "luggage",
+      "schedule",
+      "congestion",
+      "detour",
+      "overpass",
+      "underpass",
+      "pedestrian",
+      "commuter",
+      "carriageway",
+      "thoroughfare",
+      "interchange",
+      "right-of-way"
+    ],
+    "hard": [
+      "gridlock",
+      "contraflow",
+      "expressway",
+      "infrastructure",
+      "navigation",
+      "transit",
+      "logistics",
+      "freight",
+      "propulsion",
+      "aerodynamics"
+    ]
+  },
+  "word_count": 50
+}

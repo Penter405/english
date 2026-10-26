@@ -1,0 +1,63 @@
+{
+  "id": 7,
+  "topic": "Personal Belongings",
+  "levels": {
+    "easy": [
+      "house",
+      "room",
+      "door",
+      "window",
+      "wall",
+      "floor",
+      "roof",
+      "bed",
+      "chair",
+      "table",
+      "sofa",
+      "desk",
+      "lamp",
+      "kitchen",
+      "bathroom",
+      "bedroom",
+      "garden",
+      "key",
+      "bag",
+      "clock"
+    ],
+    "medium": [
+      "ceiling",
+      "stairs",
+      "hallway",
+      "balcony",
+      "basement",
+      "attic",
+      "drawer",
+      "cabinet",
+      "shelf",
+      "curtain",
+      "mattress",
+      "pillow",
+      "blanket",
+      "wardrobe",
+      "mirror",
+      "furniture",
+      "appliance",
+      "laundry",
+      "detergent",
+      "vacuum"
+    ],
+    "hard": [
+      "upholstery",
+      "furnishing",
+      "ventilation",
+      "insulation",
+      "renovation",
+      "plumbing",
+      "carpentry",
+      "interior",
+      "residential",
+      "maintenance"
+    ]
+  },
+  "word_count": 50
+}

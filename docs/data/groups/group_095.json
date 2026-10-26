@@ -1,0 +1,63 @@
+{
+  "id": 95,
+  "topic": "Position & Direction",
+  "levels": {
+    "easy": [
+      "idea",
+      "think",
+      "know",
+      "learn",
+      "remember",
+      "forget",
+      "choose",
+      "decide",
+      "reason",
+      "cause",
+      "effect",
+      "result",
+      "proof",
+      "claim",
+      "fact",
+      "opinion",
+      "rule",
+      "condition",
+      "problem",
+      "solution"
+    ],
+    "medium": [
+      "evidence",
+      "assumption",
+      "argument",
+      "conclusion",
+      "premise",
+      "inference",
+      "logic",
+      "pattern",
+      "change",
+      "compare",
+      "contradiction",
+      "consistency",
+      "implication",
+      "deduction",
+      "induction",
+      "sufficiency",
+      "necessity",
+      "hypothesis",
+      "counterexample",
+      "validity"
+    ],
+    "hard": [
+      "contingency",
+      "equivalence",
+      "causality",
+      "recursion",
+      "abstraction",
+      "heuristic",
+      "monotonicity",
+      "invariant",
+      "paradox",
+      "epistemic"
+    ]
+  },
+  "word_count": 50
+}

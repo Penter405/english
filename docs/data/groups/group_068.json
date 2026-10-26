@@ -1,0 +1,63 @@
+{
+  "id": 68,
+  "topic": "Human Body Science",
+  "levels": {
+    "easy": [
+      "energy",
+      "force",
+      "motion",
+      "speed",
+      "mass",
+      "gravity",
+      "heat",
+      "light",
+      "wave",
+      "sound",
+      "atom",
+      "molecule",
+      "element",
+      "compound",
+      "chemical",
+      "reaction",
+      "acid",
+      "base",
+      "metal",
+      "gas"
+    ],
+    "medium": [
+      "cell",
+      "gene",
+      "DNA",
+      "protein",
+      "tissue",
+      "organ",
+      "species",
+      "bacteria",
+      "evolution",
+      "experiment",
+      "hypothesis",
+      "variable",
+      "measurement",
+      "observation",
+      "evidence",
+      "theory",
+      "catalyst",
+      "isotope",
+      "momentum",
+      "thermodynamics"
+    ],
+    "hard": [
+      "spectroscopy",
+      "stoichiometry",
+      "electromagnetism",
+      "quantum",
+      "relativity",
+      "mitosis",
+      "homeostasis",
+      "genotype",
+      "metabolism",
+      "falsifiability"
+    ]
+  },
+  "word_count": 50
+}

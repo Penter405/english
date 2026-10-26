@@ -1,0 +1,63 @@
+{
+  "id": 80,
+  "topic": "Social Issues",
+  "levels": {
+    "easy": [
+      "person",
+      "family",
+      "friend",
+      "child",
+      "parent",
+      "neighbor",
+      "community",
+      "people",
+      "group",
+      "team",
+      "language",
+      "word",
+      "message",
+      "letter",
+      "email",
+      "call",
+      "conversation",
+      "culture",
+      "country",
+      "city"
+    ],
+    "medium": [
+      "government",
+      "law",
+      "court",
+      "police",
+      "election",
+      "citizen",
+      "leader",
+      "policy",
+      "society",
+      "population",
+      "democracy",
+      "legislation",
+      "jurisdiction",
+      "diplomacy",
+      "inequality",
+      "migration",
+      "institution",
+      "governance",
+      "representation",
+      "civic"
+    ],
+    "hard": [
+      "constituency",
+      "sovereignty",
+      "bureaucracy",
+      "legitimacy",
+      "pluralism",
+      "referendum",
+      "advocacy",
+      "statute",
+      "constitutional",
+      "deliberation"
+    ]
+  },
+  "word_count": 50
+}
