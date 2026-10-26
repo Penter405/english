@@ -94,7 +94,7 @@ function getTopicColor(nodeId) {
 
 // ===== Render Graph =====
 function renderGraph() {
-  const SCALE = 1.8;
+  const SCALE = 3.2;
   const nodes = graphData.graph.nodes;
   const edges = graphData.graph.edges;
 
