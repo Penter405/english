@@ -1,18 +1,27 @@
 /**
  * English Vocabulary Graph — Interactive Topic Explorer
  *
- * Main application: loads graph.json, renders with Cytoscape.js,
- * handles node click interactions, and displays vocabulary groups.
+ * Drill-down navigation:
+ *   Level 1 (root):   Life ── domains
+ *   Level 2 (domain): Life ─────── Domain ── topics
+ *   Click topic → vocabulary view
  */
 
 // ===== State =====
-let cy = null;            // Cytoscape instance
-let graphData = null;     // Raw graph JSON
-let nodeMap = {};         // id -> node data
-let domainChildren = {};  // domain_id -> [topic_node_ids]
-let currentView = 'graph';
+let cy = null;
+let graphData = null;
+let nodeMap = {};
+let domainChildren = {};
+let viewLevel = 'root';    // 'root' | 'domain'
+let currentDomainId = null;
+let currentView = 'graph'; // 'graph' | 'group'
 let savedZoom = null;
 let savedPan = null;
+
+// Layout constants
+const DOMAIN_RADIUS = 300;   // root → domain distance (root view)
+const TOPIC_RADIUS = 200;    // domain → topic distance (domain view)
+const ROOT_LINK_DIST = 500;  // domain → root distance (domain view, longer)
 
 // Domain color mapping
 const DOMAIN_COLORS = {
@@ -32,7 +41,6 @@ const DOMAIN_COLORS = {
 async function initGraph() {
   const loadingEl = document.getElementById('graph-loading');
   const errorEl = document.getElementById('graph-error');
-
   loadingEl.style.display = 'flex';
   errorEl.style.display = 'none';
 
@@ -40,11 +48,9 @@ async function initGraph() {
     const res = await fetch('./data/graph.json');
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     graphData = await res.json();
-
     buildNodeMap();
     buildDomainChildren();
     renderGraph();
-
     loadingEl.style.display = 'none';
   } catch (err) {
     console.error('Failed to load graph:', err);
@@ -65,9 +71,9 @@ function buildDomainChildren() {
   domainChildren = {};
   for (const edge of graphData.graph.edges) {
     if (edge.type === 'contains') {
-      const source = nodeMap[edge.source];
-      const target = nodeMap[edge.target];
-      if (source && target && source.type === 'domain' && target.type === 'topic') {
+      const src = nodeMap[edge.source];
+      const tgt = nodeMap[edge.target];
+      if (src && tgt && src.type === 'domain' && tgt.type === 'topic') {
         if (!domainChildren[edge.source]) domainChildren[edge.source] = [];
         domainChildren[edge.source].push(edge.target);
       }
@@ -75,33 +81,22 @@ function buildDomainChildren() {
   }
 }
 
-// ===== Find parent domain for a topic node =====
 function getParentDomain(nodeId) {
   for (const edge of graphData.graph.edges) {
     if (edge.type === 'contains' && edge.target === nodeId) {
-      const sourceNode = nodeMap[edge.source];
-      if (sourceNode && sourceNode.type === 'domain') return edge.source;
+      const src = nodeMap[edge.source];
+      if (src && src.type === 'domain') return edge.source;
     }
   }
   return null;
 }
 
-// ===== Get domain color for a topic =====
-function getTopicColor(nodeId) {
-  const domainId = getParentDomain(nodeId);
-  return DOMAIN_COLORS[domainId] || { main: '#64748b', bg: 'rgba(100,116,139,0.12)', border: 'rgba(100,116,139,0.4)' };
-}
-
-// ===== Render Graph =====
+// ===== Render Graph (one-time setup) =====
 function renderGraph() {
-  const SCALE = 3.2;
-  const nodes = graphData.graph.nodes;
-  const edges = graphData.graph.edges;
-
   const cyElements = [];
 
-  // Build nodes
-  for (const node of nodes) {
+  // Add ALL nodes (positioned at origin initially; view functions set real positions)
+  for (const node of graphData.graph.nodes) {
     const domainId = getParentDomain(node.id);
     const colorSet = node.type === 'domain'
       ? (DOMAIN_COLORS[node.id] || { main: '#64748b' })
@@ -119,15 +114,12 @@ function renderGraph() {
         color: colorSet.main,
         domainId: domainId
       },
-      position: {
-        x: node.x * SCALE,
-        y: node.y * SCALE
-      }
+      position: { x: 0, y: 0 }
     });
   }
 
-  // Build edges
-  for (const edge of edges) {
+  // Add ALL edges
+  for (const edge of graphData.graph.edges) {
     cyElements.push({
       group: 'edges',
       data: {
@@ -139,7 +131,6 @@ function renderGraph() {
     });
   }
 
-  // Create Cytoscape instance
   cy = cytoscape({
     container: document.getElementById('cy'),
     elements: cyElements,
@@ -148,11 +139,11 @@ function renderGraph() {
     userPanningEnabled: true,
     boxSelectionEnabled: false,
     autoungrabify: false,
-    minZoom: 0.15,
+    minZoom: 0.2,
     maxZoom: 3,
     wheelSensitivity: 0.3,
     style: [
-      // Root node
+      // ── Root node ──
       {
         selector: 'node[nodeType="root"]',
         style: {
@@ -168,17 +159,26 @@ function renderGraph() {
           'color': '#f1f5f9',
           'text-valign': 'center',
           'text-halign': 'center',
-          'text-wrap': 'wrap',
-          'text-max-width': 80,
           'text-outline-color': '#0a0e1a',
           'text-outline-width': 3,
           'z-index': 10,
           'overlay-opacity': 0,
-          'transition-property': 'border-color, width, height',
-          'transition-duration': '0.2s'
+          'transition-property': 'width, height, border-width, opacity',
+          'transition-duration': '0.3s'
         }
       },
-      // Domain nodes
+      // Root node when shown as breadcrumb in domain view
+      {
+        selector: 'node[nodeType="root"].breadcrumb',
+        style: {
+          'width': 44,
+          'height': 44,
+          'border-width': 2,
+          'font-size': 11,
+          'opacity': 0.7
+        }
+      },
+      // ── Domain nodes ──
       {
         selector: 'node[nodeType="domain"]',
         style: {
@@ -188,69 +188,92 @@ function renderGraph() {
           'border-width': 2.5,
           'border-color': 'data(color)',
           'label': 'data(label)',
-          'font-size': 12,
+          'font-size': 13,
           'font-weight': 700,
           'font-family': 'Inter, sans-serif',
           'color': 'data(color)',
           'text-valign': 'bottom',
           'text-halign': 'center',
-          'text-margin-y': 8,
+          'text-margin-y': 10,
           'text-wrap': 'wrap',
-          'text-max-width': 100,
+          'text-max-width': 110,
           'text-outline-color': '#0a0e1a',
           'text-outline-width': 2.5,
           'z-index': 8,
           'overlay-opacity': 0,
-          'transition-property': 'border-color, width, height, border-width',
-          'transition-duration': '0.2s'
+          'transition-property': 'width, height, border-width',
+          'transition-duration': '0.3s'
         }
       },
-      // Topic nodes
+      // Domain node when it's the focused one in domain view
+      {
+        selector: 'node[nodeType="domain"].focused',
+        style: {
+          'width': 68,
+          'height': 68,
+          'border-width': 3.5,
+          'font-size': 15,
+          'font-weight': 800,
+          'z-index': 20
+        }
+      },
+      // ── Topic nodes ──
       {
         selector: 'node[nodeType="topic"]',
         style: {
-          'width': 30,
-          'height': 30,
+          'width': 34,
+          'height': 34,
           'background-color': 'data(color)',
-          'background-opacity': 0.15,
-          'border-width': 1.5,
+          'background-opacity': 0.18,
+          'border-width': 1.8,
           'border-color': 'data(color)',
           'label': 'data(label)',
-          'font-size': 9,
-          'font-weight': 500,
+          'font-size': 10,
+          'font-weight': 600,
           'font-family': 'Inter, sans-serif',
-          'color': '#cbd5e1',
+          'color': '#e2e8f0',
           'text-valign': 'bottom',
           'text-halign': 'center',
-          'text-margin-y': 6,
+          'text-margin-y': 7,
           'text-wrap': 'wrap',
-          'text-max-width': 85,
+          'text-max-width': 90,
           'text-outline-color': '#0a0e1a',
           'text-outline-width': 2,
           'z-index': 5,
           'overlay-opacity': 0,
-          'transition-property': 'background-opacity, width, height, border-width',
+          'transition-property': 'background-opacity, width, height',
           'transition-duration': '0.2s'
         }
       },
-      // Edges — contains (hierarchical)
+      // ── Contains edges (hierarchical) ──
       {
         selector: 'edge[edgeType="contains"]',
         style: {
-          'width': 1.2,
-          'line-color': 'rgba(148, 163, 184, 0.15)',
+          'width': 1.5,
+          'line-color': 'rgba(148, 163, 184, 0.2)',
           'curve-style': 'straight',
           'target-arrow-shape': 'none',
           'overlay-opacity': 0,
           'z-index': 1
         }
       },
-      // Edges — related (cross-domain)
+      // Breadcrumb edge (root→domain in domain view) — thinner, dashed
+      {
+        selector: 'edge.breadcrumb-edge',
+        style: {
+          'width': 1,
+          'line-color': 'rgba(167, 139, 250, 0.2)',
+          'line-style': 'dashed',
+          'line-dash-pattern': [8, 6],
+          'z-index': 0
+        }
+      },
+      // ── Related edges (cross-domain) ──
       {
         selector: 'edge[edgeType="related"]',
         style: {
           'width': 0.8,
-          'line-color': 'rgba(99, 102, 241, 0.08)',
+          'line-color': 'rgba(99, 102, 241, 0.06)',
           'line-style': 'dashed',
           'line-dash-pattern': [6, 4],
           'curve-style': 'unbundled-bezier',
@@ -259,99 +282,178 @@ function renderGraph() {
           'z-index': 0
         }
       },
-      // Hover states
+      // ── Hover / active states ──
       {
-        selector: 'node[nodeType="topic"]:active',
+        selector: 'node:active',
         style: {
-          'background-opacity': 0.35,
-          'width': 36,
-          'height': 36,
-          'border-width': 2.5
-        }
-      },
-      {
-        selector: 'node[nodeType="domain"]:active',
-        style: {
-          'width': 64,
-          'height': 64,
-          'border-width': 3.5
-        }
-      },
-      {
-        selector: 'node[nodeType="root"]:active',
-        style: {
-          'width': 80,
-          'height': 80,
-          'border-color': '#c4b5fd'
-        }
-      },
-      // Highlighted domain
-      {
-        selector: '.domain-highlight',
-        style: {
-          'width': 64,
-          'height': 64,
-          'border-width': 3.5,
-          'z-index': 20
-        }
-      },
-      // Highlighted topic children
-      {
-        selector: '.topic-highlight',
-        style: {
-          'background-opacity': 0.4,
-          'width': 36,
-          'height': 36,
-          'border-width': 2.5,
-          'z-index': 15,
-          'font-size': 11,
-          'font-weight': 700,
-          'color': '#f1f5f9'
-        }
-      },
-      // Dimmed nodes
-      {
-        selector: '.dimmed',
-        style: {
-          'opacity': 0.2
-        }
-      },
-      // Highlighted edges
-      {
-        selector: '.edge-highlight',
-        style: {
-          'width': 2,
-          'line-color': 'rgba(148, 163, 184, 0.35)',
-          'z-index': 10
+          'overlay-opacity': 0.08
         }
       }
     ]
   });
 
-  // Event listeners
+  // ── Event Listeners ──
   cy.on('tap', 'node[nodeType="topic"]', onTopicClick);
   cy.on('tap', 'node[nodeType="domain"]', onDomainClick);
   cy.on('tap', 'node[nodeType="root"]', onRootClick);
-  cy.on('tap', function(e) {
-    if (e.target === cy) {
-      clearHighlights();
+
+  // Cursor pointer on hover
+  cy.on('mouseover', 'node', function() { document.getElementById('cy').style.cursor = 'pointer'; });
+  cy.on('mouseout', 'node', function() { document.getElementById('cy').style.cursor = 'default'; });
+
+  // Click background → do nothing special
+  cy.on('tap', function(e) { if (e.target === cy) { /* no-op */ } });
+
+  // Enter root view (no animation on first load)
+  enterRootView(false);
+}
+
+// ===== View: Root Level (Life + Domains) =====
+function enterRootView(animate) {
+  viewLevel = 'root';
+  currentDomainId = null;
+
+  // Compute positions
+  const positions = {};
+  positions['life'] = { x: 0, y: 0 };
+
+  for (const node of graphData.graph.nodes) {
+    if (node.type === 'domain') {
+      // Use original graph coordinates, scaled to DOMAIN_RADIUS
+      const ox = node.x, oy = node.y;
+      const dist = Math.sqrt(ox * ox + oy * oy) || 1;
+      positions[node.id] = {
+        x: (ox / dist) * DOMAIN_RADIUS,
+        y: (oy / dist) * DOMAIN_RADIUS
+      };
+    }
+  }
+
+  // Show / hide elements
+  cy.batch(() => {
+    // Hide everything first
+    cy.nodes().style('display', 'none');
+    cy.edges().style('display', 'none');
+
+    // Remove all classes
+    cy.elements().removeClass('breadcrumb breadcrumb-edge focused');
+
+    // Show root
+    cy.getElementById('life').style('display', 'element');
+
+    // Show domains + root→domain edges
+    for (const node of graphData.graph.nodes) {
+      if (node.type === 'domain') {
+        cy.getElementById(node.id).style('display', 'element');
+        const edgeId = `life-${node.id}`;
+        const edge = cy.getElementById(edgeId);
+        if (edge.length) edge.style('display', 'element');
+      }
     }
   });
 
-  // Mouseover effects
-  cy.on('mouseover', 'node', function(e) {
-    e.target.style('cursor', 'pointer');
-  });
-  cy.on('mouseout', 'node', function() {
-    // cursor resets automatically
+  // Set positions
+  applyPositions(positions, animate);
+
+  // Fit
+  fitVisible(animate);
+}
+
+// ===== View: Domain Level (Domain + Topics, Root as breadcrumb) =====
+function enterDomainView(domainId, animate) {
+  viewLevel = 'domain';
+  currentDomainId = domainId;
+
+  const domainNode = nodeMap[domainId];
+  const children = domainChildren[domainId] || [];
+
+  // Compute root position: opposite direction of domain's original position
+  const dx = domainNode.x, dy = domainNode.y;
+  const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+  const rootX = (-dx / dist) * ROOT_LINK_DIST;
+  const rootY = (-dy / dist) * ROOT_LINK_DIST;
+
+  const positions = {};
+  positions['life'] = { x: rootX, y: rootY };
+  positions[domainId] = { x: 0, y: 0 };
+
+  // Position topics around domain using their angle_degrees
+  for (const childId of children) {
+    const childNode = nodeMap[childId];
+    if (childNode) {
+      const angleDeg = childNode.angle_degrees || 0;
+      const angleRad = angleDeg * Math.PI / 180;
+      positions[childId] = {
+        x: Math.cos(angleRad) * TOPIC_RADIUS,
+        y: Math.sin(angleRad) * TOPIC_RADIUS
+      };
+    }
+  }
+
+  // Show / hide elements
+  cy.batch(() => {
+    cy.nodes().style('display', 'none');
+    cy.edges().style('display', 'none');
+    cy.elements().removeClass('breadcrumb breadcrumb-edge focused');
+
+    // Show root as breadcrumb
+    const rootEle = cy.getElementById('life');
+    rootEle.style('display', 'element');
+    rootEle.addClass('breadcrumb');
+
+    // Show domain as focused
+    const domainEle = cy.getElementById(domainId);
+    domainEle.style('display', 'element');
+    domainEle.addClass('focused');
+
+    // Show root→domain edge as breadcrumb
+    const rootEdge = cy.getElementById(`life-${domainId}`);
+    if (rootEdge.length) {
+      rootEdge.style('display', 'element');
+      rootEdge.addClass('breadcrumb-edge');
+    }
+
+    // Show topics + domain→topic edges
+    for (const childId of children) {
+      cy.getElementById(childId).style('display', 'element');
+      const edgeId = `${domainId}-${childId}`;
+      const edge = cy.getElementById(edgeId);
+      if (edge.length) edge.style('display', 'element');
+    }
   });
 
-  // Fit view
-  cy.fit(undefined, 60);
+  // Set positions
+  applyPositions(positions, animate);
+
+  // Fit
+  fitVisible(animate);
+}
+
+// ===== Helpers =====
+function applyPositions(positions, animate) {
+  for (const [id, pos] of Object.entries(positions)) {
+    const ele = cy.getElementById(id);
+    if (!ele.length) continue;
+    if (animate) {
+      ele.animate({ position: pos }, { duration: 450, easing: 'ease-in-out-cubic' });
+    } else {
+      ele.position(pos);
+    }
+  }
+}
+
+function fitVisible(animate) {
+  const visible = cy.elements(':visible');
+  if (animate) {
+    setTimeout(() => {
+      cy.animate({ fit: { eles: visible, padding: 60 } }, { duration: 350, easing: 'ease-in-out-cubic' });
+    }, 470);
+  } else {
+    cy.fit(visible, 60);
+  }
 }
 
 // ===== Node Click Handlers =====
-
 function onTopicClick(e) {
   const node = e.target;
   const groupId = node.data('groupId');
@@ -360,68 +462,30 @@ function onTopicClick(e) {
   }
 }
 
-let highlightedDomain = null;
-
 function onDomainClick(e) {
-  const node = e.target;
-  const domainId = node.data('id');
-
-  // Toggle highlight
-  if (highlightedDomain === domainId) {
-    clearHighlights();
+  const domainId = e.target.data('id');
+  if (viewLevel === 'domain' && currentDomainId === domainId) {
+    // Already viewing this domain — do nothing
     return;
   }
-
-  clearHighlights();
-  highlightedDomain = domainId;
-
-  // Dim all nodes and edges
-  cy.elements().addClass('dimmed');
-
-  // Highlight domain node
-  node.removeClass('dimmed').addClass('domain-highlight');
-
-  // Highlight its children and edges
-  const children = domainChildren[domainId] || [];
-  for (const childId of children) {
-    cy.getElementById(childId).removeClass('dimmed').addClass('topic-highlight');
-    cy.getElementById(`${domainId}-${childId}`).removeClass('dimmed').addClass('edge-highlight');
-  }
-
-  // Keep root and life->domain edge visible
-  cy.getElementById('life').removeClass('dimmed');
-  cy.getElementById(`life-${domainId}`).removeClass('dimmed').addClass('edge-highlight');
-
-  // Animate to fit the domain cluster
-  const domainNode = cy.getElementById(domainId);
-  const childNodes = children.map(id => cy.getElementById(id));
-  const collection = cy.collection([domainNode, ...childNodes]);
-  cy.animate({
-    fit: { eles: collection, padding: 80 }
-  }, { duration: 400, easing: 'ease-in-out-cubic' });
+  enterDomainView(domainId, true);
 }
 
 function onRootClick() {
-  clearHighlights();
-  cy.animate({
-    fit: { eles: cy.elements(), padding: 60 }
-  }, { duration: 400, easing: 'ease-in-out-cubic' });
+  if (viewLevel === 'domain') {
+    enterRootView(true);
+  } else {
+    // Already at root level — just re-fit
+    cy.animate({ fit: { eles: cy.elements(':visible'), padding: 60 } }, { duration: 400, easing: 'ease-in-out-cubic' });
+  }
 }
 
-function clearHighlights() {
-  highlightedDomain = null;
-  cy.elements().removeClass('dimmed domain-highlight topic-highlight edge-highlight');
-}
-
-// ===== View Switching =====
-
-function showGroup() {
-  // Save current graph position
+// ===== View Switching (graph ↔ group) =====
+function showGroupView() {
   if (cy) {
     savedZoom = cy.zoom();
     savedPan = { ...cy.pan() };
   }
-
   currentView = 'group';
   document.getElementById('graph-view').classList.remove('active');
   document.getElementById('group-view').classList.add('active');
@@ -436,16 +500,14 @@ function showGraph() {
   document.getElementById('back-btn').style.display = 'none';
   document.getElementById('graph-controls').style.display = 'flex';
 
-  // Restore graph position
   if (cy && savedZoom !== null && savedPan !== null) {
     cy.viewport({ zoom: savedZoom, pan: savedPan });
   }
 }
 
 // ===== Open Group =====
-
 async function openGroup(groupId, label, domainId) {
-  showGroup();
+  showGroupView();
 
   const container = document.getElementById('group-container');
   container.innerHTML = `
@@ -477,13 +539,11 @@ async function openGroup(groupId, label, domainId) {
 }
 
 // ===== Render Group =====
-
 function renderGroup(data, domainId) {
   const container = document.getElementById('group-container');
   const color = DOMAIN_COLORS[domainId] || { main: '#64748b', bg: 'rgba(100,116,139,0.12)', border: 'rgba(100,116,139,0.4)' };
   const domainNode = nodeMap[domainId];
   const domainLabel = domainNode ? domainNode.label : '';
-
   const totalWords = (data.levels.easy?.length || 0) + (data.levels.medium?.length || 0) + (data.levels.hard?.length || 0);
 
   container.innerHTML = `
@@ -494,17 +554,15 @@ function renderGroup(data, domainId) {
       <h1 class="group-name">${data.topic}</h1>
       <p class="group-word-count">${totalWords} words · Group ${data.id}</p>
     </div>
-    ${renderDifficultySection('easy', 'Easy', data.levels.easy || [], '🟢')}
-    ${renderDifficultySection('medium', 'Medium', data.levels.medium || [], '🟡')}
-    ${renderDifficultySection('hard', 'Hard', data.levels.hard || [], '🔴')}
+    ${renderDifficultySection('easy', 'Easy', data.levels.easy || [])}
+    ${renderDifficultySection('medium', 'Medium', data.levels.medium || [])}
+    ${renderDifficultySection('hard', 'Hard', data.levels.hard || [])}
   `;
 }
 
-function renderDifficultySection(level, label, words, emoji) {
+function renderDifficultySection(level, label, words) {
   if (!words.length) return '';
-
   const chips = words.map(w => `<span class="word-chip ${level}">${w}</span>`).join('');
-
   return `
     <div class="difficulty-section ${level}">
       <div class="difficulty-header">
@@ -518,7 +576,6 @@ function renderDifficultySection(level, label, words, emoji) {
 }
 
 // ===== Graph Controls =====
-
 function zoomIn() {
   if (!cy) return;
   const w = cy.width(), h = cy.height();
@@ -537,8 +594,11 @@ function zoomOut() {
 
 function resetView() {
   if (!cy) return;
-  clearHighlights();
-  cy.animate({ fit: { eles: cy.elements(), padding: 60 } }, { duration: 400, easing: 'ease-in-out-cubic' });
+  if (viewLevel === 'domain') {
+    enterRootView(true);
+  } else {
+    cy.animate({ fit: { eles: cy.elements(':visible'), padding: 60 } }, { duration: 400, easing: 'ease-in-out-cubic' });
+  }
 }
 
 // ===== Init =====
