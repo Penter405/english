@@ -1,0 +1,698 @@
+"""
+Regenerate topic_vocabulary_5000.json with truly unique, topic-specific words.
+100 groups × 50 words each (20 easy, 20 medium, 10 hard) = 5,000 word entries.
+"""
+import json
+
+GROUPS = {
+    # === DOMAIN: Home & Daily Life (groups 1-10) ===
+    1: {
+        "topic": "Home & Rooms",
+        "easy": ["house","room","door","window","wall","floor","roof","kitchen","bathroom","bedroom","garden","garage","hall","porch","fence","gate","yard","stairs","home","chimney"],
+        "medium": ["ceiling","hallway","balcony","basement","attic","corridor","threshold","foyer","closet","pantry","cellar","loft","driveway","courtyard","terrace","veranda","den","patio","skylight","fireplace"],
+        "hard": ["vestibule","mezzanine","alcove","portico","dormer","turret","parapet","gable","eaves","lintel"]
+    },
+    2: {
+        "topic": "Furniture",
+        "easy": ["chair","table","bed","desk","sofa","lamp","shelf","mirror","clock","drawer","bench","stool","couch","rug","mat","frame","stand","rack","hook","hanger"],
+        "medium": ["wardrobe","cabinet","dresser","bookcase","nightstand","ottoman","recliner","armchair","headboard","footstool","vanity","cupboard","sideboard","credenza","futon","hammock","cradle","canopy","cushion","mattress"],
+        "hard": ["chaise","settee","divan","escritoire","commode","armoire","chiffonier","davenport","highboy","whatnot"]
+    },
+    3: {
+        "topic": "Kitchen Items",
+        "easy": ["cup","plate","bowl","spoon","fork","knife","pot","pan","glass","bottle","stove","oven","fridge","sink","tray","mug","jug","lid","jar","tin"],
+        "medium": ["saucepan","kettle","blender","toaster","grater","whisk","ladle","spatula","colander","skillet","microwave","dishwasher","peeler","strainer","corkscrew","thermos","platter","pitcher","sieve","funnel"],
+        "hard": ["mandoline","bain-marie","ramekin","cleaver","wok","griddle","trivet","mortar","pestle","chinois"]
+    },
+    4: {
+        "topic": "Bathroom",
+        "easy": ["soap","towel","water","bath","shower","toilet","brush","comb","shampoo","tap","drain","tile","tube","sponge","basin","bucket","clean","rinse","wash","dry"],
+        "medium": ["bathtub","faucet","cabinet","lotion","conditioner","razor","tweezers","toothpaste","toothbrush","hairdryer","plunger","curtain","exhaust","hamper","vanity","dispenser","deodorant","floss","lather","moisture"],
+        "hard": ["bidet","jacuzzi","lavatory","ablution","amenity","grooming","exfoliant","emollient","astringent","antiseptic"]
+    },
+    5: {
+        "topic": "Cleaning",
+        "easy": ["mop","broom","dust","sweep","wipe","scrub","wash","spray","trash","soap","cloth","sponge","stain","dirt","mess","tidy","fresh","rinse","polish","bleach"],
+        "medium": ["vacuum","detergent","disinfect","sanitize","laundry","ironing","dustpan","feather","squeegee","ammonia","solvent","recycle","compost","disposal","organize","declutter","deodorize","sterilize","spotless","pristine"],
+        "hard": ["abrasive","caustic","fumigation","decontamination","immaculate","scour","desiccant","germicide","oxidize","biodegradable"]
+    },
+    6: {
+        "topic": "Clothes & Accessories",
+        "easy": ["shirt","pants","dress","shoes","hat","coat","socks","belt","tie","bag","skirt","boots","gloves","scarf","ring","watch","jacket","jeans","shorts","pocket"],
+        "medium": ["sweater","blouse","cardigan","blazer","sandals","sneakers","bracelet","necklace","earring","brooch","collar","sleeve","zipper","button","ribbon","buckle","fabric","cotton","leather","denim"],
+        "hard": ["cravat","cummerbund","haberdashery","millinery","couture","bespoke","filigree","taffeta","chiffon","embroidery"]
+    },
+    7: {
+        "topic": "Personal Belongings",
+        "easy": ["phone","wallet","keys","bag","purse","book","pen","glasses","watch","money","card","ring","photo","ticket","coin","comb","mirror","lighter","string","tape"],
+        "medium": ["umbrella","backpack","suitcase","charger","headphones","notebook","passport","sunglasses","briefcase","keychain","lanyard","planner","thermos","flashlight","handkerchief","pocketknife","cosmetics","toiletries","luggage","pouch"],
+        "hard": ["accoutrement","paraphernalia","memorabilia","keepsake","heirloom","trinket","knapsack","portmanteau","valise","satchel"]
+    },
+    8: {
+        "topic": "Daily Routine",
+        "easy": ["wake","sleep","eat","drink","walk","work","read","cook","rest","play","brush","dress","drive","shower","lunch","dinner","study","clean","shop","call"],
+        "medium": ["commute","exercise","meditate","schedule","breakfast","chores","errands","organize","routine","alarm","snooze","stretch","journal","prioritize","multitask","unwind","recharge","hydrate","nap","appointment"],
+        "hard": ["circadian","regimen","habitual","diurnal","nocturnal","punctuality","itinerary","sedentary","crepuscular","monotony"]
+    },
+    9: {
+        "topic": "Home Repairs",
+        "easy": ["fix","nail","screw","paint","drill","tape","wire","pipe","glue","bolt","tool","hammer","saw","sand","cut","patch","fill","crack","leak","break"],
+        "medium": ["plumber","electrician","insulation","renovation","drywall","spackle","caulk","grout","sealant","sandpaper","wrench","pliers","level","stud","bracket","outlet","circuit","fuse","hinge","latch"],
+        "hard": ["joinery","masonry","carpentry","soldering","retrofitting","weatherproofing","galvanize","plasterwork","refurbishment","dilapidation"]
+    },
+    10: {
+        "topic": "Household Appliances",
+        "easy": ["fan","iron","mixer","light","heater","radio","switch","plug","cord","timer","remote","bulb","dryer","cooler","freezer","press","motor","blade","steam","grill"],
+        "medium": ["thermostat","humidifier","dehumidifier","compressor","generator","transformer","inverter","regulator","ventilator","purifier","convection","induction","wattage","voltage","kilowatt","appliance","warranty","maintenance","efficiency","consumption"],
+        "hard": ["capacitor","thermocouple","magnetron","solenoid","rheostat","impedance","dielectric","oscillator","transducer","potentiometer"]
+    },
+
+    # === DOMAIN: Food (groups 11-20) ===
+    11: {
+        "topic": "Fruits",
+        "easy": ["apple","banana","orange","grape","lemon","mango","peach","pear","plum","cherry","berry","melon","lime","fig","date","kiwi","coconut","olive","guava","papaya"],
+        "medium": ["pineapple","strawberry","blueberry","raspberry","watermelon","grapefruit","pomegranate","tangerine","apricot","nectarine","persimmon","cranberry","mulberry","passionfruit","cantaloupe","blackberry","dragonfruit","starfruit","gooseberry","lychee"],
+        "hard": ["kumquat","quince","tamarind","plantain","breadfruit","durian","jackfruit","rambutan","mangosteen","boysenberry"]
+    },
+    12: {
+        "topic": "Vegetables",
+        "easy": ["carrot","potato","onion","tomato","corn","bean","pea","pepper","garlic","lettuce","spinach","celery","mushroom","cabbage","cucumber","radish","turnip","beet","ginger","pumpkin"],
+        "medium": ["broccoli","cauliflower","zucchini","eggplant","asparagus","artichoke","avocado","kale","parsley","cilantro","oregano","thyme","rosemary","fennel","leek","shallot","sprout","endive","chive","watercress"],
+        "hard": ["kohlrabi","rutabaga","daikon","jicama","radicchio","bok choy","arugula","parsnip","celeriac","salsify"]
+    },
+    13: {
+        "topic": "Meat & Seafood",
+        "easy": ["meat","fish","chicken","beef","pork","egg","lamb","duck","shrimp","crab","steak","ham","bacon","sausage","burger","wing","breast","bone","skin","fat"],
+        "medium": ["salmon","tuna","lobster","oyster","mussel","squid","octopus","sardine","anchovy","venison","bison","quail","veal","tenderloin","sirloin","fillet","marinade","brine","smoked","grilled"],
+        "hard": ["prosciutto","bresaola","carpaccio","tartare","charcuterie","escargot","offal","tripe","foie gras","ceviche"]
+    },
+    14: {
+        "topic": "Bread & Grains",
+        "easy": ["bread","rice","wheat","flour","pasta","noodle","toast","roll","cake","cookie","pie","dough","crust","loaf","slice","oat","barley","rye","corn","seed"],
+        "medium": ["sourdough","baguette","croissant","muffin","pretzel","tortilla","flatbread","pita","focaccia","ciabatta","brioche","cornbread","pancake","waffle","cracker","granola","quinoa","couscous","semolina","buckwheat"],
+        "hard": ["pumpernickel","challah","naan","chapati","bannock","grissini","amaranth","spelt","teff","sorghum"]
+    },
+    15: {
+        "topic": "Dairy Products",
+        "easy": ["milk","cheese","butter","cream","yogurt","egg","ice","cake","sugar","salt","honey","jam","sauce","dip","spread","whip","churn","fresh","cold","white"],
+        "medium": ["cheddar","mozzarella","parmesan","brie","gouda","feta","ricotta","cottage","pasteurize","homogenize","lactose","calcium","protein","probiotic","ferment","curdle","skim","whole","condensed","evaporated"],
+        "hard": ["camembert","gruyere","roquefort","emmental","mascarpone","casein","rennet","whey","colostrum","coagulate"]
+    },
+    16: {
+        "topic": "Drinks",
+        "easy": ["water","tea","coffee","juice","milk","soda","beer","wine","drink","ice","cup","glass","hot","cold","sweet","pour","sip","stir","mix","fill"],
+        "medium": ["smoothie","lemonade","milkshake","espresso","cappuccino","cocktail","champagne","whiskey","brandy","cider","mocktail","sparkling","mineral","herbal","decaf","caffeine","infusion","beverage","refreshment","hydration"],
+        "hard": ["aperitif","digestif","sommelier","oenology","tannin","bouquet","vintage","distillation","fermentation","effervescence"]
+    },
+    17: {
+        "topic": "Cooking Methods",
+        "easy": ["cook","bake","fry","boil","roast","grill","heat","mix","stir","chop","cut","peel","slice","dice","blend","melt","steam","toast","flip","serve"],
+        "medium": ["sauté","simmer","poach","braise","broil","caramelize","blanch","marinate","glaze","deglaze","reduce","julienne","mince","zest","knead","whisk","fold","tenderize","flambe","infuse"],
+        "hard": ["confit","sous-vide","tempering","emulsify","clarify","roux","baste","render","char","smoke-cure"]
+    },
+    18: {
+        "topic": "Taste & Texture",
+        "easy": ["sweet","sour","hot","cold","soft","hard","dry","wet","fresh","rich","mild","strong","thin","thick","raw","ripe","crisp","warm","cool","plain"],
+        "medium": ["bitter","savory","spicy","tangy","creamy","crunchy","chewy","tender","juicy","flaky","silky","velvety","grainy","lumpy","smooth","pungent","aromatic","succulent","delicate","robust"],
+        "hard": ["umami","astringent","acrid","brackish","palatable","toothsome","unctuous","gelatinous","viscous","saccharine"]
+    },
+    19: {
+        "topic": "Restaurant",
+        "easy": ["menu","order","table","waiter","bill","tip","seat","meal","dish","food","chef","plate","fork","knife","spoon","glass","napkin","bread","salad","soup"],
+        "medium": ["appetizer","entrée","dessert","reservation","buffet","bistro","cafeteria","canteen","takeout","delivery","cuisine","gourmet","portion","garnish","condiment","specials","à la carte","prix fixe","sommelier","barista"],
+        "hard": ["maître d'","gastronomy","mise en place","amuse-bouche","degustation","brasserie","trattoria","corkage","gratuity","epicurean"]
+    },
+    20: {
+        "topic": "Nutrition & Food Science",
+        "easy": ["food","health","energy","body","diet","sugar","salt","fat","protein","vitamin","water","fiber","iron","bone","blood","muscle","skin","grow","strong","fit"],
+        "medium": ["calorie","carbohydrate","cholesterol","mineral","calcium","potassium","sodium","nutrient","supplement","metabolism","antioxidant","preservative","additive","organic","processed","refined","fortified","deficiency","absorption","digestion"],
+        "hard": ["macronutrient","micronutrient","phytochemical","glycemic","bioavailability","pasteurization","homogenization","hydrogenation","emulsifier","nutraceutical"]
+    },
+
+    # === DOMAIN: Transport (groups 21-30) ===
+    21: {
+        "topic": "Cars",
+        "easy": ["car","drive","road","wheel","seat","door","key","speed","turn","stop","park","gas","oil","tire","horn","mirror","light","brake","truck","van"],
+        "medium": ["engine","steering","accelerator","transmission","exhaust","radiator","dashboard","windshield","suspension","clutch","ignition","convertible","sedan","hybrid","automatic","manual","horsepower","mileage","odometer","airbag"],
+        "hard": ["torque","camshaft","crankshaft","differential","turbocharger","supercharger","drivetrain","catalytic","carburetor","dynamometer"]
+    },
+    22: {
+        "topic": "Roads & Traffic",
+        "easy": ["road","street","lane","bridge","stop","sign","light","cross","turn","fast","slow","walk","bus","taxi","bike","map","path","block","curve","hill"],
+        "medium": ["highway","freeway","intersection","roundabout","overpass","underpass","sidewalk","crosswalk","median","shoulder","congestion","bottleneck","detour","bypass","tollbooth","guardrail","pavement","asphalt","pothole","speed limit"],
+        "hard": ["thoroughfare","arterial","cloverleaf","interchange","infrastructure","gridlock","delineator","chicane","carriageway","embankment"]
+    },
+    23: {
+        "topic": "Public Transport",
+        "easy": ["bus","train","taxi","stop","ticket","ride","seat","line","wait","fare","gate","card","pass","crowd","rush","late","early","fast","route","trip"],
+        "medium": ["subway","metro","tram","trolley","commuter","terminal","platform","schedule","transfer","conductor","locomotive","carriage","monorail","express","departure","arrival","timetable","transit","interchange","shuttle"],
+        "hard": ["concourse","turnstile","funicular","catenary","pantograph","gauge","rolling stock","deregulation","privatization","intermodal"]
+    },
+    24: {
+        "topic": "Air Travel",
+        "easy": ["plane","fly","airport","gate","seat","pilot","sky","land","wing","ticket","bag","check","board","crew","tower","cloud","fuel","belt","trip","visa"],
+        "medium": ["runway","terminal","altitude","turbulence","cockpit","fuselage","propeller","helicopter","departure","boarding","luggage","customs","immigration","passport","overhead","economy","business","first-class","layover","connecting"],
+        "hard": ["aeronautics","avionics","pressurize","decompression","transponder","taxiway","airspace","empennage","aileron","jetstream"]
+    },
+    25: {
+        "topic": "Ships & Boats",
+        "easy": ["ship","boat","sail","sea","water","port","fish","wave","wind","deck","rope","anchor","lake","river","float","swim","dock","beach","coast","island"],
+        "medium": ["vessel","harbor","lighthouse","submarine","yacht","canoe","kayak","ferry","cargo","cruise","captain","sailor","compass","buoy","helm","stern","bow","mast","hull","propeller"],
+        "hard": ["nautical","maritime","starboard","portside","bulkhead","bilge","keel","ballast","knot","fathom"]
+    },
+    26: {
+        "topic": "Bicycles",
+        "easy": ["bike","ride","wheel","pedal","seat","chain","bell","tire","pump","lock","gear","brake","road","path","speed","turn","hill","park","kick","push"],
+        "medium": ["handlebar","sprocket","derailleur","reflector","fender","kickstand","spokes","axle","mudguard","crankset","cassette","headlight","taillight","pannier","tandem","recumbent","velodrome","cyclist","cadence","suspension"],
+        "hard": ["velocipede","peloton","breakaway","criterium","domestique","echelon","drafting","aerodynamic","ergonomic","clincher"]
+    },
+    27: {
+        "topic": "Road Signs & Rules",
+        "easy": ["stop","go","slow","turn","left","right","one way","red","green","yellow","cross","walk","park","exit","enter","lane","speed","yield","keep","merge"],
+        "medium": ["prohibition","mandatory","warning","advisory","regulatory","pedestrian","intersection","overtaking","right-of-way","zigzag","chevron","hazard","barrier","reflector","rumble strip","school zone","construction zone","speed bump","center line","traffic cone"],
+        "hard": ["jurisprudence","statute","ordinance","infraction","adjudication","mitigation","indemnity","negligence","liability","compliance"]
+    },
+    28: {
+        "topic": "Travel Planning",
+        "easy": ["trip","plan","pack","book","hotel","map","beach","city","tour","guide","fly","train","bus","car","rest","camp","tent","hike","swim","photo"],
+        "medium": ["itinerary","reservation","accommodation","excursion","sightseeing","souvenir","backpacking","hostel","resort","destination","currency","exchange","insurance","vaccinate","embassy","consulate","customs","visa","phrasebook","guidebook"],
+        "hard": ["wanderlust","sabbatical","expedition","pilgrimage","circumnavigation","ecotourism","voluntourism","acclimatize","repatriation","quarantine"]
+    },
+    29: {
+        "topic": "Freight & Delivery",
+        "easy": ["box","send","ship","pack","truck","load","drop","mail","post","pick","tape","wrap","seal","label","sign","store","move","carry","lift","heavy"],
+        "medium": ["package","parcel","courier","warehouse","forklift","pallet","container","logistics","dispatch","tracking","inventory","freight","cargo","manifest","customs","tariff","import","export","wholesale","distribution"],
+        "hard": ["consignment","waybill","demurrage","stevedore","transshipment","bonded","incoterms","drayage","palletize","consolidation"]
+    },
+    30: {
+        "topic": "Navigation & Routes",
+        "easy": ["map","north","south","east","west","left","right","near","far","lost","find","way","turn","back","front","next","here","there","above","below"],
+        "medium": ["compass","latitude","longitude","altitude","coordinate","satellite","terrain","landmark","waypoint","bearing","heading","contour","legend","scale","topography","triangulate","orienteering","cartography","meridian","equator"],
+        "hard": ["azimuth","declination","sextant","theodolite","geodesy","bathymetry","telemetry","geolocation","trigonometric","hydrographic"]
+    },
+
+    # === DOMAIN: Technology (groups 31-40) ===
+    31: {
+        "topic": "Computers",
+        "easy": ["computer","screen","mouse","keyboard","file","folder","save","open","close","print","click","type","copy","paste","delete","search","email","web","page","icon"],
+        "medium": ["desktop","laptop","monitor","processor","memory","storage","software","hardware","operating","system","browser","download","upload","install","update","restart","password","username","interface","peripheral"],
+        "hard": ["overclocking","virtualization","containerization","microarchitecture","multithreading","pipelining","abstraction","interoperability","deprecated","idempotent"]
+    },
+    32: {
+        "topic": "Phones",
+        "easy": ["phone","call","text","ring","screen","app","charge","camera","voice","video","speaker","volume","signal","data","wifi","send","touch","slide","lock","alarm"],
+        "medium": ["smartphone","voicemail","bluetooth","cellular","notification","touchscreen","wallpaper","screenshot","hotspot","roaming","bandwidth","biometric","fingerprint","proximity","accelerometer","gyroscope","firmware","carrier","prepaid","postpaid"],
+        "hard": ["telephony","modulation","multiplexing","handover","latency","baseband","transceiver","antenna","millimeter-wave","beamforming"]
+    },
+    33: {
+        "topic": "Computer Hardware",
+        "easy": ["chip","fan","cable","port","plug","card","power","drive","board","box","case","slot","wire","disk","core","unit","bus","pin","key","bit"],
+        "medium": ["motherboard","graphics","processor","transistor","capacitor","resistor","heatsink","circuit","controller","adapter","connector","module","component","semiconductor","integrated","register","firmware","thermal","soldering","overheating"],
+        "hard": ["lithography","die","wafer","substrate","nanometer","photonics","quantum","superconductor","ferrite","gallium arsenide"]
+    },
+    34: {
+        "topic": "Software",
+        "easy": ["app","code","run","bug","test","fix","build","tool","game","site","data","form","text","list","sort","find","help","menu","undo","redo"],
+        "medium": ["application","algorithm","database","framework","library","compiler","debugger","repository","deployment","version","frontend","backend","middleware","runtime","dependency","refactor","module","iteration","agile","scrum"],
+        "hard": ["polymorphism","encapsulation","inheritance","recursion","concurrency","serialization","obfuscation","transpiler","monorepo","microservice"]
+    },
+    35: {
+        "topic": "Internet",
+        "easy": ["web","site","link","page","post","blog","share","like","chat","join","login","search","stream","cloud","load","surf","news","video","photo","mail"],
+        "medium": ["browser","domain","server","hosting","protocol","bandwidth","cookie","cache","firewall","proxy","router","gateway","DNS","URL","HTTP","encryption","streaming","podcast","forum","notification"],
+        "hard": ["latency","throughput","CDN","TCP/IP","websocket","microservice","API gateway","load balancer","reverse proxy","edge computing"]
+    },
+    36: {
+        "topic": "Networking",
+        "easy": ["network","connect","wire","signal","share","send","link","port","hub","switch","server","client","host","node","path","speed","route","block","ping","log"],
+        "medium": ["router","modem","ethernet","wireless","protocol","subnet","gateway","topology","bandwidth","packet","firewall","VPN","VLAN","DHCP","static","dynamic","bridge","repeater","mesh","backbone"],
+        "hard": ["multiplexing","encapsulation","QoS","BGP","OSPF","peering","autonomous","handshake","tunneling","segmentation"]
+    },
+    37: {
+        "topic": "Cybersecurity",
+        "easy": ["safe","lock","key","hack","virus","steal","hide","block","warn","risk","code","trap","spy","fake","scan","guard","wall","gate","alert","rule"],
+        "medium": ["malware","phishing","ransomware","firewall","antivirus","encryption","authentication","vulnerability","breach","exploit","botnet","spyware","trojan","worm","patch","token","biometric","intrusion","forensics","compliance"],
+        "hard": ["zero-day","obfuscation","cryptanalysis","steganography","penetration","sandboxing","honeypot","exfiltration","polymorphic","rootkit"]
+    },
+    38: {
+        "topic": "Data & Files",
+        "easy": ["file","data","save","open","name","size","type","copy","move","send","sort","find","list","text","image","video","audio","link","path","store"],
+        "medium": ["database","spreadsheet","archive","backup","compress","encrypt","format","metadata","directory","extension","partition","volume","binary","hexadecimal","encoding","checksum","timestamp","thumbnail","indexing","migration"],
+        "hard": ["serialization","normalization","deduplication","fragmentation","sharding","replication","telemetry","immutable","idempotent","provenance"]
+    },
+    39: {
+        "topic": "Programming Tools",
+        "easy": ["code","edit","run","save","test","debug","build","push","pull","merge","branch","log","diff","add","set","get","put","new","old","end"],
+        "medium": ["compiler","interpreter","debugger","profiler","linter","formatter","terminal","console","repository","container","pipeline","sandbox","emulator","simulator","snippet","template","scaffold","boilerplate","transpile","minify"],
+        "hard": ["disassembler","decompiler","instrumenting","fuzzing","sanitizer","marshaling","introspection","metaprogramming","bytecode","JIT"]
+    },
+    40: {
+        "topic": "AI & Computing",
+        "easy": ["robot","smart","learn","brain","data","train","model","test","voice","face","image","text","chat","auto","fast","deep","think","guess","match","score"],
+        "medium": ["artificial","intelligence","neural","network","machine","learning","algorithm","prediction","classification","regression","cluster","dataset","feature","label","training","inference","bias","accuracy","precision","recall"],
+        "hard": ["transformer","backpropagation","gradient","convolutional","generative","adversarial","reinforcement","overfitting","regularization","embedding"]
+    },
+
+    # === DOMAIN: School & Learning (groups 41-50) ===
+    41: {
+        "topic": "School",
+        "easy": ["school","class","teacher","student","book","pen","pencil","paper","board","desk","bell","lunch","break","grade","test","learn","read","write","draw","count"],
+        "medium": ["principal","counselor","curriculum","semester","enrollment","attendance","detention","assembly","diploma","valedictorian","extracurricular","homeroom","syllabus","transcript","prerequisite","elective","honor","scholarship","faculty","alumnus"],
+        "hard": ["pedagogy","accreditation","matriculation","truancy","scholastic","magnet","charter","montessori","standardized","commencement"]
+    },
+    42: {
+        "topic": "Classroom",
+        "easy": ["desk","chair","board","chalk","marker","eraser","ruler","map","globe","clock","door","light","wall","poster","screen","seat","row","front","back","quiet"],
+        "medium": ["projector","whiteboard","smartboard","podium","lectern","easel","bulletin","binder","stapler","scissors","highlighter","calculator","textbook","workbook","handout","notebook","folder","backpack","locker","cubby"],
+        "hard": ["pedagogy","diorama","manipulative","apparatus","stationery","laminator","transparencies","protractor","compasses","stencil"]
+    },
+    43: {
+        "topic": "School Subjects",
+        "easy": ["math","science","english","art","music","sport","history","reading","writing","spelling","drawing","painting","singing","dancing","running","number","letter","word","story","poem"],
+        "medium": ["algebra","geometry","biology","chemistry","physics","geography","literature","psychology","philosophy","sociology","economics","calculus","trigonometry","statistics","linguistics","anthropology","archaeology","astronomy","engineering","programming"],
+        "hard": ["epistemology","metaphysics","ontology","hermeneutics","semiotics","historiography","phenomenology","dialectics","heuristics","taxonomy"]
+    },
+    44: {
+        "topic": "Exams & Tests",
+        "easy": ["test","exam","quiz","grade","score","pass","fail","mark","answer","question","study","review","check","finish","time","true","false","right","wrong","easy"],
+        "medium": ["assessment","evaluation","multiple-choice","essay","oral","practical","midterm","final","standardized","diagnostic","rubric","criteria","proctor","cheat","plagiarism","percentile","percentages","retake","curve","benchmark"],
+        "hard": ["psychometrics","formative","summative","criterion-referenced","norm-referenced","validity","reliability","proctoring","calibration","moderation"]
+    },
+    45: {
+        "topic": "Books & Reading",
+        "easy": ["book","read","page","word","story","title","cover","chapter","line","author","write","print","text","picture","library","shelf","open","close","start","end"],
+        "medium": ["novel","fiction","nonfiction","biography","memoir","anthology","hardcover","paperback","bestseller","publisher","prologue","epilogue","narrator","protagonist","genre","literary","bookmark","dictionary","encyclopedia","manuscript"],
+        "hard": ["bibliography","tome","compendium","palimpsest","incunabulum","colophon","marginalia","abridged","expurgated","codex"]
+    },
+    46: {
+        "topic": "Writing",
+        "easy": ["write","word","sentence","letter","note","pen","paper","story","spell","name","sign","list","copy","page","line","space","dot","mark","type","print"],
+        "medium": ["paragraph","essay","draft","outline","thesis","citation","footnote","grammar","punctuation","syntax","revision","proofread","edit","format","coherence","narrative","persuasive","expository","descriptive","rhetorical"],
+        "hard": ["epistolary","prose","exposition","elision","alliteration","assonance","onomatopoeia","synecdoche","metonymy","circumlocution"]
+    },
+    47: {
+        "topic": "University",
+        "easy": ["campus","degree","major","class","study","dorm","exam","grade","club","team","coach","gym","lab","hall","dean","staff","loan","grant","fee","term"],
+        "medium": ["undergraduate","graduate","professor","lecturer","tutorial","seminar","thesis","dissertation","scholarship","fellowship","dormitory","fraternity","sorority","alumni","registrar","provost","tenure","sabbatical","accreditation","endowment"],
+        "hard": ["postdoctoral","habilitation","emeritus","summa cum laude","magna cum laude","cum laude","baccalaureate","convocation","adjunct","pedagogy"]
+    },
+    48: {
+        "topic": "Research",
+        "easy": ["find","study","test","data","fact","idea","note","plan","goal","team","lab","tool","step","rule","link","base","form","group","cause","effect"],
+        "medium": ["hypothesis","experiment","variable","control","sample","survey","analysis","methodology","conclusion","publication","peer-review","abstract","journal","citation","literature","qualitative","quantitative","correlation","observation","replication"],
+        "hard": ["longitudinal","cross-sectional","meta-analysis","double-blind","placebo","confounding","operationalize","falsifiability","paradigm","epistemology"]
+    },
+    49: {
+        "topic": "Learning Skills",
+        "easy": ["learn","think","know","ask","try","help","show","tell","listen","look","focus","plan","goal","skill","mind","note","idea","solve","grow","practice"],
+        "medium": ["memorize","comprehend","analyze","synthesize","evaluate","collaborate","brainstorm","summarize","paraphrase","annotate","highlight","flashcard","mnemonic","scaffold","differentiate","metacognition","kinesthetic","auditory","visual","tactile"],
+        "hard": ["autodidact","heuristic","pedagogical","constructivism","cognitivism","experiential","self-efficacy","intrinsic","extrinsic","neuroplasticity"]
+    },
+    50: {
+        "topic": "Academic Language",
+        "easy": ["point","main","part","side","view","type","kind","like","same","change","show","prove","mean","state","hold","make","base","clear","true","real"],
+        "medium": ["thesis","argument","evidence","hypothesis","theory","concept","framework","paradigm","discourse","methodology","criterion","phenomenon","implication","assumption","perspective","context","interpretation","significant","correlation","contradiction"],
+        "hard": ["epistemological","ontological","axiomatic","heuristic","hermeneutic","dialectical","deontological","teleological","phenomenological","reductionism"]
+    },
+
+    # === DOMAIN: Nature & Environment (groups 51-60) ===
+    51: {
+        "topic": "Trees & Plants",
+        "easy": ["tree","leaf","root","seed","flower","grass","branch","wood","bark","stem","bush","vine","fruit","nut","thorn","moss","weed","pine","oak","palm"],
+        "medium": ["sapling","canopy","evergreen","deciduous","conifer","photosynthesis","chlorophyll","pollen","nectar","germinate","compost","fertilizer","pruning","grafting","bonsai","sequoia","fern","lichen","algae","fungi"],
+        "hard": ["arboreal","dendrology","xylem","phloem","rhizome","stomate","transpiration","gymnosperm","angiosperm","mycorrhiza"]
+    },
+    52: {
+        "topic": "Flowers",
+        "easy": ["rose","daisy","lily","tulip","violet","petal","stem","bloom","smell","color","red","pink","white","yellow","grow","pick","water","pot","garden","bee"],
+        "medium": ["orchid","sunflower","chrysanthemum","carnation","jasmine","lavender","hibiscus","daffodil","iris","marigold","bouquet","wreath","garland","arrangement","florist","greenhouse","perennial","annual","bud","pistil"],
+        "hard": ["stamen","sepal","corolla","inflorescence","pollination","calyx","carpel","anther","stigma","peduncle"]
+    },
+    53: {
+        "topic": "Animals",
+        "easy": ["dog","cat","horse","cow","pig","sheep","goat","rabbit","mouse","bear","lion","tiger","wolf","fox","deer","monkey","snake","frog","fish","bird"],
+        "medium": ["elephant","giraffe","hippopotamus","rhinoceros","cheetah","leopard","gorilla","chimpanzee","orangutan","kangaroo","koala","penguin","dolphin","whale","octopus","crocodile","chameleon","porcupine","armadillo","platypus"],
+        "hard": ["marsupial","primate","cetacean","ungulate","carnivore","herbivore","omnivore","nocturnal","diurnal","endothermic"]
+    },
+    54: {
+        "topic": "Birds",
+        "easy": ["bird","wing","fly","nest","egg","sing","sky","tree","beak","tail","crow","dove","owl","hawk","duck","swan","robin","parrot","eagle","pigeon"],
+        "medium": ["sparrow","hummingbird","woodpecker","pelican","flamingo","peacock","falcon","vulture","heron","kingfisher","migration","plumage","feather","fledgling","raptor","songbird","waterfowl","perch","aviary","ornithology"],
+        "hard": ["passerine","corvid","accipiter","precocial","altricial","syrinx","keratin","molting","brood","clutch"]
+    },
+    55: {
+        "topic": "Insects",
+        "easy": ["ant","bee","fly","bug","worm","spider","moth","snail","beetle","wasp","wing","leg","bite","sting","web","hive","nest","crawl","buzz","silk"],
+        "medium": ["butterfly","dragonfly","grasshopper","cricket","cockroach","mosquito","caterpillar","centipede","scorpion","firefly","larva","pupa","cocoon","chrysalis","antenna","thorax","abdomen","mandible","exoskeleton","metamorphosis"],
+        "hard": ["entomology","arthropod","arachnid","chitin","proboscis","ovipositor","pheromone","mimicry","bioluminescence","eusocial"]
+    },
+    56: {
+        "topic": "Ocean Life",
+        "easy": ["fish","shark","whale","shell","wave","sand","reef","deep","salt","blue","swim","dive","net","boat","crab","seal","star","jelly","kelp","coral"],
+        "medium": ["dolphin","octopus","seahorse","stingray","barracuda","swordfish","clownfish","hammerhead","manatee","walrus","plankton","algae","anemone","urchin","barnacle","bioluminescent","ecosystem","current","tide","salinity"],
+        "hard": ["abyssal","pelagic","benthic","phytoplankton","zooplankton","cephalopod","cetacean","crustacean","echinoderm","hydrothermal"]
+    },
+    57: {
+        "topic": "Landforms",
+        "easy": ["hill","mountain","valley","river","lake","island","beach","cliff","cave","desert","plain","rock","stone","sand","mud","ice","snow","field","forest","pond"],
+        "medium": ["volcano","canyon","glacier","plateau","peninsula","archipelago","delta","fjord","mesa","gorge","ravine","crater","ridge","summit","basin","marsh","swamp","dune","tundra","steppe"],
+        "hard": ["escarpment","moraine","caldera","butte","isthmus","atoll","promontory","karst","sinkhole","alluvial"]
+    },
+    58: {
+        "topic": "Weather",
+        "easy": ["sun","rain","wind","snow","cloud","storm","hot","cold","warm","cool","wet","dry","fog","ice","sky","clear","dark","light","drop","blow"],
+        "medium": ["forecast","temperature","humidity","pressure","tornado","hurricane","blizzard","drought","hail","thunder","lightning","monsoon","rainbow","sleet","drizzle","overcast","breeze","gust","heatwave","frost"],
+        "hard": ["barometric","meteorology","convection","isobar","cumulonimbus","stratosphere","troposphere","vortex","cyclone","anticyclone"]
+    },
+    59: {
+        "topic": "Climate",
+        "easy": ["warm","cold","rain","snow","dry","wet","ice","heat","wind","sun","year","season","spring","summer","fall","winter","change","world","north","south"],
+        "medium": ["tropical","arctic","temperate","arid","humid","equatorial","continental","maritime","Mediterranean","savanna","greenhouse","carbon","emission","fossil","renewable","ozone","melting","deforestation","biodiversity","sustainability"],
+        "hard": ["anthropogenic","paleoclimate","albedo","thermohaline","permafrost","desertification","sequestration","mitigation","adaptation","resilience"]
+    },
+    60: {
+        "topic": "Environment",
+        "easy": ["earth","air","water","tree","plant","animal","land","sea","clean","green","save","waste","trash","soil","farm","grow","wild","nature","park","river"],
+        "medium": ["pollution","recycle","compost","conservation","ecosystem","habitat","endangered","extinction","deforestation","reforestation","erosion","contamination","pesticide","herbicide","biodegradable","renewable","sustainable","carbon footprint","ecological","preservation"],
+        "hard": ["bioremediation","eutrophication","bioaccumulation","phytoremediation","desalination","stewardship","anthropocene","microplastics","remediation","agroforestry"]
+    },
+
+    # === DOMAIN: Science (groups 61-70) ===
+    61: {
+        "topic": "Physics",
+        "easy": ["force","push","pull","move","stop","fast","slow","fall","rise","spin","wave","sound","light","heat","cold","weight","heavy","magnet","power","energy"],
+        "medium": ["gravity","friction","momentum","velocity","acceleration","inertia","mass","density","pressure","volume","frequency","wavelength","amplitude","circuit","voltage","current","resistance","conductor","insulator","electromagnetic"],
+        "hard": ["thermodynamics","quantum","relativity","entropy","kinetic","potential","centripetal","torque","refraction","diffraction"]
+    },
+    62: {
+        "topic": "Chemistry",
+        "easy": ["mix","heat","burn","melt","freeze","gas","liquid","solid","acid","base","salt","metal","gold","silver","iron","copper","rust","bubble","smoke","smell"],
+        "medium": ["element","compound","molecule","atom","electron","proton","neutron","ion","bond","reaction","catalyst","solution","solvent","solute","concentration","precipitation","oxidation","reduction","pH","indicator"],
+        "hard": ["stoichiometry","isomer","polymerization","crystallography","electrochemistry","thermochemistry","spectroscopy","chromatography","titration","molarity"]
+    },
+    63: {
+        "topic": "Biology",
+        "easy": ["cell","body","bone","blood","heart","brain","lung","skin","eye","ear","nose","mouth","hand","foot","hair","grow","live","die","eat","breathe"],
+        "medium": ["organism","tissue","organ","membrane","nucleus","chromosome","gene","DNA","RNA","protein","enzyme","bacteria","virus","parasite","immune","antibody","mitosis","meiosis","evolution","adaptation"],
+        "hard": ["eukaryote","prokaryote","cytoplasm","ribosome","mitochondria","endoplasmic","lysosome","apoptosis","homeostasis","phylogenetic"]
+    },
+    64: {
+        "topic": "Space & Astronomy",
+        "easy": ["star","moon","sun","sky","earth","planet","space","rocket","night","dark","light","shine","orbit","ring","dust","cloud","comet","crater","alien","galaxy"],
+        "medium": ["satellite","telescope","astronaut","asteroid","meteor","constellation","nebula","supernova","eclipse","equinox","solstice","atmosphere","rotation","revolution","gravity","hemisphere","magnitude","spectrum","observatory","cosmonaut"],
+        "hard": ["exoplanet","pulsar","quasar","magnetar","parallax","redshift","accretion","singularity","perihelion","aphelion"]
+    },
+    65: {
+        "topic": "Energy",
+        "easy": ["power","light","heat","fuel","fire","sun","wind","water","gas","oil","coal","burn","charge","plug","wire","switch","save","waste","green","solar"],
+        "medium": ["electricity","renewable","nuclear","turbine","generator","transformer","battery","photovoltaic","geothermal","hydroelectric","biomass","petroleum","natural gas","fossil fuel","emission","efficiency","kilowatt","megawatt","grid","conservation"],
+        "hard": ["fission","fusion","isotope","radioactive","photon","joule","entropy","cogeneration","superconductor","piezoelectric"]
+    },
+    66: {
+        "topic": "Laboratory",
+        "easy": ["lab","test","tube","mix","heat","cool","pour","stir","drop","glass","scale","measure","safe","clean","note","watch","sample","tool","coat","mask"],
+        "medium": ["beaker","flask","pipette","burette","microscope","centrifuge","specimen","reagent","solution","titration","calibrate","sterile","petri dish","incubator","autoclave","spectrometer","oscilloscope","electrolysis","distillation","filtration"],
+        "hard": ["chromatograph","spectrophotometer","calorimeter","voltmeter","galvanometer","micrometer","manometer","refractometer","hydrometer","viscometer"]
+    },
+    67: {
+        "topic": "Scientific Method",
+        "easy": ["ask","test","try","see","find","think","guess","prove","check","fact","step","plan","data","note","show","cause","change","same","true","false"],
+        "medium": ["hypothesis","experiment","observation","variable","control","dependent","independent","conclusion","evidence","theory","model","predict","measure","record","analyze","reproduce","peer review","systematic","empirical","objective"],
+        "hard": ["falsifiability","paradigm","replicability","operationalization","deduction","induction","abduction","parsimony","axiom","corroboration"]
+    },
+    68: {
+        "topic": "Human Body Science",
+        "easy": ["body","head","arm","leg","hand","foot","back","neck","chest","stomach","blood","bone","skin","muscle","heart","brain","teeth","finger","toe","knee"],
+        "medium": ["skeleton","tendon","ligament","cartilage","marrow","artery","vein","capillary","diaphragm","esophagus","intestine","kidney","liver","pancreas","spleen","thyroid","pituitary","adrenal","hormone","metabolism"],
+        "hard": ["endocrine","cardiovascular","respiratory","musculoskeletal","gastrointestinal","neurological","lymphatic","integumentary","homeostasis","proprioception"]
+    },
+    69: {
+        "topic": "Genetics",
+        "easy": ["gene","DNA","cell","body","trait","copy","code","pair","chain","pass","mix","born","grow","change","parent","child","twin","blood","test","lab"],
+        "medium": ["chromosome","genome","allele","dominant","recessive","mutation","heredity","inheritance","phenotype","genotype","genetic","cloning","sequencing","breeding","hybrid","variation","selection","adaptation","species","offspring"],
+        "hard": ["epigenetics","nucleotide","codon","polymerase","telomere","transgenic","CRISPR","heterozygous","homozygous","karyotype"]
+    },
+    70: {
+        "topic": "Earth Science",
+        "easy": ["earth","rock","soil","dirt","sand","clay","stone","water","ocean","land","shake","crack","lava","layer","deep","dig","mine","fossil","coal","gem"],
+        "medium": ["geology","mineral","crystal","erosion","sediment","tectonic","earthquake","seismic","magma","mantle","crust","core","continent","volcanic","limestone","sandstone","granite","metamorphic","igneous","sedimentary"],
+        "hard": ["lithosphere","asthenosphere","subduction","orogeny","stratigraphy","petrology","paleontology","geomorphology","isostasy","diagenesis"]
+    },
+
+    # === DOMAIN: People & Society (groups 71-80) ===
+    71: {
+        "topic": "Family & Relationships",
+        "easy": ["mother","father","sister","brother","baby","child","family","friend","love","care","home","marry","wife","husband","son","daughter","aunt","uncle","cousin","grandma"],
+        "medium": ["sibling","spouse","partner","fiancé","relative","ancestor","descendant","generation","adoption","custody","guardian","stepparent","in-law","godparent","nurture","bond","intimacy","companionship","kinship","genealogy"],
+        "hard": ["matriarch","patriarch","consanguinity","affinity","matrimony","progeny","lineage","primogeniture","filial","fraternal"]
+    },
+    72: {
+        "topic": "People & Roles",
+        "easy": ["man","woman","boy","girl","baby","child","king","queen","boss","hero","doctor","nurse","cook","driver","farmer","singer","player","worker","leader","helper"],
+        "medium": ["citizen","volunteer","immigrant","refugee","civilian","diplomat","ambassador","entrepreneur","philanthropist","activist","advocate","mediator","mentor","protégé","apprentice","artisan","custodian","bureaucrat","technician","consultant"],
+        "hard": ["ombudsman","emissary","demagogue","polymath","savant","virtuoso","prodigy","luminary","pariah","autodidact"]
+    },
+    73: {
+        "topic": "Communication",
+        "easy": ["talk","say","tell","ask","hear","speak","call","read","write","word","voice","sound","sign","wave","point","nod","smile","laugh","cry","shout"],
+        "medium": ["conversation","dialogue","discussion","debate","negotiate","persuade","clarify","articulate","express","interpret","translate","paraphrase","summarize","present","broadcast","publish","correspond","enunciate","rhetoric","eloquence"],
+        "hard": ["semaphore","oratory","interlocutor","colloquial","vernacular","parlance","elocution","soliloquy","diatribe","polemic"]
+    },
+    74: {
+        "topic": "Languages",
+        "easy": ["word","speak","read","write","learn","name","sound","letter","spell","mean","book","talk","sign","song","story","class","teach","study","voice","accent"],
+        "medium": ["grammar","vocabulary","pronunciation","dialect","bilingual","multilingual","fluent","translate","interpret","syntax","morphology","phonetics","semantics","etymology","alphabet","syllable","consonant","vowel","idiom","proverb"],
+        "hard": ["linguistics","pidgin","creole","phonology","pragmatics","lexicography","sociolinguistics","psycholinguistics","diachronic","synchronic"]
+    },
+    75: {
+        "topic": "Cities & Places",
+        "easy": ["city","town","village","street","park","shop","school","church","house","building","bridge","market","square","hotel","museum","bank","office","factory","station","airport"],
+        "medium": ["suburb","downtown","district","borough","neighborhood","metropolis","skyscraper","monument","cathedral","courthouse","gymnasium","auditorium","amphitheater","promenade","boulevard","plaza","bazaar","arcade","landmark","skyline"],
+        "hard": ["megalopolis","conurbation","gentrification","urbanization","municipality","precinct","enclave","agglomeration","cosmopolitan","infrastructure"]
+    },
+    76: {
+        "topic": "Government",
+        "easy": ["king","queen","law","rule","vote","lead","power","right","tax","army","flag","state","land","peace","war","judge","court","police","order","free"],
+        "medium": ["president","minister","parliament","congress","senate","democracy","republic","constitution","legislation","amendment","election","candidate","campaign","policy","regulation","bureaucracy","diplomacy","sovereignty","federation","referendum"],
+        "hard": ["autocracy","oligarchy","theocracy","plutocracy","gerrymander","filibuster","bicameral","ratification","plebiscite","devolution"]
+    },
+    77: {
+        "topic": "Law & Justice",
+        "easy": ["law","rule","judge","court","jail","crime","steal","lie","fair","right","wrong","fine","blame","catch","proof","trial","case","oath","guard","safe"],
+        "medium": ["attorney","prosecutor","defendant","plaintiff","verdict","sentence","parole","probation","witness","testimony","evidence","statute","jurisdiction","litigation","arbitration","mediation","constitution","amendment","felony","misdemeanor"],
+        "hard": ["jurisprudence","habeas corpus","precedent","adjudication","tort","indictment","subpoena","deposition","extradition","malfeasance"]
+    },
+    78: {
+        "topic": "Politics",
+        "easy": ["vote","party","lead","win","lose","power","state","left","right","group","fight","peace","speak","agree","plan","change","new","old","join","side"],
+        "medium": ["campaign","election","candidate","debate","coalition","opposition","ideology","liberal","conservative","moderate","bipartisan","lobby","caucus","constituency","incumbent","mandate","platform","rhetoric","populism","nationalism"],
+        "hard": ["gerrymandering","demagoguery","kleptocracy","meritocracy","technocracy","realpolitik","balkanization","hegemony","totalitarianism","authoritarianism"]
+    },
+    79: {
+        "topic": "Culture",
+        "easy": ["music","dance","art","film","song","story","food","dress","game","show","paint","sing","play","mask","drum","stage","crowd","folk","gift","feast"],
+        "medium": ["tradition","custom","ceremony","festival","heritage","mythology","folklore","artifact","sculpture","architecture","gallery","theater","opera","ballet","symphony","literature","calligraphy","cuisine","textile","pottery"],
+        "hard": ["anthropology","ethnography","diaspora","syncretism","patrimony","iconography","vernacular","provenance","antiquity","zeitgeist"]
+    },
+    80: {
+        "topic": "Social Issues",
+        "easy": ["poor","rich","help","fair","right","wrong","safe","harm","peace","fight","group","share","give","need","work","home","food","health","child","school"],
+        "medium": ["poverty","inequality","discrimination","prejudice","racism","sexism","homelessness","unemployment","immigration","refugee","activism","protest","charity","volunteer","welfare","advocacy","diversity","inclusion","empowerment","marginalize"],
+        "hard": ["disenfranchisement","intersectionality","systemic","gentrification","reparations","xenophobia","ethnocentrism","patriarchy","hegemony","stratification"]
+    },
+
+    # === DOMAIN: Work & Business (groups 81-90) ===
+    81: {
+        "topic": "Jobs & Careers",
+        "easy": ["job","work","boss","pay","hire","fire","team","goal","task","role","skill","plan","meet","lead","help","grow","earn","sell","build","serve"],
+        "medium": ["career","profession","occupation","salary","promotion","résumé","interview","internship","apprentice","freelance","contractor","recruitment","qualification","experience","networking","mentor","evaluation","performance","turnover","benefits"],
+        "hard": ["meritocracy","vocation","tenure","remuneration","sabbatical","headhunter","outplacement","redundancy","retrenchment","attrition"]
+    },
+    82: {
+        "topic": "Office",
+        "easy": ["desk","chair","phone","email","file","copy","print","fax","pen","paper","clock","room","door","key","card","note","sign","stamp","tape","clip"],
+        "medium": ["cubicle","conference","reception","boardroom","breakroom","supplies","shredder","scanner","projector","whiteboard","ergonomic","memo","agenda","minutes","deadline","priority","workflow","spreadsheet","presentation","database"],
+        "hard": ["requisition","procurement","ergonomics","hotdesking","coworking","telecommute","bureaucratic","interoffice","correspondence","boilerplate"]
+    },
+    83: {
+        "topic": "Business",
+        "easy": ["buy","sell","price","cost","deal","shop","store","brand","plan","idea","cash","bank","loan","debt","loss","gain","risk","goal","stock","trade"],
+        "medium": ["revenue","profit","margin","startup","franchise","corporation","partnership","investment","dividend","shareholder","competitor","monopoly","merger","acquisition","strategy","marketing","branding","logistics","outsource","leverage"],
+        "hard": ["conglomerate","consortium","fiduciary","amortization","depreciation","arbitrage","liquidity","insolvency","capitalization","diversification"]
+    },
+    84: {
+        "topic": "Shopping & Sales",
+        "easy": ["shop","buy","sell","pay","price","sale","store","cart","bag","cash","card","coin","list","size","fit","try","new","cheap","free","gift"],
+        "medium": ["discount","coupon","receipt","refund","exchange","warranty","checkout","aisle","inventory","wholesale","retail","merchandise","clearance","promotion","bargain","markup","commission","customer","consumer","vendor"],
+        "hard": ["consumerism","omnichannel","dropshipping","e-commerce","arbitrage","merchandising","procurement","shrinkage","planogram","upselling"]
+    },
+    85: {
+        "topic": "Money & Budgeting",
+        "easy": ["money","save","spend","pay","cost","price","cash","coin","bill","bank","rich","poor","earn","owe","lend","borrow","buy","sell","cheap","tax"],
+        "medium": ["budget","income","expense","savings","investment","interest","mortgage","insurance","pension","dividend","inflation","deflation","credit","debit","balance","statement","transaction","installment","allowance","tuition"],
+        "hard": ["amortization","annuity","compounding","depreciation","diversification","liquidity","solvency","fiduciary","actuarial","fiscal"]
+    },
+    86: {
+        "topic": "Banking",
+        "easy": ["bank","money","save","card","cash","check","loan","pay","fee","rate","sign","form","safe","lock","code","pin","ATM","gold","note","bill"],
+        "medium": ["account","deposit","withdraw","transfer","mortgage","interest","overdraft","statement","transaction","collateral","guarantee","underwrite","securities","bond","equity","portfolio","hedge","auditor","compliance","regulation"],
+        "hard": ["escrow","fiduciary","derivatives","amortize","securitization","arbitrage","quantitative","leveraged","syndicated","debenture"]
+    },
+    87: {
+        "topic": "Projects & Planning",
+        "easy": ["plan","goal","task","team","lead","start","end","step","time","work","list","check","done","next","first","last","idea","build","test","fix"],
+        "medium": ["project","milestone","deadline","schedule","timeline","deliverable","stakeholder","resource","allocation","dependency","scope","budget","estimate","proposal","feasibility","sprint","iteration","backlog","kanban","retrospective"],
+        "hard": ["Gantt","critical path","waterfall","agile","scrum","burndown","velocity","work breakdown","earned value","risk mitigation"]
+    },
+    88: {
+        "topic": "Meetings",
+        "easy": ["meet","talk","plan","share","agree","vote","call","room","time","date","sit","stand","note","point","chair","ask","tell","show","join","end"],
+        "medium": ["agenda","minutes","attendee","facilitator","moderator","quorum","motion","resolution","consensus","brainstorm","roundtable","teleconference","videoconference","webinar","breakout","adjourn","convene","deliberate","proxy","briefing"],
+        "hard": ["plenary","symposium","colloquium","conclave","caucus","rapporteur","parliamentary","arbitration","mediation","plenipotentiary"]
+    },
+    89: {
+        "topic": "Management",
+        "easy": ["boss","lead","team","plan","goal","rule","hire","fire","grow","train","help","guide","check","fix","build","change","trust","power","skill","rate"],
+        "medium": ["manager","supervisor","executive","director","delegate","motivate","evaluate","coordinate","implement","strategy","objective","initiative","accountability","leadership","hierarchy","restructure","micromanage","empower","benchmark","turnover"],
+        "hard": ["synergy","bureaucracy","meritocracy","autocratic","democratic","laissez-faire","transformational","transactional","stakeholder","organizational"]
+    },
+    90: {
+        "topic": "Economics",
+        "easy": ["buy","sell","make","trade","price","cost","work","pay","rich","poor","grow","fall","bank","tax","debt","save","spend","need","want","market"],
+        "medium": ["supply","demand","inflation","recession","GDP","unemployment","tariff","subsidy","monopoly","competition","commodity","currency","exchange","import","export","fiscal","monetary","deficit","surplus","globalization"],
+        "hard": ["macroeconomics","microeconomics","elasticity","oligopoly","stagflation","quantitative easing","austerity","protectionism","mercantilism","laissez-faire"]
+    },
+
+    # === DOMAIN: Ideas & Reasoning (groups 91-100) ===
+    91: {
+        "topic": "Emotions",
+        "easy": ["happy","sad","angry","scared","love","hate","cry","laugh","smile","fear","joy","hope","pain","calm","shy","proud","lonely","tired","bored","safe"],
+        "medium": ["anxiety","frustration","excitement","jealousy","gratitude","compassion","empathy","sympathy","resentment","nostalgia","melancholy","euphoria","contempt","disgust","admiration","enthusiasm","indifference","vulnerability","contentment","anticipation"],
+        "hard": ["ambivalence","catharsis","ennui","schadenfreude","weltschmerz","saudade","malaise","apathy","equanimity","sublimation"]
+    },
+    92: {
+        "topic": "Thinking",
+        "easy": ["think","know","guess","learn","idea","mind","plan","dream","wish","hope","doubt","feel","mean","reason","sense","smart","wise","wonder","brain","memory"],
+        "medium": ["analyze","evaluate","synthesize","comprehend","perceive","conceptualize","rationalize","hypothesize","contemplate","ponder","reflect","deliberate","speculate","conjecture","intuition","cognition","consciousness","subconscious","imagination","creativity"],
+        "hard": ["metacognition","epistemology","phenomenology","dialectics","syllogism","heuristic","solipsism","empiricism","rationalism","determinism"]
+    },
+    93: {
+        "topic": "Goals & Decisions",
+        "easy": ["goal","plan","try","win","lose","choose","pick","want","need","start","stop","keep","quit","push","pull","reach","aim","wish","hope","dream"],
+        "medium": ["objective","ambition","aspiration","priority","strategy","commitment","determination","perseverance","motivation","deadline","milestone","decision","dilemma","compromise","consequence","deliberate","evaluate","alternative","tradeoff","opportunity"],
+        "hard": ["volition","prerogative","imperative","contingency","utilitarian","pragmatic","resolute","vacillation","procrastination","predetermination"]
+    },
+    94: {
+        "topic": "Time & Sequence",
+        "easy": ["time","day","night","morning","evening","hour","minute","week","month","year","now","then","soon","late","early","first","last","next","before","after"],
+        "medium": ["decade","century","millennium","era","epoch","duration","interval","simultaneous","sequential","chronological","temporal","deadline","calendar","schedule","punctual","overdue","recurrent","periodic","intermittent","perpetual"],
+        "hard": ["anachronism","synchronous","asynchronous","ephemeral","transient","perennial","antiquity","posterity","precursor","retrospective"]
+    },
+    95: {
+        "topic": "Position & Direction",
+        "easy": ["up","down","left","right","top","bottom","front","back","side","middle","in","out","near","far","high","low","over","under","here","there"],
+        "medium": ["forward","backward","upward","downward","inward","outward","adjacent","opposite","parallel","perpendicular","diagonal","horizontal","vertical","lateral","central","peripheral","interior","exterior","proximal","distal"],
+        "hard": ["anterior","posterior","ventral","dorsal","medial","bilateral","contiguous","juxtaposition","tangential","concentric"]
+    },
+    96: {
+        "topic": "Change & Development",
+        "easy": ["change","grow","move","turn","make","break","build","fix","start","stop","new","old","big","small","fast","slow","rise","fall","open","close"],
+        "medium": ["transform","evolve","develop","progress","improve","decline","expand","contract","accelerate","decelerate","fluctuate","transition","reform","innovate","modernize","adapt","modify","revise","convert","deteriorate"],
+        "hard": ["metamorphosis","paradigm shift","catalyze","atrophy","stagnation","obsolescence","revitalize","regeneration","perturbation","transmutation"]
+    },
+    97: {
+        "topic": "Comparison",
+        "easy": ["same","different","more","less","big","small","tall","short","fast","slow","good","bad","best","worst","like","equal","match","both","each","other"],
+        "medium": ["similar","identical","comparable","superior","inferior","equivalent","relative","proportional","contrast","distinguish","analogy","metaphor","benchmark","criterion","correlation","discrepancy","disparity","approximate","exceed","surpass"],
+        "hard": ["commensurate","disproportionate","dichotomy","antithesis","paradox","juxtaposition","continuum","superlative","quintessential","archetype"]
+    },
+    98: {
+        "topic": "Cause & Effect",
+        "easy": ["cause","make","help","stop","start","change","break","fix","push","pull","give","take","show","lead","bring","force","block","allow","end","set"],
+        "medium": ["effect","result","outcome","consequence","impact","influence","trigger","catalyst","factor","contribute","correlate","determine","prevent","generate","produce","induce","provoke","stimulate","inhibit","facilitate"],
+        "hard": ["causality","antecedent","precipitate","ramification","repercussion","corollary","impetus","exacerbate","mitigate","predispose"]
+    },
+    99: {
+        "topic": "Logic & Reasoning",
+        "easy": ["true","false","right","wrong","yes","no","if","then","and","or","not","but","all","some","none","every","must","may","prove","test"],
+        "medium": ["logic","reason","argument","premise","conclusion","evidence","valid","invalid","deduction","induction","hypothesis","assumption","contradiction","fallacy","paradox","inference","implication","analogy","criterion","principle"],
+        "hard": ["syllogism","tautology","sophistry","reductio ad absurdum","non sequitur","modus ponens","modus tollens","dichotomy","axiom","postulate"]
+    },
+    100: {
+        "topic": "Algorithms & Problem Solving",
+        "easy": ["step","plan","solve","try","find","sort","count","check","loop","end","start","run","stop","match","pick","swap","split","join","add","skip"],
+        "medium": ["algorithm","function","variable","condition","iterate","recursive","optimize","efficiency","complexity","binary","linear","stack","queue","graph","tree","hash","search","traverse","backtrack","greedy"],
+        "hard": ["heuristic","dynamic programming","memoization","polynomial","logarithmic","deterministic","probabilistic","nondeterministic","intractable","NP-complete"]
+    },
+}
+
+
+def build_json():
+    groups = []
+    for gid in sorted(GROUPS.keys()):
+        g = GROUPS[gid]
+        groups.append({
+            "id": gid,
+            "topic": g["topic"],
+            "levels": {
+                "easy": g["easy"],
+                "medium": g["medium"],
+                "hard": g["hard"]
+            },
+            "word_count": len(g["easy"]) + len(g["medium"]) + len(g["hard"])
+        })
+
+    data = {
+        "title": "English Topic Vocabulary",
+        "version": 2,
+        "description": "100 topic groups with 50 words each: 20 easy, 20 medium, 10 hard. Each group has unique, topic-specific vocabulary.",
+        "totals": {
+            "groups": 100,
+            "words_per_group": 50,
+            "easy_per_group": 20,
+            "medium_per_group": 20,
+            "hard_per_group": 10,
+            "word_entries": 5000
+        },
+        "groups": groups
+    }
+    return data
+
+
+if __name__ == "__main__":
+    import os
+    data = build_json()
+
+    # Validate
+    all_words = []
+    for g in data["groups"]:
+        e = len(g["levels"]["easy"])
+        m = len(g["levels"]["medium"])
+        h = len(g["levels"]["hard"])
+        total = e + m + h
+        if e != 20 or m != 20 or h != 10:
+            print(f"ERROR Group {g['id']} ({g['topic']}): easy={e} medium={m} hard={h}")
+        all_words.extend(g["levels"]["easy"])
+        all_words.extend(g["levels"]["medium"])
+        all_words.extend(g["levels"]["hard"])
+
+    unique = set(all_words)
+    print(f"Total entries: {len(all_words)}")
+    print(f"Unique words: {len(unique)}")
+    print(f"Groups: {len(data['groups'])}")
+
+    # Write main file
+    base = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    out = os.path.join(base, "topic_vocabulary_5000.json")
+    with open(out, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+    print(f"Wrote {out}")
+
+    # Regenerate individual group files for docs/
+    groups_dir = os.path.join(base, "docs", "data", "groups")
+    os.makedirs(groups_dir, exist_ok=True)
+    for g in data["groups"]:
+        path = os.path.join(groups_dir, f"group_{g['id']:03d}.json")
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(g, f, ensure_ascii=False, indent=2)
+    print(f"Wrote {len(data['groups'])} group files to {groups_dir}")
