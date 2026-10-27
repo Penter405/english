@@ -1,29 +1,53 @@
 /**
- * Exam Vocabulary Graph — Interactive Multi-Level Explorer
+ * English Vocabulary Graph — Interactive Exam Topic Explorer
  *
- * Features:
- *   - Infinite drill-down: root → domain → category → level_group → words
- *   - Breadcrumb navigation with parent-relative-position indicator
- *   - Left click / tap → English definition popup
- *   - Right click / double-tap → Chinese definition popup
- *   - Word images support
+ * Drill-down navigation:
+ *   Level 1 (root):   Life ── domains
+ *   Level 2 (domain): Life ─────── Domain ── topics
+ *   Click topic → vocabulary view directly showing 6 official levels
  */
 
 // ===== State =====
 let cy = null;
 let graphData = null;
 let vocabData = null;
-let nodeMap = {};        // id → node data
-let childrenMap = {};    // id → [child ids]
-let parentMap = {};      // id → parent id
+let nodeMap = {};
+let childrenMap = {};
+let parentMap = {};
 
-// Navigation stack: [{nodeId, label}]
-let navStack = []; // e.g. [{id:'life', label:'Vocabulary'}, {id:'daily_life', label:'Daily Life'}, ...]
-let currentView = 'graph'; // 'graph' | 'words'
+let currentPath = ['life']; // e.g. ['life'] or ['life', 'home_life']
+let currentView = 'graph';  // 'graph' | 'group'
+let savedZoom = null;
+let savedPan = null;
 
-// Layout constants
-const CHILD_RADIUS = 220;
-const PARENT_LINK_DIST = 450;
+// Layout constants from the original web logic
+const DOMAIN_RADIUS = 300;   // root → domain distance (root view)
+const TOPIC_RADIUS = 200;    // domain → topic distance (domain view)
+const ROOT_LINK_DIST = 500;  // domain → root distance (domain view, opposite direction)
+
+// Domain color mapping (10 vibrant, distinct hues)
+const DOMAIN_COLORS = {
+  home_life:  { main: '#f59e0b', bg: 'rgba(245,158,11,0.12)', border: 'rgba(245,158,11,0.4)' },
+  food:       { main: '#ef4444', bg: 'rgba(239,68,68,0.12)',   border: 'rgba(239,68,68,0.4)' },
+  transport:  { main: '#3b82f6', bg: 'rgba(59,130,246,0.12)',  border: 'rgba(59,130,246,0.4)' },
+  technology: { main: '#06b6d4', bg: 'rgba(6,182,212,0.12)',   border: 'rgba(6,182,212,0.4)' },
+  education:  { main: '#8b5cf6', bg: 'rgba(139,92,246,0.12)',  border: 'rgba(139,92,246,0.4)' },
+  work:       { main: '#f97316', bg: 'rgba(249,115,22,0.12)',  border: 'rgba(249,115,22,0.4)' },
+  society:    { main: '#ec4899', bg: 'rgba(236,72,153,0.12)',  border: 'rgba(236,72,153,0.4)' },
+  abstract:   { main: '#a78bfa', bg: 'rgba(167,139,250,0.12)', border: 'rgba(167,139,250,0.4)' },
+  science:    { main: '#10b981', bg: 'rgba(16,185,129,0.12)',  border: 'rgba(16,185,129,0.4)' },
+  nature:     { main: '#22c55e', bg: 'rgba(34,197,94,0.12)',   border: 'rgba(34,197,94,0.4)' }
+};
+
+// Level color mapping
+const LEVEL_CONFIG = {
+  1: { name: 'Level 1 — Basic', cls: 'lv1', color: '#4ade80' },
+  2: { name: 'Level 2 — Elementary', cls: 'lv2', color: '#2dd4bf' },
+  3: { name: 'Level 3 — Intermediate', cls: 'lv3', color: '#38bdf8' },
+  4: { name: 'Level 4 — Upper-Intermediate', cls: 'lv4', color: '#fbbf24' },
+  5: { name: 'Level 5 — Advanced', cls: 'lv5', color: '#fb923c' },
+  6: { name: 'Level 6 — Expert', cls: 'lv6', color: '#f87171' }
+};
 
 // ===== Initialization =====
 async function initGraph() {
@@ -37,32 +61,34 @@ async function initGraph() {
       fetch('./data/graph.json'),
       fetch('./data/vocab_data.json')
     ]);
-    if (!graphRes.ok) throw new Error(`Graph: HTTP ${graphRes.status}`);
-    if (!vocabRes.ok) throw new Error(`Vocab: HTTP ${vocabRes.status}`);
+    if (!graphRes.ok) throw new Error(`Graph HTTP ${graphRes.status}`);
+    if (!vocabRes.ok) throw new Error(`Vocab HTTP ${vocabRes.status}`);
 
     graphData = await graphRes.json();
     vocabData = await vocabRes.json();
 
-    buildMaps();
+    buildNodeMap();
+    buildTreeMaps();
     renderGraph();
     loadingEl.style.display = 'none';
   } catch (err) {
-    console.error('Failed to load:', err);
+    console.error('Failed to load graph:', err);
     loadingEl.style.display = 'none';
     errorEl.style.display = 'flex';
-    document.getElementById('error-text').textContent = `Failed to load: ${err.message}`;
+    document.getElementById('error-text').textContent = `Failed to load graph data: ${err.message}`;
   }
 }
 
-function buildMaps() {
+function buildNodeMap() {
   nodeMap = {};
-  childrenMap = {};
-  parentMap = {};
-
   for (const node of graphData.graph.nodes) {
     nodeMap[node.id] = node;
   }
+}
 
+function buildTreeMaps() {
+  childrenMap = {};
+  parentMap = {};
   for (const edge of graphData.graph.edges) {
     if (edge.type === 'contains') {
       if (!childrenMap[edge.source]) childrenMap[edge.source] = [];
@@ -72,23 +98,14 @@ function buildMaps() {
   }
 }
 
-// Get the domain ancestor of a node (for coloring)
-function getDomainAncestor(nodeId) {
-  let current = nodeId;
-  while (current) {
-    const node = nodeMap[current];
-    if (node && node.type === 'domain') return current;
-    current = parentMap[current];
+function getParentDomain(nodeId) {
+  let curr = nodeId;
+  while (curr) {
+    const node = nodeMap[curr];
+    if (node && node.type === 'domain') return curr;
+    curr = parentMap[curr];
   }
   return null;
-}
-
-// Get color for a node
-function getNodeColor(node) {
-  if (node.color) return node.color;
-  const domainId = getDomainAncestor(node.id);
-  if (domainId && nodeMap[domainId]) return nodeMap[domainId].color || '#64748b';
-  return '#64748b';
 }
 
 // ===== Render Graph (one-time setup) =====
@@ -96,17 +113,19 @@ function renderGraph() {
   const cyElements = [];
 
   for (const node of graphData.graph.nodes) {
-    const color = getNodeColor(node);
+    const domainId = getParentDomain(node.id) || node.id;
+    const colorSet = DOMAIN_COLORS[domainId] || { main: '#64748b' };
+
     cyElements.push({
       group: 'nodes',
       data: {
         id: node.id,
-        label: node.label + (node.word_count ? ` (${node.word_count})` : ''),
-        rawLabel: node.label,
+        label: node.label,
         nodeType: node.type,
-        color: color,
-        wordCount: node.word_count || 0,
-        hasWords: !!node.words,
+        groupId: node.group_id || null,
+        color: colorSet.main,
+        domainId: domainId,
+        wordCount: node.word_count || (node.words ? node.words.length : 0)
       },
       position: { x: 0, y: 0 }
     });
@@ -136,12 +155,12 @@ function renderGraph() {
     maxZoom: 3,
     wheelSensitivity: 0.3,
     style: [
-      // Root node
+      // ── Root node ──
       {
         selector: 'node[nodeType="root"]',
         style: {
-          'width': 75,
-          'height': 75,
+          'width': 70,
+          'height': 70,
           'background-color': '#0a0e1a',
           'border-width': 3,
           'border-color': '#a78bfa',
@@ -160,23 +179,23 @@ function renderGraph() {
           'transition-duration': '0.3s'
         }
       },
-      // Root as breadcrumb
+      // Root / Parent when shown as breadcrumb
       {
-        selector: 'node[nodeType="root"].breadcrumb',
+        selector: 'node.breadcrumb',
         style: {
-          'width': 40,
-          'height': 40,
+          'width': 44,
+          'height': 44,
           'border-width': 2,
-          'font-size': 10,
-          'opacity': 0.6
+          'font-size': 11,
+          'opacity': 0.75
         }
       },
-      // Domain nodes
+      // ── Domain nodes ──
       {
         selector: 'node[nodeType="domain"]',
         style: {
-          'width': 58,
-          'height': 58,
+          'width': 56,
+          'height': 56,
           'background-color': '#111827',
           'border-width': 2.5,
           'border-color': 'data(color)',
@@ -189,7 +208,7 @@ function renderGraph() {
           'text-halign': 'center',
           'text-margin-y': 10,
           'text-wrap': 'wrap',
-          'text-max-width': 120,
+          'text-max-width': 110,
           'text-outline-color': '#0a0e1a',
           'text-outline-width': 2.5,
           'z-index': 8,
@@ -198,61 +217,7 @@ function renderGraph() {
           'transition-duration': '0.3s'
         }
       },
-      // Category nodes
-      {
-        selector: 'node[nodeType="category"]',
-        style: {
-          'width': 42,
-          'height': 42,
-          'background-color': 'data(color)',
-          'background-opacity': 0.15,
-          'border-width': 2,
-          'border-color': 'data(color)',
-          'label': 'data(label)',
-          'font-size': 11,
-          'font-weight': 600,
-          'font-family': 'Inter, sans-serif',
-          'color': '#e2e8f0',
-          'text-valign': 'bottom',
-          'text-halign': 'center',
-          'text-margin-y': 8,
-          'text-wrap': 'wrap',
-          'text-max-width': 100,
-          'text-outline-color': '#0a0e1a',
-          'text-outline-width': 2,
-          'z-index': 5,
-          'overlay-opacity': 0,
-          'transition-property': 'background-opacity, width, height',
-          'transition-duration': '0.2s'
-        }
-      },
-      // Level group nodes
-      {
-        selector: 'node[nodeType="level_group"]',
-        style: {
-          'width': 36,
-          'height': 36,
-          'background-color': 'data(color)',
-          'background-opacity': 0.12,
-          'border-width': 1.8,
-          'border-color': 'data(color)',
-          'label': 'data(label)',
-          'font-size': 10,
-          'font-weight': 600,
-          'font-family': 'Inter, sans-serif',
-          'color': '#cbd5e1',
-          'text-valign': 'bottom',
-          'text-halign': 'center',
-          'text-margin-y': 7,
-          'text-wrap': 'wrap',
-          'text-max-width': 90,
-          'text-outline-color': '#0a0e1a',
-          'text-outline-width': 2,
-          'z-index': 4,
-          'overlay-opacity': 0,
-        }
-      },
-      // Focused node (currently drilled-into)
+      // Focused domain or node
       {
         selector: 'node.focused',
         style: {
@@ -264,41 +229,57 @@ function renderGraph() {
           'z-index': 20
         }
       },
-      // Breadcrumb parent (non-root)
+      // ── Topic nodes ──
       {
-        selector: 'node.breadcrumb',
+        selector: 'node[nodeType="topic"]',
         style: {
           'width': 36,
           'height': 36,
-          'border-width': 1.5,
-          'font-size': 9,
-          'opacity': 0.5,
+          'background-color': 'data(color)',
+          'background-opacity': 0.18,
+          'border-width': 1.8,
+          'border-color': 'data(color)',
+          'label': 'data(label)',
+          'font-size': 10.5,
+          'font-weight': 600,
+          'font-family': 'Inter, sans-serif',
+          'color': '#e2e8f0',
+          'text-valign': 'bottom',
+          'text-halign': 'center',
+          'text-margin-y': 7,
+          'text-wrap': 'wrap',
+          'text-max-width': 95,
+          'text-outline-color': '#0a0e1a',
+          'text-outline-width': 2,
+          'z-index': 5,
+          'overlay-opacity': 0,
+          'transition-property': 'background-opacity, width, height',
+          'transition-duration': '0.2s'
         }
       },
-      // Contains edges
+      // ── Contains edges (hierarchical) ──
       {
         selector: 'edge[edgeType="contains"]',
         style: {
           'width': 1.5,
-          'line-color': 'rgba(148, 163, 184, 0.2)',
+          'line-color': 'rgba(148, 163, 184, 0.22)',
           'curve-style': 'straight',
           'target-arrow-shape': 'none',
           'overlay-opacity': 0,
           'z-index': 1
         }
       },
-      // Breadcrumb edge
+      // Breadcrumb edge (root/parent → current) — dashed
       {
         selector: 'edge.breadcrumb-edge',
         style: {
-          'width': 1,
-          'line-color': 'rgba(167, 139, 250, 0.2)',
+          'width': 1.2,
+          'line-color': 'rgba(167, 139, 250, 0.3)',
           'line-style': 'dashed',
           'line-dash-pattern': [8, 6],
           'z-index': 0
         }
       },
-      // Hover
       {
         selector: 'node:active',
         style: { 'overlay-opacity': 0.08 }
@@ -306,251 +287,280 @@ function renderGraph() {
     ]
   });
 
-  // Event listeners
-  cy.on('tap', 'node', onNodeClick);
-
-  // Right-click for Chinese definition
-  cy.on('cxttap', 'node', onNodeRightClick);
-
-  // Cursor
+  // ── Event Listeners ──
+  cy.on('tap', 'node', onNodeTap);
   cy.on('mouseover', 'node', () => { document.getElementById('cy').style.cursor = 'pointer'; });
   cy.on('mouseout', 'node', () => { document.getElementById('cy').style.cursor = 'default'; });
 
-  // Prevent context menu on graph
-  document.getElementById('cy').addEventListener('contextmenu', e => e.preventDefault());
-
-  // Start at root
-  navStack = [{ id: 'life', label: 'Vocabulary' }];
-  enterNodeView('life', false);
+  // Start at root view
+  currentPath = ['life'];
+  enterView('life', false);
 }
 
-// ===== Core Navigation: Enter a node's view =====
-function enterNodeView(nodeId, animate) {
-  const node = nodeMap[nodeId];
-  if (!node) return;
+// ===== View Navigation Logic =====
 
-  // If this node has words (leaf), show word list
-  if (node.words && node.words.length > 0 && !childrenMap[nodeId]) {
-    showWordList(node);
-    return;
+function enterView(nodeId, animate) {
+  if (nodeId === 'life') {
+    enterRootView(animate);
+  } else {
+    enterChildView(nodeId, animate);
   }
+}
 
-  // Show graph view
-  if (currentView !== 'graph') {
-    showGraphView();
-  }
-
-  const children = childrenMap[nodeId] || [];
-  if (children.length === 0 && node.words) {
-    showWordList(node);
-    return;
-  }
+// ===== Root Level (Life + 10 Domains) =====
+function enterRootView(animate) {
+  currentPath = ['life'];
 
   const positions = {};
+  positions['life'] = { x: 0, y: 0 };
 
-  // Position the focused node at center
-  positions[nodeId] = { x: 0, y: 0 };
-
-  // Position children around center
-  const childAngleStep = 360 / Math.max(children.length, 1);
-  for (let i = 0; i < children.length; i++) {
-    const childNode = nodeMap[children[i]];
-    const angleDeg = childNode && childNode.angle_degrees != null
-      ? childNode.angle_degrees
-      : i * childAngleStep;
-    const angleRad = angleDeg * Math.PI / 180;
-    positions[children[i]] = {
-      x: Math.cos(angleRad) * CHILD_RADIUS,
-      y: Math.sin(angleRad) * CHILD_RADIUS
-    };
-  }
-
-  // Position parent as breadcrumb (opposite direction)
-  const parentId = parentMap[nodeId];
-  if (parentId) {
-    // Use the node's position relative to parent to determine direction
-    const focusedNode = nodeMap[nodeId];
-    let dx = focusedNode.x || 0;
-    let dy = focusedNode.y || 0;
-    if (dx === 0 && dy === 0) {
-      // Use angle_degrees if available
-      const ang = (focusedNode.angle_degrees || 0) * Math.PI / 180;
-      dx = Math.cos(ang);
-      dy = Math.sin(ang);
+  const domains = childrenMap['life'] || [];
+  for (const dId of domains) {
+    const node = nodeMap[dId];
+    if (node) {
+      // Use original graph coordinates scaled to DOMAIN_RADIUS
+      const ox = node.x, oy = node.y;
+      const dist = Math.sqrt(ox * ox + oy * oy) || 1;
+      positions[dId] = {
+        x: (ox / dist) * DOMAIN_RADIUS,
+        y: (oy / dist) * DOMAIN_RADIUS
+      };
     }
-    const dist = Math.sqrt(dx * dx + dy * dy) || 1;
-    positions[parentId] = {
-      x: (-dx / dist) * PARENT_LINK_DIST,
-      y: (-dy / dist) * PARENT_LINK_DIST
-    };
   }
 
-  // Show/hide elements
   cy.batch(() => {
     cy.nodes().style('display', 'none');
     cy.edges().style('display', 'none');
     cy.elements().removeClass('breadcrumb breadcrumb-edge focused');
 
+    // Show root
+    cy.getElementById('life').style('display', 'element');
+
+    // Show domains + edges
+    for (const dId of domains) {
+      cy.getElementById(dId).style('display', 'element');
+      const edge = cy.getElementById(`life-${dId}`);
+      if (edge.length) edge.style('display', 'element');
+    }
+  });
+
+  applyPositions(positions, animate);
+  fitVisible(animate);
+}
+
+// ===== Non-Root Level (Domain/Category View with Parent as Breadcrumb) =====
+function enterChildView(nodeId, animate) {
+  const focusedNode = nodeMap[nodeId];
+  const parentId = parentMap[nodeId] || 'life';
+  const children = childrenMap[nodeId] || [];
+
+  // Compute parent position: opposite direction of node's original position from parent
+  const dx = focusedNode.x || 0;
+  const dy = focusedNode.y || 0;
+  const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+  const parentX = (-dx / dist) * ROOT_LINK_DIST;
+  const parentY = (-dy / dist) * ROOT_LINK_DIST;
+
+  const positions = {};
+  positions[parentId] = { x: parentX, y: parentY };
+  positions[nodeId] = { x: 0, y: 0 };
+
+  // Position children around focused node using their angle_degrees
+  for (const childId of children) {
+    const childNode = nodeMap[childId];
+    if (childNode) {
+      const angleDeg = childNode.angle_degrees || 0;
+      const angleRad = angleDeg * Math.PI / 180;
+      positions[childId] = {
+        x: Math.cos(angleRad) * TOPIC_RADIUS,
+        y: Math.sin(angleRad) * TOPIC_RADIUS
+      };
+    }
+  }
+
+  cy.batch(() => {
+    cy.nodes().style('display', 'none');
+    cy.edges().style('display', 'none');
+    cy.elements().removeClass('breadcrumb breadcrumb-edge focused');
+
+    // Show parent as breadcrumb
+    const parentEle = cy.getElementById(parentId);
+    parentEle.style('display', 'element');
+    parentEle.addClass('breadcrumb');
+
     // Show focused node
     const focusedEle = cy.getElementById(nodeId);
     focusedEle.style('display', 'element');
-    if (nodeId !== 'life') focusedEle.addClass('focused');
+    focusedEle.addClass('focused');
 
-    // Show parent as breadcrumb
-    if (parentId) {
-      const parentEle = cy.getElementById(parentId);
-      parentEle.style('display', 'element');
-      parentEle.addClass('breadcrumb');
-
-      const edgeId = `${parentId}-${nodeId}`;
-      const edge = cy.getElementById(edgeId);
-      if (edge.length) {
-        edge.style('display', 'element');
-        edge.addClass('breadcrumb-edge');
-      }
+    // Show parent → focused edge as breadcrumb edge
+    const parentEdge = cy.getElementById(`${parentId}-${nodeId}`);
+    if (parentEdge.length) {
+      parentEdge.style('display', 'element');
+      parentEdge.addClass('breadcrumb-edge');
     }
 
     // Show children + edges
     for (const childId of children) {
       cy.getElementById(childId).style('display', 'element');
-      const edgeId = `${nodeId}-${childId}`;
-      const edge = cy.getElementById(edgeId);
+      const edge = cy.getElementById(`${nodeId}-${childId}`);
       if (edge.length) edge.style('display', 'element');
     }
   });
 
-  // Apply positions
+  applyPositions(positions, animate);
+  fitVisible(animate);
+}
+
+// ===== Helpers =====
+function applyPositions(positions, animate) {
   for (const [id, pos] of Object.entries(positions)) {
     const ele = cy.getElementById(id);
     if (!ele.length) continue;
     if (animate) {
-      ele.animate({ position: pos }, { duration: 400, easing: 'ease-in-out-cubic' });
+      ele.animate({ position: pos }, { duration: 450, easing: 'ease-in-out-cubic' });
     } else {
       ele.position(pos);
     }
   }
+}
 
-  // Fit
+function fitVisible(animate) {
   const visible = cy.elements(':visible');
   if (animate) {
     setTimeout(() => {
       cy.animate({ fit: { eles: visible, padding: 60 } }, { duration: 350, easing: 'ease-in-out-cubic' });
-    }, 420);
+    }, 470);
   } else {
     cy.fit(visible, 60);
   }
-
-  updateBreadcrumb();
 }
 
-// ===== Node Click Handlers =====
-function onNodeClick(e) {
+// ===== Node Tap Handler =====
+function onNodeTap(e) {
   const node = e.target;
   const nodeId = node.data('id');
+  const nodeType = node.data('nodeType');
   const nodeData = nodeMap[nodeId];
 
-  if (!nodeData) return;
-
-  // If clicking the breadcrumb parent, go up
+  // If clicking breadcrumb parent → go back up one level
   if (node.hasClass('breadcrumb')) {
-    goUp();
+    if (currentPath.length > 1) {
+      currentPath.pop();
+      enterView(currentPath[currentPath.length - 1], true);
+    } else {
+      enterRootView(true);
+    }
     return;
   }
 
-  // If this is the focused node, do nothing
-  if (node.hasClass('focused') && nodeId !== 'life') return;
-
-  // If node has children, drill down
-  const children = childrenMap[nodeId];
-  if (children && children.length > 0) {
-    navStack.push({ id: nodeId, label: nodeData.label });
-    enterNodeView(nodeId, true);
+  // If clicking already focused node → do nothing
+  if (node.hasClass('focused')) {
     return;
   }
 
-  // If node has words (leaf), show word list
-  if (nodeData.words && nodeData.words.length > 0) {
-    navStack.push({ id: nodeId, label: nodeData.label });
-    showWordList(nodeData);
+  // If root node in root view → re-fit
+  if (nodeId === 'life' && currentPath.length === 1) {
+    cy.animate({ fit: { eles: cy.elements(':visible'), padding: 60 } }, { duration: 400, easing: 'ease-in-out-cubic' });
     return;
+  }
+
+  // Check if node has children
+  const children = childrenMap[nodeId] || [];
+  if (children.length > 0) {
+    // Drill down to this node
+    currentPath.push(nodeId);
+    enterView(nodeId, true);
+    return;
+  }
+
+  // If node is a topic (leaf node with words) → directly open group view
+  if (nodeType === 'topic' || (nodeData && nodeData.words)) {
+    openGroup(nodeData);
   }
 }
 
-function onNodeRightClick(e) {
-  // Right-click on a word-bearing leaf → show Chinese defs
-  // But on graph nodes, this doesn't make much sense
-  // We'll handle right-click on word chips in the word list view
-  e.originalEvent.preventDefault();
-}
-
-// ===== Word List View =====
-function showWordList(nodeData) {
-  currentView = 'words';
+// ===== View Switching (graph ↔ group view) =====
+function showGroupView() {
+  if (cy) {
+    savedZoom = cy.zoom();
+    savedPan = { ...cy.pan() };
+  }
+  currentView = 'group';
   document.getElementById('graph-view').classList.remove('active');
-  document.getElementById('word-view').classList.add('active');
+  document.getElementById('group-view').classList.add('active');
+  document.getElementById('back-btn').style.display = 'flex';
   document.getElementById('graph-controls').style.display = 'none';
+}
 
-  const container = document.getElementById('word-list-container');
-  const color = getNodeColor(nodeData);
+function showGraph() {
+  currentView = 'graph';
+  document.getElementById('group-view').classList.remove('active');
+  document.getElementById('graph-view').classList.add('active');
+  document.getElementById('back-btn').style.display = 'none';
+  document.getElementById('graph-controls').style.display = 'flex';
+
+  if (cy && savedZoom !== null && savedPan !== null) {
+    cy.viewport({ zoom: savedZoom, pan: savedPan });
+  }
+}
+
+// ===== Open Group View (Displays the 6 Levels directly) =====
+function openGroup(nodeData) {
+  showGroupView();
+
+  const container = document.getElementById('group-container');
+  const domainId = getParentDomain(nodeData.id) || nodeData.id;
+  const colorSet = DOMAIN_COLORS[domainId] || { main: '#64748b', bg: 'rgba(100,116,139,0.12)', border: 'rgba(100,116,139,0.4)' };
+  const domainNode = nodeMap[domainId];
+  const domainLabel = domainNode ? domainNode.label : '';
+
   const words = nodeData.words || [];
 
-  // Group by level
+  // Group words into the 6 official levels
   const byLevel = { 1: [], 2: [], 3: [], 4: [], 5: [], 6: [] };
   for (const w of words) {
     const vd = vocabData[w];
-    const lv = vd ? vd.lv : 0;
-    if (byLevel[lv]) byLevel[lv].push(w);
-    else if (byLevel[1]) byLevel[1].push(w);
-  }
-
-  // Get domain label
-  let domainLabel = '';
-  let domainColor = color;
-  const domainId = getDomainAncestor(nodeData.id);
-  if (domainId && nodeMap[domainId]) {
-    domainLabel = nodeMap[domainId].label;
-    domainColor = nodeMap[domainId].color || color;
+    const lv = vd ? vd.lv : 1;
+    if (byLevel[lv]) {
+      byLevel[lv].push(w);
+    } else {
+      byLevel[1].push(w);
+    }
   }
 
   let html = `
     <div class="group-header">
-      ${domainLabel ? `<div class="group-domain-badge" style="color: ${domainColor}; background: ${domainColor}20; border-color: ${domainColor}60;">
+      ${domainLabel ? `<div class="group-domain-badge" style="color: ${colorSet.main}; background: ${colorSet.bg}; border-color: ${colorSet.border};">
         <span>●</span> ${domainLabel}
       </div>` : ''}
       <h1 class="group-name">${nodeData.label}</h1>
-      <p class="group-word-count">${words.length} words</p>
+      <p class="group-word-count">${words.length} words · Group ${nodeData.group_id || ''}</p>
     </div>
   `;
 
-  // Level sections
-  const levelLabels = {
-    1: { name: 'Level 1 — Basic', cls: 'lv1' },
-    2: { name: 'Level 2 — Elementary', cls: 'lv2' },
-    3: { name: 'Level 3 — Intermediate', cls: 'lv3' },
-    4: { name: 'Level 4 — Upper-Intermediate', cls: 'lv4' },
-    5: { name: 'Level 5 — Advanced', cls: 'lv5' },
-    6: { name: 'Level 6 — Expert', cls: 'lv6' },
-  };
+  // Render all 6 level sections
+  for (let lv = 1; lv <= 6; lv++) {
+    const lvWords = byLevel[lv];
+    if (!lvWords || lvWords.length === 0) continue;
+    const cfg = LEVEL_CONFIG[lv];
 
-  for (const [lv, lvWords] of Object.entries(byLevel)) {
-    if (lvWords.length === 0) continue;
-    const info = levelLabels[lv] || { name: `Level ${lv}`, cls: 'lv1' };
     const chips = lvWords.map(w => {
       const vd = vocabData[w];
-      const examBadge = vd && vd.cnt > 0 ? `<span class="exam-badge" title="Appeared in ${vd.cnt} exam(s)">📝</span>` : '';
-      return `<span class="word-chip ${info.cls}" 
-        onclick="showDefinition('${w}', 'en')" 
+      const examBadge = vd && vd.cnt > 0 ? `<span class="exam-badge" title="Appeared in exams ${vd.cnt} time(s)">📝</span>` : '';
+      return `<span class="word-chip ${cfg.cls}"
+        onclick="showDefinition('${w}', 'en')"
         oncontextmenu="event.preventDefault(); showDefinition('${w}', 'zh')"
         ondblclick="showDefinition('${w}', 'zh')"
-        title="Click: English | Right-click/Double-click: Chinese"
+        title="Left Click: English | Right Click / Double Click: Chinese"
       >${w}${examBadge}</span>`;
     }).join('');
 
     html += `
-      <div class="difficulty-section ${info.cls}">
+      <div class="difficulty-section ${cfg.cls}">
         <div class="difficulty-header">
           <span class="difficulty-dot"></span>
-          <span class="difficulty-label">${info.name}</span>
+          <span class="difficulty-label">${cfg.name}</span>
           <span class="difficulty-count">${lvWords.length} words</span>
         </div>
         <div class="word-grid">${chips}</div>
@@ -559,17 +569,9 @@ function showWordList(nodeData) {
   }
 
   container.innerHTML = html;
-  updateBreadcrumb();
 }
 
-function showGraphView() {
-  currentView = 'graph';
-  document.getElementById('word-view').classList.remove('active');
-  document.getElementById('graph-view').classList.add('active');
-  document.getElementById('graph-controls').style.display = 'flex';
-}
-
-// ===== Definition Popup =====
+// ===== Word Definition Popup =====
 function showDefinition(word, lang) {
   const vd = vocabData[word];
   if (!vd) return;
@@ -577,13 +579,11 @@ function showDefinition(word, lang) {
   const popup = document.getElementById('def-popup');
   const overlay = document.getElementById('def-overlay');
 
-  // Word title
   document.getElementById('def-word').textContent = vd.w;
 
-  // Meta info
-  const posStr = vd.pos.join(', ') || '';
+  const posStr = vd.pos && vd.pos.length ? vd.pos.join(', ') : '';
   const lvStr = `Level ${vd.lv}`;
-  const examStr = vd.cnt > 0 ? `📝 Appeared in exams: ${vd.exam.join(', ')}` : '';
+  const examStr = vd.cnt > 0 ? `📝 Appeared in exams: ${vd.exam.join(', ')} (${vd.cnt} times)` : '';
   const formsStr = vd.forms && Object.keys(vd.forms).length > 0
     ? Object.entries(vd.forms).map(([k, v]) => `${k}: ${v}`).join(' | ')
     : '';
@@ -596,7 +596,7 @@ function showDefinition(word, lang) {
   if (familyStr) metaHtml += `<div class="def-family">${familyStr}</div>`;
   document.getElementById('def-meta').innerHTML = metaHtml;
 
-  // Image
+  // Image support
   const imgContainer = document.getElementById('def-image-container');
   const imgEl = document.getElementById('def-image');
   const imgPath = `./data/images/${word}.png`;
@@ -604,12 +604,12 @@ function showDefinition(word, lang) {
   imgEl.onload = () => { imgContainer.style.display = 'block'; };
   imgEl.onerror = () => { imgContainer.style.display = 'none'; };
 
-  // Definitions
+  // Definition content
   let contentHtml = '';
   if (lang === 'en') {
     const defs = vd.en || [];
     if (defs.length > 0) {
-      contentHtml = '<div class="def-section"><h3>English Definitions</h3><ul>' +
+      contentHtml = '<div class="def-section"><h3>English Definition</h3><ul>' +
         defs.map(d => `<li>${d}</li>`).join('') +
         '</ul></div>';
     } else {
@@ -626,14 +626,12 @@ function showDefinition(word, lang) {
     }
   }
 
-  // Add toggle button
   const otherLang = lang === 'en' ? 'zh' : 'en';
-  const otherLabel = lang === 'en' ? '切換中文' : 'Switch to English';
+  const otherLabel = lang === 'en' ? '切換中文釋義' : 'Switch to English';
   contentHtml += `<button class="def-toggle" onclick="showDefinition('${word}', '${otherLang}')">${otherLabel}</button>`;
 
   document.getElementById('def-content').innerHTML = contentHtml;
 
-  // Show
   overlay.classList.add('visible');
   popup.classList.add('visible');
 }
@@ -643,48 +641,9 @@ function closeDefinition() {
   document.getElementById('def-popup').classList.remove('visible');
 }
 
-// Close on Escape
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') closeDefinition();
 });
-
-// ===== Breadcrumb =====
-function updateBreadcrumb() {
-  const bar = document.getElementById('breadcrumb-bar');
-  let html = '';
-
-  for (let i = 0; i < navStack.length; i++) {
-    const item = navStack[i];
-    if (i > 0) html += '<span class="breadcrumb-sep">›</span>';
-    if (i === navStack.length - 1) {
-      html += `<span class="breadcrumb-item current">${item.label}</span>`;
-    } else {
-      html += `<button class="breadcrumb-item" onclick="goToLevel(${i})">${item.label}</button>`;
-    }
-  }
-
-  bar.innerHTML = html;
-}
-
-function goToRoot() {
-  navStack = [{ id: 'life', label: 'Vocabulary' }];
-  if (currentView !== 'graph') showGraphView();
-  enterNodeView('life', true);
-}
-
-function goToLevel(level) {
-  if (level < 0 || level >= navStack.length) return;
-  navStack = navStack.slice(0, level + 1);
-  if (currentView !== 'graph') showGraphView();
-  enterNodeView(navStack[navStack.length - 1].id, true);
-}
-
-function goUp() {
-  if (navStack.length <= 1) return;
-  navStack.pop();
-  if (currentView !== 'graph') showGraphView();
-  enterNodeView(navStack[navStack.length - 1].id, true);
-}
 
 // ===== Graph Controls =====
 function zoomIn() {
@@ -705,12 +664,12 @@ function zoomOut() {
 
 function resetView() {
   if (!cy) return;
-  if (navStack.length > 1) {
-    goToRoot();
+  if (currentPath.length > 1) {
+    enterRootView(true);
   } else {
     cy.animate({ fit: { eles: cy.elements(':visible'), padding: 60 } }, { duration: 400, easing: 'ease-in-out-cubic' });
   }
 }
 
-// ===== Init =====
+// ===== Run =====
 initGraph();

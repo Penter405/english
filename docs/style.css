@@ -325,12 +325,50 @@ body::before {
   box-shadow: 0 4px 20px var(--accent-primary-glow);
 }
 
-/* ===== Word List View ===== */
+/* ===== Back Button (top-right) ===== */
+.back-btn {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  border: none;
+  border-radius: var(--radius-full);
+  color: white;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  box-shadow: 0 4px 20px var(--accent-primary-glow);
+}
+
+.back-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 6px 30px var(--accent-primary-glow);
+}
+
+.back-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.back-arrow {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+/* ===== Group / Word Detail View ===== */
+#group-view,
 #word-view {
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
 
+.group-container,
 .word-list-container {
   max-width: 960px;
   margin: 0 auto;
