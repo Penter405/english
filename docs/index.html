@@ -3,23 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Interactive vocabulary learning website. Explore 100 topic groups with 5,000 English words organized by difficulty through an interactive graph.">
-  <title>English Vocabulary Graph — Explore 5,000 Words by Topic</title>
+  <meta name="description" content="Interactive exam vocabulary explorer. Drill down through categories to discover 4,000+ English words from Taiwanese vocational exams.">
+  <title>Exam Vocabulary Graph — Explore 4,000+ Words</title>
   <link rel="stylesheet" href="./style.css">
   <script src="https://unpkg.com/cytoscape@3.28.1/dist/cytoscape.min.js"></script>
 </head>
 <body>
-  <!-- Top-left corner: Original purpose link -->
+  <!-- Top-left corner: Root Word Explorer link -->
   <a href="../web/index.html" class="origin-link" id="origin-link" title="Root Word Explorer">
     <span class="origin-icon">🔤</span>
     <span class="origin-text">Root Word Explorer</span>
   </a>
 
-  <!-- Back to Graph button (top-right, hidden by default) -->
-  <button class="back-btn" id="back-btn" style="display: none;" onclick="showGraph()">
-    <span class="back-arrow">←</span>
-    <span>Back to Graph</span>
-  </button>
+  <!-- Navigation breadcrumb (top-center) -->
+  <div class="breadcrumb-bar" id="breadcrumb-bar">
+    <button class="breadcrumb-item" id="bc-root" onclick="goToRoot()">Vocabulary</button>
+  </div>
 
   <!-- Graph View -->
   <div id="graph-view" class="view active">
@@ -51,11 +50,23 @@
     </div>
   </div>
 
-  <!-- Group Detail View -->
-  <div id="group-view" class="view">
-    <div class="group-container" id="group-container">
+  <!-- Word List View (replaces old group-view) -->
+  <div id="word-view" class="view">
+    <div class="word-list-container" id="word-list-container">
       <!-- Populated by JS -->
     </div>
+  </div>
+
+  <!-- Definition Popup / Modal -->
+  <div class="def-overlay" id="def-overlay" onclick="closeDefinition()"></div>
+  <div class="def-popup" id="def-popup">
+    <button class="def-close" onclick="closeDefinition()">&times;</button>
+    <h2 class="def-word" id="def-word"></h2>
+    <div class="def-meta" id="def-meta"></div>
+    <div class="def-image-container" id="def-image-container" style="display:none;">
+      <img id="def-image" class="def-image" alt="" />
+    </div>
+    <div class="def-content" id="def-content"></div>
   </div>
 
   <script src="./app.js"></script>

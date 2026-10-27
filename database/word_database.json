@@ -1,0 +1,2252 @@
+{
+  "roots": {
+    "uni": {
+      "meaning": "one",
+      "meaning_zh": "一",
+      "origin_word": "one",
+      "rule": 1,
+      "rule_name": "Vowel interchange",
+      "explanation": "one → uni (o↔u vowel interchange)",
+      "derived_words": [
+        "unite",
+        "union",
+        "unique",
+        "unit",
+        "unicorn",
+        "uniform",
+        "unify",
+        "universal",
+        "universe",
+        "university",
+        "unilateral",
+        "unanimity"
+      ]
+    },
+    "sim": {
+      "meaning": "same/similar",
+      "meaning_zh": "相同",
+      "origin_word": "same",
+      "rule": 1,
+      "rule_name": "Vowel interchange",
+      "explanation": "same → sim (a↔i vowel interchange)",
+      "derived_words": [
+        "similar",
+        "simultaneous",
+        "simulate",
+        "simple",
+        "simile",
+        "simplify",
+        "simplicity",
+        "resemblance"
+      ]
+    },
+    "nov": {
+      "meaning": "new",
+      "meaning_zh": "新",
+      "origin_word": "new",
+      "rule": 2,
+      "rule_name": "u-v-w interchange",
+      "explanation": "new → nov (w↔v interchange)",
+      "derived_words": [
+        "novel",
+        "novice",
+        "innovation",
+        "innovate",
+        "nova",
+        "renovate",
+        "renovation",
+        "novelty"
+      ]
+    },
+    "vol": {
+      "meaning": "will/wish",
+      "meaning_zh": "意願",
+      "origin_word": "will",
+      "rule": 2,
+      "rule_name": "u-v-w interchange",
+      "explanation": "will → vol (w↔v interchange)",
+      "derived_words": [
+        "volunteer",
+        "voluntary",
+        "benevolence",
+        "benevolent",
+        "malevolent",
+        "volition"
+      ]
+    },
+    "vid": {
+      "meaning": "see",
+      "meaning_zh": "看",
+      "origin_word": "see",
+      "rule": 4,
+      "rule_name": "d-t-s interchange",
+      "explanation": "see → vid (s↔d interchange, vowel change)",
+      "derived_words": [
+        "video",
+        "evidence",
+        "provide",
+        "vision",
+        "visible",
+        "visit",
+        "visual",
+        "provident",
+        "providence"
+      ]
+    },
+    "wis": {
+      "meaning": "see/know",
+      "meaning_zh": "看/知",
+      "origin_word": "see",
+      "rule": 4,
+      "rule_name": "d-t-s interchange",
+      "explanation": "see → wis (s↔s, vowel change)",
+      "derived_words": [
+        "wise",
+        "wisdom",
+        "witness",
+        "wizard"
+      ]
+    },
+    "dent": {
+      "meaning": "tooth",
+      "meaning_zh": "牙齒",
+      "origin_word": "tooth",
+      "rule": 4,
+      "rule_name": "d-t-s interchange",
+      "explanation": "tooth → dent (t↔d interchange, vowel change)",
+      "derived_words": [
+        "dental",
+        "dentist",
+        "denture",
+        "indent",
+        "trident"
+      ]
+    },
+    "sol": {
+      "meaning": "sun/alone",
+      "meaning_zh": "太陽/獨",
+      "origin_word": "sun",
+      "rule": 5,
+      "rule_name": "m-n-l-r interchange",
+      "explanation": "sun → sol (n↔l interchange, vowel change)",
+      "derived_words": [
+        "solar",
+        "solo",
+        "sole",
+        "solitary",
+        "solitude",
+        "solstice",
+        "console",
+        "desolate"
+      ]
+    },
+    "lun": {
+      "meaning": "moon",
+      "meaning_zh": "月亮",
+      "origin_word": "moon",
+      "rule": 5,
+      "rule_name": "m-n-l-r interchange",
+      "explanation": "moon → lun (m↔l interchange, vowel change)",
+      "derived_words": [
+        "lunar",
+        "lunatic",
+        "lunation",
+        "interlunar"
+      ]
+    },
+    "bene": {
+      "meaning": "good/well",
+      "meaning_zh": "好",
+      "origin_word": "fine",
+      "rule": 6,
+      "rule_name": "b-p-m-f-v interchange",
+      "explanation": "fine → bene (f↔b interchange, vowel change)",
+      "derived_words": [
+        "benefit",
+        "beneficial",
+        "benevolent",
+        "benevolence",
+        "benediction",
+        "benign"
+      ]
+    },
+    "fin": {
+      "meaning": "end/sharp/fine",
+      "meaning_zh": "結束/尖端",
+      "origin_word": "pen",
+      "rule": 6,
+      "rule_name": "b-p-m-f-v interchange",
+      "explanation": "pen → fin (p↔f interchange)",
+      "derived_words": [
+        "final",
+        "finish",
+        "finite",
+        "infinite",
+        "finance",
+        "fine",
+        "define",
+        "refine",
+        "confine"
+      ]
+    },
+    "clue": {
+      "meaning": "connect/thread",
+      "meaning_zh": "線索/連接",
+      "origin_word": "glue",
+      "rule": 3,
+      "rule_name": "g-k-h interchange",
+      "explanation": "glue → clue (g↔c/k interchange)",
+      "derived_words": [
+        "clue",
+        "clueless",
+        "include",
+        "exclude",
+        "conclude",
+        "preclude"
+      ]
+    },
+    "corn": {
+      "meaning": "horn-shaped",
+      "meaning_zh": "角狀",
+      "origin_word": "horn",
+      "rule": 3,
+      "rule_name": "g-k-h interchange",
+      "explanation": "horn → corn (h↔c interchange)",
+      "derived_words": [
+        "corn",
+        "corner",
+        "cornucopia",
+        "unicorn",
+        "cornet",
+        "cornerstone"
+      ]
+    },
+    "bag": {
+      "meaning": "large/container",
+      "meaning_zh": "袋子/大",
+      "origin_word": "big",
+      "rule": 1,
+      "rule_name": "Vowel interchange",
+      "explanation": "big → bag (i↔a vowel interchange)",
+      "derived_words": [
+        "bag",
+        "baggage",
+        "bagpipe"
+      ]
+    },
+    "rust": {
+      "meaning": "oxidize/decay",
+      "meaning_zh": "生鏽",
+      "origin_word": "rest",
+      "rule": 1,
+      "rule_name": "Vowel interchange",
+      "explanation": "rest → rust (e↔u vowel interchange)",
+      "derived_words": [
+        "rust",
+        "rusty",
+        "rustic"
+      ]
+    },
+    "ject": {
+      "meaning": "throw",
+      "meaning_zh": "投擲",
+      "origin_word": "cast",
+      "rule": 3,
+      "rule_name": "g-k-h interchange",
+      "explanation": "cast → ject (c↔j/g interchange, vowel change)",
+      "derived_words": [
+        "reject",
+        "inject",
+        "project",
+        "object",
+        "subject",
+        "eject",
+        "dejected",
+        "trajectory",
+        "projection"
+      ]
+    },
+    "port": {
+      "meaning": "carry",
+      "meaning_zh": "攜帶",
+      "origin_word": "bear",
+      "rule": 6,
+      "rule_name": "b-p-m-f-v interchange",
+      "explanation": "bear → port (b↔p interchange)",
+      "derived_words": [
+        "transport",
+        "import",
+        "export",
+        "report",
+        "support",
+        "portable",
+        "deport",
+        "passport"
+      ]
+    },
+    "duct": {
+      "meaning": "lead",
+      "meaning_zh": "引導",
+      "origin_word": "tug",
+      "rule": 4,
+      "rule_name": "d-t-s interchange",
+      "explanation": "tug → duct (t↔d interchange)",
+      "derived_words": [
+        "conduct",
+        "produce",
+        "reduce",
+        "introduce",
+        "educate",
+        "deduct",
+        "induct",
+        "product"
+      ]
+    },
+    "scrib": {
+      "meaning": "write",
+      "meaning_zh": "書寫",
+      "origin_word": "scratch",
+      "rule": 4,
+      "rule_name": "d-t-s interchange",
+      "explanation": "scratch → scrib (related consonant shifts)",
+      "derived_words": [
+        "describe",
+        "prescribe",
+        "subscribe",
+        "inscribe",
+        "script",
+        "scripture",
+        "manuscript",
+        "postscript"
+      ]
+    },
+    "spec": {
+      "meaning": "look/see",
+      "meaning_zh": "觀看",
+      "origin_word": "spy",
+      "rule": 6,
+      "rule_name": "b-p-m-f-v interchange",
+      "explanation": "spy → spec (related observation root)",
+      "derived_words": [
+        "spectacle",
+        "spectrum",
+        "inspect",
+        "respect",
+        "suspect",
+        "prospect",
+        "perspective",
+        "special"
+      ]
+    },
+    "fact": {
+      "meaning": "make/do",
+      "meaning_zh": "做/製造",
+      "origin_word": "do",
+      "rule": 4,
+      "rule_name": "d-t-s interchange",
+      "explanation": "do → fact (d↔f labial shift, related making root)",
+      "derived_words": [
+        "factory",
+        "manufacture",
+        "artifact",
+        "satisfaction",
+        "benefactor",
+        "factor",
+        "facile"
+      ]
+    },
+    "mit": {
+      "meaning": "send",
+      "meaning_zh": "送/發",
+      "origin_word": "send",
+      "rule": 4,
+      "rule_name": "d-t-s interchange",
+      "explanation": "send → mit (s↔t interchange, nasal shift)",
+      "derived_words": [
+        "submit",
+        "commit",
+        "permit",
+        "transmit",
+        "admit",
+        "emit",
+        "omit",
+        "mission",
+        "missile"
+      ]
+    },
+    "rupt": {
+      "meaning": "break",
+      "meaning_zh": "破裂",
+      "origin_word": "rip",
+      "rule": 1,
+      "rule_name": "Vowel interchange",
+      "explanation": "rip → rupt (i↔u vowel interchange)",
+      "derived_words": [
+        "rupt",
+        "disrupt",
+        "interrupt",
+        "corrupt",
+        "erupt",
+        "bankrupt",
+        "abrupt",
+        "rupture"
+      ]
+    },
+    "tract": {
+      "meaning": "pull/draw",
+      "meaning_zh": "拉/拖",
+      "origin_word": "drag",
+      "rule": 3,
+      "rule_name": "g-k-h interchange",
+      "explanation": "drag → tract (g↔ct, d↔t interchange)",
+      "derived_words": [
+        "attract",
+        "extract",
+        "contract",
+        "distract",
+        "subtract",
+        "tractor",
+        "abstract",
+        "retract"
+      ]
+    },
+    "vers": {
+      "meaning": "turn",
+      "meaning_zh": "轉",
+      "origin_word": "whirl",
+      "rule": 2,
+      "rule_name": "u-v-w interchange",
+      "explanation": "whirl → vers (w↔v interchange)",
+      "derived_words": [
+        "reverse",
+        "universe",
+        "converse",
+        "diverse",
+        "inverse",
+        "version",
+        "vertical",
+        "versatile"
+      ]
+    },
+    "vent": {
+      "meaning": "come",
+      "meaning_zh": "來",
+      "origin_word": "wend",
+      "rule": 2,
+      "rule_name": "u-v-w interchange",
+      "explanation": "wend → vent (w↔v interchange, d↔t)",
+      "derived_words": [
+        "event",
+        "prevent",
+        "invent",
+        "adventure",
+        "convention",
+        "venture",
+        "advent",
+        "revenue"
+      ]
+    },
+    "cred": {
+      "meaning": "believe",
+      "meaning_zh": "相信",
+      "origin_word": "heart",
+      "rule": 3,
+      "rule_name": "g-k-h interchange",
+      "explanation": "heart → cred (h↔c interchange)",
+      "derived_words": [
+        "credit",
+        "credible",
+        "incredible",
+        "credentials",
+        "creed",
+        "accredit"
+      ]
+    },
+    "grat": {
+      "meaning": "pleasing/thankful",
+      "meaning_zh": "感激/愉快",
+      "origin_word": "glad",
+      "rule": 4,
+      "rule_name": "d-t-s interchange",
+      "explanation": "glad → grat (d↔t interchange, l↔r)",
+      "derived_words": [
+        "grateful",
+        "gratitude",
+        "congratulate",
+        "gratify",
+        "grace",
+        "ingrate",
+        "gratis"
+      ]
+    },
+    "pend": {
+      "meaning": "hang/weigh",
+      "meaning_zh": "懸掛/衡量",
+      "origin_word": "hang",
+      "rule": 6,
+      "rule_name": "b-p-m-f-v interchange",
+      "explanation": "hang → pend (h↔p labial shift)",
+      "derived_words": [
+        "depend",
+        "suspend",
+        "spend",
+        "pendant",
+        "pending",
+        "appendix",
+        "independent",
+        "pension"
+      ]
+    },
+    "cap": {
+      "meaning": "head/seize",
+      "meaning_zh": "頭/抓",
+      "origin_word": "head",
+      "rule": 3,
+      "rule_name": "g-k-h interchange",
+      "explanation": "head → cap (h↔c interchange, d↔p)",
+      "derived_words": [
+        "captain",
+        "capital",
+        "capture",
+        "capable",
+        "capacity",
+        "cap",
+        "chapter",
+        "capitalize"
+      ]
+    },
+    "aud": {
+      "meaning": "hear",
+      "meaning_zh": "聽",
+      "origin_word": "hear",
+      "rule": 3,
+      "rule_name": "g-k-h interchange",
+      "explanation": "hear → aud (h↔silent, vowel change)",
+      "derived_words": [
+        "audience",
+        "audio",
+        "auditorium",
+        "audition",
+        "audit",
+        "audible",
+        "inaudible"
+      ]
+    },
+    "dict": {
+      "meaning": "speak/say",
+      "meaning_zh": "說/講",
+      "origin_word": "say",
+      "rule": 4,
+      "rule_name": "d-t-s interchange",
+      "explanation": "say → dict (s↔d interchange)",
+      "derived_words": [
+        "dictionary",
+        "dictate",
+        "predict",
+        "contradict",
+        "verdict",
+        "indicate",
+        "dedicate"
+      ]
+    },
+    "loc": {
+      "meaning": "place",
+      "meaning_zh": "地方",
+      "origin_word": "lay",
+      "rule": 5,
+      "rule_name": "m-n-l-r interchange",
+      "explanation": "lay → loc (related placement root)",
+      "derived_words": [
+        "local",
+        "locate",
+        "location",
+        "allocate",
+        "locomotive",
+        "dislocate",
+        "relocate"
+      ]
+    },
+    "mov": {
+      "meaning": "move",
+      "meaning_zh": "移動",
+      "origin_word": "move",
+      "rule": 6,
+      "rule_name": "b-p-m-f-v interchange",
+      "explanation": "move → mov (direct cognate)",
+      "derived_words": [
+        "move",
+        "movement",
+        "remove",
+        "remote",
+        "motor",
+        "motion",
+        "mobile",
+        "promote",
+        "emotion"
+      ]
+    },
+    "nat": {
+      "meaning": "born/nature",
+      "meaning_zh": "出生/自然",
+      "origin_word": "born",
+      "rule": 5,
+      "rule_name": "m-n-l-r interchange",
+      "explanation": "born → nat (b↔n labial shift)",
+      "derived_words": [
+        "nature",
+        "natural",
+        "nation",
+        "native",
+        "innate",
+        "prenatal",
+        "supernatural"
+      ]
+    },
+    "path": {
+      "meaning": "feeling/suffering",
+      "meaning_zh": "感覺/痛苦",
+      "origin_word": "feel",
+      "rule": 6,
+      "rule_name": "b-p-m-f-v interchange",
+      "explanation": "feel → path (f↔p interchange, Greek origin)",
+      "derived_words": [
+        "sympathy",
+        "empathy",
+        "apathy",
+        "pathetic",
+        "passion",
+        "patient",
+        "compassion",
+        "antipathy"
+      ]
+    },
+    "ped": {
+      "meaning": "foot",
+      "meaning_zh": "腳",
+      "origin_word": "foot",
+      "rule": 6,
+      "rule_name": "b-p-m-f-v interchange",
+      "explanation": "foot → ped (f↔p interchange, t↔d)",
+      "derived_words": [
+        "pedestrian",
+        "pedal",
+        "expedition",
+        "impede",
+        "centipede",
+        "pedicure",
+        "biped"
+      ]
+    },
+    "man": {
+      "meaning": "hand",
+      "meaning_zh": "手",
+      "origin_word": "hand",
+      "rule": 3,
+      "rule_name": "g-k-h interchange",
+      "explanation": "hand → man (h↔silent, d↔n interchange)",
+      "derived_words": [
+        "manual",
+        "manage",
+        "manner",
+        "manipulate",
+        "manifest",
+        "manuscript",
+        "manufacture",
+        "command"
+      ]
+    },
+    "gen": {
+      "meaning": "birth/kind/race",
+      "meaning_zh": "出生/種類",
+      "origin_word": "kin",
+      "rule": 3,
+      "rule_name": "g-k-h interchange",
+      "explanation": "kin → gen (k↔g interchange)",
+      "derived_words": [
+        "generate",
+        "generation",
+        "gene",
+        "gender",
+        "generous",
+        "genius",
+        "genuine",
+        "gentle",
+        "general",
+        "generic"
+      ]
+    },
+    "lect": {
+      "meaning": "read/gather/choose",
+      "meaning_zh": "閱讀/收集/選擇",
+      "origin_word": "gather",
+      "rule": 3,
+      "rule_name": "g-k-h interchange",
+      "explanation": "gather → lect (g↔l shift via Latin legere)",
+      "derived_words": [
+        "collect",
+        "select",
+        "elect",
+        "lecture",
+        "intellect",
+        "dialect",
+        "neglect",
+        "recollect"
+      ]
+    },
+    "struct": {
+      "meaning": "build",
+      "meaning_zh": "建造",
+      "origin_word": "strew",
+      "rule": 4,
+      "rule_name": "d-t-s interchange",
+      "explanation": "strew → struct (related building/laying root)",
+      "derived_words": [
+        "structure",
+        "construct",
+        "destroy",
+        "instruct",
+        "obstruct",
+        "infrastructure",
+        "restructure"
+      ]
+    },
+    "form": {
+      "meaning": "shape",
+      "meaning_zh": "形狀",
+      "origin_word": "form",
+      "rule": 6,
+      "rule_name": "b-p-m-f-v interchange",
+      "explanation": "form (direct Latin cognate)",
+      "derived_words": [
+        "inform",
+        "reform",
+        "perform",
+        "transform",
+        "uniform",
+        "formal",
+        "formula",
+        "platform",
+        "conform"
+      ]
+    },
+    "pos": {
+      "meaning": "put/place",
+      "meaning_zh": "放置",
+      "origin_word": "put",
+      "rule": 6,
+      "rule_name": "b-p-m-f-v interchange",
+      "explanation": "put → pos (related placement root)",
+      "derived_words": [
+        "position",
+        "compose",
+        "dispose",
+        "expose",
+        "impose",
+        "oppose",
+        "propose",
+        "purpose",
+        "suppose",
+        "deposit"
+      ]
+    },
+    "press": {
+      "meaning": "push/squeeze",
+      "meaning_zh": "壓/擠",
+      "origin_word": "press",
+      "rule": 6,
+      "rule_name": "b-p-m-f-v interchange",
+      "explanation": "press (direct Latin cognate)",
+      "derived_words": [
+        "express",
+        "impress",
+        "compress",
+        "depress",
+        "suppress",
+        "pressure",
+        "impression"
+      ]
+    },
+    "clar": {
+      "meaning": "clear/bright",
+      "meaning_zh": "清楚/明亮",
+      "origin_word": "clear",
+      "rule": 5,
+      "rule_name": "m-n-l-r interchange",
+      "explanation": "clear → clar (vowel shift)",
+      "derived_words": [
+        "clear",
+        "clarify",
+        "clarity",
+        "declare",
+        "declaration"
+      ]
+    },
+    "cur": {
+      "meaning": "care/run",
+      "meaning_zh": "照顧/跑",
+      "origin_word": "care",
+      "rule": 1,
+      "rule_name": "Vowel interchange",
+      "explanation": "care → cur (a↔u vowel interchange)",
+      "derived_words": [
+        "cure",
+        "curious",
+        "accurate",
+        "occur",
+        "current",
+        "currency",
+        "excursion",
+        "secure",
+        "procure"
+      ]
+    },
+    "fid": {
+      "meaning": "faith/trust",
+      "meaning_zh": "信仰/信任",
+      "origin_word": "faith",
+      "rule": 6,
+      "rule_name": "b-p-m-f-v interchange",
+      "explanation": "faith → fid (related trust root)",
+      "derived_words": [
+        "confident",
+        "confide",
+        "fidelity",
+        "infidel",
+        "affidavit",
+        "fiduciary"
+      ]
+    },
+    "flu": {
+      "meaning": "flow",
+      "meaning_zh": "流動",
+      "origin_word": "flow",
+      "rule": 2,
+      "rule_name": "u-v-w interchange",
+      "explanation": "flow → flu (w↔u interchange)",
+      "derived_words": [
+        "fluid",
+        "fluent",
+        "influence",
+        "affluent",
+        "fluctuate",
+        "flush",
+        "influx",
+        "superfluous"
+      ]
+    },
+    "grad": {
+      "meaning": "step/walk",
+      "meaning_zh": "步/走",
+      "origin_word": "stride",
+      "rule": 4,
+      "rule_name": "d-t-s interchange",
+      "explanation": "stride → grad (s↔g, related stepping root)",
+      "derived_words": [
+        "grade",
+        "gradual",
+        "graduate",
+        "degrade",
+        "upgrade",
+        "ingredient",
+        "progress"
+      ]
+    },
+    "junct": {
+      "meaning": "join",
+      "meaning_zh": "連接",
+      "origin_word": "yoke",
+      "rule": 3,
+      "rule_name": "g-k-h interchange",
+      "explanation": "yoke → junct (y↔j interchange)",
+      "derived_words": [
+        "junction",
+        "conjunction",
+        "adjunct",
+        "injunction",
+        "disjunction"
+      ]
+    },
+    "luc": {
+      "meaning": "light",
+      "meaning_zh": "光",
+      "origin_word": "light",
+      "rule": 3,
+      "rule_name": "g-k-h interchange",
+      "explanation": "light → luc (gh↔c interchange)",
+      "derived_words": [
+        "lucid",
+        "translucent",
+        "elucidate",
+        "luminous",
+        "illuminate",
+        "illustrate"
+      ]
+    },
+    "magn": {
+      "meaning": "great/large",
+      "meaning_zh": "大/偉大",
+      "origin_word": "much",
+      "rule": 3,
+      "rule_name": "g-k-h interchange",
+      "explanation": "much → magn (related greatness root)",
+      "derived_words": [
+        "magnificent",
+        "magnify",
+        "magnitude",
+        "magnate",
+        "magnet"
+      ]
+    },
+    "plic": {
+      "meaning": "fold",
+      "meaning_zh": "摺疊",
+      "origin_word": "fold",
+      "rule": 6,
+      "rule_name": "b-p-m-f-v interchange",
+      "explanation": "fold → plic (f↔p interchange)",
+      "derived_words": [
+        "apply",
+        "imply",
+        "reply",
+        "multiply",
+        "complicate",
+        "explicit",
+        "implicit",
+        "duplicate",
+        "replicate"
+      ]
+    },
+    "quer": {
+      "meaning": "ask/seek",
+      "meaning_zh": "詢問/尋求",
+      "origin_word": "ask",
+      "rule": 3,
+      "rule_name": "g-k-h interchange",
+      "explanation": "ask → quer (related seeking root)",
+      "derived_words": [
+        "query",
+        "require",
+        "acquire",
+        "inquire",
+        "request",
+        "conquer",
+        "question"
+      ]
+    },
+    "rect": {
+      "meaning": "right/straight",
+      "meaning_zh": "正確/直",
+      "origin_word": "right",
+      "rule": 3,
+      "rule_name": "g-k-h interchange",
+      "explanation": "right → rect (gh↔ct interchange)",
+      "derived_words": [
+        "correct",
+        "direct",
+        "erect",
+        "rectangle",
+        "rectify",
+        "director"
+      ]
+    },
+    "sed": {
+      "meaning": "sit",
+      "meaning_zh": "坐",
+      "origin_word": "sit",
+      "rule": 4,
+      "rule_name": "d-t-s interchange",
+      "explanation": "sit → sed (t↔d interchange, vowel change)",
+      "derived_words": [
+        "sedentary",
+        "reside",
+        "president",
+        "session",
+        "assess",
+        "possess",
+        "obsess",
+        "settle"
+      ]
+    },
+    "sign": {
+      "meaning": "mark/seal",
+      "meaning_zh": "標記/符號",
+      "origin_word": "sign",
+      "rule": 4,
+      "rule_name": "d-t-s interchange",
+      "explanation": "sign (direct Latin cognate)",
+      "derived_words": [
+        "signal",
+        "significant",
+        "design",
+        "assign",
+        "resign",
+        "signature"
+      ]
+    },
+    "simil": {
+      "meaning": "like/resemble",
+      "meaning_zh": "相似",
+      "origin_word": "same",
+      "rule": 1,
+      "rule_name": "Vowel interchange",
+      "explanation": "same → simil (a↔i vowel interchange)",
+      "derived_words": [
+        "similar",
+        "assimilate",
+        "simulate",
+        "simultaneous",
+        "facsimile",
+        "resemblance"
+      ]
+    },
+    "sta": {
+      "meaning": "stand",
+      "meaning_zh": "站立",
+      "origin_word": "stand",
+      "rule": 4,
+      "rule_name": "d-t-s interchange",
+      "explanation": "stand → sta (related standing root)",
+      "derived_words": [
+        "state",
+        "station",
+        "stable",
+        "establish",
+        "obstacle",
+        "constant",
+        "instant",
+        "substance",
+        "status",
+        "statue",
+        "static"
+      ]
+    },
+    "ten": {
+      "meaning": "hold/keep",
+      "meaning_zh": "持有/保持",
+      "origin_word": "thin",
+      "rule": 1,
+      "rule_name": "Vowel interchange",
+      "explanation": "thin → ten (i↔e vowel interchange, related stretched/held tight)",
+      "derived_words": [
+        "contain",
+        "obtain",
+        "maintain",
+        "retain",
+        "sustain",
+        "entertain",
+        "content",
+        "tenant",
+        "tenure",
+        "attention"
+      ]
+    },
+    "vac": {
+      "meaning": "empty",
+      "meaning_zh": "空",
+      "origin_word": "void",
+      "rule": 2,
+      "rule_name": "u-v-w interchange",
+      "explanation": "void → vac (related emptiness root)",
+      "derived_words": [
+        "vacant",
+        "vacuum",
+        "vacation",
+        "evacuate",
+        "vacancy"
+      ]
+    },
+    "voc": {
+      "meaning": "voice/call",
+      "meaning_zh": "聲音/呼叫",
+      "origin_word": "voice",
+      "rule": 2,
+      "rule_name": "u-v-w interchange",
+      "explanation": "voice → voc (direct cognate)",
+      "derived_words": [
+        "vocal",
+        "vocabulary",
+        "advocate",
+        "provoke",
+        "invoke",
+        "evoke",
+        "revoke",
+        "vocation"
+      ]
+    },
+    "act": {
+      "meaning": "do/drive",
+      "meaning_zh": "做/驅動",
+      "origin_word": "do",
+      "rule": 3,
+      "rule_name": "g-k-h interchange",
+      "explanation": "do → act (related doing root via Latin agere)",
+      "derived_words": [
+        "act",
+        "action",
+        "active",
+        "actual",
+        "react",
+        "interact",
+        "exact",
+        "transaction",
+        "agent"
+      ]
+    },
+    "cent": {
+      "meaning": "hundred",
+      "meaning_zh": "百",
+      "origin_word": "hundred",
+      "rule": 3,
+      "rule_name": "g-k-h interchange",
+      "explanation": "hundred → cent (h↔c interchange)",
+      "derived_words": [
+        "century",
+        "cent",
+        "percent",
+        "centimeter",
+        "centigrade"
+      ]
+    },
+    "cept": {
+      "meaning": "take/receive",
+      "meaning_zh": "拿/接收",
+      "origin_word": "catch",
+      "rule": 3,
+      "rule_name": "g-k-h interchange",
+      "explanation": "catch → cept (related taking root)",
+      "derived_words": [
+        "accept",
+        "concept",
+        "except",
+        "intercept",
+        "perceive",
+        "receive",
+        "deception",
+        "reception"
+      ]
+    },
+    "cide": {
+      "meaning": "cut/kill",
+      "meaning_zh": "切/殺",
+      "origin_word": "cut",
+      "rule": 3,
+      "rule_name": "g-k-h interchange",
+      "explanation": "cut → cide (related cutting root)",
+      "derived_words": [
+        "decide",
+        "suicide",
+        "homicide",
+        "pesticide",
+        "coincide",
+        "incision",
+        "concise",
+        "precise"
+      ]
+    },
+    "cogn": {
+      "meaning": "know",
+      "meaning_zh": "知道",
+      "origin_word": "know",
+      "rule": 3,
+      "rule_name": "g-k-h interchange",
+      "explanation": "know → cogn (kn↔gn interchange)",
+      "derived_words": [
+        "recognize",
+        "cognitive",
+        "cognition",
+        "incognito",
+        "diagnosis"
+      ]
+    },
+    "cord": {
+      "meaning": "heart",
+      "meaning_zh": "心",
+      "origin_word": "heart",
+      "rule": 3,
+      "rule_name": "g-k-h interchange",
+      "explanation": "heart → cord (h↔c interchange)",
+      "derived_words": [
+        "accord",
+        "record",
+        "discord",
+        "courage",
+        "encourage",
+        "discourage",
+        "core",
+        "cordial"
+      ]
+    },
+    "dom": {
+      "meaning": "rule/house",
+      "meaning_zh": "統治/家",
+      "origin_word": "tame",
+      "rule": 4,
+      "rule_name": "d-t-s interchange",
+      "explanation": "tame → dom (t↔d interchange)",
+      "derived_words": [
+        "domain",
+        "dominate",
+        "domestic",
+        "dominant",
+        "kingdom",
+        "freedom",
+        "wisdom"
+      ]
+    },
+    "equ": {
+      "meaning": "equal/even",
+      "meaning_zh": "相等/均勻",
+      "origin_word": "even",
+      "rule": 2,
+      "rule_name": "u-v-w interchange",
+      "explanation": "even → equ (v↔qu interchange)",
+      "derived_words": [
+        "equal",
+        "equation",
+        "equator",
+        "equivalent",
+        "adequate",
+        "equip",
+        "equilibrium"
+      ]
+    },
+    "fer": {
+      "meaning": "carry/bear",
+      "meaning_zh": "攜帶/承受",
+      "origin_word": "bear",
+      "rule": 6,
+      "rule_name": "b-p-m-f-v interchange",
+      "explanation": "bear → fer (b↔f interchange)",
+      "derived_words": [
+        "transfer",
+        "refer",
+        "prefer",
+        "offer",
+        "suffer",
+        "differ",
+        "conference",
+        "fertile",
+        "infer"
+      ]
+    },
+    "fus": {
+      "meaning": "pour/melt",
+      "meaning_zh": "倒/融",
+      "origin_word": "pour",
+      "rule": 6,
+      "rule_name": "b-p-m-f-v interchange",
+      "explanation": "pour → fus (p↔f interchange)",
+      "derived_words": [
+        "confuse",
+        "refuse",
+        "diffuse",
+        "infuse",
+        "transfusion",
+        "fusion",
+        "profuse"
+      ]
+    },
+    "labor": {
+      "meaning": "work",
+      "meaning_zh": "工作",
+      "origin_word": "labor",
+      "rule": 5,
+      "rule_name": "m-n-l-r interchange",
+      "explanation": "labor (direct Latin cognate)",
+      "derived_words": [
+        "labor",
+        "laboratory",
+        "collaborate",
+        "elaborate",
+        "laborious"
+      ]
+    },
+    "leg": {
+      "meaning": "law/read",
+      "meaning_zh": "法律/閱讀",
+      "origin_word": "law",
+      "rule": 3,
+      "rule_name": "g-k-h interchange",
+      "explanation": "law → leg (w↔g interchange)",
+      "derived_words": [
+        "legal",
+        "legislate",
+        "legislation",
+        "legitimate",
+        "legend",
+        "legacy",
+        "privilege",
+        "illegal"
+      ]
+    },
+    "liber": {
+      "meaning": "free",
+      "meaning_zh": "自由",
+      "origin_word": "free",
+      "rule": 6,
+      "rule_name": "b-p-m-f-v interchange",
+      "explanation": "free → liber (f↔l, related freedom root)",
+      "derived_words": [
+        "liberty",
+        "liberal",
+        "liberate",
+        "deliberate",
+        "deliver"
+      ]
+    },
+    "mem": {
+      "meaning": "remember/mindful",
+      "meaning_zh": "記憶",
+      "origin_word": "mind",
+      "rule": 5,
+      "rule_name": "m-n-l-r interchange",
+      "explanation": "mind → mem (n↔m interchange)",
+      "derived_words": [
+        "memory",
+        "remember",
+        "memorial",
+        "memorize",
+        "memoir",
+        "memorable",
+        "commemorate"
+      ]
+    },
+    "norm": {
+      "meaning": "rule/standard",
+      "meaning_zh": "規範/標準",
+      "origin_word": "norm",
+      "rule": 5,
+      "rule_name": "m-n-l-r interchange",
+      "explanation": "norm (direct Latin cognate)",
+      "derived_words": [
+        "normal",
+        "abnormal",
+        "enormous",
+        "norm",
+        "normalize"
+      ]
+    },
+    "ord": {
+      "meaning": "order/rank",
+      "meaning_zh": "順序/等級",
+      "origin_word": "order",
+      "rule": 4,
+      "rule_name": "d-t-s interchange",
+      "explanation": "order → ord (direct Latin cognate)",
+      "derived_words": [
+        "order",
+        "ordinary",
+        "extraordinary",
+        "coordinate",
+        "subordinate"
+      ]
+    },
+    "pel": {
+      "meaning": "push/drive",
+      "meaning_zh": "推/驅動",
+      "origin_word": "pull",
+      "rule": 1,
+      "rule_name": "Vowel interchange",
+      "explanation": "pull → pel (u↔e vowel interchange)",
+      "derived_words": [
+        "compel",
+        "expel",
+        "repel",
+        "propel",
+        "impel",
+        "dispel",
+        "impulse",
+        "pulse"
+      ]
+    },
+    "phon": {
+      "meaning": "sound/voice",
+      "meaning_zh": "聲音",
+      "origin_word": "sound",
+      "rule": 4,
+      "rule_name": "d-t-s interchange",
+      "explanation": "sound → phon (related Greek sound root)",
+      "derived_words": [
+        "phone",
+        "telephone",
+        "microphone",
+        "symphony",
+        "phonetic",
+        "earphone"
+      ]
+    },
+    "prim": {
+      "meaning": "first",
+      "meaning_zh": "第一/首要",
+      "origin_word": "first",
+      "rule": 6,
+      "rule_name": "b-p-m-f-v interchange",
+      "explanation": "first → prim (f↔p interchange)",
+      "derived_words": [
+        "primary",
+        "prime",
+        "primitive",
+        "prince",
+        "principal",
+        "principle",
+        "priority"
+      ]
+    },
+    "reg": {
+      "meaning": "rule/king/straight",
+      "meaning_zh": "統治/國王",
+      "origin_word": "right",
+      "rule": 3,
+      "rule_name": "g-k-h interchange",
+      "explanation": "right → reg (related ruling root)",
+      "derived_words": [
+        "regular",
+        "regulate",
+        "region",
+        "regime",
+        "register",
+        "reign"
+      ]
+    },
+    "sci": {
+      "meaning": "know",
+      "meaning_zh": "知道",
+      "origin_word": "know",
+      "rule": 3,
+      "rule_name": "g-k-h interchange",
+      "explanation": "know → sci (kn↔sc interchange)",
+      "derived_words": [
+        "science",
+        "scientist",
+        "conscious",
+        "conscience",
+        "omniscient"
+      ]
+    },
+    "sens": {
+      "meaning": "feel/perceive",
+      "meaning_zh": "感覺/感知",
+      "origin_word": "sense",
+      "rule": 4,
+      "rule_name": "d-t-s interchange",
+      "explanation": "sense → sens (direct Latin cognate)",
+      "derived_words": [
+        "sense",
+        "sensitive",
+        "sensation",
+        "consent",
+        "consensus",
+        "nonsense",
+        "sensible",
+        "sentimental"
+      ]
+    },
+    "serv": {
+      "meaning": "keep/serve",
+      "meaning_zh": "保持/服務",
+      "origin_word": "serve",
+      "rule": 4,
+      "rule_name": "d-t-s interchange",
+      "explanation": "serve → serv (direct Latin cognate)",
+      "derived_words": [
+        "serve",
+        "service",
+        "preserve",
+        "conserve",
+        "reserve",
+        "observe",
+        "deserve",
+        "servant"
+      ]
+    },
+    "soci": {
+      "meaning": "companion/group",
+      "meaning_zh": "同伴/社會",
+      "origin_word": "follow",
+      "rule": 4,
+      "rule_name": "d-t-s interchange",
+      "explanation": "follow → soci (related companionship root)",
+      "derived_words": [
+        "social",
+        "society",
+        "associate",
+        "sociology",
+        "sociable",
+        "antisocial"
+      ]
+    },
+    "terr": {
+      "meaning": "earth/land",
+      "meaning_zh": "土地/大地",
+      "origin_word": "earth",
+      "rule": 4,
+      "rule_name": "d-t-s interchange",
+      "explanation": "earth → terr (related earth root)",
+      "derived_words": [
+        "terrain",
+        "territory",
+        "terrestrial",
+        "terrace",
+        "subterranean",
+        "Mediterranean"
+      ]
+    },
+    "val": {
+      "meaning": "worth/strong",
+      "meaning_zh": "價值/強壯",
+      "origin_word": "well",
+      "rule": 2,
+      "rule_name": "u-v-w interchange",
+      "explanation": "well → val (w↔v interchange)",
+      "derived_words": [
+        "value",
+        "valid",
+        "evaluate",
+        "equivalent",
+        "prevail",
+        "available",
+        "invaluable"
+      ]
+    },
+    "vis": {
+      "meaning": "see",
+      "meaning_zh": "看",
+      "origin_word": "see",
+      "rule": 2,
+      "rule_name": "u-v-w interchange",
+      "explanation": "see → vis (related seeing root, s↔s)",
+      "derived_words": [
+        "visible",
+        "vision",
+        "visit",
+        "visual",
+        "invisible",
+        "supervise",
+        "revise",
+        "television",
+        "evident"
+      ]
+    },
+    "vit": {
+      "meaning": "life",
+      "meaning_zh": "生命",
+      "origin_word": "life",
+      "rule": 6,
+      "rule_name": "b-p-m-f-v interchange",
+      "explanation": "life → vit (l↔v, f↔t interchange)",
+      "derived_words": [
+        "vital",
+        "vitamin",
+        "vitality",
+        "survive",
+        "revive",
+        "vivid",
+        "viable"
+      ]
+    }
+  },
+  "affixes": {
+    "prefixes": {
+      "un": {
+        "meaning": "not",
+        "meaning_zh": "不"
+      },
+      "re": {
+        "meaning": "again/back",
+        "meaning_zh": "再/回"
+      },
+      "in": {
+        "meaning": "not/into",
+        "meaning_zh": "不/進入"
+      },
+      "im": {
+        "meaning": "not/into",
+        "meaning_zh": "不/進入"
+      },
+      "ir": {
+        "meaning": "not",
+        "meaning_zh": "不"
+      },
+      "il": {
+        "meaning": "not",
+        "meaning_zh": "不"
+      },
+      "dis": {
+        "meaning": "not/apart",
+        "meaning_zh": "不/分離"
+      },
+      "pre": {
+        "meaning": "before",
+        "meaning_zh": "在…之前"
+      },
+      "pro": {
+        "meaning": "forward/for",
+        "meaning_zh": "向前/支持"
+      },
+      "ex": {
+        "meaning": "out/former",
+        "meaning_zh": "出/前"
+      },
+      "en": {
+        "meaning": "make/put in",
+        "meaning_zh": "使/放入"
+      },
+      "em": {
+        "meaning": "make/put in",
+        "meaning_zh": "使/放入"
+      },
+      "de": {
+        "meaning": "down/from",
+        "meaning_zh": "向下/從"
+      },
+      "sub": {
+        "meaning": "under",
+        "meaning_zh": "在…之下"
+      },
+      "super": {
+        "meaning": "above",
+        "meaning_zh": "在…之上"
+      },
+      "inter": {
+        "meaning": "between",
+        "meaning_zh": "在…之間"
+      },
+      "trans": {
+        "meaning": "across",
+        "meaning_zh": "跨越"
+      },
+      "over": {
+        "meaning": "above/too much",
+        "meaning_zh": "超過"
+      },
+      "mis": {
+        "meaning": "wrong",
+        "meaning_zh": "錯誤"
+      },
+      "out": {
+        "meaning": "beyond",
+        "meaning_zh": "超出"
+      },
+      "co": {
+        "meaning": "together",
+        "meaning_zh": "共同"
+      },
+      "con": {
+        "meaning": "together",
+        "meaning_zh": "共同"
+      },
+      "com": {
+        "meaning": "together",
+        "meaning_zh": "共同"
+      },
+      "ad": {
+        "meaning": "to/toward",
+        "meaning_zh": "向/朝"
+      },
+      "ab": {
+        "meaning": "away from",
+        "meaning_zh": "遠離"
+      },
+      "anti": {
+        "meaning": "against",
+        "meaning_zh": "反對"
+      },
+      "auto": {
+        "meaning": "self",
+        "meaning_zh": "自身"
+      },
+      "bi": {
+        "meaning": "two",
+        "meaning_zh": "二"
+      },
+      "tri": {
+        "meaning": "three",
+        "meaning_zh": "三"
+      },
+      "multi": {
+        "meaning": "many",
+        "meaning_zh": "多"
+      },
+      "post": {
+        "meaning": "after",
+        "meaning_zh": "在…之後"
+      },
+      "bene": {
+        "meaning": "good/well",
+        "meaning_zh": "好"
+      },
+      "mal": {
+        "meaning": "bad",
+        "meaning_zh": "壞"
+      },
+      "mono": {
+        "meaning": "one/single",
+        "meaning_zh": "單一"
+      },
+      "uni": {
+        "meaning": "one",
+        "meaning_zh": "一"
+      },
+      "semi": {
+        "meaning": "half",
+        "meaning_zh": "半"
+      },
+      "counter": {
+        "meaning": "against/opposite",
+        "meaning_zh": "相反/對抗"
+      },
+      "fore": {
+        "meaning": "before/front",
+        "meaning_zh": "前/先"
+      },
+      "under": {
+        "meaning": "below/insufficient",
+        "meaning_zh": "在下/不足"
+      },
+      "non": {
+        "meaning": "not",
+        "meaning_zh": "非/不"
+      },
+      "mid": {
+        "meaning": "middle",
+        "meaning_zh": "中間"
+      },
+      "micro": {
+        "meaning": "small",
+        "meaning_zh": "微小"
+      },
+      "macro": {
+        "meaning": "large",
+        "meaning_zh": "巨大"
+      },
+      "neo": {
+        "meaning": "new",
+        "meaning_zh": "新"
+      },
+      "pseudo": {
+        "meaning": "false",
+        "meaning_zh": "假/偽"
+      },
+      "circum": {
+        "meaning": "around",
+        "meaning_zh": "環繞"
+      },
+      "contra": {
+        "meaning": "against",
+        "meaning_zh": "反對"
+      },
+      "extra": {
+        "meaning": "beyond/outside",
+        "meaning_zh": "超出/額外"
+      },
+      "infra": {
+        "meaning": "below",
+        "meaning_zh": "在下/基礎"
+      },
+      "ultra": {
+        "meaning": "beyond/extreme",
+        "meaning_zh": "超越/極端"
+      },
+      "retro": {
+        "meaning": "backward",
+        "meaning_zh": "向後/回溯"
+      },
+      "tele": {
+        "meaning": "far/distant",
+        "meaning_zh": "遠距"
+      },
+      "hyper": {
+        "meaning": "over/excessive",
+        "meaning_zh": "過度/超"
+      },
+      "hypo": {
+        "meaning": "under/below",
+        "meaning_zh": "低/下"
+      },
+      "para": {
+        "meaning": "beside/beyond",
+        "meaning_zh": "旁邊/超越"
+      },
+      "poly": {
+        "meaning": "many",
+        "meaning_zh": "多"
+      },
+      "omni": {
+        "meaning": "all",
+        "meaning_zh": "全"
+      },
+      "pan": {
+        "meaning": "all/every",
+        "meaning_zh": "全/泛"
+      },
+      "ambi": {
+        "meaning": "both/around",
+        "meaning_zh": "兩者/周圍"
+      }
+    },
+    "suffixes": {
+      "tion": {
+        "meaning": "act/state of",
+        "meaning_zh": "…的行為/狀態"
+      },
+      "sion": {
+        "meaning": "act/state of",
+        "meaning_zh": "…的行為/狀態"
+      },
+      "ation": {
+        "meaning": "act/process of",
+        "meaning_zh": "…的過程"
+      },
+      "ment": {
+        "meaning": "result/act of",
+        "meaning_zh": "…的結果"
+      },
+      "ness": {
+        "meaning": "state/quality of",
+        "meaning_zh": "…的性質"
+      },
+      "ence": {
+        "meaning": "state/quality of",
+        "meaning_zh": "…的性質"
+      },
+      "ance": {
+        "meaning": "state/quality of",
+        "meaning_zh": "…的性質"
+      },
+      "ity": {
+        "meaning": "state/quality of",
+        "meaning_zh": "…的性質"
+      },
+      "ty": {
+        "meaning": "state/quality of",
+        "meaning_zh": "…的性質"
+      },
+      "ous": {
+        "meaning": "full of",
+        "meaning_zh": "充滿…的"
+      },
+      "ious": {
+        "meaning": "full of",
+        "meaning_zh": "充滿…的"
+      },
+      "eous": {
+        "meaning": "full of",
+        "meaning_zh": "充滿…的"
+      },
+      "able": {
+        "meaning": "capable of",
+        "meaning_zh": "能…的"
+      },
+      "ible": {
+        "meaning": "capable of",
+        "meaning_zh": "能…的"
+      },
+      "ful": {
+        "meaning": "full of",
+        "meaning_zh": "充滿…的"
+      },
+      "less": {
+        "meaning": "without",
+        "meaning_zh": "沒有…的"
+      },
+      "ly": {
+        "meaning": "in the manner of",
+        "meaning_zh": "…地"
+      },
+      "er": {
+        "meaning": "one who/more",
+        "meaning_zh": "…者/更"
+      },
+      "or": {
+        "meaning": "one who",
+        "meaning_zh": "…者"
+      },
+      "ist": {
+        "meaning": "one who",
+        "meaning_zh": "…者"
+      },
+      "al": {
+        "meaning": "relating to",
+        "meaning_zh": "與…有關的"
+      },
+      "ial": {
+        "meaning": "relating to",
+        "meaning_zh": "與…有關的"
+      },
+      "ual": {
+        "meaning": "relating to",
+        "meaning_zh": "與…有關的"
+      },
+      "ive": {
+        "meaning": "tending to",
+        "meaning_zh": "傾向…的"
+      },
+      "ative": {
+        "meaning": "tending to",
+        "meaning_zh": "傾向…的"
+      },
+      "ic": {
+        "meaning": "relating to",
+        "meaning_zh": "與…有關的"
+      },
+      "ical": {
+        "meaning": "relating to",
+        "meaning_zh": "與…有關的"
+      },
+      "ing": {
+        "meaning": "ongoing action",
+        "meaning_zh": "進行中的"
+      },
+      "ed": {
+        "meaning": "past/done",
+        "meaning_zh": "已…的"
+      },
+      "ure": {
+        "meaning": "act/result",
+        "meaning_zh": "…的行為/結果"
+      },
+      "ary": {
+        "meaning": "relating to",
+        "meaning_zh": "與…有關的"
+      },
+      "ery": {
+        "meaning": "place/practice",
+        "meaning_zh": "…的場所/行為"
+      },
+      "ory": {
+        "meaning": "relating to/place",
+        "meaning_zh": "與…有關的/場所"
+      },
+      "ate": {
+        "meaning": "make/become",
+        "meaning_zh": "使成為"
+      },
+      "ify": {
+        "meaning": "make/become",
+        "meaning_zh": "使成為"
+      },
+      "ize": {
+        "meaning": "make/become",
+        "meaning_zh": "使成為"
+      },
+      "ise": {
+        "meaning": "make/become",
+        "meaning_zh": "使成為"
+      },
+      "ent": {
+        "meaning": "one who/tending to",
+        "meaning_zh": "…者/傾向"
+      },
+      "ant": {
+        "meaning": "one who/tending to",
+        "meaning_zh": "…者/傾向"
+      },
+      "eer": {
+        "meaning": "one who (specialized)",
+        "meaning_zh": "…者(專門)"
+      },
+      "ese": {
+        "meaning": "relating to (nationality)",
+        "meaning_zh": "…的(國籍)"
+      },
+      "dom": {
+        "meaning": "state/realm",
+        "meaning_zh": "…的狀態/領域"
+      },
+      "ship": {
+        "meaning": "state/skill",
+        "meaning_zh": "…的狀態/技能"
+      },
+      "ward": {
+        "meaning": "direction",
+        "meaning_zh": "朝向…"
+      },
+      "wise": {
+        "meaning": "manner/direction",
+        "meaning_zh": "以…方式"
+      },
+      "like": {
+        "meaning": "resembling",
+        "meaning_zh": "像…的"
+      },
+      "ism": {
+        "meaning": "doctrine/belief",
+        "meaning_zh": "…主義/…論"
+      },
+      "logy": {
+        "meaning": "study of",
+        "meaning_zh": "…學"
+      },
+      "ling": {
+        "meaning": "small/young",
+        "meaning_zh": "小的/年幼的"
+      },
+      "th": {
+        "meaning": "state/quality",
+        "meaning_zh": "…的狀態"
+      }
+    }
+  },
+  "simple_words": {
+    "one": {
+      "meaning": "the number 1",
+      "meaning_zh": "一"
+    },
+    "same": {
+      "meaning": "identical",
+      "meaning_zh": "相同"
+    },
+    "new": {
+      "meaning": "not old",
+      "meaning_zh": "新的"
+    },
+    "will": {
+      "meaning": "desire/intention",
+      "meaning_zh": "意願"
+    },
+    "see": {
+      "meaning": "to look",
+      "meaning_zh": "看"
+    },
+    "tooth": {
+      "meaning": "hard structure in mouth",
+      "meaning_zh": "牙齒"
+    },
+    "sun": {
+      "meaning": "the star",
+      "meaning_zh": "太陽"
+    },
+    "moon": {
+      "meaning": "earth's satellite",
+      "meaning_zh": "月亮"
+    },
+    "fine": {
+      "meaning": "good/excellent",
+      "meaning_zh": "好的"
+    },
+    "pen": {
+      "meaning": "writing instrument",
+      "meaning_zh": "筆"
+    },
+    "glue": {
+      "meaning": "adhesive",
+      "meaning_zh": "膠水"
+    },
+    "horn": {
+      "meaning": "pointed projection",
+      "meaning_zh": "角"
+    },
+    "big": {
+      "meaning": "large",
+      "meaning_zh": "大的"
+    },
+    "rest": {
+      "meaning": "to stop/relax",
+      "meaning_zh": "休息"
+    },
+    "cast": {
+      "meaning": "to throw",
+      "meaning_zh": "投擲"
+    },
+    "bear": {
+      "meaning": "to carry",
+      "meaning_zh": "承擔"
+    },
+    "tug": {
+      "meaning": "to pull",
+      "meaning_zh": "拖拉"
+    },
+    "scratch": {
+      "meaning": "to scrape",
+      "meaning_zh": "刮/抓"
+    },
+    "spy": {
+      "meaning": "to watch secretly",
+      "meaning_zh": "窺探"
+    },
+    "do": {
+      "meaning": "to perform",
+      "meaning_zh": "做"
+    },
+    "send": {
+      "meaning": "to dispatch",
+      "meaning_zh": "發送"
+    },
+    "rip": {
+      "meaning": "to tear",
+      "meaning_zh": "撕裂"
+    },
+    "drag": {
+      "meaning": "to pull along",
+      "meaning_zh": "拖"
+    },
+    "whirl": {
+      "meaning": "to spin",
+      "meaning_zh": "旋轉"
+    },
+    "wend": {
+      "meaning": "to go/travel",
+      "meaning_zh": "行走"
+    },
+    "heart": {
+      "meaning": "the organ/core",
+      "meaning_zh": "心"
+    },
+    "glad": {
+      "meaning": "happy",
+      "meaning_zh": "高興"
+    },
+    "hang": {
+      "meaning": "to suspend",
+      "meaning_zh": "懸掛"
+    },
+    "head": {
+      "meaning": "top of body",
+      "meaning_zh": "頭"
+    },
+    "shirt": {
+      "meaning": "a garment for upper body",
+      "meaning_zh": "襯衫"
+    },
+    "short": {
+      "meaning": "not long",
+      "meaning_zh": "短的"
+    },
+    "skirt": {
+      "meaning": "a garment for lower body",
+      "meaning_zh": "裙子"
+    },
+    "come": {
+      "meaning": "to arrive",
+      "meaning_zh": "來"
+    },
+    "go": {
+      "meaning": "to move/travel",
+      "meaning_zh": "去"
+    },
+    "hand": {
+      "meaning": "body part for gripping",
+      "meaning_zh": "手"
+    },
+    "man": {
+      "meaning": "adult human",
+      "meaning_zh": "人"
+    },
+    "ten": {
+      "meaning": "the number 10",
+      "meaning_zh": "十"
+    },
+    "two": {
+      "meaning": "the number 2",
+      "meaning_zh": "二"
+    },
+    "three": {
+      "meaning": "the number 3",
+      "meaning_zh": "三"
+    },
+    "foot": {
+      "meaning": "body part for walking",
+      "meaning_zh": "腳"
+    },
+    "stand": {
+      "meaning": "to be upright",
+      "meaning_zh": "站立"
+    },
+    "sit": {
+      "meaning": "to be seated",
+      "meaning_zh": "坐"
+    },
+    "set": {
+      "meaning": "to put/place",
+      "meaning_zh": "放置"
+    },
+    "cut": {
+      "meaning": "to divide with blade",
+      "meaning_zh": "切"
+    },
+    "run": {
+      "meaning": "to move fast",
+      "meaning_zh": "跑"
+    },
+    "fall": {
+      "meaning": "to drop down",
+      "meaning_zh": "落下"
+    },
+    "light": {
+      "meaning": "brightness",
+      "meaning_zh": "光"
+    },
+    "night": {
+      "meaning": "dark time",
+      "meaning_zh": "夜晚"
+    },
+    "right": {
+      "meaning": "correct/direction",
+      "meaning_zh": "對/右"
+    },
+    "write": {
+      "meaning": "to put words on paper",
+      "meaning_zh": "寫"
+    },
+    "fire": {
+      "meaning": "flames/burning",
+      "meaning_zh": "火"
+    },
+    "water": {
+      "meaning": "liquid",
+      "meaning_zh": "水"
+    },
+    "star": {
+      "meaning": "celestial body",
+      "meaning_zh": "星星"
+    },
+    "turn": {
+      "meaning": "to rotate",
+      "meaning_zh": "轉"
+    },
+    "know": {
+      "meaning": "to understand",
+      "meaning_zh": "知道"
+    },
+    "name": {
+      "meaning": "what something is called",
+      "meaning_zh": "名字"
+    },
+    "full": {
+      "meaning": "completely filled",
+      "meaning_zh": "滿的"
+    },
+    "break": {
+      "meaning": "to separate into pieces",
+      "meaning_zh": "打破"
+    },
+    "take": {
+      "meaning": "to grab/receive",
+      "meaning_zh": "拿"
+    },
+    "make": {
+      "meaning": "to create",
+      "meaning_zh": "製造"
+    },
+    "give": {
+      "meaning": "to hand over",
+      "meaning_zh": "給"
+    },
+    "live": {
+      "meaning": "to be alive",
+      "meaning_zh": "活"
+    },
+    "love": {
+      "meaning": "deep affection",
+      "meaning_zh": "愛"
+    },
+    "work": {
+      "meaning": "labor/effort",
+      "meaning_zh": "工作"
+    },
+    "word": {
+      "meaning": "unit of language",
+      "meaning_zh": "字/詞"
+    }
+  }
+}

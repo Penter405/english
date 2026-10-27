@@ -1,0 +1,836 @@
+{
+  "meta": {
+    "version": 1,
+    "generated": "2026-10-27",
+    "source": "exam_words.json"
+  },
+  "overview": {
+    "total_words": 6109,
+    "words_appeared_in_exams": 2314,
+    "words_never_appeared": 3795,
+    "exam_years": [
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112,
+      113,
+      114,
+      115
+    ],
+    "total_exam_years": 12
+  },
+  "level_breakdown": {
+    "1": {
+      "total_words": 1013,
+      "appeared_in_exams": 828,
+      "appearance_rate": 81.7,
+      "avg_total_appear": 20.5
+    },
+    "2": {
+      "total_words": 1035,
+      "appeared_in_exams": 646,
+      "appearance_rate": 62.4,
+      "avg_total_appear": 4.3
+    },
+    "3": {
+      "total_words": 1012,
+      "appeared_in_exams": 370,
+      "appearance_rate": 36.6,
+      "avg_total_appear": 3.0
+    },
+    "4": {
+      "total_words": 1022,
+      "appeared_in_exams": 308,
+      "appearance_rate": 30.1,
+      "avg_total_appear": 2.3
+    },
+    "5": {
+      "total_words": 1007,
+      "appeared_in_exams": 112,
+      "appearance_rate": 11.1,
+      "avg_total_appear": 2.3
+    },
+    "6": {
+      "total_words": 1020,
+      "appeared_in_exams": 50,
+      "appearance_rate": 4.9,
+      "avg_total_appear": 1.5
+    }
+  },
+  "year_breakdown": {
+    "104": {
+      "unique_words": 556,
+      "total_occurrences": 1650
+    },
+    "105": {
+      "unique_words": 555,
+      "total_occurrences": 1597
+    },
+    "106": {
+      "unique_words": 515,
+      "total_occurrences": 1431
+    },
+    "107": {
+      "unique_words": 526,
+      "total_occurrences": 1398
+    },
+    "108": {
+      "unique_words": 625,
+      "total_occurrences": 1777
+    },
+    "109": {
+      "unique_words": 601,
+      "total_occurrences": 1788
+    },
+    "110": {
+      "unique_words": 627,
+      "total_occurrences": 1847
+    },
+    "111": {
+      "unique_words": 530,
+      "total_occurrences": 1593
+    },
+    "112": {
+      "unique_words": 580,
+      "total_occurrences": 1953
+    },
+    "113": {
+      "unique_words": 655,
+      "total_occurrences": 2019
+    },
+    "114": {
+      "unique_words": 658,
+      "total_occurrences": 2132
+    },
+    "115": {
+      "unique_words": 793,
+      "total_occurrences": 2677
+    }
+  },
+  "top_content_words": [
+    {
+      "word": "person",
+      "level": 1,
+      "total_appear": 143,
+      "appear_year_count": 12
+    },
+    {
+      "word": "good",
+      "level": 1,
+      "total_appear": 118,
+      "appear_year_count": 12
+    },
+    {
+      "word": "make",
+      "level": 1,
+      "total_appear": 113,
+      "appear_year_count": 12
+    },
+    {
+      "word": "time",
+      "level": 1,
+      "total_appear": 77,
+      "appear_year_count": 12
+    },
+    {
+      "word": "get",
+      "level": 1,
+      "total_appear": 76,
+      "appear_year_count": 12
+    },
+    {
+      "word": "help",
+      "level": 1,
+      "total_appear": 73,
+      "appear_year_count": 12
+    },
+    {
+      "word": "need",
+      "level": 1,
+      "total_appear": 73,
+      "appear_year_count": 12
+    },
+    {
+      "word": "want",
+      "level": 1,
+      "total_appear": 67,
+      "appear_year_count": 12
+    },
+    {
+      "word": "follow",
+      "level": 1,
+      "total_appear": 65,
+      "appear_year_count": 12
+    },
+    {
+      "word": "year",
+      "level": 1,
+      "total_appear": 63,
+      "appear_year_count": 11
+    },
+    {
+      "word": "new",
+      "level": 1,
+      "total_appear": 61,
+      "appear_year_count": 12
+    },
+    {
+      "word": "work",
+      "level": 1,
+      "total_appear": 61,
+      "appear_year_count": 12
+    },
+    {
+      "word": "many",
+      "level": 1,
+      "total_appear": 60,
+      "appear_year_count": 11
+    },
+    {
+      "word": "know",
+      "level": 1,
+      "total_appear": 58,
+      "appear_year_count": 12
+    },
+    {
+      "word": "take",
+      "level": 1,
+      "total_appear": 57,
+      "appear_year_count": 12
+    },
+    {
+      "word": "water",
+      "level": 1,
+      "total_appear": 57,
+      "appear_year_count": 8
+    },
+    {
+      "word": "job",
+      "level": 1,
+      "total_appear": 56,
+      "appear_year_count": 9
+    },
+    {
+      "word": "money",
+      "level": 1,
+      "total_appear": 56,
+      "appear_year_count": 8
+    },
+    {
+      "word": "see",
+      "level": 1,
+      "total_appear": 54,
+      "appear_year_count": 12
+    },
+    {
+      "word": "look",
+      "level": 1,
+      "total_appear": 53,
+      "appear_year_count": 12
+    },
+    {
+      "word": "energy",
+      "level": 2,
+      "total_appear": 51,
+      "appear_year_count": 7
+    },
+    {
+      "word": "passage",
+      "level": 3,
+      "total_appear": 51,
+      "appear_year_count": 11
+    },
+    {
+      "word": "world",
+      "level": 1,
+      "total_appear": 50,
+      "appear_year_count": 11
+    },
+    {
+      "word": "accord",
+      "level": 5,
+      "total_appear": 47,
+      "appear_year_count": 11
+    },
+    {
+      "word": "because",
+      "level": 1,
+      "total_appear": 47,
+      "appear_year_count": 12
+    },
+    {
+      "word": "first",
+      "level": 1,
+      "total_appear": 46,
+      "appear_year_count": 10
+    },
+    {
+      "word": "car",
+      "level": 1,
+      "total_appear": 44,
+      "appear_year_count": 7
+    },
+    {
+      "word": "these",
+      "level": 1,
+      "total_appear": 44,
+      "appear_year_count": 11
+    },
+    {
+      "word": "find",
+      "level": 1,
+      "total_appear": 41,
+      "appear_year_count": 12
+    },
+    {
+      "word": "think",
+      "level": 1,
+      "total_appear": 41,
+      "appear_year_count": 12
+    },
+    {
+      "word": "learn",
+      "level": 1,
+      "total_appear": 40,
+      "appear_year_count": 11
+    },
+    {
+      "word": "too",
+      "level": 1,
+      "total_appear": 39,
+      "appear_year_count": 10
+    },
+    {
+      "word": "school",
+      "level": 1,
+      "total_appear": 38,
+      "appear_year_count": 11
+    },
+    {
+      "word": "try",
+      "level": 1,
+      "total_appear": 38,
+      "appear_year_count": 11
+    },
+    {
+      "word": "store",
+      "level": 1,
+      "total_appear": 37,
+      "appear_year_count": 8
+    },
+    {
+      "word": "drive",
+      "level": 1,
+      "total_appear": 36,
+      "appear_year_count": 7
+    },
+    {
+      "word": "online",
+      "level": 1,
+      "total_appear": 36,
+      "appear_year_count": 7
+    },
+    {
+      "word": "really",
+      "level": 1,
+      "total_appear": 36,
+      "appear_year_count": 11
+    },
+    {
+      "word": "product",
+      "level": 3,
+      "total_appear": 35,
+      "appear_year_count": 7
+    },
+    {
+      "word": "true",
+      "level": 2,
+      "total_appear": 35,
+      "appear_year_count": 12
+    },
+    {
+      "word": "why",
+      "level": 1,
+      "total_appear": 35,
+      "appear_year_count": 11
+    },
+    {
+      "word": "become",
+      "level": 1,
+      "total_appear": 34,
+      "appear_year_count": 11
+    },
+    {
+      "word": "day",
+      "level": 1,
+      "total_appear": 34,
+      "appear_year_count": 11
+    },
+    {
+      "word": "industry",
+      "level": 2,
+      "total_appear": 34,
+      "appear_year_count": 8
+    },
+    {
+      "word": "problem",
+      "level": 1,
+      "total_appear": 34,
+      "appear_year_count": 11
+    },
+    {
+      "word": "keep",
+      "level": 1,
+      "total_appear": 33,
+      "appear_year_count": 12
+    },
+    {
+      "word": "over",
+      "level": 1,
+      "total_appear": 33,
+      "appear_year_count": 11
+    },
+    {
+      "word": "place",
+      "level": 1,
+      "total_appear": 33,
+      "appear_year_count": 10
+    },
+    {
+      "word": "come",
+      "level": 1,
+      "total_appear": 32,
+      "appear_year_count": 10
+    },
+    {
+      "word": "let",
+      "level": 1,
+      "total_appear": 31,
+      "appear_year_count": 11
+    }
+  ],
+  "words_all_years": [
+    {
+      "word": "person",
+      "level": 1,
+      "total_appear": 143
+    },
+    {
+      "word": "good",
+      "level": 1,
+      "total_appear": 118
+    },
+    {
+      "word": "make",
+      "level": 1,
+      "total_appear": 113
+    },
+    {
+      "word": "time",
+      "level": 1,
+      "total_appear": 77
+    },
+    {
+      "word": "get",
+      "level": 1,
+      "total_appear": 76
+    },
+    {
+      "word": "help",
+      "level": 1,
+      "total_appear": 73
+    },
+    {
+      "word": "need",
+      "level": 1,
+      "total_appear": 73
+    },
+    {
+      "word": "want",
+      "level": 1,
+      "total_appear": 67
+    },
+    {
+      "word": "follow",
+      "level": 1,
+      "total_appear": 65
+    },
+    {
+      "word": "new",
+      "level": 1,
+      "total_appear": 61
+    },
+    {
+      "word": "work",
+      "level": 1,
+      "total_appear": 61
+    },
+    {
+      "word": "know",
+      "level": 1,
+      "total_appear": 58
+    },
+    {
+      "word": "take",
+      "level": 1,
+      "total_appear": 57
+    },
+    {
+      "word": "see",
+      "level": 1,
+      "total_appear": 54
+    },
+    {
+      "word": "look",
+      "level": 1,
+      "total_appear": 53
+    },
+    {
+      "word": "because",
+      "level": 1,
+      "total_appear": 47
+    },
+    {
+      "word": "find",
+      "level": 1,
+      "total_appear": 41
+    },
+    {
+      "word": "think",
+      "level": 1,
+      "total_appear": 41
+    },
+    {
+      "word": "true",
+      "level": 2,
+      "total_appear": 35
+    },
+    {
+      "word": "keep",
+      "level": 1,
+      "total_appear": 33
+    },
+    {
+      "word": "way",
+      "level": 1,
+      "total_appear": 30
+    },
+    {
+      "word": "after",
+      "level": 1,
+      "total_appear": 26
+    },
+    {
+      "word": "life",
+      "level": 1,
+      "total_appear": 25
+    }
+  ],
+  "high_level_frequent": [
+    {
+      "word": "accord",
+      "level": 5,
+      "total_appear": 47,
+      "appear_year_count": 11
+    },
+    {
+      "word": "solar",
+      "level": 4,
+      "total_appear": 30,
+      "appear_year_count": 2
+    },
+    {
+      "word": "paragraph",
+      "level": 4,
+      "total_appear": 19,
+      "appear_year_count": 11
+    },
+    {
+      "word": "competition",
+      "level": 4,
+      "total_appear": 13,
+      "appear_year_count": 6
+    },
+    {
+      "word": "intensity",
+      "level": 4,
+      "total_appear": 13,
+      "appear_year_count": 1
+    },
+    {
+      "word": "electronics",
+      "level": 4,
+      "total_appear": 12,
+      "appear_year_count": 1
+    },
+    {
+      "word": "manufacture",
+      "level": 4,
+      "total_appear": 9,
+      "appear_year_count": 2
+    },
+    {
+      "word": "manufacturer",
+      "level": 4,
+      "total_appear": 9,
+      "appear_year_count": 2
+    },
+    {
+      "word": "moderate",
+      "level": 4,
+      "total_appear": 9,
+      "appear_year_count": 1
+    },
+    {
+      "word": "research",
+      "level": 4,
+      "total_appear": 9,
+      "appear_year_count": 5
+    },
+    {
+      "word": "revenue",
+      "level": 5,
+      "total_appear": 9,
+      "appear_year_count": 1
+    },
+    {
+      "word": "species",
+      "level": 4,
+      "total_appear": 9,
+      "appear_year_count": 3
+    },
+    {
+      "word": "storage",
+      "level": 5,
+      "total_appear": 9,
+      "appear_year_count": 3
+    },
+    {
+      "word": "transportation",
+      "level": 4,
+      "total_appear": 9,
+      "appear_year_count": 4
+    },
+    {
+      "word": "applicant",
+      "level": 4,
+      "total_appear": 8,
+      "appear_year_count": 3
+    },
+    {
+      "word": "monitor",
+      "level": 4,
+      "total_appear": 8,
+      "appear_year_count": 2
+    },
+    {
+      "word": "satellite",
+      "level": 4,
+      "total_appear": 8,
+      "appear_year_count": 1
+    },
+    {
+      "word": "carbon",
+      "level": 5,
+      "total_appear": 7,
+      "appear_year_count": 1
+    },
+    {
+      "word": "contribute",
+      "level": 4,
+      "total_appear": 6,
+      "appear_year_count": 5
+    },
+    {
+      "word": "facility",
+      "level": 4,
+      "total_appear": 6,
+      "appear_year_count": 3
+    },
+    {
+      "word": "forecast",
+      "level": 4,
+      "total_appear": 6,
+      "appear_year_count": 4
+    },
+    {
+      "word": "occupy",
+      "level": 4,
+      "total_appear": 6,
+      "appear_year_count": 3
+    },
+    {
+      "word": "reservation",
+      "level": 4,
+      "total_appear": 6,
+      "appear_year_count": 3
+    },
+    {
+      "word": "sensor",
+      "level": 5,
+      "total_appear": 6,
+      "appear_year_count": 2
+    },
+    {
+      "word": "artificial",
+      "level": 4,
+      "total_appear": 5,
+      "appear_year_count": 3
+    },
+    {
+      "word": "ballet",
+      "level": 4,
+      "total_appear": 5,
+      "appear_year_count": 1
+    },
+    {
+      "word": "consumer",
+      "level": 4,
+      "total_appear": 5,
+      "appear_year_count": 3
+    },
+    {
+      "word": "entertainment",
+      "level": 4,
+      "total_appear": 5,
+      "appear_year_count": 3
+    },
+    {
+      "word": "filter",
+      "level": 5,
+      "total_appear": 5,
+      "appear_year_count": 2
+    },
+    {
+      "word": "furthermore",
+      "level": 4,
+      "total_appear": 5,
+      "appear_year_count": 5
+    },
+    {
+      "word": "impact",
+      "level": 4,
+      "total_appear": 5,
+      "appear_year_count": 3
+    },
+    {
+      "word": "infer",
+      "level": 6,
+      "total_appear": 5,
+      "appear_year_count": 5
+    },
+    {
+      "word": "intelligence",
+      "level": 4,
+      "total_appear": 5,
+      "appear_year_count": 3
+    },
+    {
+      "word": "intense",
+      "level": 4,
+      "total_appear": 5,
+      "appear_year_count": 3
+    },
+    {
+      "word": "license",
+      "level": 4,
+      "total_appear": 5,
+      "appear_year_count": 2
+    },
+    {
+      "word": "percent",
+      "level": 4,
+      "total_appear": 5,
+      "appear_year_count": 4
+    },
+    {
+      "word": "predict",
+      "level": 4,
+      "total_appear": 5,
+      "appear_year_count": 4
+    },
+    {
+      "word": "pregnant",
+      "level": 4,
+      "total_appear": 5,
+      "appear_year_count": 3
+    },
+    {
+      "word": "renew",
+      "level": 4,
+      "total_appear": 5,
+      "appear_year_count": 1
+    },
+    {
+      "word": "sue",
+      "level": 4,
+      "total_appear": 5,
+      "appear_year_count": 2
+    },
+    {
+      "word": "technological",
+      "level": 4,
+      "total_appear": 5,
+      "appear_year_count": 1
+    },
+    {
+      "word": "volunteer",
+      "level": 4,
+      "total_appear": 5,
+      "appear_year_count": 4
+    },
+    {
+      "word": "appointment",
+      "level": 4,
+      "total_appear": 4,
+      "appear_year_count": 4
+    },
+    {
+      "word": "chef",
+      "level": 5,
+      "total_appear": 4,
+      "appear_year_count": 1
+    },
+    {
+      "word": "commerce",
+      "level": 4,
+      "total_appear": 4,
+      "appear_year_count": 1
+    },
+    {
+      "word": "compute",
+      "level": 6,
+      "total_appear": 4,
+      "appear_year_count": 3
+    },
+    {
+      "word": "conference",
+      "level": 4,
+      "total_appear": 4,
+      "appear_year_count": 1
+    },
+    {
+      "word": "construction",
+      "level": 4,
+      "total_appear": 4,
+      "appear_year_count": 3
+    },
+    {
+      "word": "convenience",
+      "level": 4,
+      "total_appear": 4,
+      "appear_year_count": 4
+    },
+    {
+      "word": "despite",
+      "level": 4,
+      "total_appear": 4,
+      "appear_year_count": 4
+    }
+  ]
+}

@@ -22,3 +22,6 @@ venv/
 
 # NLTK data
 nltk_data/
+
+# Large dictionary files (re-download as needed)
+database/ecdict.csv
