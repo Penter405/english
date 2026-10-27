@@ -1,10 +1,11 @@
 /**
- * English Vocabulary Graph — Interactive Exam Topic Explorer
+ * English Vocabulary Graph — Interactive Exam Topic Explorer (Option A)
  *
- * Drill-down navigation:
- *   Level 1 (root):   Life ── domains
- *   Level 2 (domain): Life ─────── Domain ── topics
- *   Click topic → vocabulary view directly showing 6 official levels
+ * Architecture:
+ *   - Level 1 (Root):   Life ── 9 Domains (radius 320, radial lines)
+ *   - Level 2 (Domain): Life (opposite direction, 520px) ── Domain (0,0) ── Topics (outward fan 240px)
+ *   - Clean geometry: Lines NEVER touch or cross other nodes (angular gap >= 110° from parent)
+ *   - Click topic → vocabulary view directly showing 6 official levels
  */
 
 // ===== State =====
@@ -15,31 +16,30 @@ let nodeMap = {};
 let childrenMap = {};
 let parentMap = {};
 
-let currentPath = ['life']; // e.g. ['life'] or ['life', 'home_life']
-let currentView = 'graph';  // 'graph' | 'group'
+let currentPath = ['life'];
+let currentView = 'graph'; // 'graph' | 'group'
 let savedZoom = null;
 let savedPan = null;
 
-// Layout constants from the original web logic
-const DOMAIN_RADIUS = 300;   // root → domain distance (root view)
-const TOPIC_RADIUS = 200;    // domain → topic distance (domain view)
-const ROOT_LINK_DIST = 500;  // domain → root distance (domain view, opposite direction)
+// Layout constants
+const DOMAIN_RADIUS = 320;   // root → domain distance (root view)
+const CHILD_RADIUS = 240;    // domain → topic distance (domain view, outward fan)
+const ROOT_LINK_DIST = 520;  // domain → root distance (opposite direction, ample space)
 
-// Domain color mapping (10 vibrant, distinct hues)
+// Domain color mapping (9 distinct, vibrant colors)
 const DOMAIN_COLORS = {
-  home_life:  { main: '#f59e0b', bg: 'rgba(245,158,11,0.12)', border: 'rgba(245,158,11,0.4)' },
-  food:       { main: '#ef4444', bg: 'rgba(239,68,68,0.12)',   border: 'rgba(239,68,68,0.4)' },
-  transport:  { main: '#3b82f6', bg: 'rgba(59,130,246,0.12)',  border: 'rgba(59,130,246,0.4)' },
-  technology: { main: '#06b6d4', bg: 'rgba(6,182,212,0.12)',   border: 'rgba(6,182,212,0.4)' },
-  education:  { main: '#8b5cf6', bg: 'rgba(139,92,246,0.12)',  border: 'rgba(139,92,246,0.4)' },
-  work:       { main: '#f97316', bg: 'rgba(249,115,22,0.12)',  border: 'rgba(249,115,22,0.4)' },
-  society:    { main: '#ec4899', bg: 'rgba(236,72,153,0.12)',  border: 'rgba(236,72,153,0.4)' },
-  abstract:   { main: '#a78bfa', bg: 'rgba(167,139,250,0.12)', border: 'rgba(167,139,250,0.4)' },
-  science:    { main: '#10b981', bg: 'rgba(16,185,129,0.12)',  border: 'rgba(16,185,129,0.4)' },
-  nature:     { main: '#22c55e', bg: 'rgba(34,197,94,0.12)',   border: 'rgba(34,197,94,0.4)' }
+  people_character:  { main: '#ec4899', bg: 'rgba(236,72,153,0.14)', border: 'rgba(236,72,153,0.45)' },
+  mind_emotions:     { main: '#f472b6', bg: 'rgba(244,114,182,0.14)', border: 'rgba(244,114,182,0.45)' },
+  body_actions:      { main: '#ef4444', bg: 'rgba(239,68,68,0.14)',   border: 'rgba(239,68,68,0.45)' },
+  daily_life:        { main: '#f59e0b', bg: 'rgba(245,158,11,0.14)', border: 'rgba(245,158,11,0.45)' },
+  school_education:  { main: '#8b5cf6', bg: 'rgba(139,92,246,0.14)', border: 'rgba(139,92,246,0.45)' },
+  work_society:      { main: '#f97316', bg: 'rgba(249,115,22,0.14)',  border: 'rgba(249,115,22,0.45)' },
+  tech_transport:    { main: '#06b6d4', bg: 'rgba(6,182,212,0.14)',   border: 'rgba(6,182,212,0.45)' },
+  nature_science:    { main: '#10b981', bg: 'rgba(16,185,129,0.14)',  border: 'rgba(16,185,129,0.45)' },
+  description_logic: { main: '#6366f1', bg: 'rgba(99,102,241,0.14)',  border: 'rgba(99,102,241,0.45)' }
 };
 
-// Level color mapping
+// Level color mapping (Official Levels 1–6)
 const LEVEL_CONFIG = {
   1: { name: 'Level 1 — Basic', cls: 'lv1', color: '#4ade80' },
   2: { name: 'Level 2 — Elementary', cls: 'lv2', color: '#2dd4bf' },
@@ -108,7 +108,7 @@ function getParentDomain(nodeId) {
   return null;
 }
 
-// ===== Render Graph (one-time setup) =====
+// ===== Render Cytoscape Graph =====
 function renderGraph() {
   const cyElements = [];
 
@@ -121,8 +121,8 @@ function renderGraph() {
       data: {
         id: node.id,
         label: node.label,
+        labelZh: node.label_zh || '',
         nodeType: node.type,
-        groupId: node.group_id || null,
         color: colorSet.main,
         domainId: domainId,
         wordCount: node.word_count || (node.words ? node.words.length : 0)
@@ -155,14 +155,14 @@ function renderGraph() {
     maxZoom: 3,
     wheelSensitivity: 0.3,
     style: [
-      // ── Root node ──
+      // ── Root Node ──
       {
         selector: 'node[nodeType="root"]',
         style: {
-          'width': 70,
-          'height': 70,
+          'width': 75,
+          'height': 75,
           'background-color': '#0a0e1a',
-          'border-width': 3,
+          'border-width': 3.5,
           'border-color': '#a78bfa',
           'label': 'data(label)',
           'font-size': 16,
@@ -179,25 +179,26 @@ function renderGraph() {
           'transition-duration': '0.3s'
         }
       },
-      // Root / Parent when shown as breadcrumb
+      // Root when displayed as breadcrumb in domain view
       {
         selector: 'node.breadcrumb',
         style: {
-          'width': 44,
-          'height': 44,
+          'width': 48,
+          'height': 48,
           'border-width': 2,
           'font-size': 11,
-          'opacity': 0.75
+          'opacity': 0.75,
+          'z-index': 12
         }
       },
-      // ── Domain nodes ──
+      // ── Domain Nodes ──
       {
         selector: 'node[nodeType="domain"]',
         style: {
-          'width': 56,
-          'height': 56,
+          'width': 62,
+          'height': 62,
           'background-color': '#111827',
-          'border-width': 2.5,
+          'border-width': 2.8,
           'border-color': 'data(color)',
           'label': 'data(label)',
           'font-size': 13,
@@ -208,7 +209,7 @@ function renderGraph() {
           'text-halign': 'center',
           'text-margin-y': 10,
           'text-wrap': 'wrap',
-          'text-max-width': 110,
+          'text-max-width': 120,
           'text-outline-color': '#0a0e1a',
           'text-outline-width': 2.5,
           'z-index': 8,
@@ -217,38 +218,38 @@ function renderGraph() {
           'transition-duration': '0.3s'
         }
       },
-      // Focused domain or node
+      // Focused domain in domain view
       {
         selector: 'node.focused',
         style: {
-          'width': 68,
-          'height': 68,
-          'border-width': 3.5,
+          'width': 74,
+          'height': 74,
+          'border-width': 3.8,
           'font-size': 15,
           'font-weight': 800,
           'z-index': 20
         }
       },
-      // ── Topic nodes ──
+      // ── Topic (Subcategory) Nodes ──
       {
         selector: 'node[nodeType="topic"]',
         style: {
-          'width': 36,
-          'height': 36,
+          'width': 44,
+          'height': 44,
           'background-color': 'data(color)',
           'background-opacity': 0.18,
-          'border-width': 1.8,
+          'border-width': 2,
           'border-color': 'data(color)',
           'label': 'data(label)',
-          'font-size': 10.5,
+          'font-size': 11,
           'font-weight': 600,
           'font-family': 'Inter, sans-serif',
           'color': '#e2e8f0',
           'text-valign': 'bottom',
           'text-halign': 'center',
-          'text-margin-y': 7,
+          'text-margin-y': 8,
           'text-wrap': 'wrap',
-          'text-max-width': 95,
+          'text-max-width': 105,
           'text-outline-color': '#0a0e1a',
           'text-outline-width': 2,
           'z-index': 5,
@@ -257,24 +258,24 @@ function renderGraph() {
           'transition-duration': '0.2s'
         }
       },
-      // ── Contains edges (hierarchical) ──
+      // ── Hierarchical Edges ──
       {
         selector: 'edge[edgeType="contains"]',
         style: {
-          'width': 1.5,
-          'line-color': 'rgba(148, 163, 184, 0.22)',
+          'width': 1.6,
+          'line-color': 'rgba(148, 163, 184, 0.25)',
           'curve-style': 'straight',
           'target-arrow-shape': 'none',
           'overlay-opacity': 0,
           'z-index': 1
         }
       },
-      // Breadcrumb edge (root/parent → current) — dashed
+      // Breadcrumb edge (root/parent → current domain)
       {
         selector: 'edge.breadcrumb-edge',
         style: {
-          'width': 1.2,
-          'line-color': 'rgba(167, 139, 250, 0.3)',
+          'width': 1.4,
+          'line-color': 'rgba(167, 139, 250, 0.35)',
           'line-style': 'dashed',
           'line-dash-pattern': [8, 6],
           'z-index': 0
@@ -287,29 +288,30 @@ function renderGraph() {
     ]
   });
 
-  // ── Event Listeners ──
+  // Event handlers
   cy.on('tap', 'node', onNodeTap);
   cy.on('mouseover', 'node', () => { document.getElementById('cy').style.cursor = 'pointer'; });
   cy.on('mouseout', 'node', () => { document.getElementById('cy').style.cursor = 'default'; });
 
-  // Start at root view
+  // Initial Root View
   currentPath = ['life'];
   enterView('life', false);
 }
 
-// ===== View Navigation Logic =====
+// ===== View Switching & Positioning =====
 
 function enterView(nodeId, animate) {
   if (nodeId === 'life') {
     enterRootView(animate);
   } else {
-    enterChildView(nodeId, animate);
+    enterDomainView(nodeId, animate);
   }
 }
 
-// ===== Root Level (Life + 10 Domains) =====
+// 1. Root View (Life at center + 9 Domains radially placed)
 function enterRootView(animate) {
   currentPath = ['life'];
+  updateBreadcrumb();
 
   const positions = {};
   positions['life'] = { x: 0, y: 0 };
@@ -318,7 +320,6 @@ function enterRootView(animate) {
   for (const dId of domains) {
     const node = nodeMap[dId];
     if (node) {
-      // Use original graph coordinates scaled to DOMAIN_RADIUS
       const ox = node.x, oy = node.y;
       const dist = Math.sqrt(ox * ox + oy * oy) || 1;
       positions[dId] = {
@@ -333,10 +334,10 @@ function enterRootView(animate) {
     cy.edges().style('display', 'none');
     cy.elements().removeClass('breadcrumb breadcrumb-edge focused');
 
-    // Show root
+    // Show Root
     cy.getElementById('life').style('display', 'element');
 
-    // Show domains + edges
+    // Show Domains + radial straight edges (zero overlap)
     for (const dId of domains) {
       cy.getElementById(dId).style('display', 'element');
       const edge = cy.getElementById(`life-${dId}`);
@@ -348,34 +349,48 @@ function enterRootView(animate) {
   fitVisible(animate);
 }
 
-// ===== Non-Root Level (Domain/Category View with Parent as Breadcrumb) =====
-function enterChildView(nodeId, animate) {
-  const focusedNode = nodeMap[nodeId];
-  const parentId = parentMap[nodeId] || 'life';
-  const children = childrenMap[nodeId] || [];
+// 2. Domain View (Focused domain at center, Root in opposite direction, children in outward fan)
+function enterDomainView(domainId, animate) {
+  currentPath = ['life', domainId];
+  updateBreadcrumb();
 
-  // Compute parent position: opposite direction of node's original position from parent
-  const dx = focusedNode.x || 0;
-  const dy = focusedNode.y || 0;
+  const domainNode = nodeMap[domainId];
+  const parentId = parentMap[domainId] || 'life';
+  const children = childrenMap[domainId] || [];
+
+  // Vector (dx, dy) of domain from root
+  const dx = domainNode.x || 0;
+  const dy = domainNode.y || 0;
   const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+
+  // Parent is in EXACT OPPOSITE direction (-dx, -dy) at distance ROOT_LINK_DIST (520)
   const parentX = (-dx / dist) * ROOT_LINK_DIST;
   const parentY = (-dy / dist) * ROOT_LINK_DIST;
 
   const positions = {};
   positions[parentId] = { x: parentX, y: parentY };
-  positions[nodeId] = { x: 0, y: 0 };
+  positions[domainId] = { x: 0, y: 0 };
 
-  // Position children around focused node using their angle_degrees
-  for (const childId of children) {
-    const childNode = nodeMap[childId];
-    if (childNode) {
-      const angleDeg = childNode.angle_degrees || 0;
-      const angleRad = angleDeg * Math.PI / 180;
-      positions[childId] = {
-        x: Math.cos(angleRad) * TOPIC_RADIUS,
-        y: Math.sin(angleRad) * TOPIC_RADIUS
-      };
-    }
+  // Outward direction angle (facing away from parent/root)
+  const outwardAngleRad = Math.atan2(dy, dx);
+  const outwardAngleDeg = outwardAngleRad * 180 / Math.PI;
+
+  // Position children in an outward fan/arc centered at outwardAngleDeg
+  // Span is 130 deg for <= 4 children, 150 deg for 5 children
+  // Guaranteed angular gap to parent >= 105 deg: lines NEVER touch any node!
+  const numChildren = children.length;
+  const spanDeg = numChildren <= 4 ? 130 : 150;
+  const startAngleDeg = outwardAngleDeg - spanDeg / 2;
+  const stepDeg = spanDeg / Math.max(numChildren - 1, 1);
+
+  for (let j = 0; j < numChildren; j++) {
+    const childId = children[j];
+    const angleDeg = startAngleDeg + j * stepDeg;
+    const angleRad = angleDeg * Math.PI / 180;
+    positions[childId] = {
+      x: Math.cos(angleRad) * CHILD_RADIUS,
+      y: Math.sin(angleRad) * CHILD_RADIUS
+    };
   }
 
   cy.batch(() => {
@@ -383,27 +398,27 @@ function enterChildView(nodeId, animate) {
     cy.edges().style('display', 'none');
     cy.elements().removeClass('breadcrumb breadcrumb-edge focused');
 
-    // Show parent as breadcrumb
+    // Show Root/Parent as breadcrumb
     const parentEle = cy.getElementById(parentId);
     parentEle.style('display', 'element');
     parentEle.addClass('breadcrumb');
 
-    // Show focused node
-    const focusedEle = cy.getElementById(nodeId);
-    focusedEle.style('display', 'element');
-    focusedEle.addClass('focused');
+    // Show Focused Domain
+    const domainEle = cy.getElementById(domainId);
+    domainEle.style('display', 'element');
+    domainEle.addClass('focused');
 
-    // Show parent → focused edge as breadcrumb edge
-    const parentEdge = cy.getElementById(`${parentId}-${nodeId}`);
-    if (parentEdge.length) {
-      parentEdge.style('display', 'element');
-      parentEdge.addClass('breadcrumb-edge');
+    // Show breadcrumb edge (dashed)
+    const breadcrumbEdge = cy.getElementById(`${parentId}-${domainId}`);
+    if (breadcrumbEdge.length) {
+      breadcrumbEdge.style('display', 'element');
+      breadcrumbEdge.addClass('breadcrumb-edge');
     }
 
-    // Show children + edges
+    // Show Subcategory children + outward lines
     for (const childId of children) {
       cy.getElementById(childId).style('display', 'element');
-      const edge = cy.getElementById(`${nodeId}-${childId}`);
+      const edge = cy.getElementById(`${domainId}-${childId}`);
       if (edge.length) edge.style('display', 'element');
     }
   });
@@ -412,7 +427,7 @@ function enterChildView(nodeId, animate) {
   fitVisible(animate);
 }
 
-// ===== Helpers =====
+// ===== Animation & Camera Helpers =====
 function applyPositions(positions, animate) {
   for (const [id, pos] of Object.entries(positions)) {
     const ele = cy.getElementById(id);
@@ -436,14 +451,14 @@ function fitVisible(animate) {
   }
 }
 
-// ===== Node Tap Handler =====
+// ===== Node Tap Interaction =====
 function onNodeTap(e) {
   const node = e.target;
   const nodeId = node.data('id');
   const nodeType = node.data('nodeType');
   const nodeData = nodeMap[nodeId];
 
-  // If clicking breadcrumb parent → go back up one level
+  // If clicking breadcrumb parent (e.g. Life) → return to Root View
   if (node.hasClass('breadcrumb')) {
     if (currentPath.length > 1) {
       currentPath.pop();
@@ -459,28 +474,27 @@ function onNodeTap(e) {
     return;
   }
 
-  // If root node in root view → re-fit
+  // If root node clicked in root view → re-fit
   if (nodeId === 'life' && currentPath.length === 1) {
     cy.animate({ fit: { eles: cy.elements(':visible'), padding: 60 } }, { duration: 400, easing: 'ease-in-out-cubic' });
     return;
   }
 
-  // Check if node has children
+  // If node has children (Domain) → drill down to domain view
   const children = childrenMap[nodeId] || [];
   if (children.length > 0) {
-    // Drill down to this node
     currentPath.push(nodeId);
     enterView(nodeId, true);
     return;
   }
 
-  // If node is a topic (leaf node with words) → directly open group view
+  // If node is a topic (Subcategory leaf node) → directly open Group View showing 6 levels
   if (nodeType === 'topic' || (nodeData && nodeData.words)) {
     openGroup(nodeData);
   }
 }
 
-// ===== View Switching (graph ↔ group view) =====
+// ===== View Switching (Graph ↔ Group) =====
 function showGroupView() {
   if (cy) {
     savedZoom = cy.zoom();
@@ -500,20 +514,28 @@ function showGraph() {
   document.getElementById('back-btn').style.display = 'none';
   document.getElementById('graph-controls').style.display = 'flex';
 
+  if (currentPath.length > 2) {
+    currentPath.pop();
+  }
+  updateBreadcrumb();
+
   if (cy && savedZoom !== null && savedPan !== null) {
     cy.viewport({ zoom: savedZoom, pan: savedPan });
   }
 }
 
-// ===== Open Group View (Displays the 6 Levels directly) =====
+// ===== Open Group View (Directly displays the 6 Levels) =====
 function openGroup(nodeData) {
+  const domainId = getParentDomain(nodeData.id) || nodeData.id;
+  currentPath = ['life', domainId, nodeData.id];
+  updateBreadcrumb();
+
   showGroupView();
 
   const container = document.getElementById('group-container');
-  const domainId = getParentDomain(nodeData.id) || nodeData.id;
-  const colorSet = DOMAIN_COLORS[domainId] || { main: '#64748b', bg: 'rgba(100,116,139,0.12)', border: 'rgba(100,116,139,0.4)' };
+  const colorSet = DOMAIN_COLORS[domainId] || { main: '#64748b', bg: 'rgba(100,116,139,0.14)', border: 'rgba(100,116,139,0.45)' };
   const domainNode = nodeMap[domainId];
-  const domainLabel = domainNode ? domainNode.label : '';
+  const domainLabel = domainNode ? (domainNode.label_zh ? `${domainNode.label} (${domainNode.label_zh})` : domainNode.label) : '';
 
   const words = nodeData.words || [];
 
@@ -529,17 +551,19 @@ function openGroup(nodeData) {
     }
   }
 
+  const topicLabelZh = nodeData.label_zh ? ` · ${nodeData.label_zh}` : '';
+
   let html = `
     <div class="group-header">
       ${domainLabel ? `<div class="group-domain-badge" style="color: ${colorSet.main}; background: ${colorSet.bg}; border-color: ${colorSet.border};">
         <span>●</span> ${domainLabel}
       </div>` : ''}
-      <h1 class="group-name">${nodeData.label}</h1>
-      <p class="group-word-count">${words.length} words · Group ${nodeData.group_id || ''}</p>
+      <h1 class="group-name">${nodeData.label}<span style="font-size: 1.3rem; opacity: 0.8; font-weight: 500;">${topicLabelZh}</span></h1>
+      <p class="group-word-count">${words.length} words in this category</p>
     </div>
   `;
 
-  // Render all 6 level sections
+  // Render each of the 6 level sections (only if it contains words)
   for (let lv = 1; lv <= 6; lv++) {
     const lvWords = byLevel[lv];
     if (!lvWords || lvWords.length === 0) continue;
@@ -583,7 +607,7 @@ function showDefinition(word, lang) {
 
   const posStr = vd.pos && vd.pos.length ? vd.pos.join(', ') : '';
   const lvStr = `Level ${vd.lv}`;
-  const examStr = vd.cnt > 0 ? `📝 Appeared in exams: ${vd.exam.join(', ')} (${vd.cnt} times)` : '';
+  const examStr = vd.cnt > 0 ? `📝 Appeared in exams: ${vd.exam.join(', ')} (${vd.cnt} time(s))` : '';
   const formsStr = vd.forms && Object.keys(vd.forms).length > 0
     ? Object.entries(vd.forms).map(([k, v]) => `${k}: ${v}`).join(' | ')
     : '';
@@ -618,7 +642,7 @@ function showDefinition(word, lang) {
   } else {
     const defs = vd.zh || [];
     if (defs.length > 0) {
-      contentHtml = '<div class="def-section"><h3>中文釋義</h3><ul>' +
+      contentHtml = '<div class="def-section"><h3>繁體中文釋義</h3><ul>' +
         defs.map(d => `<li>${d}</li>`).join('') +
         '</ul></div>';
     } else {
@@ -668,6 +692,48 @@ function resetView() {
     enterRootView(true);
   } else {
     cy.animate({ fit: { eles: cy.elements(':visible'), padding: 60 } }, { duration: 400, easing: 'ease-in-out-cubic' });
+  }
+}
+
+// ===== Breadcrumb Path Navigation =====
+function updateBreadcrumb() {
+  const bar = document.getElementById('breadcrumb-bar');
+  if (!bar) return;
+  let html = '';
+
+  for (let i = 0; i < currentPath.length; i++) {
+    const id = currentPath[i];
+    const node = nodeMap[id];
+    let label = node ? node.label : id;
+    if (node && node.label_zh) {
+      label = `${node.label} (${node.label_zh})`;
+    }
+    if (i > 0) html += '<span class="breadcrumb-sep">›</span>';
+    if (i === currentPath.length - 1) {
+      html += `<span class="breadcrumb-item current">${label}</span>`;
+    } else {
+      html += `<button class="breadcrumb-item" onclick="goToLevel(${i})">${label}</button>`;
+    }
+  }
+
+  bar.innerHTML = html;
+}
+
+function goToRoot() {
+  currentPath = ['life'];
+  if (currentView === 'group') showGraph();
+  enterRootView(true);
+}
+
+function goToLevel(idx) {
+  if (idx < 0 || idx >= currentPath.length) return;
+  if (currentView === 'group') showGraph();
+  if (idx === 0) {
+    goToRoot();
+  } else {
+    currentPath = currentPath.slice(0, idx + 1);
+    const targetId = currentPath[currentPath.length - 1];
+    enterDomainView(targetId, true);
   }
 }
 
