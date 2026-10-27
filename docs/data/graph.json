@@ -4447,7 +4447,7 @@
         "label": "Description & Logic",
         "type": "domain",
         "color": "#a78bfa",
-        "word_count": 458,
+        "word_count": 459,
         "x": -227.4,
         "y": -103.9
       },
@@ -4703,7 +4703,7 @@
         "type": "category",
         "color": "#a78bfa",
         "parent_domain": "description_logic",
-        "word_count": 296,
+        "word_count": 297,
         "angle_degrees": 240.0
       },
       {
@@ -4712,7 +4712,7 @@
         "type": "level_group",
         "color": "#a78bfa",
         "parent_domain": "description_logic",
-        "word_count": 177,
+        "word_count": 178,
         "words": [
           "about",
           "absence",
@@ -4729,6 +4729,7 @@
           "among",
           "ancient",
           "ankle",
+          "anytime",
           "anyway",
           "avoid",
           "away",
@@ -5040,7 +5041,7 @@
         "label": "General Vocabulary",
         "type": "domain",
         "color": "#64748b",
-        "word_count": 485,
+        "word_count": 484,
         "x": -135.2,
         "y": -210.3
       },
@@ -5050,7 +5051,7 @@
         "type": "category",
         "color": "#64748b",
         "parent_domain": "general_vocabulary",
-        "word_count": 203,
+        "word_count": 202,
         "angle_degrees": 0.0
       },
       {
@@ -5059,7 +5060,7 @@
         "type": "level_group",
         "color": "#64748b",
         "parent_domain": "general_vocabulary",
-        "word_count": 70,
+        "word_count": 69,
         "words": [
           "again",
           "ago",
@@ -5068,7 +5069,6 @@
           "also",
           "altogether",
           "another",
-          "anytime",
           "broad",
           "busy",
           "careful",
