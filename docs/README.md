@@ -8,8 +8,8 @@
 
 ## 🌟 核心特色 (Option A 架構)
 
-1. **4,244 個核心考試單字**：
-   - 篩選標準：**歷屆試題曾出題 OR Level 1–4**，精準鎖定考試重點。
+1. **4,842 個核心考試單字**：
+   - 篩選標準：**歷屆試題曾出題 OR Level 1–4**，精準鎖定考試重點（含歷屆統測考題高頻詞如 orchid, supercomputer, scam, rainforest, backpacker 等）。
    - 100% 具備 **English Definition** 與 **繁體中文釋義**。
 2. **9 大核心領域 × 38 個直觀子主題**：
    - **人物與特質 (People & Character)**：個性品質（如 brave, honest）、外貌體態、身分人際、家庭生命歷程。
@@ -49,7 +49,7 @@ docs/
 ├── style.css            # 深色太空主題、Level 1–6 色彩、彈窗與響應式排版
 └── data/
     ├── graph.json       # 48 節點（1 Root + 9 Domains + 38 Topics）圖形拓撲結構
-    ├── vocab_data.json  # 4,244 個單字的完整釋義、出題紀錄、詞形等資料
+    ├── vocab_data.json  # 4,842 個單字的完整釋義、出題紀錄、詞形等資料
     └── images/          # 單字專屬圖片（格式為 {word}.png）
 ```
 

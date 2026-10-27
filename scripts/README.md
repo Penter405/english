@@ -38,7 +38,8 @@
 
 | 腳本名稱 | 功能說明 | 常用執行指令 |
 |---|---|---|
-| **`build_web_graph.py`** | 篩選「統測出現過或 Level 1–4」單字（共 4,244 字），自動產生多層次圖形資料 `docs/data/graph.json` 與 `docs/data/vocab_data.json` | `py scripts/build_web_graph.py` |
+| **`add_exam_oov_words.py`** | 針對歷屆考卷全面進行詞形還原與比對，將統測考題實際出現但不在 6,109 表內的 592 個高頻考字（如 orchid, supercomputer, scam, summer 等）補齊雙語釋義並加入字庫 | `py scripts/add_exam_oov_words.py` |
+| **`build_web_graph.py`** | 篩選「統測出現過或 Level 1–4」單字（共 4,842 字），使用雙語語義匹配分類至 9 大領域 38 主題，保證連線不碰觸節點，輸出 `docs/data/graph.json` 與 `docs/data/vocab_data.json` | `py scripts/build_web_graph.py` |
 | **`upload_word_image.py`** | 為單字上傳並自動壓縮處理圖片至 `docs/data/images/{word}.png` | `py scripts/upload_word_image.py` |
 
 #### `upload_word_image.py` 使用範例：

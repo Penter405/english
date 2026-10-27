@@ -15,7 +15,7 @@ English vocabulary databases and exam analysis data for Taiwanese high school st
 
 | File | Size | Records | Description |
 |---|---|---|---|
-| **`exam_words.json`** | ~4.8 MB | 6,109 words | 主單字庫：等級 (1–6)、詞性、詞形變化 (`forms`)、字族 (`word_family`)、出題紀錄、雙語釋義 (`definitions.en`, `definitions.zh`)、主題情境 (`situations`) |
+| **`exam_words.json`** | ~5.3 MB | 6,701 words | 主單字庫：等級 (1–6)、詞性、詞形變化 (`forms`)、字族 (`word_family`)、出題紀錄、雙語釋義 (`definitions.en`, `definitions.zh`)、主題情境 (`situations`)。涵蓋官方 111 詞彙表 6,109 字 + 592 個統測歷屆試題實際出現之核心詞彙（如 orchid, supercomputer, scam, summer, sunlight 等） |
 | **`exam_stats.json`** | 16 KB | Summary | 統計摘要：等級分佈、出題率、年度高頻排行、詞性分佈統計 |
 | **`word_database.json`** | 53 KB | 90 roots / 109 affixes | Root Explorer 詞根詞綴資料庫：90 個字根、59 個前綴、50 個後綴、65 個基礎英語字 |
 

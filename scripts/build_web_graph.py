@@ -211,8 +211,8 @@ TAXONOMY = {
             "law_justice": {
                 "label": "Law & Justice",
                 "label_zh": "法律犯罪與正義",
-                "en": "law legal illegal justice court trial judge jury lawyer attorney witness victim crime criminal offense guilt guilty innocent arrest police custody detective inspect prison jail cell convict penalty sentence fine sue lawsuit defend prosecute prohibit ban enforce regulation violation theft robber murder hostage",
-                "zh": "法律 合法 非法 正義 法庭 審判 法官 律師 證人 受害者 犯罪 嫌犯 逮捕 警察 監獄 懲罰 判決 罰金 起訴 控告 禁令 違規 謀殺"
+                "en": "law legal illegal justice court trial judge jury lawyer attorney witness victim crime criminal offense guilt guilty innocent arrest police custody detective inspect prison jail cell convict penalty sentence fine sue lawsuit defend prosecute prohibit ban enforce regulation violation theft robber murder hostage scam fraud fraudulent cheat deception deceive trick swindle",
+                "zh": "法律 合法 非法 正義 法庭 審判 法官 律師 證人 受害者 犯罪 嫌犯 逮捕 警察 監獄 懲罰 判決 罰金 起訴 控告 禁令 違規 謀殺 詐騙 騙局 詐欺 詭計"
             },
             "culture_community": {
                 "label": "Culture & Community",
@@ -230,8 +230,8 @@ TAXONOMY = {
             "computers_internet": {
                 "label": "Computers & Internet",
                 "label_zh": "電腦資訊與網路",
-                "en": "computer laptop pc desktop keyboard mouse monitor screen processor chip hardware software program code coding app application system windows operating memory storage file folder document database server cloud internet web online browser website link domain upload download cyber hack security firewall virus digital password algorithm",
-                "zh": "電腦 鍵盤 滑鼠 螢幕 晶片 硬體 軟體 程式 系統 記憶體 檔案 資料庫 伺服器 雲端 網路 上傳 下載 駭客 安全 防火牆 密碼 數位"
+                "en": "computer supercomputer laptop pc desktop keyboard mouse monitor screen processor chip hardware software program code coding app application system windows operating memory storage file folder document database server cloud internet web online browser website link domain upload download cyber hack security firewall virus digital password algorithm blog blogging blogger mainframe computing",
+                "zh": "電腦 計算機 超級電腦 巨型機 鍵盤 滑鼠 螢幕 晶片 硬體 軟體 程式 系統 記憶體 檔案 資料庫 伺服器 雲端 網路 部落格 博客 網絡 上傳 下載 駭客 安全 防火牆 密碼 數位 運算"
             },
             "devices_media": {
                 "label": "Digital Devices & Media",
@@ -362,12 +362,16 @@ def main():
     }
     print(f"  Filtered {len(filtered)} words (appeared in exams OR level 1-4).")
 
+    # Stop characters that cause false positive single-character Chinese matches
+    STOP_ZH_CHARS = set("的了一是在有人大事國機計生子年自會家民理行用現所個這那")
+
     # Build subcategory token sets
     subcat_list = []
     for dom_id, dom_data in TAXONOMY.items():
         for sub_id, sub_data in dom_data['subcats'].items():
             en_tokens = set(re.findall(r'[a-z]+', sub_data['en'].lower()))
-            zh_chars = set(sub_data['zh'].replace(' ', ''))
+            zh_phrases = set(p.strip() for p in sub_data['zh'].split() if len(p.strip()) >= 2)
+            zh_chars = set(sub_data['zh'].replace(' ', '')) - STOP_ZH_CHARS
             subcat_list.append({
                 'domain_id': dom_id,
                 'sub_id': sub_id,
@@ -376,6 +380,7 @@ def main():
                 'label_zh': sub_data.get('label_zh', ''),
                 'color': dom_data['color'],
                 'en_tokens': en_tokens,
+                'zh_phrases': zh_phrases,
                 'zh_chars': zh_chars
             })
 
@@ -393,7 +398,7 @@ def main():
         en_text = f"{w} " + " ".join(en_defs)
         en_tokens = set(re.findall(r'[a-z]+', en_text.lower()))
         zh_text = "".join(zh_defs)
-        zh_chars = set(re.findall(r'[\u4e00-\u9fff]', zh_text))
+        zh_chars = set(re.findall(r'[\u4e00-\u9fff]', zh_text)) - STOP_ZH_CHARS
 
         best_sub = None
         best_score = -1
@@ -401,9 +406,10 @@ def main():
         for sub in subcat_list:
             en_match = len(en_tokens & sub['en_tokens'])
             zh_match = len(zh_chars & sub['zh_chars'])
-            bonus = 4 if w in sub['en_tokens'] else 0
+            zh_phrase_match = sum(1 for phrase in sub['zh_phrases'] if phrase in zh_text)
+            bonus = 12 if w in sub['en_tokens'] else 0
 
-            score = en_match * 2.0 + zh_match * 1.5 + bonus
+            score = en_match * 2.5 + zh_phrase_match * 4.0 + zh_match * 1.0 + bonus
             if score > best_score:
                 best_score = score
                 best_sub = sub
