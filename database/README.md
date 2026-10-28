@@ -18,7 +18,8 @@ English vocabulary databases and exam analysis data for Taiwanese high school st
 | **`exam_words.json`** | ~5.3 MB | 6,701 words | 主單字庫：等級 (1–6)、詞性、詞形變化 (`forms`)、字族 (`word_family`)、出題紀錄、雙語釋義 (`definitions.en`, `definitions.zh`)、主題情境 (`situations`)。涵蓋官方 111 詞彙表 6,109 字 + 592 個統測歷屆試題實際出現之核心詞彙（如 orchid, supercomputer, scam, summer, sunlight 等） |
 | **`exam_stats.json`** | 16 KB | Summary | 統計摘要：等級分佈、出題率、年度高頻排行、詞性分佈統計 |
 | **`word_database.json`** | 53 KB | 90 roots / 109 affixes | Root Explorer 詞根詞綴資料庫：90 個字根、59 個前綴、50 個後綴、65 個基礎英語字 |
-| **`word_roots_breakdown.json`** | ~920 KB | 1,976 entries | 確定性字根/字首/字尾拆解庫：包含 prefix, root, suffix 及其英繁釋義、合成邏輯 (`synthesis_zh`, `synthesis_en`) 與語音轉變規則 |
+| **`word_roots_breakdown.json`** | ~650 KB | 1,329 entries | 確定性字根/字首/字尾拆解庫：100% 依據印歐語詞根庫與 WordNet 嚴格驗證（排除演算法猜測誤判，如 mister），包含 prefix, root, suffix 及其英繁釋義、合成邏輯 (`synthesis_zh`, `synthesis_en`) 與語音轉變規則 |
+| **`word_origins.json`** | ~10 MB | 22,783 words / 6,607 families | 單字原型 (Origin) 與詞性衍生/時態變體庫：每個單字精準對應至原始原型（如 `playable` ➔ `play`、`picked` ➔ `pick`），並記錄完整變體族群（`0: lemma`, `1: past/participle`, `2: pres part`, `3: 3rd sg/plural`, 衍生詞等） |
 | **`word_sentences.json`** | ~1.4 MB | 6,701 words | 例句資料庫：優先整合 104–115 統測歷屆真題原句（1,209 句、涵蓋 2,579 個考字），其餘由權威標準例句補足 |
 | **`simple_definitions.json`** | ~480 KB | 6,701 words | Level 1–2 簡明英釋庫：以國中小基礎字彙為限制生成的精簡英文定義 |
 

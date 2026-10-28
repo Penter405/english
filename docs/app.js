@@ -725,10 +725,42 @@ function getSortLabel(mode) {
   return 'A–Z';
 }
 
+// State for Additional Sub-Search Navigation
+let additionalSearchWord = null;
+let searchHistoryStack = [];
+let currentDefinitionWord = null;
+
+function clearAdditionalSearch() {
+  additionalSearchWord = null;
+  searchHistoryStack = [];
+  updateBreadcrumb();
+}
+
+function navigateBackDefinition() {
+  if (searchHistoryStack.length > 0) {
+    const prev = searchHistoryStack.pop();
+    showDefinition(prev, 'simple', searchHistoryStack.length > 0);
+  }
+}
+
 // ===== Word Definition Popup =====
-function showDefinition(word, lang = 'simple') {
+function showDefinition(word, lang = 'simple', isSubSearch = false) {
   const vd = vocabData[word];
   if (!vd) return;
+
+  if (isSubSearch) {
+    if (currentDefinitionWord && currentDefinitionWord !== word) {
+      if (!searchHistoryStack.includes(currentDefinitionWord)) {
+        searchHistoryStack.push(currentDefinitionWord);
+      }
+    }
+    additionalSearchWord = word;
+  } else if (currentDefinitionWord !== word) {
+    searchHistoryStack = [];
+    additionalSearchWord = null;
+  }
+  currentDefinitionWord = word;
+  updateBreadcrumb();
 
   const popup = document.getElementById('def-popup');
   const overlay = document.getElementById('def-overlay');
@@ -736,20 +768,15 @@ function showDefinition(word, lang = 'simple') {
   document.getElementById('def-word').textContent = vd.w;
 
   const posStr = vd.pos && vd.pos.length ? vd.pos.join(', ') : '';
-  const lvStr = `Level ${vd.lv}`;
+  const lvStr = vd.lv > 0 ? `Level ${vd.lv}` : (vd.is_variant_fallback ? '衍伸字彙' : 'Level -');
   const examStr = vd.cnt > 0 
     ? `📝 統測歷屆考題：出題 ${vd.cnt} 次，橫跨 ${vd.yrs_cnt} 個學年度 [${vd.exam.join(', ')}] (最新: ${vd.latest_yr} 年)`
-    : '📝 統測歷屆考題：尚未直接出題 (Level 1–4 基礎單字)';
-  const formsStr = vd.forms && Object.keys(vd.forms).length > 0
-    ? Object.entries(vd.forms).map(([k, v]) => `${k}: ${v}`).join(' | ')
-    : '';
-  const familyStr = vd.fam && vd.fam.length > 0 ? `Family: ${vd.fam.join(', ')}` : '';
+    : '📝 統測歷屆考題：尚未直接出題';
 
-  let metaHtml = `<span class="def-level">Level ${vd.lv}</span>`;
+  let metaHtml = `<span class="def-level">${lvStr}</span>`;
   if (posStr) metaHtml += `<span class="def-pos">${posStr}</span>`;
+  if (vd.relation) metaHtml += `<span class="def-pos" style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7;">${vd.relation}</span>`;
   metaHtml += `<div class="def-exam">${examStr}</div>`;
-  if (formsStr) metaHtml += `<div class="def-forms">${formsStr}</div>`;
-  if (familyStr) metaHtml += `<div class="def-family">${familyStr}</div>`;
   document.getElementById('def-meta').innerHTML = metaHtml;
 
   // Image support
@@ -759,12 +786,60 @@ function showDefinition(word, lang = 'simple') {
   imgEl.onload = () => { imgContainer.style.display = 'block'; };
   imgEl.onerror = () => { imgContainer.style.display = 'none'; };
 
+  // Sub-search Back Navigation Bar
+  let subSearchNavHtml = '';
+  if (searchHistoryStack.length > 0) {
+    const prevWord = searchHistoryStack[searchHistoryStack.length - 1];
+    subSearchNavHtml = `
+      <div class="def-subsearch-nav">
+        <button class="subsearch-back-btn" onclick="navigateBackDefinition()">← 返回上一個單字 (${prevWord})</button>
+        <span class="subsearch-indicator">🔍 延伸查詢模式 (Additional Search)</span>
+      </div>
+    `;
+  }
+
+  // Origin & Variants Box (Every word has an origin, all variants are clickable)
+  let originBoxHtml = '';
+  if (vd.origin) {
+    const isSelf = (vd.origin.toLowerCase() === word.toLowerCase());
+    const origZh = vd.origin_zh || '';
+    const variants = vd.variants || [];
+
+    originBoxHtml = `
+      <div class="def-origin-box">
+        <div class="def-origin-row">
+          <span class="def-origin-label">🌱 詞源原型 (Origin):</span>
+          <button class="origin-chip ${isSelf ? 'is-self' : ''}" onclick="showDefinition('${vd.origin}', 'simple', true)" title="點選查詢此原型單字">
+            ${vd.origin} <span class="origin-action-tag">${isSelf ? '目前單字' : '➔ 查看原型'}</span>
+          </button>
+          ${origZh ? `<span class="origin-zh">${origZh}</span>` : ''}
+        </div>
+        ${variants.length > 1 ? `
+          <div class="variants-container">
+            <div class="variants-title">🔄 詞性衍生與時態變體 (Family & Variants - 共 ${variants.length} 種，點選可查詢)：</div>
+            <div class="variants-grid">
+              ${variants.map(v => `
+                <button class="variant-chip ${v.w === word ? 'active-variant' : ''}" onclick="showDefinition('${v.w}', 'simple', true)" title="點選延伸查詢: ${v.w}">
+                  <span class="v-word">${v.w}</span>
+                  ${v.pos && v.pos.length ? `<span class="v-pos-badge">${v.pos.join('/')}</span>` : ''}
+                  <span class="v-tag">${v.r}</span>
+                </button>
+              `).join('')}
+            </div>
+          </div>
+        ` : ''}
+      </div>
+    `;
+  }
+
   // Definition content with 3-way Mode Switcher (Simple EN, Advanced EN, Chinese)
   let contentHtml = `
+    ${subSearchNavHtml}
+    ${originBoxHtml}
     <div class="def-tabs">
-      <button class="def-tab-btn ${lang === 'simple' ? 'active' : ''}" onclick="showDefinition('${word}', 'simple')">🟢 基礎英釋 (Level 1-2)</button>
-      <button class="def-tab-btn ${lang === 'en' ? 'active' : ''}" onclick="showDefinition('${word}', 'en')">📘 詳細英釋 (Advanced)</button>
-      <button class="def-tab-btn ${lang === 'zh' ? 'active' : ''}" onclick="showDefinition('${word}', 'zh')">🇹🇼 繁體中文</button>
+      <button class="def-tab-btn ${lang === 'simple' ? 'active' : ''}" onclick="showDefinition('${word}', 'simple', ${isSubSearch})">🟢 基礎英釋 (Level 1-2)</button>
+      <button class="def-tab-btn ${lang === 'en' ? 'active' : ''}" onclick="showDefinition('${word}', 'en', ${isSubSearch})">📘 詳細英釋 (Advanced)</button>
+      <button class="def-tab-btn ${lang === 'zh' ? 'active' : ''}" onclick="showDefinition('${word}', 'zh', ${isSubSearch})">🇹🇼 繁體中文</button>
     </div>
   `;
 
@@ -872,6 +947,7 @@ function showDefinition(word, lang = 'simple') {
 function closeDefinition() {
   document.getElementById('def-overlay').classList.remove('visible');
   document.getElementById('def-popup').classList.remove('visible');
+  clearAdditionalSearch();
 }
 
 // ===== Affix Compound Search Modal =====
@@ -1009,17 +1085,24 @@ function updateBreadcrumb() {
       label = `${node.label} (${node.label_zh})`;
     }
     if (i > 0) html += '<span class="breadcrumb-sep">›</span>';
-    if (i === currentPath.length - 1) {
+    if (i === currentPath.length - 1 && !additionalSearchWord) {
       html += `<span class="breadcrumb-item current">${label}</span>`;
     } else {
       html += `<button class="breadcrumb-item" onclick="goToLevel(${i})">${label}</button>`;
     }
   }
 
+  // Single additional search crumb (never infinitely expands)
+  if (additionalSearchWord) {
+    html += '<span class="breadcrumb-sep">›</span>';
+    html += `<span class="breadcrumb-item search-tag" title="點選重看此單字，或點選其他層級清除" onclick="showDefinition('${additionalSearchWord}', 'simple', true)">🔍 Additional Search: ${additionalSearchWord}</span>`;
+  }
+
   bar.innerHTML = html;
 }
 
 function goToRoot() {
+  clearAdditionalSearch();
   currentPath = ['life'];
   if (currentView === 'group') showGraph();
   enterRootView(true);
@@ -1027,6 +1110,7 @@ function goToRoot() {
 
 function goToLevel(idx) {
   if (idx < 0 || idx >= currentPath.length) return;
+  clearAdditionalSearch();
   if (currentView === 'group') showGraph();
   if (idx === 0) {
     goToRoot();

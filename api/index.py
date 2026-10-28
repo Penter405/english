@@ -207,6 +207,35 @@ async def search_vocabulary(
     }
 
 
+@app.get("/api/v1/words/origin")
+@app.get("/api/origin")
+async def get_word_origin(word: str = Query(..., description="The word to look up its origin and family variants")):
+    """Lookup origin and family variants for a word."""
+    origins_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), "database", "word_origins.json")
+    if not os.path.exists(origins_path):
+        raise HTTPException(status_code=500, detail="word_origins.json not found")
+    with open(origins_path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    word_lower = word.lower().strip()
+    word_info = data.get("words", {}).get(word_lower)
+    orig_key = word_info.get("origin", word_lower) if word_info else word_lower
+    orig_info = data.get("origins", {}).get(orig_key)
+
+    if not orig_info and not word_info:
+        raise HTTPException(status_code=404, detail=f"No origin information found for '{word}'")
+
+    return {
+        "word": word_lower,
+        "origin": orig_key,
+        "relation": word_info.get("relation", "0: 原型 (lemma)") if word_info else "原型 (lemma)",
+        "meaning_zh": orig_info.get("meaning_zh", "") if orig_info else "",
+        "pos": orig_info.get("pos", []) if orig_info else [],
+        "variants_count": len(orig_info.get("variants", [])) if orig_info else 0,
+        "variants": orig_info.get("variants", []) if orig_info else []
+    }
+
+
 @app.get("/api/rules")
 async def get_rules():
     """Get the 6 Indo-European sound interchange rules."""

@@ -29,6 +29,7 @@ EXAM_WORDS_PATH = BASE / 'database' / 'exam_words.json'
 ROOTS_PATH = BASE / 'database' / 'word_roots_breakdown.json'
 SENTENCES_PATH = BASE / 'database' / 'word_sentences.json'
 SIMPLE_DEFS_PATH = BASE / 'database' / 'simple_definitions.json'
+ORIGINS_PATH = BASE / 'database' / 'word_origins.json'
 OUT_GRAPH = BASE / 'docs' / 'data' / 'graph.json'
 OUT_VOCAB = BASE / 'docs' / 'data' / 'vocab_data.json'
 
@@ -327,7 +328,7 @@ TAXONOMY = {
 }
 
 
-def build_word_data(word, entry, roots_db, sentences_db, simple_defs_db):
+def build_word_data(word, entry, roots_db, sentences_db, simple_defs_db, origins_db):
     """Build word metadata for the definition popup and multi-criteria sorting."""
     defs = entry.get('definitions', {})
     if isinstance(defs, dict):
@@ -344,6 +345,18 @@ def build_word_data(word, entry, roots_db, sentences_db, simple_defs_db):
     yrs_cnt = entry.get("appear_year_count", len(years))
     latest_yr = max(years) if years else 0
 
+    orig_info = origins_db.get("words", {}).get(word, {})
+    orig_key = orig_info.get("origin", word)
+    orig_data = origins_db.get("origins", {}).get(orig_key, {})
+
+    variants = []
+    for v in orig_data.get("variants", []):
+        variants.append({
+            "w": v["word"],
+            "pos": v.get("pos", []),
+            "r": v.get("relation", "")
+        })
+
     return {
         "w": word,
         "lv": entry.get("level", 0),
@@ -359,7 +372,11 @@ def build_word_data(word, entry, roots_db, sentences_db, simple_defs_db):
         "latest_yr": latest_yr,
         "sources": entry.get("sources", []),
         "roots": roots_db.get(word),
-        "sentences": sentences_db.get(word, [])
+        "sentences": sentences_db.get(word, []),
+        "origin": orig_key,
+        "origin_zh": orig_data.get("meaning_zh", ""),
+        "relation": orig_info.get("relation", "0: 原型 (lemma)"),
+        "variants": variants
     }
 
 
@@ -385,6 +402,12 @@ def main():
         with open(SIMPLE_DEFS_PATH, 'r', encoding='utf-8') as f:
             simple_defs_db = json.load(f)
         print(f"  Loaded {len(simple_defs_db)} simple English definitions.")
+
+    origins_db = {}
+    if ORIGINS_PATH.exists():
+        with open(ORIGINS_PATH, 'r', encoding='utf-8') as f:
+            origins_db = json.load(f)
+        print(f"  Loaded {len(origins_db.get('origins', {}))} origin families.")
 
     words = exam_data['words']
     filtered = {
@@ -420,7 +443,7 @@ def main():
     vocab_data = {}
 
     for w, entry in sorted(filtered.items()):
-        vocab_data[w] = build_word_data(w, entry, roots_db, sentences_db, simple_defs_db)
+        vocab_data[w] = build_word_data(w, entry, roots_db, sentences_db, simple_defs_db, origins_db)
 
         defs = entry.get('definitions', {})
         en_defs = defs.get('en', []) if isinstance(defs, dict) else []
@@ -564,6 +587,47 @@ def main():
             "edges": edges,
         }
     }
+
+    # Step 3b: Populate fallback entries for all family variants so clicking them in Web popup works seamlessly
+    extra_variants_count = 0
+    for orig_key, odata in origins_db.get("origins", {}).items():
+        variants = odata.get("variants", [])
+        clean_vars = [{"w": v["word"], "pos": v.get("pos", []), "r": v.get("relation", "")} for v in variants]
+        for v in variants:
+            vw = v["word"]
+            if vw not in vocab_data:
+                ew = words.get(vw, {})
+                defs = ew.get("definitions", {})
+                zh_defs = defs.get("zh", []) if isinstance(defs, dict) else []
+                en_defs = defs.get("en", []) if isinstance(defs, dict) else []
+                if not zh_defs and odata.get("meaning_zh"):
+                    zh_defs = [f"{odata['meaning_zh']} ({v['relation']})"]
+
+                vocab_data[vw] = {
+                    "w": vw,
+                    "lv": ew.get("level", 0),
+                    "pos": v.get("pos", []) or ew.get("pos", []),
+                    "en": en_defs or [f"Variant form of {orig_key} ({v['relation']})"],
+                    "simple_en": simple_defs_db.get(vw, f"Related form of {orig_key}."),
+                    "zh": zh_defs,
+                    "forms": ew.get("forms", {}),
+                    "fam": [v2["word"] for v2 in variants if v2["word"] != vw][:10],
+                    "exam": ew.get("appear_year", []),
+                    "cnt": ew.get("total_appear", 0),
+                    "yrs_cnt": ew.get("appear_year_count", 0),
+                    "latest_yr": max(ew.get("appear_year", [0])) if ew.get("appear_year") else 0,
+                    "sources": ew.get("sources", []),
+                    "roots": roots_db.get(vw),
+                    "sentences": sentences_db.get(vw, []),
+                    "origin": orig_key,
+                    "origin_zh": odata.get("meaning_zh", ""),
+                    "relation": v.get("relation", "變體 (variant)"),
+                    "variants": clean_vars,
+                    "is_variant_fallback": True
+                }
+                extra_variants_count += 1
+
+    print(f"Added {extra_variants_count} connected variant words to vocab_data for instant interactive lookup.")
 
     # Step 4: Write to docs/data/
     OUT_GRAPH.parent.mkdir(parents=True, exist_ok=True)

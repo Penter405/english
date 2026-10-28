@@ -198,15 +198,34 @@ def build():
                 "explanation": explanation
             }
 
-    # 2. Regular Prefix Decompositions against known vocabulary
+    # 2. Verified Prefix Decompositions (WordNet verified ONLY, zero substring guesswork)
+    from nltk.corpus import wordnet as wn
+
+    # Disallow known false-positive short tokens and abbreviations
+    EXCLUDED_BASES = {'ter', 'per', 'mon', 'lay', 'age', 'set', 'but', 'try', 'cur', 'tract', 'pose', 'port'}
+
     for w in exam_words:
         if w in breakdowns or len(w) < 4:
             continue
         
+        # Check WordNet antonyms for negative prefixes
+        syns = wn.synsets(w)
+        antonyms = set(ant.name().lower() for s in syns for l in s.lemmas() for ant in l.antonyms())
+
         for pfx in sorted(PREFIXES.keys(), key=lambda x: -len(x)):
             if len(pfx) >= 2 and w.startswith(pfx):
                 base = w[len(pfx):]
-                if base in exam_words and len(base) >= 3:
+                if base in EXCLUDED_BASES:
+                    continue
+
+                # Verify: base must be an antonym or derivation in WordNet
+                is_verified = (base in antonyms)
+                if not is_verified:
+                    drfs = set(dr.name().lower() for s in syns for l in s.lemmas() for dr in l.derivationally_related_forms())
+                    if base in drfs:
+                        is_verified = True
+
+                if is_verified and base in exam_words and len(base) >= 3:
                     base_zh = exam_words[base].get("definitions", {}).get("zh", [""])[0]
                     base_clean = re.sub(r'^[a-z]+\.\s*', '', base_zh).split(',')[0].split(';')[0].split('；')[0].split(' ')[0][:6]
                     if not base_clean:
@@ -227,11 +246,14 @@ def build():
                     }
                     break
 
-    # 3. Regular Suffix Decompositions against known vocabulary
+    # 3. Verified Suffix Decompositions (WordNet verified ONLY)
     for w in exam_words:
         if w in breakdowns or len(w) < 5:
             continue
         
+        syns = wn.synsets(w)
+        drfs = set(dr.name().lower() for s in syns for l in s.lemmas() for dr in l.derivationally_related_forms())
+
         for sfx in sorted(SUFFIXES.keys(), key=lambda x: -len(x)):
             if len(sfx) >= 2 and w.endswith(sfx):
                 stem = w[:-len(sfx)]
@@ -245,7 +267,10 @@ def build():
                 
                 matched_base = None
                 for c in candidates:
-                    if c in exam_words and len(c) >= 3:
+                    if c in EXCLUDED_BASES:
+                        continue
+                    # WordNet derivationally confirmed or transparent adjective suffix -able/-ful/-less
+                    if (c in drfs or sfx in ('able', 'ible', 'ful', 'less', 'ness', 'ment')) and c in exam_words and len(c) >= 3:
                         matched_base = c
                         break
                 

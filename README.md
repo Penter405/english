@@ -20,7 +20,8 @@
   - **🟢 基礎英釋 (Level 1–2)**：全數單字收錄完全由國中小 Level 1–2 基礎單字撰寫之極簡釋義，初學者零負擔。
   - **📘 詳細英釋 (Advanced)**：完整 ECDICT 權威英文定義。
   - **🇹🇼 繁體中文**：精準詞性與中文對譯。
-- **確定性字根/字首/字尾拆解 (Deterministic Root & Affix Breakdown)**：直接查表自字根資料庫，清晰標示 `Prefix` (前綴)、`Root` (詞根)、`Suffix` (後綴) 及造詞中英合成邏輯（例：`predict` ➔ `pre-(事先) + dict(說/講)`），杜絕演算法隨機猜測。
+- **確定性字根/字首/字尾拆解 (Deterministic Root & Affix Breakdown)**：直接查表自字根資料庫，清晰標示 `Prefix` (前綴)、`Root` (詞根)、`Suffix` (後綴) 及造詞中英合成邏輯（例：`predict` ➔ `pre-(事先) + dict(說/講)`），經 WordNet 與權威辭典嚴格驗證，杜絕演算法隨機猜測（無 mister 誤切 mis- 等問題）。
+- **詞源原型 (Origin) 與可點選衍生/時態變體 (Interactive Family Variants)**：每個單字皆對應其原始原型（如 `playable` ➔ `play`、`picked` ➔ `pick`），彈窗即時展開所有詞性衍生詞與時態變體（如 `0: pick (原型)`, `1: picked (過去分詞)`, `2: picking (現在分詞)`, `3: picks (三單)`, `picker (施事名詞)`）。變體 100% 可點選跳轉，上方的 Breadcrumb 僅維持單一 `🔍 Additional Search: {word}` 標籤，不無限延伸。
 - **統測歷屆真題與標準例句 (Authentic Sentence Examples)**：收錄 104–115 統測真題實際句子與標準例句，目標字自動發光標註。
 - **多維出題排序與特定年份調整 (Multi-criteria Adjust Buttons)**：
   - **全域調整工具列 (Global Adjust Bar)**：支援「🔥 出現次數」、「📅 出現年數」、「⏱️ 最新出題年份」、「🔤 字母 A-Z」，以及「🎯 歷年特定年份過濾」（如僅看 114 統測考題單字）。

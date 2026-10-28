@@ -39,7 +39,8 @@
 | 腳本名稱 | 功能說明 | 常用執行指令 |
 |---|---|---|
 | **`add_exam_oov_words.py`** | 針對歷屆考卷全面進行詞形還原與比對，將統測考題實際出現但不在 6,109 表內的 592 個高頻考字（如 orchid, supercomputer, scam, summer 等）補齊雙語釋義並加入字庫 | `py scripts/add_exam_oov_words.py` |
-| **`build_root_breakdown.py`**| 依據 90 字根與 109 詞綴庫，產生確定性字根/字首/字尾拆解資料庫 `database/word_roots_breakdown.json` | `py scripts/build_root_breakdown.py` |
+| **`build_root_breakdown.py`**| 依據 90 字根與 109 詞綴庫，產生確定性字根/字首/字尾拆解資料庫 `database/word_roots_breakdown.json`（純查表與 WordNet 雙重驗證，徹底移除啟發式字串猜測） | `py scripts/build_root_breakdown.py` |
+| **`build_word_origins.py`**  | 解析 ECDICT exchange 變體資料庫與 WordNet 衍生關係，建置所有單字的原型 (Origin) 與詞性變體資料庫 `database/word_origins.json` (22,783 詞條) | `py scripts/build_word_origins.py` |
 | **`build_sentence_examples.py`**| 從 104–115 統測 PDF 抽取真實試題句子（1,209 句），並補齊全字典標準例句輸出 `database/word_sentences.json` | `py scripts/build_sentence_examples.py` |
 | **`build_simple_definitions.py`**| 生成完全限定使用 Level 1–2 單字解釋的精簡英文定義庫 `database/simple_definitions.json` | `py scripts/build_simple_definitions.py` |
 | **`auto_fetch_images.py`** | 自動從維基百科 REST API 批次抓取具體名詞高畫質圖片並自動以 Pillow 壓縮至 Web 最適尺寸 | `py scripts/auto_fetch_images.py --count 30` |

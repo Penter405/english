@@ -17,7 +17,12 @@
 2. **確定性字根/字首/字尾拆解 (Deterministic Root & Affix Breakdown)**：
    - 直接依據 `database/word_roots_breakdown.json` 資料庫查詢，無啟發式演算法猜測。
    - 結構化呈現 `Prefix` (前綴)、`Root` (詞根)、`Suffix` (後綴) 及中英文造詞邏輯（例：`predict` ➔ `pre-(事先) + dict(說/講)`）。
-3. **統測真題與標準例句 (Authentic Sentence Examples)**：
+3. **詞源原型 (Origin) 與時態/詞性衍生變體互通 (Clickable Origin & Family Variants)**：
+   - 每個單字皆關聯至其原始原型（如 `playable` ➔ `play`、`picked` ➔ `pick`、`comfortably` ➔ `comfort`）。
+   - 彈窗直接展開所有同源衍生詞與動詞時態變化（如 `0: pick (原型)`, `1: picked (過去式/分詞)`, `2: picking (現在分詞)`, `3: picks (三單)`, `picker (施事名詞)`）。
+   - **所有變體與原型按鈕 100% 可點選**：點擊立即切換至該單字進行深層查詢，內建「← 返回上一個單字」歷史堆疊。
+   - **頂部路徑防無限延伸 (Single-slot Additional Search)**：進入延伸查詢時，頂部路徑只會顯示 `... › 🔍 Additional Search: {word}`，連續點選變體時就地替換該標籤，永不無限延伸路徑。
+4. **統測真題與標準例句 (Authentic Sentence Examples)**：
    - 整合 104–115 統測歷屆考題真題原句與權威例句，關鍵單字高亮顯示。
 4. **多維出題排序與特定年份調整 (Multi-criteria Adjust Buttons)**：
    - **全域調整工具列 (Global Adjust Bar)**：

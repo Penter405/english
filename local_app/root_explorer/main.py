@@ -351,6 +351,45 @@ def interactive_mode(decomposer: Decomposer):
         print_analysis(result)
 
 
+def execute_origin_lookup(word: str):
+    """Lookup origin and all variants for a word."""
+    origins_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "database", "word_origins.json")
+    if not os.path.exists(origins_path):
+        print("Error: database/word_origins.json not found.")
+        return
+    with open(origins_path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    word_lower = word.lower().strip()
+    word_info = data.get("words", {}).get(word_lower)
+    orig_key = word_info.get("origin", word_lower) if word_info else word_lower
+    orig_info = data.get("origins", {}).get(orig_key)
+
+    if not orig_info and not word_info:
+        print(f"\n  ❌ No origin information found for '{word}'\n")
+        return
+
+    orig_zh = orig_info.get("meaning_zh", "") if orig_info else ""
+    orig_pos = orig_info.get("pos", []) if orig_info else []
+    pos_str = f"[{', '.join(orig_pos)}]" if orig_pos else ""
+    rel = word_info.get("relation", "0: 原型 (lemma)") if word_info else "原型 (lemma)"
+
+    print(f"\n  {Colors.BOLD}🌱 Word Origin & Variants Lookup{Colors.RESET}")
+    print(f"  Target Word : {Colors.ORIGIN}{Colors.BOLD}{word_lower}{Colors.RESET} ({rel})")
+    print(f"  Origin Base : {Colors.ROOT}{Colors.BOLD}{orig_key}{Colors.RESET} {pos_str} {orig_zh}")
+
+    variants = orig_info.get("variants", []) if orig_info else []
+    if variants:
+        print(f"  Variants ({len(variants)}):")
+        for i, v in enumerate(variants, 1):
+            vw = v.get("word", "")
+            vpos = f"[{'/'.join(v.get('pos', []))}]" if v.get("pos") else ""
+            vrel = v.get("relation", "")
+            is_cur = " ➔ (Current)" if vw == word_lower else ""
+            print(f"    {i:2d}. {vw:<16} {vpos:<10} {vrel}{is_cur}")
+    print()
+
+
 def main():
     # Use SQLite database if available, otherwise fall back to JSON
     db_path = DEFAULT_DB_PATH if os.path.exists(DEFAULT_DB_PATH) else os.path.join(API_DIR, "word_database.json")
@@ -386,6 +425,9 @@ def main():
 
     elif command == "search":
         execute_search(sys.argv[2:])
+
+    elif command in ("origin", "variants") and len(sys.argv) >= 3:
+        execute_origin_lookup(sys.argv[2])
 
     elif command == "rules":
         print_rules()
