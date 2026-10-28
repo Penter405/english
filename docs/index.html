@@ -26,6 +26,11 @@
     <span>Back to Graph</span>
   </button>
 
+  <!-- Top-right: Affix Search Button -->
+  <button class="nav-search-btn" id="nav-search-btn" onclick="openAffixSearchModal()" title="Search by Prefix / Postfix / POS">
+    <span>🔍 構詞複合搜尋</span>
+  </button>
+
   <!-- Graph View -->
   <div id="graph-view" class="view active">
     <div id="cy-container">
@@ -73,6 +78,42 @@
       <img id="def-image" class="def-image" alt="" />
     </div>
     <div class="def-content" id="def-content"></div>
+  </div>
+
+  <!-- Compound Affix Search Modal -->
+  <div class="search-overlay" id="search-overlay" onclick="closeAffixSearchModal()"></div>
+  <div class="search-modal" id="search-modal">
+    <div class="search-modal-header">
+      <div class="search-modal-title">
+        <span class="search-modal-icon">🔍</span>
+        <h3>字首 / 字尾 / 詞性 複合查詢器 (Affix Search)</h3>
+      </div>
+      <button class="search-close" onclick="closeAffixSearchModal()">&times;</button>
+    </div>
+    <div class="search-modal-body">
+      <div class="search-inputs">
+        <div class="search-field">
+          <label>字首 (Prefix):</label>
+          <input type="text" id="search-prefix" placeholder="例: com*, pre*, un*" oninput="triggerAffixSearch()" />
+        </div>
+        <div class="search-field">
+          <label>字尾 (Postfix):</label>
+          <input type="text" id="search-postfix" placeholder="例: *te, *tion, *able" oninput="triggerAffixSearch()" />
+        </div>
+        <div class="search-field">
+          <label>詞性 (POS):</label>
+          <select id="search-pos" onchange="triggerAffixSearch()">
+            <option value="">全部詞性 (All)</option>
+            <option value="verb">動詞 (Verb)</option>
+            <option value="noun">名詞 (Noun)</option>
+            <option value="adj">形容詞 (Adjective)</option>
+            <option value="adv">副詞 (Adverb)</option>
+          </select>
+        </div>
+      </div>
+      <div class="search-status" id="search-status">輸入條件即時檢索 4,842 個單字... (例: Prefix: com* + POS: verb)</div>
+      <div class="search-results-grid" id="search-results-grid"></div>
+    </div>
   </div>
 
   <script src="./app.js"></script>

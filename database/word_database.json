@@ -913,7 +913,13 @@
         "explicit",
         "implicit",
         "duplicate",
-        "replicate"
+        "replicate",
+        "complex",
+        "complexity",
+        "complicated",
+        "complication",
+        "application",
+        "implication"
       ]
     },
     "quer": {
@@ -1542,6 +1548,47 @@
         "revive",
         "vivid",
         "viable"
+      ]
+    },
+    "plet": {
+      "meaning": "fill",
+      "meaning_zh": "填滿/充滿",
+      "origin_word": "fill",
+      "rule": 1,
+      "rule_name": "Vowel/Consonant interchange",
+      "explanation": "Latin plere/pletus (fill) cognate with English full/fill",
+      "derived_words": [
+        "complete",
+        "completely",
+        "completion",
+        "deplete",
+        "depletion",
+        "replenish",
+        "supplement",
+        "complement",
+        "plenty",
+        "plentiful"
+      ]
+    },
+    "fort": {
+      "meaning": "strong",
+      "meaning_zh": "強壯/力量",
+      "origin_word": "force",
+      "rule": 1,
+      "rule_name": "Sound change",
+      "explanation": "Latin fortis (strong) → comfort, effort, fortify",
+      "derived_words": [
+        "comfort",
+        "comfortable",
+        "comfortably",
+        "discomfort",
+        "fort",
+        "fortress",
+        "fortify",
+        "effort",
+        "effortless",
+        "force",
+        "reinforce"
       ]
     }
   },

@@ -39,8 +39,21 @@
 | 腳本名稱 | 功能說明 | 常用執行指令 |
 |---|---|---|
 | **`add_exam_oov_words.py`** | 針對歷屆考卷全面進行詞形還原與比對，將統測考題實際出現但不在 6,109 表內的 592 個高頻考字（如 orchid, supercomputer, scam, summer 等）補齊雙語釋義並加入字庫 | `py scripts/add_exam_oov_words.py` |
-| **`build_web_graph.py`** | 篩選「統測出現過或 Level 1–4」單字（共 4,842 字），使用雙語語義匹配分類至 9 大領域 38 主題，保證連線不碰觸節點，輸出 `docs/data/graph.json` 與 `docs/data/vocab_data.json` | `py scripts/build_web_graph.py` |
+| **`build_root_breakdown.py`**| 依據 90 字根與 109 詞綴庫，產生確定性字根/字首/字尾拆解資料庫 `database/word_roots_breakdown.json` | `py scripts/build_root_breakdown.py` |
+| **`build_sentence_examples.py`**| 從 104–115 統測 PDF 抽取真實試題句子（1,209 句），並補齊全字典標準例句輸出 `database/word_sentences.json` | `py scripts/build_sentence_examples.py` |
+| **`build_simple_definitions.py`**| 生成完全限定使用 Level 1–2 單字解釋的精簡英文定義庫 `database/simple_definitions.json` | `py scripts/build_simple_definitions.py` |
+| **`auto_fetch_images.py`** | 自動從維基百科 REST API 批次抓取具體名詞高畫質圖片並自動以 Pillow 壓縮至 Web 最適尺寸 | `py scripts/auto_fetch_images.py --count 30` |
+| **`build_web_graph.py`** | 篩選「統測出現過或 Level 1–4」單字（共 4,842 字），使用雙語語義匹配分類至 9 大領域 38 主題，整合例句、字根與排序指標，輸出 `docs/data/graph.json` 與 `docs/data/vocab_data.json` | `py scripts/build_web_graph.py` |
 | **`upload_word_image.py`** | 為單字上傳並自動壓縮處理圖片至 `docs/data/images/{word}.png` | `py scripts/upload_word_image.py` |
+
+#### `auto_fetch_images.py` 使用範例：
+```bash
+# 自動為尚未有圖片的前 20 個高頻具體名詞抓取維基百科圖片
+py scripts/auto_fetch_images.py --count 20
+
+# 指定單字清單下載圖片
+py scripts/auto_fetch_images.py --words orchid supercomputer rainforest scam
+```
 
 #### `upload_word_image.py` 使用範例：
 ```bash

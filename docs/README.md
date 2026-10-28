@@ -10,8 +10,30 @@
 
 1. **4,842 個核心考試單字**：
    - 篩選標準：**歷屆試題曾出題 OR Level 1–4**，精準鎖定考試重點（含歷屆統測考題高頻詞如 orchid, supercomputer, scam, rainforest, backpacker 等）。
-   - 100% 具備 **English Definition** 與 **繁體中文釋義**。
-2. **9 大核心領域 × 38 個直觀子主題**：
+   - **3 軌多模態釋義**：
+     - **🟢 基礎英釋 (Level 1–2)**：完全限制在國中小 Level 1–2 單字範圍撰寫的簡明英文解釋，降低閱讀門檻。
+     - **📘 詳細英釋 (Advanced)**：完整 ECDICT 權威英文定義。
+     - **🇹🇼 繁體中文**：精準台灣慣用詞性與中文對譯。
+2. **確定性字根/字首/字尾拆解 (Deterministic Root & Affix Breakdown)**：
+   - 直接依據 `database/word_roots_breakdown.json` 資料庫查詢，無啟發式演算法猜測。
+   - 結構化呈現 `Prefix` (前綴)、`Root` (詞根)、`Suffix` (後綴) 及中英文造詞邏輯（例：`predict` ➔ `pre-(事先) + dict(說/講)`）。
+3. **統測真題與標準例句 (Authentic Sentence Examples)**：
+   - 整合 104–115 統測歷屆考題真題原句與權威例句，關鍵單字高亮顯示。
+4. **多維出題排序與特定年份調整 (Multi-criteria Adjust Buttons)**：
+   - **全域調整工具列 (Global Adjust Bar)**：
+     - `🔥 依出題次數降序` (預設高頻先排)
+     - `📅 依出題年數降序` (歷年常考指標)
+     - `⏱️ 最新出題年份先排` (近期趨勢)
+     - `🔤 依字母 A-Z`
+     - `🎯 歷年特定年份過濾`（如 114 統測、113 統測... 只看該年出現的字）
+   - **分區獨立下拉選單 (Per-section Adjust)**：Level 1 至 Level 6 每個難度區塊皆可獨立自訂排序。
+5. **構詞複合即時搜尋 (Compound Affix Search Modal)**：
+   - 點擊右上角「🔍 構詞複合搜尋」，支援同時輸入：
+     - **字首 (Prefix)**：如 `com*`, `pre*`, `un*`
+     - **字尾 (Postfix)**：如 `*te`, `*tion`, `*able`
+     - **詞性 (POS)**：動詞 (Verb)、名詞 (Noun)、形容詞 (Adjective)、副詞 (Adverb)
+   - 支援即時在 4,842 單字中精準過濾（例如：`com*` + `*te` + `verb` 即時找出 `complete`, `compete`, `communicate` 等）。
+6. **9 大核心領域 × 38 個直觀子主題**：
    - **人物與特質 (People & Character)**：個性品質（如 brave, honest）、外貌體態、身分人際、家庭生命歷程。
    - **心智與情緒 (Mind & Emotions)**：情緒感受、思維判斷、態度動機目標、溝通言論。
    - **身體與動作 (Body & Actions)**：器官與健康、肢體位移動作、肢體操作、感官知覺。
@@ -21,22 +43,15 @@
    - **科技與交通 (Tech & Transport)**：電腦網路、通訊影音、陸上交通、航空航海、旅行物流。
    - **自然與科學 (Nature & Science)**：動物世界、植物生態、氣候地理、理化宇宙。
    - **邏輯與修飾 (Logic & Modifiers)**：時間頻率、空間方向、程度比較、變化因果。
-3. **無連線碰撞幾何排版（Zero Line-Node Collisions）**：
+7. **無連線碰撞幾何排版（Zero Line-Node Collisions）**：
    - **Root View**：中央為 `Life`，外圍環繞 9 個核心領域，純放射狀連線。
    - **Domain View**：進入領域後，該領域置中（`0, 0`），**父節點（Root）以反向角度（`ROOT_LINK_DIST = 520`）呈現在對應位置**（虛線連接、縮小呈現為 Breadcrumb）。
    - **子節點外展扇形（Outward Fan）**：子主題節點集中於**遠離 Root 的外側扇形（夾角差距 > 105°）**展開，**連線絕對不會碰觸或穿過其他任何節點**。
-   - 點擊父節點立即平滑返回上一層或根節點。
-4. **取消圖中 Basic/Medium/Hard 節點，點入直接呈現 6 個等級**：
-   - 圖形畫布內不設置雜亂的難度子節點。
-   - 點選任何主題節點，立即開啟該主題的單字列表頁面。
-   - 頁面直接按 **Level 1 至 Level 6** 六大官方難度清晰分區呈現單字晶片。
-5. **雙模態釋義交互**：
-   - **左鍵單擊 / 手機輕點**：彈出詳細**英文解釋**（全英閱讀模式）。
-   - **右鍵點選 / 雙擊（Double Click）**：彈出**繁體中文釋義**。
-   - 彈窗內建切換按鈕，可隨時在英中雙語間切換，並顯示出題紀錄與詞性。
-6. **圖片輔助記憶**：
+8. **取消圖中 Basic/Medium/Hard 節點，點入直接呈現 6 個等級**：
+   - 點選任何主題節點，立即開啟該主題的單字列表頁面，直接按 **Level 1 至 Level 6** 六大難度清晰分區呈現單字晶片。
+9. **圖片輔助記憶**：
    - 支援單字圖片關聯，彈窗自動加載對應圖像（位於 `data/images/{word}.png`）。
-   - 提供 Python 上傳工具 [`scripts/upload_word_image.py`](../scripts/upload_word_image.py) 進行維護。
+   - 提供自動批次抓圖工具 [`scripts/auto_fetch_images.py`](../scripts/auto_fetch_images.py)。
 
 ---
 

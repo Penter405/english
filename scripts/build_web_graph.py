@@ -26,6 +26,9 @@ from pathlib import Path
 
 BASE = Path(__file__).resolve().parent.parent
 EXAM_WORDS_PATH = BASE / 'database' / 'exam_words.json'
+ROOTS_PATH = BASE / 'database' / 'word_roots_breakdown.json'
+SENTENCES_PATH = BASE / 'database' / 'word_sentences.json'
+SIMPLE_DEFS_PATH = BASE / 'database' / 'simple_definitions.json'
 OUT_GRAPH = BASE / 'docs' / 'data' / 'graph.json'
 OUT_VOCAB = BASE / 'docs' / 'data' / 'vocab_data.json'
 
@@ -324,8 +327,8 @@ TAXONOMY = {
 }
 
 
-def build_word_data(word, entry):
-    """Build word metadata for the definition popup."""
+def build_word_data(word, entry, roots_db, sentences_db, simple_defs_db):
+    """Build word metadata for the definition popup and multi-criteria sorting."""
     defs = entry.get('definitions', {})
     if isinstance(defs, dict):
         en_defs = defs.get('en', [])
@@ -337,23 +340,51 @@ def build_word_data(word, entry):
         en_defs = []
         zh_defs = []
 
+    years = entry.get("appear_year", [])
+    yrs_cnt = entry.get("appear_year_count", len(years))
+    latest_yr = max(years) if years else 0
+
     return {
         "w": word,
         "lv": entry.get("level", 0),
         "pos": entry.get("pos", []),
         "en": en_defs,
+        "simple_en": simple_defs_db.get(word, ""),
         "zh": zh_defs,
         "forms": entry.get("forms", {}),
         "fam": entry.get("word_family", []),
-        "exam": entry.get("appear_year", []),
+        "exam": years,
         "cnt": entry.get("total_appear", 0),
+        "yrs_cnt": yrs_cnt,
+        "latest_yr": latest_yr,
+        "sources": entry.get("sources", []),
+        "roots": roots_db.get(word),
+        "sentences": sentences_db.get(word, [])
     }
 
 
 def main():
-    print("Step 1: Loading exam_words.json...")
+    print("Step 1: Loading databases...")
     with open(EXAM_WORDS_PATH, 'r', encoding='utf-8') as f:
         exam_data = json.load(f)
+
+    roots_db = {}
+    if ROOTS_PATH.exists():
+        with open(ROOTS_PATH, 'r', encoding='utf-8') as f:
+            roots_db = json.load(f)
+        print(f"  Loaded {len(roots_db)} roots breakdowns.")
+
+    sentences_db = {}
+    if SENTENCES_PATH.exists():
+        with open(SENTENCES_PATH, 'r', encoding='utf-8') as f:
+            sentences_db = json.load(f)
+        print(f"  Loaded {len(sentences_db)} sentence records.")
+
+    simple_defs_db = {}
+    if SIMPLE_DEFS_PATH.exists():
+        with open(SIMPLE_DEFS_PATH, 'r', encoding='utf-8') as f:
+            simple_defs_db = json.load(f)
+        print(f"  Loaded {len(simple_defs_db)} simple English definitions.")
 
     words = exam_data['words']
     filtered = {
@@ -389,7 +420,7 @@ def main():
     vocab_data = {}
 
     for w, entry in sorted(filtered.items()):
-        vocab_data[w] = build_word_data(w, entry)
+        vocab_data[w] = build_word_data(w, entry, roots_db, sentences_db, simple_defs_db)
 
         defs = entry.get('definitions', {})
         en_defs = defs.get('en', []) if isinstance(defs, dict) else []

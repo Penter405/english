@@ -13,6 +13,7 @@ Usage:
 """
 
 import sys
+if hasattr(sys.stdout, 'reconfigure'): sys.stdout.reconfigure(encoding='utf-8')
 import os
 import json
 
@@ -23,6 +24,8 @@ sys.path.insert(0, API_DIR)
 from decomposer import Decomposer
 from sound_rules import get_all_rules
 from models import DEFAULT_DB_PATH
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from affix_search import search_words
 
 # ANSI color codes for terminal output
 class Colors:
@@ -229,10 +232,66 @@ def print_stats(decomposer: Decomposer):
     print()
 
 
+def execute_search(tokens: list):
+    """
+    Search vocabulary with prefix, postfix, and POS compound filters.
+    Usage examples:
+        search com* verb
+        search com* *te verb
+        search un* *able adj
+        search *tion noun
+    """
+    prefix = None
+    postfix = None
+    pos = None
+
+    pos_keywords = {"v", "verb", "n", "noun", "adj", "a", "adv", "r", "prep", "conj", "pron"}
+
+    for tok in tokens:
+        t = tok.strip()
+        if t.lower() in pos_keywords:
+            pos = t.lower()
+        elif t.startswith("*") and len(t) > 1:
+            postfix = t
+        elif t.endswith("*") and len(t) > 1:
+            prefix = t
+        elif prefix is None:
+            prefix = t
+        elif postfix is None:
+            postfix = t
+        elif pos is None:
+            pos = t
+
+    results = search_words(prefix=prefix, postfix=postfix, pos=pos)
+    print(f"\n  {Colors.BOLD}🔍 Compound Affix Search Results{Colors.RESET}")
+    filters = []
+    if prefix: filters.append(f"Prefix: {Colors.PREFIX}{prefix}{Colors.RESET}")
+    if postfix: filters.append(f"Postfix: {Colors.SUFFIX}{postfix}{Colors.RESET}")
+    if pos: filters.append(f"POS: {Colors.ROOT}{pos}{Colors.RESET}")
+    print(f"  Filters: {' | '.join(filters) if filters else 'All words'}")
+    print(f"  Found {Colors.BOLD}{len(results)}{Colors.RESET} matching words:\n")
+
+    for idx, r in enumerate(results[:25], start=1):
+        zh_str = r['zh'][0] if r['zh'] else ""
+        roots_info = ""
+        if r.get('root_breakdown'):
+            syn = r['root_breakdown'].get('synthesis_zh') or r['root_breakdown'].get('synthesis_en')
+            if syn:
+                roots_info = f" {Colors.MUTED}➔ {syn}{Colors.RESET}"
+        
+        exam_badge = f"{Colors.ORIGIN}📝{r['total_appear']}{Colors.RESET}" if r['total_appear'] > 0 else ""
+        print(f"   {idx:2}. {Colors.BOLD}{r['word']:14}{Colors.RESET} [Lv{r['level']}] {exam_badge} {r['pos']} {zh_str[:25]}{roots_info}")
+
+    if len(results) > 25:
+        print(f"\n  {Colors.MUTED}... and {len(results) - 25} more words{Colors.RESET}")
+    print()
+
+
 def interactive_mode(decomposer: Decomposer):
     """Run in interactive mode."""
     print_header()
     print(f"  {Colors.MUTED}Type a word to analyze, or use commands:{Colors.RESET}")
+    print(f"  {Colors.MUTED}  search <pfx*> <*sfx> <pos> — compound search (e.g. search com* verb){Colors.RESET}")
     print(f"  {Colors.MUTED}  rules      — show the 6 sound change rules{Colors.RESET}")
     print(f"  {Colors.MUTED}  family <r> — show word family for root <r>{Colors.RESET}")
     print(f"  {Colors.MUTED}  stats      — show database statistics{Colors.RESET}")
@@ -259,6 +318,11 @@ def interactive_mode(decomposer: Decomposer):
 
         if user_input.lower() == "stats":
             print_stats(decomposer)
+            continue
+
+        if user_input.lower().startswith("search "):
+            tokens = user_input[7:].strip().split()
+            execute_search(tokens)
             continue
 
         if user_input.lower().startswith("family "):
@@ -319,6 +383,9 @@ def main():
             print()
         else:
             print(f"  Root '{root}' not found")
+
+    elif command == "search":
+        execute_search(sys.argv[2:])
 
     elif command == "rules":
         print_rules()

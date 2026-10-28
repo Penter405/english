@@ -524,6 +524,69 @@ function showGraph() {
   }
 }
 
+// ===== Group View State & Multi-Criteria Sorting =====
+let currentGroupNodeData = null;
+let globalSortMode = 'cnt_desc'; // 'cnt_desc', 'yrs_desc', 'latest_first', 'alpha'
+let globalSpecificYear = '';
+let sectionSortModes = {}; // { 1: 'cnt_desc', ... }
+
+function sortWords(wordList, mode, specificYear) {
+  return [...wordList].sort((a, b) => {
+    const vdA = vocabData[a] || {};
+    const vdB = vocabData[b] || {};
+
+    // Specific Year filter/priority
+    if (specificYear) {
+      const y = Number(specificYear);
+      const inA = (vdA.exam && vdA.exam.includes(y)) ? 1 : 0;
+      const inB = (vdB.exam && vdB.exam.includes(y)) ? 1 : 0;
+      if (inB !== inA) return inB - inA;
+    }
+
+    if (mode === 'cnt_desc') {
+      const diff = (vdB.cnt || 0) - (vdA.cnt || 0);
+      if (diff !== 0) return diff;
+      return a.localeCompare(b);
+    }
+    if (mode === 'yrs_desc') {
+      const diff = (vdB.yrs_cnt || 0) - (vdA.yrs_cnt || 0);
+      if (diff !== 0) return diff;
+      const cDiff = (vdB.cnt || 0) - (vdA.cnt || 0);
+      if (cDiff !== 0) return cDiff;
+      return a.localeCompare(b);
+    }
+    if (mode === 'latest_first') {
+      const diff = (vdB.latest_yr || 0) - (vdA.latest_yr || 0);
+      if (diff !== 0) return diff;
+      const cDiff = (vdB.cnt || 0) - (vdA.cnt || 0);
+      if (cDiff !== 0) return cDiff;
+      return a.localeCompare(b);
+    }
+    // 'alpha'
+    return a.localeCompare(b);
+  });
+}
+
+function setGlobalSort(mode) {
+  globalSortMode = mode;
+  sectionSortModes = {}; // Reset section overrides to follow global
+  renderGroupContent();
+}
+
+function setGlobalSpecificYear(year) {
+  globalSpecificYear = year;
+  renderGroupContent();
+}
+
+function setSectionSort(lv, mode) {
+  if (mode === 'global') {
+    delete sectionSortModes[lv];
+  } else {
+    sectionSortModes[lv] = mode;
+  }
+  renderGroupContent();
+}
+
 // ===== Open Group View (Directly displays the 6 Levels) =====
 function openGroup(nodeData) {
   const domainId = getParentDomain(nodeData.id) || nodeData.id;
@@ -531,7 +594,14 @@ function openGroup(nodeData) {
   updateBreadcrumb();
 
   showGroupView();
+  currentGroupNodeData = nodeData;
+  renderGroupContent();
+}
 
+function renderGroupContent() {
+  if (!currentGroupNodeData) return;
+  const nodeData = currentGroupNodeData;
+  const domainId = getParentDomain(nodeData.id) || nodeData.id;
   const container = document.getElementById('group-container');
   const colorSet = DOMAIN_COLORS[domainId] || { main: '#64748b', bg: 'rgba(100,116,139,0.14)', border: 'rgba(100,116,139,0.45)' };
   const domainNode = nodeMap[domainId];
@@ -560,32 +630,85 @@ function openGroup(nodeData) {
       </div>` : ''}
       <h1 class="group-name">${nodeData.label}<span style="font-size: 1.3rem; opacity: 0.8; font-weight: 500;">${topicLabelZh}</span></h1>
       <p class="group-word-count">${words.length} words in this category</p>
+      
+      <!-- Global Adjust Toolbar -->
+      <div class="adjust-bar global-adjust-bar">
+        <div class="adjust-label"><span class="adjust-icon">⚙️</span> 全域排序 (Global Sort):</div>
+        <div class="adjust-controls">
+          <button class="adjust-btn ${globalSortMode === 'cnt_desc' && !globalSpecificYear ? 'active' : ''}" onclick="setGlobalSort('cnt_desc')">📊 出現次數</button>
+          <button class="adjust-btn ${globalSortMode === 'yrs_desc' && !globalSpecificYear ? 'active' : ''}" onclick="setGlobalSort('yrs_desc')">📅 出現年數</button>
+          <button class="adjust-btn ${globalSortMode === 'latest_first' && !globalSpecificYear ? 'active' : ''}" onclick="setGlobalSort('latest_first')">🕒 最新考年</button>
+          <button class="adjust-btn ${globalSortMode === 'alpha' && !globalSpecificYear ? 'active' : ''}" onclick="setGlobalSort('alpha')">🔤 字母 A–Z</button>
+          
+          <select class="adjust-select ${globalSpecificYear ? 'active' : ''}" onchange="setGlobalSpecificYear(this.value)">
+            <option value="">🎯 特定考年篩選...</option>
+            <option value="115" ${globalSpecificYear === '115' ? 'selected' : ''}>115 學年度</option>
+            <option value="114" ${globalSpecificYear === '114' ? 'selected' : ''}>114 學年度</option>
+            <option value="113" ${globalSpecificYear === '113' ? 'selected' : ''}>113 學年度</option>
+            <option value="112" ${globalSpecificYear === '112' ? 'selected' : ''}>112 學年度</option>
+            <option value="111" ${globalSpecificYear === '111' ? 'selected' : ''}>111 學年度</option>
+            <option value="110" ${globalSpecificYear === '110' ? 'selected' : ''}>110 學年度</option>
+            <option value="109" ${globalSpecificYear === '109' ? 'selected' : ''}>109 學年度</option>
+            <option value="108" ${globalSpecificYear === '108' ? 'selected' : ''}>108 學年度</option>
+            <option value="107" ${globalSpecificYear === '107' ? 'selected' : ''}>107 學年度</option>
+            <option value="106" ${globalSpecificYear === '106' ? 'selected' : ''}>106 學年度</option>
+            <option value="105" ${globalSpecificYear === '105' ? 'selected' : ''}>105 學年度</option>
+            <option value="104" ${globalSpecificYear === '104' ? 'selected' : ''}>104 學年度</option>
+          </select>
+        </div>
+      </div>
     </div>
   `;
 
   // Render each of the 6 level sections (only if it contains words)
   for (let lv = 1; lv <= 6; lv++) {
-    const lvWords = byLevel[lv];
-    if (!lvWords || lvWords.length === 0) continue;
+    const rawLvWords = byLevel[lv];
+    if (!rawLvWords || rawLvWords.length === 0) continue;
     const cfg = LEVEL_CONFIG[lv];
 
-    const chips = lvWords.map(w => {
+    // Determine effective sorting for this section
+    const secSort = sectionSortModes[lv] || 'global';
+    const effectiveMode = secSort === 'global' ? globalSortMode : secSort;
+    const sortedWords = sortWords(rawLvWords, effectiveMode, globalSpecificYear);
+
+    const chips = sortedWords.map(w => {
       const vd = vocabData[w];
-      const examBadge = vd && vd.cnt > 0 ? `<span class="exam-badge" title="Appeared in exams ${vd.cnt} time(s)">📝</span>` : '';
+      let examBadge = '';
+      if (vd && vd.cnt > 0) {
+        if (effectiveMode === 'yrs_desc') {
+          examBadge = `<span class="exam-badge yrs" title="出題橫跨 ${vd.yrs_cnt} 年，共 ${vd.cnt} 次">📅${vd.yrs_cnt}年</span>`;
+        } else if (effectiveMode === 'latest_first' && vd.latest_yr > 0) {
+          examBadge = `<span class="exam-badge rec" title="最近於 ${vd.latest_yr} 年出題，共 ${vd.cnt} 次">🕒${vd.latest_yr}</span>`;
+        } else {
+          examBadge = `<span class="exam-badge" title="Appeared in exams ${vd.cnt} time(s) across ${vd.yrs_cnt} year(s)">📝${vd.cnt}</span>`;
+        }
+      }
       return `<span class="word-chip ${cfg.cls}"
-        onclick="showDefinition('${w}', 'en')"
+        onclick="showDefinition('${w}', 'simple')"
         oncontextmenu="event.preventDefault(); showDefinition('${w}', 'zh')"
         ondblclick="showDefinition('${w}', 'zh')"
-        title="Left Click: English | Right Click / Double Click: Chinese"
+        title="Left Click: Level 1-2 Simple English | Right Click / Double Click: Chinese"
       >${w}${examBadge}</span>`;
     }).join('');
 
     html += `
       <div class="difficulty-section ${cfg.cls}">
         <div class="difficulty-header">
-          <span class="difficulty-dot"></span>
-          <span class="difficulty-label">${cfg.name}</span>
-          <span class="difficulty-count">${lvWords.length} words</span>
+          <div class="difficulty-title-wrap">
+            <span class="difficulty-dot"></span>
+            <span class="difficulty-label">${cfg.name}</span>
+            <span class="difficulty-count">${rawLvWords.length} words</span>
+          </div>
+          <div class="section-adjust-wrap">
+            <label class="section-adjust-label">分區排序:</label>
+            <select class="section-adjust-select" onchange="setSectionSort(${lv}, this.value)">
+              <option value="global" ${secSort === 'global' ? 'selected' : ''}>連動全域 (${getSortLabel(globalSortMode)})</option>
+              <option value="cnt_desc" ${secSort === 'cnt_desc' ? 'selected' : ''}>出現次數 (多→少)</option>
+              <option value="yrs_desc" ${secSort === 'yrs_desc' ? 'selected' : ''}>出現年數 (多→少)</option>
+              <option value="latest_first" ${secSort === 'latest_first' ? 'selected' : ''}>最新考年優先</option>
+              <option value="alpha" ${secSort === 'alpha' ? 'selected' : ''}>字母 (A–Z)</option>
+            </select>
+          </div>
         </div>
         <div class="word-grid">${chips}</div>
       </div>
@@ -595,8 +718,15 @@ function openGroup(nodeData) {
   container.innerHTML = html;
 }
 
+function getSortLabel(mode) {
+  if (mode === 'cnt_desc') return '次數';
+  if (mode === 'yrs_desc') return '年數';
+  if (mode === 'latest_first') return '最新';
+  return 'A–Z';
+}
+
 // ===== Word Definition Popup =====
-function showDefinition(word, lang) {
+function showDefinition(word, lang = 'simple') {
   const vd = vocabData[word];
   if (!vd) return;
 
@@ -607,15 +737,17 @@ function showDefinition(word, lang) {
 
   const posStr = vd.pos && vd.pos.length ? vd.pos.join(', ') : '';
   const lvStr = `Level ${vd.lv}`;
-  const examStr = vd.cnt > 0 ? `📝 Appeared in exams: ${vd.exam.join(', ')} (${vd.cnt} time(s))` : '';
+  const examStr = vd.cnt > 0 
+    ? `📝 統測歷屆考題：出題 ${vd.cnt} 次，橫跨 ${vd.yrs_cnt} 個學年度 [${vd.exam.join(', ')}] (最新: ${vd.latest_yr} 年)`
+    : '📝 統測歷屆考題：尚未直接出題 (Level 1–4 基礎單字)';
   const formsStr = vd.forms && Object.keys(vd.forms).length > 0
     ? Object.entries(vd.forms).map(([k, v]) => `${k}: ${v}`).join(' | ')
     : '';
   const familyStr = vd.fam && vd.fam.length > 0 ? `Family: ${vd.fam.join(', ')}` : '';
 
-  let metaHtml = `<span class="def-level">${lvStr}</span>`;
+  let metaHtml = `<span class="def-level">Level ${vd.lv}</span>`;
   if (posStr) metaHtml += `<span class="def-pos">${posStr}</span>`;
-  if (examStr) metaHtml += `<div class="def-exam">${examStr}</div>`;
+  metaHtml += `<div class="def-exam">${examStr}</div>`;
   if (formsStr) metaHtml += `<div class="def-forms">${formsStr}</div>`;
   if (familyStr) metaHtml += `<div class="def-family">${familyStr}</div>`;
   document.getElementById('def-meta').innerHTML = metaHtml;
@@ -623,36 +755,113 @@ function showDefinition(word, lang) {
   // Image support
   const imgContainer = document.getElementById('def-image-container');
   const imgEl = document.getElementById('def-image');
-  const imgPath = `./data/images/${word}.png`;
-  imgEl.src = imgPath;
+  imgEl.src = `./data/images/${word}.png`;
   imgEl.onload = () => { imgContainer.style.display = 'block'; };
   imgEl.onerror = () => { imgContainer.style.display = 'none'; };
 
-  // Definition content
-  let contentHtml = '';
-  if (lang === 'en') {
+  // Definition content with 3-way Mode Switcher (Simple EN, Advanced EN, Chinese)
+  let contentHtml = `
+    <div class="def-tabs">
+      <button class="def-tab-btn ${lang === 'simple' ? 'active' : ''}" onclick="showDefinition('${word}', 'simple')">🟢 基礎英釋 (Level 1-2)</button>
+      <button class="def-tab-btn ${lang === 'en' ? 'active' : ''}" onclick="showDefinition('${word}', 'en')">📘 詳細英釋 (Advanced)</button>
+      <button class="def-tab-btn ${lang === 'zh' ? 'active' : ''}" onclick="showDefinition('${word}', 'zh')">🇹🇼 繁體中文</button>
+    </div>
+  `;
+
+  if (lang === 'simple') {
+    const simpleDef = vd.simple_en || '';
+    if (simpleDef) {
+      contentHtml += `
+        <div class="simple-def-box">
+          <div class="simple-def-tag">🌱 100% 基礎單字解釋 (Level 1–2 Defining Words)</div>
+          <div class="simple-def-text">${simpleDef}</div>
+        </div>
+      `;
+    } else {
+      contentHtml += '<p class="def-empty">No Level 1-2 simple definition available.</p>';
+    }
+  } else if (lang === 'en') {
     const defs = vd.en || [];
     if (defs.length > 0) {
-      contentHtml = '<div class="def-section"><h3>English Definition</h3><ul>' +
+      contentHtml += '<div class="def-section"><h3>English Definitions</h3><ul>' +
         defs.map(d => `<li>${d}</li>`).join('') +
         '</ul></div>';
     } else {
-      contentHtml = '<p class="def-empty">No English definition available.</p>';
+      contentHtml += '<p class="def-empty">No English definition available.</p>';
     }
   } else {
     const defs = vd.zh || [];
     if (defs.length > 0) {
-      contentHtml = '<div class="def-section"><h3>繁體中文釋義</h3><ul>' +
+      contentHtml += '<div class="def-section"><h3>繁體中文釋義</h3><ul>' +
         defs.map(d => `<li>${d}</li>`).join('') +
         '</ul></div>';
     } else {
-      contentHtml = '<p class="def-empty">無中文釋義。</p>';
+      contentHtml += '<p class="def-empty">無中文釋義。</p>';
     }
   }
 
-  const otherLang = lang === 'en' ? 'zh' : 'en';
-  const otherLabel = lang === 'en' ? '切換中文釋義' : 'Switch to English';
-  contentHtml += `<button class="def-toggle" onclick="showDefinition('${word}', '${otherLang}')">${otherLabel}</button>`;
+  // Deterministic Root & Affix Breakdown Box (Zero Guesswork)
+  if (vd.roots) {
+    const r = vd.roots;
+    contentHtml += `
+      <div class="root-breakdown-box">
+        <div class="root-breakdown-header">
+          <span class="root-title">🔤 確定性字根字綴拆解 (Root & Affix Breakdown)</span>
+          <span class="root-verified-badge">✨ 資料庫確定對照</span>
+        </div>
+        <div class="root-pills">
+    `;
+
+    if (r.prefix) {
+      contentHtml += `<div class="root-pill prefix"><span class="rp-label">字首 (Prefix)</span><span class="rp-text">${r.prefix.text}</span><span class="rp-meaning">${r.prefix.meaning_zh} (${r.prefix.meaning_en})</span></div>`;
+    }
+    if (r.root) {
+      contentHtml += `<div class="root-pill root"><span class="rp-label">字根 (Root)</span><span class="rp-text">${r.root.text}</span><span class="rp-meaning">${r.root.meaning_zh} (${r.root.meaning_en})</span></div>`;
+    }
+    if (r.suffix) {
+      contentHtml += `<div class="root-pill suffix"><span class="rp-label">字尾 (Suffix)</span><span class="rp-text">${r.suffix.text}</span><span class="rp-meaning">${r.suffix.meaning_zh} (${r.suffix.meaning_en})</span></div>`;
+    }
+
+    contentHtml += `
+        </div>
+        <div class="root-synthesis"><strong>構詞聯想：</strong> ${r.synthesis_zh || r.synthesis_en}</div>
+        ${r.explanation ? `<div class="root-explanation"><strong>同源說明：</strong> ${r.explanation}</div>` : ''}
+      </div>
+    `;
+  }
+
+  // Sentence Examples Box
+  if (vd.sentences && vd.sentences.length > 0) {
+    contentHtml += `
+      <div class="sentences-box">
+        <div class="sentences-header">📖 實用與真題例句 (Examples)</div>
+        <div class="sentences-list">
+    `;
+
+    for (const sent of vd.sentences) {
+      const isExam = sent.type === 'exam' || sent.source.includes('統測');
+      const badgeCls = isExam ? 'exam-badge' : 'standard-badge';
+      
+      // Highlight target word in sentence
+      const regex = new RegExp(`\\b(${word}[a-z]*)\\b`, 'gi');
+      const highlightedEn = sent.en.replace(regex, '<span class="sentence-highlight">$1</span>');
+
+      contentHtml += `
+        <div class="sentence-card">
+          <div class="sentence-meta">
+            <span class="sentence-badge ${badgeCls}">${sent.source}</span>
+          </div>
+          <div class="sentence-en">${highlightedEn}</div>
+          ${sent.zh ? `<div class="sentence-zh">${sent.zh}</div>` : ''}
+        </div>
+      `;
+    }
+
+    contentHtml += `
+        </div>
+      </div>
+    `;
+  }
 
   document.getElementById('def-content').innerHTML = contentHtml;
 
@@ -665,8 +874,99 @@ function closeDefinition() {
   document.getElementById('def-popup').classList.remove('visible');
 }
 
+// ===== Affix Compound Search Modal =====
+function openAffixSearchModal() {
+  document.getElementById('search-overlay').classList.add('visible');
+  document.getElementById('search-modal').classList.add('visible');
+  const pfxInput = document.getElementById('search-prefix');
+  pfxInput.focus();
+  triggerAffixSearch();
+}
+
+function closeAffixSearchModal() {
+  document.getElementById('search-overlay').classList.remove('visible');
+  document.getElementById('search-modal').classList.remove('visible');
+}
+
+function triggerAffixSearch() {
+  const pfxInput = (document.getElementById('search-prefix').value || '').trim().toLowerCase().replace(/\*+$/, '');
+  const sfxInput = (document.getElementById('search-postfix').value || '').trim().toLowerCase().replace(/^\*+/, '');
+  const posInput = (document.getElementById('search-pos').value || '').trim().toLowerCase();
+
+  const statusEl = document.getElementById('search-status');
+  const gridEl = document.getElementById('search-results-grid');
+
+  if (!pfxInput && !sfxInput && !posInput) {
+    statusEl.textContent = '請輸入字首 (如 com*)、字尾 (如 *te) 或選擇詞性進行即時檢索...';
+    gridEl.innerHTML = '';
+    return;
+  }
+
+  const posMap = {
+    'verb': ['v.', 'vi.', 'vt.', 'verb'],
+    'noun': ['n.', 'noun'],
+    'adj': ['adj.', 'a.', 'adjective'],
+    'adv': ['adv.', 'r.', 'adverb']
+  };
+
+  const results = [];
+  for (const [w, vd] of Object.entries(vocabData)) {
+    if (pfxInput && !w.startsWith(pfxInput)) continue;
+    if (sfxInput && !w.endsWith(sfxInput)) continue;
+    if (pfxInput && sfxInput && w.length < pfxInput.length + sfxInput.length - 1) continue;
+
+    if (posInput) {
+      const allowed = posMap[posInput] || [posInput];
+      const wordPos = (vd.pos || []).map(p => p.toLowerCase());
+      const zhDefs = (vd.zh || []).join(' ').toLowerCase();
+      const match = allowed.some(tag => wordPos.some(wp => wp.includes(tag)) || zhDefs.startsWith(tag) || zhDefs.includes(`[${tag}`));
+      if (!match) continue;
+    }
+
+    results.push(vd);
+  }
+
+  // Sort by level ascending, then total appearances descending
+  results.sort((a, b) => {
+    if (a.lv !== b.lv) return a.lv - b.lv;
+    if ((b.cnt || 0) !== (a.cnt || 0)) return (b.cnt || 0) - (a.cnt || 0);
+    return a.w.localeCompare(b.w);
+  });
+
+  statusEl.innerHTML = `找到 <strong>${results.length}</strong> 個符合條件的單字 (依 Level 排序)：`;
+
+  if (results.length === 0) {
+    gridEl.innerHTML = '<div class="no-search-results">查無符合條件的單字，請嘗試放寬篩選條件。</div>';
+    return;
+  }
+
+  const chips = results.slice(0, 100).map(vd => {
+    const examBadge = vd.cnt > 0 ? `<span class="exam-badge" title="出題 ${vd.cnt} 次">📝${vd.cnt}</span>` : '';
+    const zhDef = vd.zh && vd.zh.length ? vd.zh[0] : '';
+    const cleanZh = zhDef.replace(/^[a-z]+\.\s*/, '').split(/[,;；]/)[0];
+    const rootTag = vd.roots ? `<span class="search-root-tag" title="${vd.roots.synthesis_zh || ''}">🔤字根</span>` : '';
+    
+    return `
+      <div class="search-result-card lv-${vd.lv}" onclick="showDefinition('${vd.w}', 'simple')">
+        <div class="src-word-line">
+          <span class="src-word">${vd.w}</span>
+          <span class="src-level">L${vd.lv}</span>
+          ${examBadge}
+          ${rootTag}
+        </div>
+        <div class="src-meaning">${cleanZh}</div>
+      </div>
+    `;
+  }).join('');
+
+  gridEl.innerHTML = chips + (results.length > 100 ? `<div class="search-more-hint">... 僅顯示前 100 筆 (共 ${results.length} 筆)</div>` : '');
+}
+
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeDefinition();
+  if (e.key === 'Escape') {
+    closeDefinition();
+    closeAffixSearchModal();
+  }
 });
 
 // ===== Graph Controls =====

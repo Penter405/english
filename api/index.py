@@ -10,6 +10,11 @@ import sys
 
 # Ensure api/ directory is in path for imports
 sys.path.insert(0, os.path.dirname(__file__))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(__file__)), "local_app", "root_explorer"))
+try:
+    from affix_search import search_words
+except ImportError:
+    search_words = None
 
 from fastapi import FastAPI, Query, HTTPException, status, Body
 from fastapi.middleware.cors import CORSMiddleware
@@ -170,6 +175,36 @@ async def find_path(
 async def get_word_family(root: str):
     """Get all dictionary words derived from a specific root."""
     return decomposer.get_word_family(root)
+
+
+@app.get("/api/v1/words/search")
+@app.get("/api/search")
+async def search_vocabulary(
+    prefix: Optional[str] = Query(None, description="Prefix pattern e.g. com or com*"),
+    postfix: Optional[str] = Query(None, description="Postfix/suffix pattern e.g. te or *te"),
+    pos: Optional[str] = Query(None, description="Part of speech e.g. verb, noun, adj, adv"),
+    min_level: int = Query(1, ge=1, le=6),
+    max_level: int = Query(6, ge=1, le=6),
+    only_exam: bool = Query(False)
+):
+    """Compound morphological & syntactic word search."""
+    if search_words is None:
+        raise HTTPException(status_code=500, detail="Search engine module not available")
+    results = search_words(
+        prefix=prefix,
+        postfix=postfix,
+        pos=pos,
+        min_level=min_level,
+        max_level=max_level,
+        only_exam=only_exam
+    )
+    return {
+        "total": len(results),
+        "prefix": prefix,
+        "postfix": postfix,
+        "pos": pos,
+        "results": results
+    }
 
 
 @app.get("/api/rules")
