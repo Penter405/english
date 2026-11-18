@@ -29,7 +29,12 @@ import sys
 import time
 import urllib.parse
 import urllib.request
-from PIL import Image
+
+try:
+    from PIL import Image
+    HAS_PIL = True
+except ImportError:
+    HAS_PIL = False
 
 sys.stdout.reconfigure(encoding='utf-8')
 
@@ -138,25 +143,34 @@ def download_and_save_image(candidates, dest_path, max_dim=480):
             with urllib.request.urlopen(req, timeout=8) as res:
                 img_bytes = res.read()
 
-            img = Image.open(io.BytesIO(img_bytes))
+            if not img_bytes or len(img_bytes) < 100:
+                continue
 
-            # Convert to RGB (filling transparency with dark background if present)
-            if img.mode in ("RGBA", "LA") or (img.mode == "P" and "transparency" in img.info):
-                bg = Image.new("RGBA", img.size, (15, 23, 42, 255))
-                bg.paste(img, (0, 0), img.convert("RGBA"))
-                img = bg.convert("RGB")
-            elif img.mode != "RGB":
-                img = img.convert("RGB")
+            if HAS_PIL:
+                img = Image.open(io.BytesIO(img_bytes))
 
-            # Resize preserving aspect ratio
-            w, h = img.size
-            if max(w, h) > max_dim:
-                scale = max_dim / max(w, h)
-                new_w = int(w * scale)
-                new_h = int(h * scale)
-                img = img.resize((new_w, new_h), Image.Resampling.LANCZOS)
+                # Convert to RGB (filling transparency with dark background if present)
+                if img.mode in ("RGBA", "LA") or (img.mode == "P" and "transparency" in img.info):
+                    bg = Image.new("RGBA", img.size, (15, 23, 42, 255))
+                    bg.paste(img, (0, 0), img.convert("RGBA"))
+                    img = bg.convert("RGB")
+                elif img.mode != "RGB":
+                    img = img.convert("RGB")
 
-            img.save(dest_path, "PNG", optimize=True)
+                # Resize preserving aspect ratio
+                w, h = img.size
+                if max(w, h) > max_dim:
+                    scale = max_dim / max(w, h)
+                    new_w = int(w * scale)
+                    new_h = int(h * scale)
+                    img = img.resize((new_w, new_h), Image.Resampling.LANCZOS)
+
+                img.save(dest_path, "PNG", optimize=True)
+            else:
+                # Direct byte stream write fallback when Pillow is not installed
+                with open(dest_path, "wb") as f:
+                    f.write(img_bytes)
+
             return source_name, img_url
         except Exception:
             continue
@@ -175,6 +189,10 @@ def main():
     parser.add_argument("--google-cx", default=os.environ.get("GOOGLE_CX"), help="Google Custom Search Engine ID (CX)")
     parser.add_argument("--delay", type=float, default=0.5, help="Delay between requests in seconds")
     args = parser.parse_args()
+
+    if not HAS_PIL:
+        print("[Notice] Pillow (PIL) is not installed. Script will run in zero-dependency fallback mode (saving raw image bytes).")
+        print("         To enable automated aspect-ratio resizing and Web image optimization, install Pillow: pip install Pillow\n")
 
     # Load vocab
     print(f"Loading vocabulary from {VOCAB_DATA_PATH}...")

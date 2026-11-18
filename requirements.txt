@@ -9,3 +9,9 @@ pyarrow
 requests
 wordfreq
 nltk
+pillow
+pillow
+
+
+# 字根交叉驗證 (ECDICT 簡轉繁)
+opencc-python-reimplemented

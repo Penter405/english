@@ -35,6 +35,12 @@
     <span>🔍 構詞複合搜尋</span>
   </button>
 
+  <!-- Top-right (2nd row): Next-word prediction -->
+  <button class="nav-search-btn nav-predict-btn" id="nav-predict-btn" onclick="openPredictModal()"
+    title="Next-word prediction">
+    <span>✨ 下一字預測</span>
+  </button>
+
   <!-- Graph View -->
   <div id="graph-view" class="view active">
     <div id="cy-container">
@@ -128,7 +134,33 @@
     </div>
   </div>
 
+  <!-- Next-Word Prediction Modal -->
+  <div class="search-overlay" id="predict-overlay" onclick="closePredictModal()"></div>
+  <div class="search-modal predict-modal" id="predict-modal">
+    <div class="search-modal-header">
+      <div class="search-modal-title">
+        <span class="search-modal-icon">✨</span>
+        <h3>下一個單字預測 (Next-Word Prediction)</h3>
+      </div>
+      <button class="search-close" onclick="closePredictModal()">&times;</button>
+    </div>
+    <div class="search-modal-body">
+      <div class="predict-input-row">
+        <input type="text" id="predict-input" placeholder="開始打英文句子，或直接點下面的字…" autocomplete="off" spellcheck="false" />
+        <button class="predict-clear" onclick="clearPredictInput()">清除</button>
+      </div>
+      <div class="search-status" id="predict-context"></div>
+      <div class="predict-results" id="predict-results"></div>
+      <div class="predict-footnote">
+        點選單字會接到句子後面；在單字上按右鍵可以打開解釋。機率來自約 200 萬句
+        <a href="https://tatoeba.org" target="_blank" rel="noopener">Tatoeba</a> 英文例句
+        (看前 2 個字；例句不夠時改看前 1 個字)。
+      </div>
+    </div>
+  </div>
+
   <script src="./app.js"></script>
+  <script src="./predict.js"></script>
 </body>
 
 </html>

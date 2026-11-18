@@ -875,34 +875,70 @@ function showDefinition(word, lang = 'simple', isSubSearch = false) {
     }
   }
 
-  // Deterministic Root & Affix Breakdown Box (Zero Guesswork)
+  // Root & Affix Breakdown Box — 只顯示 Wiktionary + MorphoLex 兩來源一致的資料
   if (vd.roots) {
     const r = vd.roots;
-    contentHtml += `
-      <div class="root-breakdown-box">
-        <div class="root-breakdown-header">
-          <span class="root-title">🔤 確定性字根字綴拆解 (Root & Affix Breakdown)</span>
-          <span class="root-verified-badge">✨ 資料庫確定對照</span>
-        </div>
-        <div class="root-pills">
-    `;
+    const meaning = (x) => {
+      const zh = x.meaning_zh || '';
+      const en = x.meaning_en || '';
+      if (zh && en) return `${zh} (${en})`;
+      return zh || en || '';
+    };
+    const pill = (cls, label, x) => {
+      const m = meaning(x);
+      return `<div class="root-pill ${cls}"><span class="rp-label">${label}</span><span class="rp-text">${x.text}</span>${m ? `<span class="rp-meaning">${m}</span>` : ''}</div>`;
+    };
+    const langName = { la: '拉丁文', grc: '古希臘文', fr: '法文', fro: '古法文' };
 
-    if (r.prefix) {
-      contentHtml += `<div class="root-pill prefix"><span class="rp-label">字首 (Prefix)</span><span class="rp-text">${r.prefix.text}</span><span class="rp-meaning">${r.prefix.meaning_zh} (${r.prefix.meaning_en})</span></div>`;
+    if (r.status === 'etymology') {
+      // 兩來源沒有共識：顯示 Wiktionary 的古典語源拆解 (單一來源)
+      const kindLabel = { prefix: '字首', root: '字根', suffix: '字尾' };
+      contentHtml += `
+        <div class="root-breakdown-box">
+          <div class="root-breakdown-header">
+            <span class="root-title">📜 ${r.lang_zh}詞源拆解</span>
+            <span class="root-verified-badge etym-badge" title="${r.note || ''}">Wiktionary 單一來源</span>
+          </div>
+          ${r.source_word && r.source_word.form ? `<div class="root-explanation"><strong>來自${r.lang_zh}：</strong><em>${r.source_word.form}</em>${r.source_word.meaning_en ? `（${r.source_word.meaning_en}）` : ''}</div>` : ''}
+          <div class="root-pills">`;
+      r.parts.forEach(x => {
+        contentHtml += pill(x.kind, `${r.lang_zh}${kindLabel[x.kind] || ''}`, x);
+      });
+      contentHtml += `
+          </div>
+          <div class="root-synthesis"><strong>組成：</strong> ${r.synthesis_zh}</div>
+        </div>`;
+    } else if (r.status === 'monomorphemic') {
+      contentHtml += `
+        <div class="root-breakdown-box">
+          <div class="root-breakdown-header">
+            <span class="root-title">🔤 字根字綴拆解</span>
+            <span class="root-verified-badge" title="Wiktionary 與 MorphoLex-en 兩個來源說法一致">✔ 雙來源確認</span>
+          </div>
+          <div class="root-synthesis">「${vd.w}」是單一詞素，沒有可拆的字首、字根或字尾。</div>
+          ${r.origin && r.origin.form ? `<div class="root-explanation"><strong>詞源：</strong>來自${langName[r.origin.lang] || r.origin.lang} <em>${r.origin.form}</em>${r.origin.meaning_en ? `（${r.origin.meaning_en}）` : ''}</div>` : ''}
+        </div>`;
+    } else {
+      const prefixes = r.prefixes || (r.prefix ? [r.prefix] : []);
+      const suffixes = r.suffixes || (r.suffix ? [r.suffix] : []);
+      const roots = r.roots || (r.root ? [r.root] : []);
+      contentHtml += `
+        <div class="root-breakdown-box">
+          <div class="root-breakdown-header">
+            <span class="root-title">🔤 字根字綴拆解 (Root & Affix Breakdown)</span>
+            <span class="root-verified-badge" title="Wiktionary 與 MorphoLex-en 兩個來源說法一致">${r.status === 'verified' ? '✔ 雙來源確認' : '✨ 資料庫對照'}</span>
+          </div>
+          <div class="root-pills">`;
+      prefixes.forEach(x => { contentHtml += pill('prefix', '字首 (Prefix)', x); });
+      roots.forEach(x => { contentHtml += pill('root', x.is_base_word ? '基礎字 (Base)' : '字根 (Root)', x); });
+      suffixes.forEach(x => { contentHtml += pill('suffix', '字尾 (Suffix)', x); });
+      contentHtml += `
+          </div>
+          <div class="root-synthesis"><strong>構詞聯想：</strong> ${r.synthesis_zh || r.synthesis_en}</div>
+          ${r.origin && r.origin.form ? `<div class="root-explanation"><strong>詞源：</strong>來自${langName[r.origin.lang] || r.origin.lang} <em>${r.origin.form}</em>${r.origin.meaning_en ? `（${r.origin.meaning_en}）` : ''}</div>` : ''}
+          ${!r.status && r.explanation ? `<div class="root-explanation"><strong>同源說明：</strong> ${r.explanation}</div>` : ''}
+        </div>`;
     }
-    if (r.root) {
-      contentHtml += `<div class="root-pill root"><span class="rp-label">字根 (Root)</span><span class="rp-text">${r.root.text}</span><span class="rp-meaning">${r.root.meaning_zh} (${r.root.meaning_en})</span></div>`;
-    }
-    if (r.suffix) {
-      contentHtml += `<div class="root-pill suffix"><span class="rp-label">字尾 (Suffix)</span><span class="rp-text">${r.suffix.text}</span><span class="rp-meaning">${r.suffix.meaning_zh} (${r.suffix.meaning_en})</span></div>`;
-    }
-
-    contentHtml += `
-        </div>
-        <div class="root-synthesis"><strong>構詞聯想：</strong> ${r.synthesis_zh || r.synthesis_en}</div>
-        ${r.explanation ? `<div class="root-explanation"><strong>同源說明：</strong> ${r.explanation}</div>` : ''}
-      </div>
-    `;
   }
 
   // Sentence Examples Box
@@ -1020,7 +1056,7 @@ function triggerAffixSearch() {
     const examBadge = vd.cnt > 0 ? `<span class="exam-badge" title="出題 ${vd.cnt} 次">📝${vd.cnt}</span>` : '';
     const zhDef = vd.zh && vd.zh.length ? vd.zh[0] : '';
     const cleanZh = zhDef.replace(/^[a-z]+\.\s*/, '').split(/[,;；]/)[0];
-    const rootTag = vd.roots ? `<span class="search-root-tag" title="${vd.roots.synthesis_zh || ''}">🔤字根</span>` : '';
+    const rootTag = (vd.roots && vd.roots.status !== 'monomorphemic') ? `<span class="search-root-tag" title="${vd.roots.synthesis_zh || ''}">🔤字根</span>` : '';
     
     return `
       <div class="search-result-card lv-${vd.lv}" onclick="showDefinition('${vd.w}', 'simple')">

@@ -25,3 +25,7 @@ nltk_data/
 
 # Large dictionary files (re-download as needed)
 database/ecdict.csv
+
+# 外部原始資料 (重新下載: 見 database/README_sources.md)
+database/raw/wiktionary_en_filtered.jsonl
+database/raw/eng_sentences.tsv

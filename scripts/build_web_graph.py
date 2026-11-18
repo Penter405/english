@@ -26,7 +26,9 @@ from pathlib import Path
 
 BASE = Path(__file__).resolve().parent.parent
 EXAM_WORDS_PATH = BASE / 'database' / 'exam_words.json'
-ROOTS_PATH = BASE / 'database' / 'word_roots_breakdown.json'
+ROOTS_PATH = BASE / 'database' / 'word_roots_breakdown.json'          # 舊版 (演算法推導，已停用)
+VERIFIED_ROOTS_PATH = BASE / 'database' / 'word_morphology_verified.json'  # Wiktionary + MorphoLex 雙重確認
+ETYM_PATH = BASE / 'database' / 'word_etymology_wiktionary.json'           # 兩來源無共識時: Wiktionary 古典語源 (單一來源)
 SENTENCES_PATH = BASE / 'database' / 'word_sentences.json'
 SIMPLE_DEFS_PATH = BASE / 'database' / 'simple_definitions.json'
 ORIGINS_PATH = BASE / 'database' / 'word_origins.json'
@@ -386,10 +388,25 @@ def main():
         exam_data = json.load(f)
 
     roots_db = {}
-    if ROOTS_PATH.exists():
+    if VERIFIED_ROOTS_PATH.exists():
+        # 只用「兩個來源都確定」的資料；舊的 word_roots_breakdown.json 不再使用
+        with open(VERIFIED_ROOTS_PATH, 'r', encoding='utf-8') as f:
+            roots_db = json.load(f)['words']
+        n_ok = sum(1 for v in roots_db.values() if v.get('status') == 'verified')
+        print(f"  Loaded {len(roots_db)} verified morphology entries ({n_ok} with breakdown).")
+        if ETYM_PATH.exists():
+            with open(ETYM_PATH, 'r', encoding='utf-8') as f:
+                etym = json.load(f)['words']
+            added = 0
+            for w, e in etym.items():
+                if w not in roots_db:
+                    roots_db[w] = e
+                    added += 1
+            print(f"  Added {added} Wiktionary classical etymology entries (single source).")
+    elif ROOTS_PATH.exists():
         with open(ROOTS_PATH, 'r', encoding='utf-8') as f:
             roots_db = json.load(f)
-        print(f"  Loaded {len(roots_db)} roots breakdowns.")
+        print(f"  [warn] verified file missing, falling back to {ROOTS_PATH.name}")
 
     sentences_db = {}
     if SENTENCES_PATH.exists():

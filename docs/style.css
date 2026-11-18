@@ -1575,3 +1575,165 @@ select option {
     font-size: 1.8rem;
   }
 }
+
+
+/* ===== Next-Word Prediction ===== */
+.nav-predict-btn {
+  top: 62px;
+}
+
+.predict-modal {
+  max-width: 620px;
+}
+
+.predict-input-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+#predict-input {
+  flex: 1;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-full);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 1.05rem;
+  outline: none;
+}
+
+#predict-input:focus {
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 3px var(--accent-primary-glow);
+}
+
+.predict-clear {
+  padding: 0 16px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-full);
+  color: var(--text-secondary);
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.predict-clear:hover {
+  color: var(--text-primary);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.predict-backoff {
+  color: var(--text-muted);
+  font-size: 0.82rem;
+}
+
+.predict-results {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.predict-row {
+  display: grid;
+  grid-template-columns: 120px 44px 1fr 56px;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  background: var(--bg-glass);
+  border: 1px solid transparent;
+  border-radius: 10px;
+  color: var(--text-primary);
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.predict-row:hover {
+  background: var(--bg-glass-hover);
+  border-color: rgba(99, 102, 241, 0.45);
+}
+
+.predict-word {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.predict-lv {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-align: center;
+  padding: 2px 0;
+  border-radius: 6px;
+}
+
+.predict-lv.lv1 { color: var(--lv1-color); background: var(--lv1-bg); }
+.predict-lv.lv2 { color: var(--lv2-color); background: var(--lv2-bg); }
+.predict-lv.lv3 { color: var(--lv3-color, #60a5fa); background: var(--lv3-bg, rgba(96, 165, 250, 0.1)); }
+.predict-lv.lv4 { color: var(--lv4-color, #a78bfa); background: var(--lv4-bg, rgba(167, 139, 250, 0.1)); }
+.predict-lv.lv5 { color: var(--lv5-color, #fbbf24); background: var(--lv5-bg, rgba(251, 191, 36, 0.1)); }
+.predict-lv.lv6 { color: var(--lv6-color, #f87171); background: var(--lv6-bg, rgba(248, 113, 113, 0.1)); }
+
+.predict-bar {
+  height: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.predict-bar span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-tertiary));
+  border-radius: 4px;
+}
+
+.predict-pct {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  text-align: right;
+}
+
+.predict-end {
+  margin-top: 4px;
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.predict-footnote {
+  margin-top: 16px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.predict-footnote a {
+  color: var(--accent-tertiary);
+}
+
+@media (max-width: 600px) {
+  .predict-row {
+    grid-template-columns: 96px 40px 1fr 48px;
+    gap: 6px;
+  }
+}
+
+/* 單一來源 (Wiktionary 古典語源) 標籤：與「雙來源確認」區分 */
+.root-verified-badge.etym-badge {
+  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.1);
+  border-color: rgba(251, 191, 36, 0.35);
+}
+
+.root-pill .rp-text {
+  word-break: break-word;
+}
+
+.root-breakdown-box .root-explanation + .root-pills {
+  margin-top: 12px;
+}
