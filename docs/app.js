@@ -744,7 +744,7 @@ function navigateBackDefinition() {
 }
 
 // ===== Word Definition Popup =====
-function showDefinition(word, lang = 'simple', isSubSearch = false) {
+function showDefinition(word, lang = 'en', isSubSearch = false) {
   const vd = vocabData[word];
   if (!vd) return;
 
@@ -774,6 +774,16 @@ function showDefinition(word, lang = 'simple', isSubSearch = false) {
     : '📝 統測歷屆考題：尚未直接出題';
 
   let metaHtml = `<span class="def-level">${lvStr}</span>`;
+  // 難度標示：考試表外的字顯示「推估等級」；所有字都顯示常用度
+  if (vd.diff) {
+    if (!(vd.lv > 0) && vd.diff.l) {
+      metaHtml += `<span class="def-level est" title="變化形，難度同原型">Level ${vd.diff.l}（同原型）</span>`;
+    } else if (!(vd.lv > 0) && vd.diff.e > 0) {
+      metaHtml += `<span class="def-level est" title="考試詞彙表沒有收錄，依英文使用頻率推估">${vd.diff.e >= 7 ? '超出高中範圍' : `推估 Level ${vd.diff.e}`}</span>`;
+    }
+    const st = vd.diff.s || 0;
+    metaHtml += `<span class="def-freq" title="常用度 (wordfreq Zipf ${vd.diff.z})：越多星越常見">常用度 ${'★'.repeat(st)}${'☆'.repeat(5 - st)}</span>`;
+  }
   if (posStr) metaHtml += `<span class="def-pos">${posStr}</span>`;
   if (vd.relation) metaHtml += `<span class="def-pos" style="background: rgba(16, 185, 129, 0.15); color: #6ee7b7;">${vd.relation}</span>`;
   metaHtml += `<div class="def-exam">${examStr}</div>`;
@@ -832,35 +842,60 @@ function showDefinition(word, lang = 'simple', isSubSearch = false) {
     `;
   }
 
-  // Definition content with 3-way Mode Switcher (Simple EN, Advanced EN, Chinese)
+  // Definition content: 2 tabs (英文解釋 / 繁體中文)
+  // 英文解釋 = 第 1 條是「基礎解釋」(標出難度)，後面接詳細解釋
+  if (lang === 'simple') lang = 'en';   // 舊連結相容
   let contentHtml = `
     ${subSearchNavHtml}
     ${originBoxHtml}
     <div class="def-tabs">
-      <button class="def-tab-btn ${lang === 'simple' ? 'active' : ''}" onclick="showDefinition('${word}', 'simple', ${isSubSearch})">🟢 基礎英釋 (Level 1-2)</button>
-      <button class="def-tab-btn ${lang === 'en' ? 'active' : ''}" onclick="showDefinition('${word}', 'en', ${isSubSearch})">📘 詳細英釋 (Advanced)</button>
+      <button class="def-tab-btn ${lang === 'en' ? 'active' : ''}" onclick="showDefinition('${word}', 'en', ${isSubSearch})">📘 英文解釋</button>
       <button class="def-tab-btn ${lang === 'zh' ? 'active' : ''}" onclick="showDefinition('${word}', 'zh', ${isSubSearch})">🇹🇼 繁體中文</button>
     </div>
   `;
 
-  if (lang === 'simple') {
+  if (lang === 'en') {
     const simpleDef = vd.simple_en || '';
+    const sm = vd.simple_meta;
+    const details = (vd.en || []).filter(d => d
+      && d.replace(/^[a-z]+\.\s*/, '').trim() !== simpleDef.replace(/\.$/, '')
+      && !/\(born |\(\d{4}\s*-\s*\d{4}\)|^Variant form of/.test(d));   // WordNet 人名條目、模板句不顯示
+    let items = '';
+
     if (simpleDef) {
-      contentHtml += `
-        <div class="simple-def-box">
-          <div class="simple-def-tag">🌱 100% 基礎單字解釋 (Level 1–2 Defining Words)</div>
+      let badge = '';
+      let hardHtml = '';
+      if (sm) {
+        if (sm.t === 0) {
+          badge = '<span class="simple-tier tier0">🟢 只用 Level 1–2 單字</span>';
+        } else {
+          badge = sm.t === 1
+            ? `<span class="simple-tier tier1">🟡 有較難的字，但都比「${vd.w}」簡單</span>`
+            : '<span class="simple-tier tier2">🟠 用到較難的字</span>';
+          hardHtml = '<div class="simple-hard">較難的字：' + sm.h.map(([hw, hl]) => {
+            const lvTxt = hl >= 7 ? '超出高中範圍' : `Lv${hl}`;
+            const can = vocabData[hw] ? `onclick="showDefinition('${hw}', 'en', true)"` : '';
+            return `<button class="hard-chip ${vocabData[hw] ? 'clickable' : ''}" ${can}>${hw} <span>${lvTxt}</span></button>`;
+          }).join('') + '</div>';
+        }
+      }
+      items += `
+        <li class="def-item simple-first">
+          <div class="simple-head"><span class="simple-label">基礎解釋</span>${badge}</div>
           <div class="simple-def-text">${simpleDef}</div>
-        </div>
-      `;
-    } else {
-      contentHtml += '<p class="def-empty">No Level 1-2 simple definition available.</p>';
+          ${hardHtml}
+        </li>`;
+    } else if (vd.is_variant_fallback && vd.origin && vd.origin !== vd.w) {
+      items += `
+        <li class="def-item simple-first">
+          <div class="simple-head"><span class="simple-label">基礎解釋</span></div>
+          <div class="simple-def-text">「${vd.w}」是 <button class="inline-word" onclick="showDefinition('${vd.origin}', 'en', true)">${vd.origin}</button> 的${(vd.relation || '變化形').replace(/^\d:\s*/, '')}，請看原型的解釋。</div>
+        </li>`;
     }
-  } else if (lang === 'en') {
-    const defs = vd.en || [];
-    if (defs.length > 0) {
-      contentHtml += '<div class="def-section"><h3>English Definitions</h3><ul>' +
-        defs.map(d => `<li>${d}</li>`).join('') +
-        '</ul></div>';
+    items += details.map(d => `<li class="def-item">${d}</li>`).join('');
+
+    if (items) {
+      contentHtml += `<div class="def-section"><h3>English Definitions</h3><ol class="def-list">${items}</ol></div>`;
     } else {
       contentHtml += '<p class="def-empty">No English definition available.</p>';
     }

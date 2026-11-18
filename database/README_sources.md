@@ -67,3 +67,41 @@ py scripts/build_next_word_model.py
 - 機率 = 某個情境出現後，下一個字是 X 的次數 ÷ 這個情境的總次數。
 - 查詢順序：前 2 個字 → 前 1 個字 → 句首。
 - Tatoeba 例句很常用 Tom、Mary 這類角色名，所以人名、地名會合併成一個「人名 / 地名」選項。
+
+## 3. 難度分級與基礎英文解釋
+
+### `word_difficulty.json`（`scripts/build_word_difficulty.py`）
+
+- `level`：考試詞彙表等級（表外為 null；變化形會還原成原型再查，例如 letters → letter）
+- `est_level`：判斷難度時實際使用的等級。考試表內的字就是考試 Level；表外的字依 [wordfreq](https://github.com/rspeer/wordfreq) 常用度推估，7 代表超出高中範圍
+- `stars`：常用度 1–5 顆星，網站上顯示在等級旁邊
+
+推估切點是用考試表內單字的常用度分布校準出來的：各等級常用度（Zipf）的中位數為 L1 5.01、L2 4.53、L3 4.14、L4 3.98、L5 3.95、L6 3.56。可以看出 Level 3–5 的常用度高度重疊，所以只看考試 Level 不夠準。
+
+### `simple_definitions.json` v2（`scripts/build_simple_definitions.py`）
+
+候選來源依序是：人工撰寫 → [Simple English Wiktionary](https://simple.wiktionary.org)（`database/raw/simple_wiktionary.jsonl.gz`）→ 英文 Wiktionary → ECDICT/WordNet。
+
+挑選規則：
+1. 主要意思優先：考試表的第一個詞性 → 該詞性的第一個詞條 → 第 0 個義項。
+2. 同一層級裡，挑用字最簡單的。
+3. 拒收：被截斷的句子、「Plural of…」這類定義、古語或俚語義項、只用單字本身或同字族來解釋的定義。
+
+每條解釋都標上 `tier`：
+
+| tier | 意思 | 網站標示 |
+|---|---|---|
+| 0 | 全部只用 Level 1–2 的字 | 🟢 只用 Level 1–2 單字 |
+| 1 | 有較難的字，但都比單字本身簡單 | 🟡 |
+| 2 | 用到不比單字本身簡單的字 | 🟠，並列出較難的字（可點擊查詢） |
+
+完整統計和 tier 2 清單見 `simple_definitions_report.md`。tier 2 的字需要人工或 AI 改寫。
+
+重建方式：
+
+```bash
+curl -L -o database/raw/simple_wiktionary.jsonl.gz https://kaikki.org/dictionary/downloads/simple/simple-extract.jsonl.gz
+py scripts/build_word_difficulty.py
+py scripts/build_simple_definitions.py
+py scripts/build_web_graph.py
+```

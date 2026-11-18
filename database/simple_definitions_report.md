@@ -1,0 +1,1511 @@
+# 基礎英文解釋報告
+
+建置時間: 2026-11-18T12:42:40
+
+| 等級 | 字數 |
+|---|---:|
+| 🟢 tier 0：全部用 Level 1–2 單字 | 4413 |
+| 🟡 tier 1：有較難的字，但都比單字本身簡單 | 750 |
+| 🔴 tier 2：用到不比單字簡單的字 | 1496 |
+| ⚪ 沒有合格的解釋 | 42 |
+
+來源：simple_wiktionary 4975、wiktionary 866、ecdict 800、manual 18
+
+## tier 2 清單 (需要人工或 AI 改寫)
+
+- **ability** (Lv1): The quality of being able to perform.  — 較難: perform
+- **able** (Lv1): Having the necessary means or skill or know-how or authority to do something.  — 較難: authority
+- **abolish** (Lv5): When you abolish something, you end it by making it invalid or illegal.  — 較難: invalid
+- **abroad** (Lv1): Beyond the bounds of a country.  — 較難: bounds
+- **absolutely** (Lv2): In an absolute or unconditional manner.  — 較難: unconditional
+- **absurd** (Lv5): Something absurd is ridiculous and stupid.  — 較難: ridiculous
+- **academic** (Lv4): Belonging to the school or philosophy of Plato.  — 較難: philosophy
+- **accent** (Lv4): An accent is the particular way that somebody's speech sounds.  — 較難: somebody's
+- **acceptable** (Lv3): When something is acceptable it is capable of being accepted or is worth being accepted.  — 較難: capable
+- **accidental** (Lv4): Accidental means done unintentionally.  — 較難: unintentionally
+- **accountant** (Lv4): An accountant is someone who is skilled in keeping or adjusting accounts.  — 較難: adjusting
+- **achievement** (Lv3): The act of achieving or performing.  — 較難: performing
+- **act** (Lv1): Something done, a deed.  — 較難: deed
+- **actor** (Lv1): An actor is a person who performs as a character in a play or other theatrical work.  — 較難: theatrical, performs
+- **address** (Lv2): If you address a person, you refer to them using a name or title.  — 較難: refer
+- **ads** (Lv4): A public promotion of some product or service.  — 較難: promotion, product
+- **advantage** (Lv3): An advantage is a condition or circumstance that favors success.  — 較難: circumstance
+- **adventure** (Lv3): If you have an adventure you have a trip with a lot of excitement, hazards, or dangers.  — 較難: hazards
+- **afford** (Lv3): If you can afford something, you have enough money or resources to buy it or do it.  — 較難: resources
+- **africa** (Lv3): Africa is the continent that is south of Europe, east of the Atlantic Ocean, west of the Indian Ocean and north of Antarctica.  — 較難: continent
+- **against** (Lv0): In a contrary direction to.  — 較難: contrary
+- **aggression** (Lv5): A disposition to behave aggressively.  — 較難: aggressively, disposition
+- **aggressive** (Lv4): Making attacks or assaults that are not just.  — 較難: assaults
+- **agriculture** (Lv3): Agriculture is farming and the methods that are used to raise and look after crops and animals.  — 較難: crops
+- **aid** (Lv2): Aid is the help that is given to people, usually by a government or institution.  — 較難: institution
+- **air** (Lv1): Air is a mixture of gases.  — 較難: gases
+- **aircraft** (Lv2): An aircraft is a flying vehicle, usually an airplane.  — 較難: vehicle
+- **airline** (Lv3): An airline is a company that carries people and goods by means of airplanes.  — 較難: goods
+- **airplane** (Lv1): An airplane is a vehicle with wings that can fly.  — 較難: vehicle
+- **airway** (Lv6): The airway in our body refers to the trachea.  — 較難: trachea, refers
+- **alien** (Lv5): If something is alien, it is strange or unfamiliar to you.  — 較難: unfamiliar
+- **all** (Lv0): If you give your all or put your all into something, you make the maximum effort possible.  — 較難: maximum
+- **allergy** (Lv5): An allergy is when your immune system reacts badly to something that isn't bad for other people.  — 較難: immune, badly, reacts
+- **although** (Lv1): Grant all this.  — 較難: grant
+- **am** (Lv0): A radioactive transuranic metallic element.  — 較難: transuranic, radioactive, metallic, element
+- **amazement** (Lv3): The feeling that accompanies something extremely surprising.  — 較難: accompanies
+- **amazon** (Lv4): A large strong and aggressive woman.  — 較難: aggressive
+- **ambassador** (Lv3): An ambassador is an important official who lives in a foreign country and represents his or her own country's interests there.  — 較難: represents
+- **ambition** (Lv3): If you have ambition, then you have a want to accomplish a task.  — 較難: accomplish
+- **ambulance** (Lv3): An ambulance is a kind of van that takes hurt people to the hospital.  — 較難: van
+- **among** (Lv0): Alt. of Amongst.  — 較難: alt
+- **an** (Lv0): An is used when you don't expect your listener to identify which thing you mean.  — 較難: identify
+- **ancestor** (Lv4): An ancestor is a person from whom one is descended.  — 較難: descended
+- **angel** (Lv3): In some religions and myths, a spirit that delivers messages from God.  — 較難: myths
+- **another** (Lv0): Any of various alternatives.  — 較難: alternatives, various
+- **antibiotic** (Lv6): An antibiotic is a drug that stops the growth of or destroys bacteria and other such microorganisms.  — 較難: microorganisms, destroys, bacteria
+- **anticipation** (Lv6): The act of anticipating, taking up, placing, or considering something beforehand, or before the proper time in natural order.  — 較難: beforehand, anticipating
+- **anybody** (Lv1): Any one out of an indefinite number of persons.  — 較難: indefinite
+- **anyone** (Lv0): One taken at random rather than by selection.  — 較難: random
+- **anything** (Lv0): Any object, act, state, event, or fact whatsoever.  — 較難: whatsoever
+- **ape** (Lv2): Any of various primates with short tails or no tail at all.  — 較難: primates, various
+- **appeal** (Lv3): An appeal is a strong or official request.  — 較難: request
+- **approach** (Lv2): Ideas or actions intended to deal with a problem or situation.  — 較難: intended, situation
+- **apron** (Lv3): An apron is a piece of clothing that is worn to protect from spills.  — 較難: spills
+- **arabia** (Lv4): A peninsula between the Red Sea and the Persian Gulf.  — 較難: peninsula, gulf
+- **arch** (Lv4): An inverted U shape.  — 較難: inverted
+- **architectural** (Lv4): If something is architectural, it is related to the design and construction of an architecture.  — 較難: architecture, construction
+- **arm** (Lv1): One of the upper limbs people have.  — 較難: limbs
+- **armed** (Lv3): Characterized by having or bearing arms.  — 較難: characterized
+- **arms** (Lv4): Weapons considered collectively.  — 較難: collectively, weapons
+- **array** (Lv5): Clothing and ornamentation.  — 較難: ornamentation
+- **art** (Lv1): An art is a skill that produces works of creative expression and can be mastered through study and practice.  — 較難: creative
+- **artemis** (Lv4): The virgin goddess of the hunt and the Moon.  — 較難: virgin
+- **ashamed** (Lv4): Feeling shame or guilt.  — 較難: guilt
+- **asia** (Lv1): Asia is the continent that is east of Europe, west of the Pacific Ocean, and north of the Indian Ocean.  — 較難: continent
+- **assault** (Lv5): Close fighting during the culmination of a military attack.  — 較難: culmination
+- **associate** (Lv4): Joined with another or others and having lower status.  — 較難: others, status
+- **asthma** (Lv6): Asthma is a respiratory condition where the airways narrow and cause difficulty in breathing.  — 較難: airways, respiratory, breathing
+- **asymmetric** (Lv4): A characterized by asymmetry in the spatial arrangement or placement of parts or components.  — 較難: characterized, placement, components, spatial
+- **athlete** (Lv3): An athlete is person involved in a sporting activity.  — 較難: involved
+- **athletic** (Lv4): Relating to or befitting athletics or athletes.  — 較難: befitting
+- **atm** (Lv4): A means of digital communications that is capable of very high speeds.  — 較難: digital, communications, capable
+- **aug** (Lv4): The month following July and preceding September.  — 較難: preceding
+- **august** (Lv1): The eighth month of the year.  — 較難: eighth
+- **australia** (Lv1): Australia is the continent that is east of the Indian Ocean, west of the Pacific Ocean, and south of Asia.  — 較難: continent
+- **author** (Lv2): An author is the creator of a work.  — 較難: creator
+- **automobile** (Lv3): An automobile is a vehicle with four wheels and an engine or motor, made for people to ride in.  — 較難: vehicle, motor
+- **average** (Lv2): To be average is to be not one extreme or another.  — 較難: extreme
+- **away** (Lv0): From a place, hence.  — 較難: hence
+- **awe** (Lv5): Awe is a feeling of fear and reverence.  — 較難: reverence
+- **awful** (Lv3): Causing fear or dread or terror.  — 較難: terror, dread
+- **awkward** (Lv3): Lacking dexterity in the use of the hands or of tools.  — 較難: dexterity
+- **back** (Lv0): To or in a previous condition or place.  — 較難: previous
+- **backpack** (Lv2): A backpack is a bag that is supported by straps and is worn on a person’s back for the purpose of carrying things.  — 較難: straps
+- **backward** (Lv2): Directed or facing toward the back or rear.  — 較難: rear
+- **bacon** (Lv3): Bacon is a type of meat that comes from the back, sides, or belly of a pig, or sometimes other animals.  — 較難: belly
+- **bacteria** (Lv3): Single-celled or noncellular spherical or spiral or rod-shaped organisms lacking chlorophyll that reproduce by fission.  — 較難: noncellular, fission, chlorophyll, spherical, reproduce, spiral, rod, organisms
+- **badge** (Lv6): A badge can be any token, sign, or emblem, that is worn on a person's clothing.  — 較難: emblem, token
+- **badminton** (Lv2): Badminton is a sport where players hit a shuttlecock over a high net using racquets.  — 較難: racquets, shuttlecock
+- **bag** (Lv1): Bags are containers made of soft material like paper, plastic or leather.  — 較難: containers, plastic, leather
+- **baggage** (Lv3): Another word for luggage.  — 較難: luggage
+- **bait** (Lv3): Bait is food placed on a hook to catch fish or other animals.  — 較難: hook
+- **bake** (Lv2): If you bake something, you cook it with dry heat all around it, usually in an oven.  — 較難: oven
+- **balcony** (Lv2): An upper floor projecting from the rear over the main floor in an auditorium.  — 較難: auditorium, rear
+- **bali** (Lv4): An island in Indonesia to the east of Java.  — 較難: indonesia
+- **balloon** (Lv2): A balloon is a light round ball filled with air that floats.  — 較難: floats
+- **bamboo** (Lv3): The hard woody stems of bamboo plants.  — 較難: woody, stems
+- **banker** (Lv3): A banker is someone who works at a bank and helps in managing the money and finances of people.  — 較難: finances
+- **bao** (Lv4): Any of various types of steamed bread or bun used in Chinese cuisine.  — 較難: cuisine, various, steamed
+- **bar** (Lv2): A bar is a place that sells alcoholic drinks.  — 較難: alcoholic
+- **barbarian** (Lv6): Without civilizing influences.  — 較難: civilizing
+- **barbecue** (Lv2): Meat that has been barbecued or grilled in a highly seasoned sauce.  — 較難: grilled, sauce
+- **barber** (Lv2): A barber is a person whose job is cutting hair and shaving beards.  — 較難: shaving
+- **barrel** (Lv3): A barrel is a tall and round container.  — 較難: container
+- **basics** (Lv2): A statement of fundamental facts or principles.  — 較難: fundamental
+- **basin** (Lv4): A container that is wider than it is deep.  — 較難: container
+- **basket** (Lv1): A basket is something like a bucket but with many holes like a net, made of soft sticks or grass or other long, thin material.  — 較難: bucket
+- **bat** (Lv1): A bat is a small, furry animal that has wings and can fly.  — 較難: furry
+- **bath** (Lv1): A long, high basin that you put water in and go in to wash your body.  — 較難: basin
+- **bathroom** (Lv1): A bathroom is a room that has a bathtub or a shower.  — 較難: bathtub
+- **battery** (Lv4): A battery is a device for storing or keeping electricity.  — 較難: device, electricity
+- **bee** (Lv1): A bee is a black and yellow striped insect with wings that makes honey.  — 較難: striped
+- **beer** (Lv2): Beer is an alcoholic drink that is made from barley, wheat or other types of cereal grains.  — 較難: barley, alcoholic, wheat
+- **beloved** (Lv5): If someone is beloved, he or she is dearly loved by other people.  — 較難: dearly
+- **besides** (Lv3): Making an additional point.  — 較難: additional
+- **best** (Lv1): The superlative form of good.  — 較難: superlative
+- **betray** (Lv5): If you betray someone, you cause great harm to someone who considered you a friend or ally.  — 較難: ally, harm
+- **better** (Lv2): The comparative form of good.  — 較難: comparative
+- **bias** (Lv5): Inclination towards something.  — 較難: inclination
+- **bicycle** (Lv1): A bicycle is a vehicle with two wheels.  — 較難: vehicle
+- **billion** (Lv2): An unspecified very large number.  — 較難: unspecified
+- **bin** (Lv4): A bin is a container for garbage.  — 較難: container
+- **biotechnology** (Lv5): The use of living organisms in industrial, agricultural, medical and other technological applications.  — 較難: agricultural, organisms, applications, technological, industrial
+- **bird** (Lv1): A bird is a warm-blooded animal that has feathers and wings and lays eggs.  — 較難: feathers
+- **black** (Lv1): Absorbing all light and reflecting none.  — 較難: absorbing, reflecting
+- **blackboard** (Lv2): Sheet of slate.  — 較難: slate
+- **bless** (Lv3): You say, bless you when someone sneezes.  — 較難: sneezes
+- **blood** (Lv2): Blood is a red liquid inside a person or animal's body that carries nutrients and oxygen to the other parts of the body.  — 較難: nutrients, oxygen
+- **blue** (Lv1): Of a blue hue.  — 較難: hue
+- **bluetooth** (Lv4): To transmit or communicate by Bluetooth.  — 較難: transmit, communicate
+- **boast** (Lv4): To boast means to brag about yourself.  — 較難: brag
+- **boat** (Lv1): A boat is a vehicle used to travel on water.  — 較難: vehicle
+- **body** (Lv1): A body is the main part of a person, animal, physical object, or organisation.  — 較難: physical
+- **boil** (Lv2): A painful sore with a hard core filled with pus.  — 較難: pus, core
+- **bold** (Lv3): If someone is bold, that means they are brave and willing to take risks.  — 較難: risks
+- **bomb** (Lv3): A bomb is a weapon that explodes.  — 較難: weapon, explodes
+- **border** (Lv2): A strip forming the outer edge of something.  — 較難: strip, outer
+- **bottle** (Lv1): A bottle is a container, usually made of glass that holds liquid and has a cap or stopper.  — 較難: container
+- **bound** (Lv5): The past tense and past participle of bind.  — 較難: participle, tense
+- **bow** (Lv1): A bow is a weapon whose ends are connected by a string, used for shooting arrows.  — 較難: weapon, connected
+- **box** (Lv1): A box is a square container, usually with four sides, a top and a bottom.  — 較難: container
+- **bracelet** (Lv4): A bracelet is a band or chain worn around the wrist as jewelry or an ornament.  — 較難: ornament, jewelry, wrist
+- **brass** (Lv3): Brass is a shiny yellow-orange metal.  — 較難: shiny
+- **brassiere** (Lv6): An undergarment worn by women to support their breasts.  — 較難: undergarment, breasts
+- **bread** (Lv1): Bread is food made from mixing flour, water, and yeast.  — 較難: yeast, flour
+- **breast** (Lv3): A woman's breasts are the two soft round parts on her chest.  — 較難: chest
+- **breath** (Lv3): Your breath is the air that you move into and out of your lungs.  — 較難: lungs
+- **breathe** (Lv3): If you breathe, you inhale and exhale air.  — 較難: exhale, inhale
+- **brick** (Lv3): A brick is a small, rectangular block used for building things.  — 較難: rectangular
+- **broadcast** (Lv3): Message that is transmitted by radio or television.  — 較難: transmitted
+- **bronze** (Lv5): Bronze is an alloy of copper and tin.  — 較難: alloy, tin, copper
+- **broom** (Lv4): A broom is a cleaning tool made of bristles used for sweeping.  — 較難: bristles
+- **brown** (Lv1): South Asian or sometimes Middle Eastern or North African.  — 較難: african
+- **bruise** (Lv5): An injury that doesn't break the skin but results in some discoloration.  — 較難: discoloration, injury
+- **brush** (Lv2): A brush is a tool with many thin pieces of plastic to smooth hair and wool.  — 較難: plastic
+- **bubble** (Lv3): A bubble is a volume of air trapped in a liquid and can float in the air.  — 較難: volume, float
+- **bucket** (Lv3): A bucket is a container used for carrying things like water or sand.  — 較難: container
+- **buffet** (Lv3): A buffet is a meal that consists of different dishes from which guests serve themselves.  — 較難: consists
+- **building** (Lv2): The act or process by which something is built.  — 較難: process
+- **bulb** (Lv3): A solid object that has one large, round end and another thin end.  — 較難: solid
+- **bull** (Lv3): An adult male cattle.  — 較難: cattle
+- **bump** (Lv3): A bump is a small impact between two things.  — 較難: impact
+- **bus** (Lv1): A bus is a vehicle that carries a large number of people on roads.  — 較難: vehicle
+- **businessman** (Lv2): A businessman is a man whose profession is business.  — 較難: profession
+- **butter** (Lv1): Butter is a firm yellow substance that is made from milk spread on bread or used in cooking.  — 較難: substance
+- **butterfly** (Lv1): A butterfly is an insect with large, often colourful wings.  — 較難: colourful
+- **cab** (Lv1): A cab is a car that you can hire for single trips.  — 較難: hire
+- **cabinetmaking** (Lv4): The art of the cabinetmaker.  — 較難: cabinetmaker
+- **cafeteria** (Lv3): A restaurant where you serve yourself and pay a cashier.  — 較難: cashier
+- **caffeine** (Lv6): Caffeine is a mild drug that acts as a stimulant in the body, making you more jittery and excited.  — 較難: jittery, stimulant, mild
+- **cage** (Lv2): A cage is a structure made with wire or bars, to hold an animal.  — 較難: structure
+- **calcium** (Lv5): A white metallic element that burns with a brilliant light.  — 較難: metallic, element
+- **calorie** (Lv4): A unit of heat equal to the amount of heat required to raise the temperature of one kilogram of water by one degree at one atmosphere pressure.  — 較難: atmosphere
+- **camel** (Lv2): A camel is a desert animal, usually with two humps on its' back.  — 較難: humps
+- **camera** (Lv1): An object that takes pictures digitally or on film.  — 較難: digitally
+- **campaign** (Lv4): A series of actions advancing a principle or tending toward a particular end.  — 較難: series, tending
+- **canal** (Lv5): A canal is a waterway that is made by humans so that boats can travel it.  — 較難: waterway
+- **cancer** (Lv2): Cancer is a disease where cells grow to a tumor.  — 較難: tumor
+- **candle** (Lv2): A piece of wax with a wick inside that you burn to get light.  — 較難: wick, wax
+- **canyon** (Lv3): A valley, especially a long, narrow, steep valley, cut in rock by a river.  — 較難: steep
+- **capitalism** (Lv4): Capitalism is an economic system in which ordinary people own land and businesses and use them to increase their wealth.  — 較難: economic
+- **captive** (Lv6): Subdued by love.  — 較難: subdued
+- **car** (Lv1): A car is a small passenger vehicle with four wheels, moved by an engine.  — 較難: vehicle, passenger
+- **careful** (Lv1): Exercising caution or showing care or attention.  — 較難: caution
+- **caregiver** (Lv4): A person who is responsible for attending to the needs of a child or dependent adult.  — 較難: dependent
+- **cargo** (Lv4): Cargo is goods carried on a ship or airplane.  — 較難: goods
+- **carpet** (Lv3): A carpet is a floor covering, usually made of nylon or wool.  — 較難: nylon
+- **carriage** (Lv3): A vehicle on wheels, usually pulled by a horse.  — 較難: vehicle
+- **cart** (Lv3): A small, open vehicle on wheels, pulled or pushed by a person or an animal and usually used for carrying things, not people.  — 較難: vehicle
+- **cartoon** (Lv2): A cartoon is a movie using animation.  — 較難: animation
+- **case** (Lv1): A case is a container to hold something.  — 較難: container
+- **caterpillar** (Lv6): A caterpillar is the larva of a butterfly or moth.  — 較難: larva, moth
+- **cattle** (Lv3): Cattle are a group of cows or bulls, whether they are male or female.  — 較難: bulls
+- **cave** (Lv3): A cave is a large, naturally-formed hole formed underground, or in the face of a cliff or a hillside.  — 較難: hillside, cliff
+- **celebration** (Lv4): A celebration is a gathering of people for fun and entertainment, usually like a party.  — 較難: gathering, entertainment
+- **cell** (Lv2): A cell is a room in a jail where prisoners are kept.  — 較難: jail
+- **celsius** (Lv6): Ellipsis of degree Celsius.  — 較難: ellipsis
+- **cent** (Lv1): A small coin of little value, also called a penny.  — 較難: penny
+- **centimeter** (Lv2): A hundredth of a meter.  — 較難: hundredth
+- **century** (Lv2): A period of one hundred consecutive years.  — 較難: consecutive
+- **ceo** (Lv4): To serve as the chief executive officer of an organization or company.  — 較難: executive
+- **ceramic** (Lv6): Made of material produced by the high-temperature firing of inorganic, nonmetallic rocks and minerals.  — 較難: nonmetallic, inorganic, minerals
+- **cereal** (Lv2): A cereal is a grass whose seeds we use as food, like wheat and oats.  — 較難: oats, wheat
+- **certainly** (Lv2): Without doubt, bound to occur.  — 較難: bound
+- **certificate** (Lv5): A document containing a certified statement.  — 較難: document
+- **chain** (Lv2): A chain is a series of round pieces of material joined together to make a line.  — 較難: series
+- **chalk** (Lv2): Chalk is a soft, white, powder-like limestone.  — 較難: limestone, powder
+- **champion** (Lv3): A champion is someone who has been a winner in a contest.  — 較難: contest
+- **championship** (Lv4): A championship is a contest to decide which person or team is best at the sport.  — 較難: contest
+- **channel** (Lv2): A channel is a path that carries or directs flow or movement, especially of TV & radio signals and water.  — 較難: signals
+- **chapel** (Lv5): A chapel is a place of worship that is usually smaller than a church.  — 較難: worship
+- **character** (Lv2): Someone's character is the combination of things that they do, feel, and believe that makes them a certain type of person.  — 較難: combination
+- **charity** (Lv4): A charity is an organisation that collects money or goods and uses them to help poor or sick people, often with the help of volunteers.  — 較難: volunteers, goods
+- **chart** (Lv2): A visual display of information.  — 較難: visual, information
+- **chat** (Lv3): A chat is a casual conversation, sometimes by typing on a computer or cell phone.  — 較難: casual
+- **cheerful** (Lv3): A person that is cheerful is happy and optimistic.  — 較難: optimistic
+- **cheese** (Lv1): Cheese is a food that is made by mixing bacteria with milk and aging it.  — 較難: bacteria
+- **cheesecake** (Lv4): A cheesecake is a sweetened pie made from flavored cream cheese, eggs, and milk on a base or crust.  — 較難: crust, sweetened, flavored
+- **cherish** (Lv4): If you cherish something, you treat it with affection and care.  — 較難: affection
+- **cherry** (Lv3): A small fruit, usually red, black or yellow, with a smooth hard seed and a short hard stem.  — 較難: stem
+- **chess** (Lv2): A board game for two players, each beginning with sixteen chess pieces moving according to fixed rules across a chessboard with the objective to checkmate the opposing king.  — 較難: checkmate, chessboard, according, objective, opposing, sixteen
+- **chia** (Lv4): A Mexican sage grown for its edible seeds, Salvia hispanica.  — 較難: hispanica, edible, sage
+- **chill** (Lv3): A chill is a feeling of coldness.  — 較難: coldness
+- **chimney** (Lv3): A vertical flue that provides a path through which smoke from a fire is carried away through the wall or roof of a building.  — 較難: flue, vertical
+- **chocolate** (Lv1): A food made from ground roasted cocoa beans.  — 較難: roasted
+- **choke** (Lv4): Not being able to breathe because something stops your windpipe.  — 較難: windpipe, breathe
+- **cholesterol** (Lv6): An animal sterol that is normally synthesized by the liver.  — 較難: synthesized, sterol
+- **chop** (Lv3): A chop is a quick downward cutting motion.  — 較難: downward
+- **chopstick** (Lv2): Chopsticks are sticks used in pairs as cutlery.  — 較難: cutlery
+- **chubby** (Lv5): If a person is chubby, they are slightly overweight or fat.  — 較難: overweight
+- **church** (Lv1): The Church is Christians gathering to praise and be with God.  — 較難: gathering
+- **cigarette** (Lv3): A cigarette is tobacco that has been rolled in paper for smoking.  — 較難: tobacco
+- **civil** (Lv3): Having to do with people and government office as opposed to the military or religion.  — 較難: opposed
+- **civilian** (Lv4): Not related to the military, police or other governmental professions.  — 較難: professions, governmental
+- **claim** (Lv2): A claim is something that you say or write without proof.  — 較難: proof
+- **clam** (Lv6): A clam is a type of shellfish with a hard shell and a small opening that allows the flow of nutrients in and out of it.  — 較難: shellfish, nutrients, opening
+- **clap** (Lv2): To clap is to make a noise by hitting the palms of your hands together.  — 較難: palms
+- **class** (Lv1): A class is a time for learning.  — 較難: learning
+- **classify** (Lv4): When you classify something, you sort it into different classes or categories.  — 較難: categories
+- **clause** (Lv5): A clause is a section in a contract or other legal document.  — 較難: document
+- **clay** (Lv3): Clay is a type of mud or dirt that can be made into bricks and pots.  — 較難: bricks, dirt
+- **clean** (Lv1): If something is clean, it is free from dirt.  — 較難: dirt
+- **climber** (Lv5): A vine or climbing plant that readily grows up a support or over other plants.  — 較難: vine, readily
+- **cling** (Lv5): If something clings to something else, it holds on tightly.  — 較難: tightly
+- **clinic** (Lv3): A clinic is a place to see the doctor for health checkups or to buy medicine.  — 較難: checkups
+- **closure** (Lv6): A closure is an event that signifies an ending of something.  — 較難: signifies
+- **cloth** (Lv2): Cloth is a thin, flat material, often made from cotton or polyester.  — 較難: polyester, cotton
+- **cloud** (Lv1): A visible mass of water droplets suspended in the air.  — 較難: droplets, suspended, visible
+- **clown** (Lv3): A rude or vulgar fool.  — 較難: vulgar
+- **clue** (Lv3): A clue is a piece of information that helps you answer a question or solve a problem.  — 較難: information
+- **clumsy** (Lv4): Awkward, lacking coordination.  — 較難: coordination, awkward
+- **coal** (Lv2): Coal is a fuel which comes from under the ground.  — 較難: fuel
+- **coat** (Lv1): An outer piece of clothing that covers the upper part of the body and the arms.  — 較難: arms, outer
+- **cocaine** (Lv5): An addictive drug in the form of a white powder that users generally take by sniffing it through their nose.  — 較難: addictive, sniffing, powder
+- **cocoa** (Lv2): A beverage made from cocoa powder and milk and sugar.  — 較難: beverage, powder
+- **coconut** (Lv3): A coconut is a large seed that grows in a coconut palm.  — 較難: palm
+- **coke** (Lv2): If you burn coal, you will have coke left over, and you can use the coke for fuel.  — 較難: fuel
+- **cola** (Lv2): The kola plant, genus Cola, famous for its nut, or one of these nuts.  — 較難: kola, genus
+- **color** (Lv1): The image caused by light in your eyes, due to light of various wavelengths hitting your retina.  — 較難: wavelengths, retina, various
+- **comic** (Lv2): Of or relating to or characteristic of comedy.  — 較難: characteristic
+- **comics** (Lv2): A sequence of drawings telling a story in a newspaper or comic book.  — 較難: sequence
+- **comma** (Lv3): A comma is the sign , used to make a short pause in a sentence.  — 較難: pause
+- **commentary** (Lv5): A commentary is a series of comments about an event.  — 較難: series
+- **commerce** (Lv4): Commerce is the activity of buying and selling goods and services.  — 較難: goods
+- **common** (Lv1): Belonging to or participated in by a community as a whole.  — 較難: community
+- **communism** (Lv5): Communism is any ideology that is socialist, has no central government or money, and wants everyone to be equal.  — 較難: socialist, ideology
+- **competent** (Lv5): Having sufficient skill, knowledge, ability, or qualifications.  — 較難: qualifications, sufficient
+- **comply** (Lv5): Act in accordance with someone's rules, commands, or wishes.  — 較難: accordance
+- **computer** (Lv1): A computer is a machine that helps you store, organize, and use information.  — 較難: information, organize
+- **concrete** (Lv4): A synonym for strong.  — 較難: synonym
+- **cone** (Lv3): Any cone-shaped artifact.  — 較難: artifact
+- **confusion** (Lv4): Confusion is a feeling you get when things are unclear or you don't understand.  — 較難: unclear
+- **congratulations** (Lv2): An expression of approval and commendation.  — 較難: commendation, approval
+- **connect** (Lv3): When you connect things, you join, link or unite them.  — 較難: unite
+- **consequent** (Lv4): Happening as a result of sth.  — 較難: sth
+- **considerable** (Lv3): A considerable amount, time, degree, etc. is a fairly large or important one.  — 較難: fairly
+- **consideration** (Lv2): Consideration is the process of thinking carefully about something.  — 較難: process
+- **consonant** (Lv6): A consonant is a sound or letter that is not a vowel.  — 較難: vowel
+- **consumer** (Lv4): A consumer is someone who buys or uses goods or services.  — 較難: goods
+- **contagious** (Lv5): Easily diffused or spread as from one person to another.  — 較難: diffused
+- **contaminate** (Lv5): Make radioactive by adding radioactive material.  — 較難: radioactive
+- **continent** (Lv3): A continent is a big piece of land that is almost as big as your mom's ass.  — 較難: ass
+- **contract** (Lv2): A binding agreement between two or more persons that is enforceable by law.  — 較難: enforceable, binding
+- **contrary** (Lv4): One of a pair of propositions that cannot both be simultaneously true, though they may both be false.  — 較難: propositions, simultaneously
+- **controller** (Lv3): Someone who maintains and audits business accounts.  — 較難: audits
+- **conversation** (Lv2): A conversation is when two or more people are talking informally.  — 較難: informally
+- **cooker** (Lv3): A cooker is a stove, or a pot, used to cook food.  — 較難: stove
+- **coronavirus** (Lv4): Coronavirus is a member of a group of RNA viruses that cause a variety of diseases in humans and animals.  — 較難: viruses, variety
+- **correlation** (Lv5): A reciprocal relation between two or more things.  — 較難: reciprocal
+- **corruption** (Lv5): Decay of matter.  — 較難: decay
+- **cosmetics** (Lv6): A toiletry designed to beautify the body.  — 較難: toiletry, beautify
+- **cosplay** (Lv4): To costume oneself as a character.  — 較難: costume
+- **cotton** (Lv3): Cotton is a plant that produces a soft fiber also called cotton.  — 較難: fiber
+- **couch** (Lv1): An item of furniture, often upholstered, for the comfortable seating of more than one person.  — 較難: upholstered
+- **countable** (Lv3): Capable of being counted.  — 較難: capable
+- **county** (Lv3): A county is an area of land with a local government, often including a number of towns or cities.  — 較難: including
+- **courageous** (Lv4): Of a person, displaying or possessing courage.  — 較難: possessing
+- **course** (Lv1): In school, a course is a class in a specific subject.  — 較難: specific
+- **courtesy** (Lv4): Courtesy is beliefs and actions related to being polite and respectful.  — 較難: respectful
+- **cow** (Lv1): A common farm animal, the female cattle.  — 較難: cattle
+- **cowrie** (Lv4): A small gastropod common in the Indian Ocean.  — 較難: gastropod
+- **crab** (Lv3): A crab is a sea animal with a shell and pincers.  — 較難: pincers
+- **cracker** (Lv6): A dry, thin, crispy, and usually salty or savory biscuit.  — 較難: savory, crispy
+- **cradle** (Lv3): A cradle is a bed or cot for a baby.  — 較難: cot
+- **craft** (Lv4): A vehicle designed for navigation in or on water or air or through outer space.  — 較難: navigation, vehicle, outer
+- **cramp** (Lv6): A clamp for holding pieces of wood together while they are glued.  — 較難: clamp
+- **crater** (Lv6): A crater is a circular hole in the ground that is created by the impact of a meteorite or other such object.  — 較難: meteorite, impact, circular
+- **crayon** (Lv2): A stick of colored wax that is used for drawing.  — 較難: wax
+- **creek** (Lv5): A creek is a kind of waterway.  — 較難: waterway
+- **crime** (Lv2): A crime is an act that is against the law and for which you can go to jail.  — 較難: jail
+- **crisis** (Lv2): A crucial or decisive point or situation.  — 較難: decisive, crucial, situation
+- **crispy** (Lv3): If something is crispy, it breaks easily and makes a cracking sound when you break or bite it.  — 較難: cracking
+- **criticism** (Lv4): Critique or the expression thereof.  — 較難: thereof
+- **crocodile** (Lv6): A crocodile is a big reptile that lives mostly in water.  — 較難: reptile, mostly
+- **cross** (Lv1): A cross is a figure made of two straight lines or bars that intersect each other such that at least one of them bisects the other.  — 較難: intersect, bisects
+- **crossing** (Lv6): A crossing is an intersection where roads or tracks cross.  — 較難: intersection
+- **crunchy** (Lv4): If something is crunchy, it makes a noise when you bite or crush it.  — 較難: crush
+- **cry** (Lv1): To shed tears.  — 較難: shed
+- **cucumber** (Lv6): A cucumber is a type of vine.  — 較難: vine
+- **cunning** (Lv4): Something that is cunning uses skills to trick or deceive others.  — 較難: deceive, others
+- **cup** (Lv1): A cup is deep round container open at the top, normally used to drink out of.  — 較難: container
+- **curie** (Lv4): French chemist who won two Nobel prizes.  — 較難: chemist, nobel
+- **curriculum** (Lv5): The set of courses, coursework.  — 較難: coursework
+- **customer** (Lv2): A customer is a person who pays money for goods or services.  — 較難: goods
+- **cute** (Lv1): If someone or something is cute, it is attractive or pretty.  — 較難: attractive
+- **dairy** (Lv3): A dairy is a place where milk products are kept.  — 較難: products
+- **dancer** (Lv2): A person who dances, usually as a hobby, an occupation, or a profession.  — 較難: profession, occupation
+- **dash** (Lv3): Distinctive and stylish elegance.  — 較難: elegance, stylish, distinctive
+- **data** (Lv2): Data is information, such as facts, numbers, photographs, etc.  — 較難: information
+- **database** (Lv3): An organized body of related information.  — 較難: information, organized
+- **day** (Lv1): The time when the Sun is above the horizon and it lights the sky.  — 較難: horizon
+- **daytime** (Lv5): The time of daylight.  — 較難: daylight
+- **debate** (Lv2): An argument, or discussion, usually in an ordered or formal setting, often with more than two people, generally ending with a vote or other decision.  — 較難: setting
+- **debt** (Lv2): An item or money which belongs to another, and which will be repaid in the future.  — 較難: repaid
+- **decade** (Lv3): A group, set, or series of ten , particularly.  — 較難: series
+- **deer** (Lv2): A deer is a medium- to large-sized animal that eats plants and has hard feet that are split in two.  — 較難: split
+- **defeat** (Lv4): A defeat is a loss in a game, battle, or contest.  — 較難: contest
+- **del** (Lv4): The symbol ∇ used to denote the gradient operator.  — 較難: denote, gradient
+- **delightful** (Lv4): Something that is delightful brings enjoyment, satisfaction, or pleasure.  — 較難: satisfaction
+- **dentist** (Lv2): A medical doctor who specializes in teeth.  — 較難: specializes
+- **department** (Lv2): A department is a part of a business, school, hospital or other institution that has a particular job.  — 較難: institution
+- **desert** (Lv2): A desert is a bare area of land, especially one with little water or plants.  — 較難: bare
+- **deserve** (Lv4): When someone deserve something, it means he is good enough to have the privilege of getting something special.  — 較難: privilege
+- **designer** (Lv3): A person who designs something, or who designs things as a profession.  — 較難: profession
+- **desirable** (Lv3): If something is desirable, it is worthy to be desired.  — 較難: worthy
+- **destined** (Lv6): Confined to a predetermined fate or destiny.  — 較難: predetermined, destiny, confined
+- **determine** (Lv3): If A determines the outcome of B, A causes B to occur in a certain way.  — 較難: outcome
+- **development** (Lv2): The process of developing.  — 較難: process
+- **devil** (Lv3): An evil supernatural being.  — 較難: supernatural
+- **devise** (Lv4): If you devise something, you plan or design something using your intelligence.  — 較難: intelligence
+- **devour** (Lv6): If you devour your food, you eat it quickly and greedily.  — 較難: greedily
+- **diabetes** (Lv6): Diabetes is a disease which causes people to become very thirsty and urinate a lot.  — 較難: urinate
+- **diagram** (Lv4): A diagram is a drawing, or sketch, to show how something, such as a machine, works.  — 較難: sketch
+- **dial** (Lv2): The face of a timepiece.  — 較難: timepiece
+- **diameter** (Lv5): The diameter of a circle is the distance from one point on the circumference of the circle to the point on the opposite side.  — 較難: circumference
+- **diamond** (Lv2): Diamond is a very hard mineral made from carbon that is shiny like glass.  — 較難: carbon, mineral, shiny
+- **diaper** (Lv5): A baby’s nappy, a napkin for between their legs.  — 較難: nappy, napkin
+- **differ** (Lv4): Not to have the same traits or characteristics.  — 較難: traits, characteristics
+- **dig** (Lv1): If you dig a hole, you make it bigger by removing material, usually using a shovel or your hands.  — 較難: shovel
+- **digest** (Lv4): A publication that contains articles or parts of other books.  — 較難: publication
+- **dignity** (Lv4): Dignity is a human quality that makes a person worthy of respect.  — 較難: worthy
+- **diligence** (Lv4): Conscientiousness in paying proper attention to a task.  — 較難: conscientiousness
+- **dimensional** (Lv4): If something is dimensional, it is related to dimensions.  — 較難: dimensions
+- **dinosaur** (Lv3): Dinosaurs are reptiles that were extinct millions of years ago.  — 較難: reptiles, extinct
+- **dioxide** (Lv3): A dioxide is an oxide that has two oxygen atoms in each molecule.  — 較難: oxide, molecule, oxygen, atoms
+- **diploma** (Lv4): A document certifying the successful completion of a course of study.  — 較難: certifying, document, completion
+- **directory** (Lv5): A directory is a book or list of names, usually in alphabetical order with telephone numbers or addresses.  — 較難: alphabetical
+- **disability** (Lv4): A disability is condition where a person's movements or senses are limited by any physical or mental disadvantage.  — 較難: physical, disadvantage, mental
+- **disadvantage** (Lv4): A disadvantage is something that is a handicap or a weakness.  — 較難: handicap, weakness
+- **disc** (Lv3): An object that is thin, flat, and circular.  — 較難: circular
+- **disconnect** (Lv5): If you disconnect something, you remove the connection between an appliance with its electrical power source.  — 較難: appliance
+- **discount** (Lv3): A discount is a reduction of the price of something.  — 較難: reduction
+- **discourage** (Lv3): If someone discourages you, they are persuading you not to do something.  — 較難: persuading
+- **discriminate** (Lv5): When you discriminate against someone, you make decisions based on prejudice.  — 較難: prejudice
+- **discrimination** (Lv5): Discrimination is the act of treating someone unfairly just because of their skin colour, religion, sex, etc.  — 較難: unfairly
+- **dish** (Lv1): Dishes are the flat round holder for food that we usually put on the table and eat off of.  — 較難: holder
+- **disk** (Lv3): A disk is an object that is thin, flat, and circular.  — 較難: circular
+- **display** (Lv2): A display is an exhibition, an arrangement, or a show.  — 較難: exhibition
+- **distinguished** (Lv4): Distinguished means superior to others in importance or rank.  — 較難: others, rank, superior
+- **distress** (Lv6): Physical or emotional discomfort, suffering, or alarm, particularly of a more acute nature.  — 較難: discomfort, acute, physical, suffering, emotional
+- **district** (Lv4): A district is an area of land that shares certain characteristics.  — 較難: characteristics
+- **ditch** (Lv3): A long narrow excavation in the earth.  — 較難: excavation
+- **dive** (Lv3): A jump or plunge into water.  — 較難: plunge
+- **dizzy** (Lv3): If you feel dizzy, you have a feeling of spinning around and losing your balance.  — 較難: spinning
+- **do** (Lv0): Do is an auxiliary verb.  — 較難: verb, auxiliary
+- **doc** (Lv1): A licensed medical practitioner.  — 較難: practitioner, licensed
+- **dock** (Lv3): An enclosure in a court of law where the defendant sits during the trial.  — 較難: enclosure, defendant
+- **doctrine** (Lv5): A doctrine is a particular principle, position, or policy taught or advocated, as of a religion or government.  — 較難: advocated
+- **dog** (Lv1): A dog is a domestic mammal, related to wolves and foxes, that is often kept as a pet.  — 較難: mammal
+- **dollar** (Lv1): The basic monetary unit in many countries.  — 較難: monetary
+- **dome** (Lv5): A dome is a structure that looks like the hollow upper half of a sphere or oval.  — 較難: sphere, oval, structure, hollow
+- **doubt** (Lv2): A doubt is a question or uncertainty about something.  — 較難: uncertainty
+- **doughnut** (Lv3): A doughnut is a piece of sweet fried dough that is often shaped like a ring.  — 較難: dough
+- **dove** (Lv2): A dove is a pigeon, especially one smaller in size.  — 較難: pigeon
+- **download** (Lv2): If you download something, you transfer it from a remote computer to the one you are using with an internet connection.  — 較難: transfer, remote
+- **downtown** (Lv3): Of or located in the lower part of a town, or in the business center.  — 較難: located
+- **dragon** (Lv2): A creature of Teutonic mythology.  — 較難: mythology, creature
+- **drive** (Lv1): If you drive a car or other vehicle, you control its movement and direction.  — 較難: vehicle
+- **drug** (Lv2): A substance that is used as a medicine or narcotic.  — 較難: narcotic, substance
+- **drugstore** (Lv3): A drugstore is a place where you can get prescription medicine.  — 較難: prescription
+- **drunk** (Lv3): If someone is drunk, they have taken in too much alcohol.  — 較難: alcohol
+- **duck** (Lv1): A cave passage containing water with low, or no, airspace.  — 較難: airspace, passage, cave
+- **dump** (Lv3): If you dump something, you get rid of it.  — 較難: rid
+- **dumpling** (Lv3): A dumpling is a portion of dough cooked by boiling or steaming.  — 較難: dough, portion, steaming
+- **dust** (Lv3): Dust is a thin powder that can be seen in the air or on a surface.  — 較難: powder
+- **duty** (Lv2): The social force that binds you to the courses of action demanded by that force.  — 較難: demanded, binds
+- **dye** (Lv4): Dye is a liquid with color that when placed on a fabric or other material, will change the color of it.  — 較難: fabric
+- **each** (Lv0): Every one considered individually.  — 較難: individually
+- **earnings** (Lv3): Your earnings is the amount of money you obtain from doing something.  — 較難: obtain
+- **earphone** (Lv4): A earphone is a very small headphone that is fitted into a person's ear that makes sound.  — 較難: headphone
+- **earring** (Lv2): An earring is a piece of jewelry worn on the ear.  — 較難: jewelry
+- **earrings** (Lv2): Jewelry to ornament the ear.  — 較難: ornament, jewelry
+- **earthquake** (Lv2): An earthquake is a natural event that causes the ground to shake up and down, and sometimes, may destroy buildings.  — 較難: destroy
+- **eastern** (Lv2): Of, facing, situated in, or related to the east.  — 較難: situated
+- **eat** (Lv1): If you eat something, usually food, you put it in your mouth, chew it, and swallow it.  — 較難: chew
+- **echo** (Lv3): An echo is a reflected sound that is heard again by a person.  — 較難: reflected
+- **eco** (Lv4): A proposed name for the common currency that the West African Monetary Zone plans to introduce in the framework of the Economic Community of West African States.  — 較難: monetary, framework, currency, community, economic, zone, african
+- **ecological** (Lv5): If something is ecological it is related to ecology, the interrelationships of organisms and their environment.  — 較難: interrelationships, organisms
+- **economics** (Lv4): The study of money and how goods and services get value.  — 較難: goods
+- **economist** (Lv4): An expert in the science of economics.  — 較難: economics
+- **economy** (Lv4): The economy is the use of the resources of a community or system.  — 較難: community, resources
+- **ecosystem** (Lv5): An ecosystem is a large community of living organisms in a particular area.  — 較難: organisms, community
+- **edge** (Lv2): The boundary of a surface.  — 較難: boundary
+- **edition** (Lv2): An edition of a book, computer program, etc. is a copy that has been or will be published with changes or in another form.  — 較難: published
+- **editor** (Lv3): An editor is someone who edits or changes the text in a document.  — 較難: document
+- **educate** (Lv3): When you educate someone, you instruct them.  — 較難: instruct
+- **een** (Lv4): The old plural of Eye.  — 較難: plural
+- **effectively** (Lv2): In an efficient or effective manner.  — 較難: efficient
+- **eight** (Lv0): Ordinal eighth) The number eight is one more than seven and one less than nine.  — 較難: ordinal, eighth
+- **electronics** (Lv4): Electronics is the branch of physics that uses electrical devices that operate by controlling the flow of electrons.  — 較難: electrons, physics, devices
+- **elegant** (Lv4): To be elegant something has beauty and is graceful.  — 較難: graceful
+- **elephant** (Lv1): Five-toed pachyderm.  — 較難: pachyderm
+- **elevator** (Lv3): An elevator is a machine that moves people and goods up and down between floors of a building.  — 較難: goods
+- **embarrassment** (Lv4): The shame you feel when your inadequacy or guilt is made public.  — 較難: inadequacy, guilt
+- **emergency** (Lv3): An emergency is a serious situation that needs to be dealt with very quickly.  — 較難: situation
+- **emperor** (Lv3): The male ruler of an empire.  — 較難: empire
+- **ems** (Lv4): A quad with a square body.  — 較難: quad
+- **energetic** (Lv3): If something or someone is energetic, they show or involve great activity or vitality.  — 較難: vitality, involve
+- **energy** (Lv2): The impetus behind all motion and all activity.  — 較難: impetus
+- **engineer** (Lv1): An engineer is someone who is paid to solve technical problems, or to help invent things.  — 較難: technical, invent
+- **enormous** (Lv4): Extraordinarily large in size or extent or amount or power or degree.  — 較難: extraordinarily, extent
+- **entertainer** (Lv2): An entertainer is a person who entertains or amuses other people.  — 較難: amuses
+- **entirely** (Lv2): To the full or entire extent.  — 較難: extent
+- **environment** (Lv2): The surroundings of, and influences on, a particular item of interest.  — 較難: surroundings
+- **environmental** (Lv2): Pertaining to the environment.  — 較難: pertaining
+- **epidemic** (Lv5): An epidemic is a widespread illness, this spreads quickly to many people.  — 較難: widespread
+- **erupt** (Lv5): If something erupts, it violently spits out something.  — 較難: violently, spits
+- **escalator** (Lv5): Anything that escalates.  — 較難: escalates
+- **essay** (Lv2): Writing that looks at an issue or subject.  — 較難: issue
+- **estimate** (Lv4): An approximate calculation of quantity or degree or worth.  — 較難: approximate, calculation
+- **ethnic** (Lv4): Of or relating to a group of people having common racial, ancestral, national, religious or cultural origins.  — 較難: ancestral, racial, religious
+- **europe** (Lv1): Europe is a northern continent near Asia and Africa.  — 較難: continent, africa
+- **evaluation** (Lv4): Evaluation is the process of making a judgement.  — 較難: judgement, process
+- **even** (Lv1): You use even to focus on the most surprising or unlikely case.  — 較難: unlikely
+- **evergreen** (Lv6): Of plants, especially trees, that do not shed their leaves seasonally.  — 較難: seasonally, shed
+- **every** (Lv0): Each and all of the members of a group considered singly and without exception.  — 較難: singly, exception
+- **evidence** (Lv4): Evidence is facts or observations that support an idea.  — 較難: observations
+- **exactly** (Lv2): R indicating exactness or preciseness.  — 較難: preciseness
+- **except** (Lv1): You use except to introduce the only thing or person that a statement does not apply to, or a fact that prevents a statement from being completely true.  — 較難: prevents
+- **excite** (Lv2): If something excites you, it makes you feel interested, happy, and awake.  — 較難: awake
+- **excited** (Lv1): If a person is excited, he or she is very enthusiastic.  — 較難: enthusiastic
+- **executive** (Lv5): A name for the head officer or administrator, especially one who can make important decisions.  — 較難: administrator
+- **exercise** (Lv1): Exercise is a physical activity to make your body stronger.  — 較難: physical
+- **expect** (Lv1): When you expect something you anticipate it.  — 較難: anticipate
+- **experiment** (Lv3): A test that is done to prove something, to see if a guess is valid, or to do something that has not been tried before.  — 較難: valid
+- **explode** (Lv3): If something explodes, it breaks apart quickly and strongly, often with strong heat, sound, and light.  — 較難: apart
+- **expressive** (Lv3): An expressive person is someone who conveys their thoughts or feelings effectively.  — 較難: conveys
+- **eyebrow** (Lv2): The arch of hair above each eye.  — 較難: arch
+- **eyelash** (Lv6): An eyelash is one of the hairs that grows on the eyelid.  — 較難: eyelid
+- **fabric** (Lv5): A fabric is a material made of fibers.  — 較難: fibers
+- **facebook** (Lv4): Alternative letter-case form of Facebook.  — 較難: alternative
+- **fact** (Lv1): A fact is a piece of information that is true.  — 較難: information
+- **fahrenheit** (Lv6): German physicist who invented the mercury thermometer and developed the scale of temperature that bears his name.  — 較難: thermometer, mercury, physicist, scale, invented
+- **fail** (Lv1): To not achieve a goal, or to go wrong.  — 較難: achieve
+- **fairy** (Lv3): A type of human-like being with magical powers.  — 較難: magical
+- **faith** (Lv3): Faith is the belief that something is true without proof.  — 較難: proof
+- **faithful** (Lv4): If someone or something is faithful, they are loyal to a person or cause.  — 較難: loyal
+- **fake** (Lv3): Something which is fake is not real, false, or fraudulent.  — 較難: fraudulent
+- **fancy** (Lv3): If something is fancy, it nicer than usual, often with decorations and bright colours.  — 較難: decorations, colours
+- **fanny** (Lv4): External female sex organs.  — 較難: external
+- **fantastic** (Lv4): Existing in or constructed from fantasy.  — 較難: constructed
+- **fare** (Lv3): A fare is money that you pay for public transportation.  — 較難: transportation
+- **farewell** (Lv4): A wish of happiness or safety at parting, especially a permanent departure.  — 較難: permanent, departure
+- **fascination** (Lv6): The state of being intensely interested.  — 較難: intensely
+- **fast** (Lv1): In a firm or secure manner, securely.  — 較難: securely, secure
+- **fat** (Lv1): Fat is animal tissue with a high oil content.  — 較難: content
+- **faucet** (Lv3): A faucet is a fitting of a sink that allows water to flow through it for washing ones' hands or doing the dishes.  — 較難: sink
+- **favor** (Lv2): A kind or helpful deed.  — 較難: deed
+- **fax** (Lv4): A fax is a document that is sent from one fax machine to another, which is then printed out by the receiving fax machine.  — 較難: document
+- **feature** (Lv2): A feature is a special or noticeable part of something.  — 較難: noticeable
+- **feb** (Lv4): The month following January and preceding March.  — 較難: preceding, march
+- **february** (Lv1): The fourteenth month in the year.  — 較難: fourteenth
+- **federal** (Lv5): The federal government is the main country-wide government in a country where there are also state or provincial governments.  — 較難: provincial
+- **festival** (Lv1): A feast or feast day.  — 較難: feast
+- **few** (Lv0): A quantifier that can be used with count nouns and is often preceded by `a'.  — 較難: nouns, quantifier, preceded
+- **fiber** (Lv5): Fibers are thread-like structures found in textiles or vegetables.  — 較難: textiles, thread, structures
+- **fiction** (Lv4): Fiction refers to things that were made up and are not true.  — 較難: refers
+- **field** (Lv2): A field is an open area of land that can be used for many different things, from sports to crop-growing.  — 較難: crop
+- **fierce** (Lv4): If something or someone is fierce, then they are violent or aggressive.  — 較難: aggressive, violent
+- **fifteen** (Lv1): The cardinal number occurring after fourteen and before sixteen.  — 較難: cardinal, sixteen, fourteen
+- **fifty** (Lv1): The cardinal number occurring after forty-nine and before fifty-one.  — 較難: cardinal, forty
+- **film** (Lv1): A medium that disseminates moving pictures.  — 較難: disseminates
+- **fine** (Lv1): If something is fine, it is OK, not a problem, or acceptable.  — 較難: acceptable
+- **fireplace** (Lv4): A fireplace is a place in the hearth, found at the bottom of the chimney where a fire can be started.  — 較難: hearth, chimney
+- **fireproof** (Lv6): If something is fireproof, it is resistant to fire.  — 較難: resistant
+- **firewoman** (Lv2): A firewoman is a woman whose job is to fight fires and extinguish them.  — 較難: extinguish
+- **firework** (Lv3): A firework is a device that, when set on fire, causes a bang and many colours in the sky.  — 較難: device, colours, bang
+- **fish** (Lv1): A fish is an animal that lives in the water and has scales and gills.  — 較難: gills, scales
+- **fist** (Lv3): A hand that is held tightly, often to hit.  — 較難: tightly
+- **five** (Lv0): The cardinal number that is the sum of four and one.  — 較難: cardinal, sum
+- **flag** (Lv2): A flag is a piece of cloth, usually marked with a colourful symbol or sign.  — 較難: colourful
+- **flashlight** (Lv3): A flashlight is a device for making light.  — 較難: device
+- **flatter** (Lv4): Praise somewhat dishonestly.  — 較難: dishonestly
+- **flea** (Lv4): A flea is a small, wingless insect that lives on animals and sometimes humans, feeding on blood.  — 較難: wingless
+- **float** (Lv3): When you float, it means that your density is lower than the density of the liquid you are in, which makes you be at the surface of the liquid.  — 較難: density
+- **flock** (Lv3): A flock is a large number of birds, especially those gathered together for the purpose of migration.  — 較難: migration
+- **flour** (Lv3): Flour is grain that has been crushed.  — 較難: crushed
+- **flow** (Lv2): A flow is a smooth regular movement of a liquid, gas, etc.  — 較難: gas
+- **flu** (Lv2): An acute febrile highly contagious viral disease.  — 較難: febrile, viral, contagious, acute
+- **fluency** (Lv5): The quality of smoothness of flow.  — 較難: smoothness
+- **fluent** (Lv4): Someone who is fluent in a language can speak it confidently and accurately.  — 較難: confidently
+- **following** (Lv2): Coming next, either in sequence or in time.  — 較難: sequence, coming
+- **food** (Lv1): Food is what people and animals eat for nutrition or pleasure when they are hungry.  — 較難: nutrition
+- **foolish** (Lv2): Lacking good sense or judgement as a general trait.  — 較難: trait, judgement
+- **football** (Lv2): Football can mean a number of team sports where players kick a ball, like association football, American football, Canadian football, Australian rules football, Gaelic football and rugby football.  — 較難: association, rugby
+- **forest** (Lv2): A forest is an area covered with many trees, and sometimes by bushes and other plants.  — 較難: bushes
+- **forever** (Lv3): For all time, for all eternity.  — 較難: eternity
+- **fork** (Lv1): Cutlery used for serving and eating food.  — 較難: cutlery, serving
+- **form** (Lv2): Form is the shape or structure of a person or a thing.  — 較難: structure
+- **formal** (Lv2): In accordance with established forms.  — 較難: accordance, established
+- **format** (Lv5): The layout of a publication or document.  — 較難: layout, document, publication
+- **former** (Lv2): A former x used to be the x but is not anymore.  — 較難: anymore
+- **fort** (Lv4): A fort is a fortified building designed for military defense.  — 較難: defense
+- **forwards** (Lv2): The person who plays the position of forward in certain games, such as basketball, soccer, or hockey.  — 較難: hockey
+- **fossil** (Lv4): A fossil is the remains of an animal or plant preserved in rock for millions of years.  — 較難: preserved, remains
+- **foster** (Lv5): Providing parental care to children not related to oneself.  — 較難: parental
+- **found** (Lv2): The past tense and past participle of find.  — 較難: participle, tense
+- **founder** (Lv4): A person who founds and establishes.  — 較難: establishes
+- **four** (Lv0): The cardinal number that is the sum of three and one.  — 較難: cardinal, sum
+- **fowl** (Lv6): A bird hunted or kept for food, grouped into landfowl, also called gamefowl, and waterfowl, which together form the clade Galloanserae.  — 較難: landfowl, clade, gamefowl, waterfowl
+- **fragile** (Lv4): If something is fragile then it is delicate and it will break easily.  — 較難: delicate
+- **fragrance** (Lv6): A fragrance is a pleasant smell or odour.  — 較難: odour
+- **frank** (Lv3): If you are frank with someone, you are honest to the point of being blunt.  — 較難: blunt
+- **freak** (Lv6): Someone or something that is markedly unusual or unpredictable.  — 較難: markedly, unpredictable
+- **freeze** (Lv3): If you freeze something, you cool it until it becomes solid.  — 較難: solid
+- **fries** (Lv2): Strips of potato fried in deep fat.  — 較難: strips
+- **frog** (Lv1): A small hopping amphibian.  — 較難: amphibian
+- **front** (Lv1): Located at or near the front.  — 較難: located
+- **frown** (Lv4): A facial expression of dislike or displeasure.  — 較難: displeasure, facial, dislike
+- **fruitful** (Lv4): Favourable to the growth of fruit or useful vegetation.  — 較難: favourable, vegetation
+- **frustrate** (Lv4): If you frustrate someone, then you make him annoyed or upset.  — 較難: annoyed
+- **full** (Lv1): A container is full of things if there are many of the things in the container and no more can go in.  — 較難: container
+- **fund** (Lv3): A fund is an amount of money kept for a specific purpose.  — 較難: specific
+- **funeral** (Lv4): A funeral is a ceremony that honors someone who has died.  — 較難: ceremony, honors
+- **furniture** (Lv2): Furniture are items used to decorate a room or make it more comfortable.  — 較難: decorate
+- **further** (Lv2): To, at or over a greater distance in space, time or other extent.  — 較難: extent
+- **galaxy** (Lv5): A splendid assemblage.  — 較難: assemblage, splendid
+- **gallon** (Lv3): A unit of volume, equivalent to eight pints.  — 較難: equivalent, volume, pints
+- **gallop** (Lv6): A fast gait of a horse.  — 較難: gait
+- **gamble** (Lv3): A bet or wager.  — 較難: wager, bet
+- **garlic** (Lv2): Garlic is a plant, similar to the onion, often used in cooking.  — 較難: onion
+- **gas** (Lv3): A gas is a substance, such as air, that is not liquid or solid.  — 較難: substance, solid
+- **gasoline** (Lv3): Gasoline is also known as fuel for vehicles.  — 較難: fuel, vehicles
+- **gasp** (Lv5): A short, sudden intake of breath.  — 較難: intake, breath
+- **gate** (Lv1): A gate is like a door in a fence.  — 較難: fence
+- **gear** (Lv4): Gear is clothing and other equipment, especially in sports.  — 較難: equipment
+- **gender** (Lv4): A grammatical category in inflected languages governing the agreement between nouns and pronouns and adjectives.  — 較難: nouns, adjectives, inflected, pronouns, grammatical, category
+- **gene** (Lv4): A gene is a chemical instruction in a person, animal, plant, or other living thing, telling how to make a protein.  — 較難: protein
+- **general** (Lv2): Including or involving every part or member of a given or implied entity, whole, etc.  — 較難: entity, involving, implied, including
+- **generally** (Lv2): Usually, of common occurrence.  — 較難: occurrence
+- **generative** (Lv4): Having the ability to produce or originate.  — 較難: originate
+- **generous** (Lv2): A generous person is one who gives time or money to help others.  — 較難: others
+- **genetics** (Lv5): Genetics is the study of how all characteristics of an organism are transmitted through genes.  — 較難: transmitted, organism, characteristics
+- **gentleman** (Lv2): A gentleman is a man that treats other nicely, or a man of higher class.  — 較難: nicely
+- **germ** (Lv4): The embryo of a seed, especially of a seed used as a cereal or grain.  — 較難: embryo
+- **get** (Lv1): Receive or obtain.  — 較難: obtain
+- **gift** (Lv1): A gift is something given to another person voluntarily.  — 較難: voluntarily
+- **gigantic** (Lv4): So exceedingly large or extensive as to suggest a giant or mammoth.  — 較難: exceedingly, mammoth, extensive
+- **glamorous** (Lv6): If something is glamorous, it is stylish.  — 較難: stylish
+- **glamour** (Lv6): Glamour is beauty, charm, and attractiveness.  — 較難: attractiveness, charm
+- **glass** (Lv1): Glass is a transparent solid and is usually clear.  — 較難: transparent, solid
+- **glasses** (Lv1): Optical instrument consisting of a frame that holds a pair of lenses for correcting defective vision.  — 較難: defective, frame, consisting, optical, vision
+- **glaucoma** (Lv4): An eye disease that damages the optic nerve and impairs vision.  — 較難: impairs, optic, vision
+- **glorious** (Lv4): Having or deserving or conferring glory.  — 較難: conferring, deserving
+- **glory** (Lv3): If you have glory, you have honour, fame and pride.  — 較難: fame
+- **gloves** (Lv1): The handwear used by fielders in playing baseball.  — 較難: fielders, handwear
+- **glow** (Lv3): A state of heat and light being emitted by a hot object.  — 較難: emitted
+- **goat** (Lv2): A goat is a mammal with horns, part of the sheep family.  — 較難: mammal, horns
+- **god** (Lv1): The gods come from several powerful supernatural beings, according to some religions.  — 較難: according, supernatural
+- **goddess** (Lv1): A goddess is a female or feminine god.  — 較難: feminine
+- **golf** (Lv3): Golf is a game where a person uses a club to try to hit a ball into a hole with the fewest strokes.  — 較難: strokes
+- **goodbye** (Lv1): An utterance of goodbye, the wishing of farewell to someone.  — 較難: utterance, farewell
+- **goose** (Lv2): A goose is a big flying bird looking like a duck, with a long neck and webbed feet.  — 較難: webbed
+- **graceful** (Lv4): Having or showing grace in movement, shape, or proportion.  — 較難: proportion
+- **graduate** (Lv3): A person who is recognized by a university as having completed the requirements of a degree studied at the institution.  — 較難: institution, recognized
+- **grain** (Lv2): A grain is a seed that people eat, such as wheat, rice, corn, etc.  — 較難: wheat
+- **grape** (Lv2): A grape is a type of fruit that grows on a vine and is often used to make wine.  — 較難: vine
+- **grasp** (Lv3): If you grasp something, you hold it tightly in a hand or hands.  — 較難: tightly
+- **grass** (Lv1): Grass is a green, leafy plant that often covers the ground.  — 較難: leafy
+- **grasshopper** (Lv3): A grasshopper is a herbivorous insect similar to the cricket.  — 較難: herbivorous, cricket
+- **grateful** (Lv4): Feeling or showing gratitude.  — 較難: gratitude
+- **greetings** (Lv4): An acknowledgment or expression of good will.  — 較難: acknowledgment
+- **grief** (Lv4): Grief is great sadness.  — 較難: sadness
+- **grill** (Lv5): A grill is a cooking surface which has parallel metal bars.  — 較難: parallel
+- **groan** (Lv6): An utterance expressing pain or disapproval.  — 較難: utterance, disapproval
+- **grocery** (Lv3): Groceries are food and other household supplies that you buy in a store.  — 較難: household
+- **guarantee** (Lv4): To give an assurance that something will be done right.  — 較難: assurance
+- **guava** (Lv2): Small tropical shrubby tree bearing small yellowish fruit.  — 較難: shrubby, yellowish, tropical
+- **guide** (Lv2): Someone who shows the way by leading or advising.  — 較難: advising
+- **gull** (Lv6): A gull is a seabird with big wings.  — 較難: seabird
+- **gum** (Lv3): The flesh around the teeth.  — 較難: flesh
+- **gun** (Lv2): A gun is a weapon that sends bullets through its metal tube.  — 較難: bullets, weapon
+- **gym** (Lv2): A gym is a large room or building for indoor sports or exercise.  — 較難: indoor
+- **gymnasium** (Lv2): A gymnasium is a large room or building for indoor sports.  — 較難: indoor
+- **half** (Lv1): One of two usually roughly equal parts into which anything may be divided, or considered as divided.  — 較難: roughly
+- **hallway** (Lv3): A hallway is a corridor in a building that connects rooms.  — 較難: corridor, connects
+- **halt** (Lv4): Acronym of hungry, angry, lonely, tired.  — 較難: acronym
+- **hand** (Lv1): Your hands are the parts of your body at the end of your arms.  — 較難: arms
+- **handkerchief** (Lv3): A handkerchief is a cloth, usually white, used to clean one's face of sweat, etc.  — 較難: sweat
+- **harbor** (Lv3): A harbor is some water in a curve of land where it's safe for boats because there are no big waves.  — 較難: curve
+- **hardly** (Lv2): Barely, only just, almost not.  — 較難: barely
+- **harsh** (Lv4): Unpleasantly rough to the touch or other senses.  — 較難: unpleasantly, rough
+- **harvest** (Lv3): Harvest is the time that you bring the crops in from the fields.  — 較難: crops
+- **hate** (Lv1): If you hate something you dislike it strongly.  — 較難: dislike
+- **hateful** (Lv3): Evoking a feeling of hatred.  — 較難: evoking
+- **headset** (Lv4): A headset is a pair of headphones or earphones worn on the head.  — 較難: headphones, earphones
+- **healthful** (Lv6): Conducive to good health of body or mind.  — 較難: conducive
+- **heap** (Lv3): A heap is a big pile of things, usually thrown in the pile and not in any order.  — 較難: pile
+- **heart** (Lv1): The part of the body that pumps blood.  — 較難: pumps
+- **hearty** (Lv6): Hearty means to have good health and vigor.  — 較難: vigor
+- **heaven** (Lv2): The skies or places in outer space.  — 較難: outer
+- **hell** (Lv3): Something that is very hard to do or makes you suffer.  — 較難: suffer
+- **hello** (Lv1): An expression of greeting.  — 較難: greeting
+- **helpful** (Lv1): Providing assistance or serving a useful function.  — 較難: serving, assistance
+- **heroin** (Lv6): A narcotic that is considered a hard drug.  — 較難: narcotic
+- **herself** (Lv1): An emphasized form of the third person feminine.  — 較難: feminine
+- **hey** (Lv3): An exclamation to get attention.  — 較難: exclamation
+- **highly** (Lv2): In a high or esteemed manner.  — 較難: esteemed
+- **hint** (Lv3): A hint is a clue to a question or a puzzle.  — 較難: clue
+- **hip** (Lv2): Either side of the body below the waist and above the thigh.  — 較難: thigh
+- **hive** (Lv4): A hive is a home for honeybees.  — 較難: honeybees
+- **hodgkin** (Lv4): English physician who first described Hodgkin's disease.  — 較難: physician
+- **holder** (Lv3): A holding device.  — 較難: device
+- **holiday** (Lv1): A day on which work is suspended by law or custom.  — 較難: suspended
+- **holy** (Lv3): If something is holy, it is very religious or good and important in a religion.  — 較難: religious
+- **hopper** (Lv4): Funnel-shaped receptacle.  — 較難: receptacle, funnel
+- **horizontal** (Lv5): Perpendicular to the vertical.  — 較難: perpendicular, vertical
+- **horse** (Lv1): A horse is a hoofed mammal.  — 較難: hoofed, mammal
+- **hose** (Lv4): A hose is a flexible tube that can carry water or other liquids.  — 較難: flexible
+- **hostage** (Lv5): A prisoner who is held by one party to insure that another party will meet specified terms.  — 較難: insure, specified
+- **hostel** (Lv6): A hostel is an inexpensive place for people such as students, travelers and workers to live in.  — 較難: inexpensive, travelers
+- **hotel** (Lv1): A hotel is a place where people pay to stay in a room overnight, usually for only a few days.  — 較難: overnight
+- **housewife** (Lv1): A wife who manages a household while her husband earns the family income.  — 較難: household
+- **housing** (Lv5): Housing is the homes or residences where people live in a city, state, country, etc.  — 較難: residences
+- **however** (Lv1): You use however to show that there is a contrast between two ideas.  — 較難: contrast
+- **howl** (Lv5): A howl is a long, loud wailing noise.  — 較難: wailing
+- **hsien** (Lv4): An administrative subdivision of Taiwan, commonly translated as county.  — 較難: subdivision, administrative, taiwan, translated, county
+- **hsing** (Lv4): -ing form of hse.  — 較難: ing
+- **hug** (Lv3): A hug is the action of putting your arms around someone else to show love or friendship.  — 較難: arms
+- **huh** (Lv4): Used to express doubt or confusion.  — 較難: confusion
+- **hui** (Lv4): A Māori social gathering or assembly.  — 較難: ori, gathering, assembly
+- **humble** (Lv2): Not pretentious or magnificent.  — 較難: pretentious, magnificent
+- **humid** (Lv3): If the air is humid, it has a lot of water vapor in it.  — 較難: vapor
+- **humidity** (Lv4): The humidity is how much water vapor is in the air.  — 較難: vapor
+- **humorous** (Lv3): Full of or characterized by humor.  — 較難: characterized
+- **hunch** (Lv6): The act of bending yourself into a humped position.  — 較難: humped
+- **hundred** (Lv1): A score of one hundred runs or more scored by a batsman.  — 較難: batsman
+- **hunger** (Lv3): Hunger is the feeling when wanting food when your stomach is empty.  — 較難: stomach
+- **hurricane** (Lv4): A hurricane is a type of tropical cyclone, which is a storm system that has a low pressure center, many thunderstorms, and strong winds.  — 較難: thunderstorms, cyclone, tropical
+- **hydrogen** (Lv4): A nonmetallic univalent element that is normally a colorless and odorless highly flammable diatomic gas.  — 較難: univalent, odorless, diatomic, flammable, nonmetallic, colorless, gas, element
+- **ice** (Lv1): Water in frozen form.  — 較難: frozen
+- **idea** (Lv1): An idea is a concept or a thought.  — 較難: concept
+- **idiom** (Lv4): An idiom is a phrase that is not literal.  — 較難: literal
+- **import** (Lv3): Something brought in from an exterior source, especially for sale or trade.  — 較難: exterior
+- **importance** (Lv2): The quality or condition of being important or worthy of note.  — 較難: worthy
+- **inch** (Lv1): A unit of length equal to one twelfth of a foot.  — 較難: twelfth
+- **incident** (Lv4): An incident is an event or occurrence.  — 較難: occurrence
+- **increase** (Lv2): To become larger or greater, to greaten.  — 較難: greaten
+- **index** (Lv5): An index is an alphabetical list, usually at the back of a book, where you can find the pages in a book that talk about particular things or words.  — 較難: alphabetical
+- **indignant** (Lv6): Angered at something unjust or wrong.  — 較難: unjust
+- **individual** (Lv2): Relating to a single person or thing as opposed to more than one.  — 較難: opposed
+- **infect** (Lv5): When someone is infected by something, they come into contact with something that causes sickness.  — 較難: sickness
+- **inference** (Lv4): The act or process of inferring by deduction or induction.  — 較難: deduction, induction, process
+- **inflation** (Lv4): Inflation is a general increase in the price of goods and services.  — 較難: goods
+- **informally** (Lv4): In an irregular or informal manner.  — 較難: irregular, informal
+- **inn** (Lv3): An inn is a place where travellers can get lodging, food and drinks.  — 較難: lodging, travellers
+- **inner** (Lv3): An inner item is located close to the center.  — 較難: located
+- **insect** (Lv1): A type of small animal with an external skeleton and six legs.  — 較難: skeleton, external
+- **insist** (Lv2): To insist means to get your own way without listening to other people's comments.  — 較難: comments
+- **inspiration** (Lv4): Arousal of the mind to special unusual activity or creativity.  — 較難: arousal, creativity
+- **instance** (Lv2): An instance of something is a time or situation when it happens.  — 較難: situation
+- **instinct** (Lv4): An instinct is a natural tendency or feeling for a living thing.  — 較難: tendency
+- **instruction** (Lv2): An instruction is a command or a step that helps you achieve a goal.  — 較難: achieve
+- **intellectual** (Lv4): A person who is intelligent, or has learned a lot about a subject.  — 較難: learned, intelligent
+- **internet** (Lv2): The Internet, the largest worldwide internet.  — 較難: worldwide
+- **interpret** (Lv4): If you interpret something, you understand a particular meaning in it, and may explain that meaning to others.  — 較難: others
+- **invention** (Lv4): The creation of something in the mind.  — 較難: creation
+- **investigate** (Lv3): If you investigate a problem, you get information about it and you think carefully about the information, usually to find an answer.  — 較難: information
+- **iron** (Lv2): A heavy ductile magnetic metallic element.  — 較難: ductile, metallic, magnetic, element
+- **irritable** (Lv6): Capable of being irritated.  — 較難: irritated, capable
+- **island** (Lv1): An island is a piece of ground that is completely surrounded by water.  — 較難: surrounded
+- **issue** (Lv4): An important question that is in dispute and must be settled.  — 較難: dispute
+- **itchy** (Lv4): Characterized by itching.  — 較難: characterized
+- **ivory** (Lv3): Ivory is a creamy-white color.  — 較難: creamy
+- **ivy** (Lv6): Ivy is a type of climbing plant with the scientific name of Hedera helix.  — 較難: helix, scientific
+- **jade** (Lv6): Jade is a hard, typically green stone used in jewelry and ornaments.  — 較難: ornaments, jewelry
+- **jail** (Lv3): A place where people who have done a crime or a suspected of having done a crime are kept.  — 較難: suspected
+- **jar** (Lv3): A vessel with a wide mouth and without handles.  — 較難: vessel
+- **jasmine** (Lv6): A plant of the genus Jasminum that has fragrant white or yellow flowers.  — 較難: fragrant, genus
+- **jazz** (Lv3): Jazz is a kind of music invented by African Americans.  — 較難: african, invented
+- **jeans** (Lv1): Jeans are pants made from denim.  — 較難: denim
+- **jeep** (Lv3): A jeep is a small, strong vehicle used for driving on rough roads.  — 較難: vehicle, rough
+- **jewel** (Lv3): A valuable gem.  — 較難: gem
+- **joint** (Lv2): Done by two or more people or organisations working together.  — 較難: organisations
+- **journal** (Lv2): A journal is a record of what is happening, usually written regularly, often scientific.  — 較難: scientific
+- **judicial** (Lv5): If something is judicial, it is related to the administration of justice.  — 較難: administration
+- **judo** (Lv5): Judo is a martial art or sport from Japan where people fight against each other.  — 較難: martial
+- **july** (Lv1): The seventh month of the year.  — 較難: seventh
+- **junior** (Lv3): Low in rank.  — 較難: rank
+- **juvenile** (Lv5): If a person is juvenile, they are childish and immature.  — 較難: immature
+- **kangaroo** (Lv3): A kangaroo is a jumping animal with a pouch that is native to Australia.  — 較難: pouch, native
+- **ketchup** (Lv2): Ketchup is a condiment.  — 較難: condiment
+- **kettle** (Lv4): A container for boiling liquids or cooking food.  — 較難: container
+- **kidnap** (Lv5): If you kidnap someone, you take a person away that does not want to go with you, usually to demand for money as a ransom.  — 較難: ransom, demand
+- **kilometer** (Lv3): A kilometer is a measurement of distance.  — 較難: measurement
+- **kiss** (Lv1): The act of placing your lips on something, usually to show love or affection.  — 較難: affection
+- **knee** (Lv1): Part of the leg between the thigh and the shin.  — 較難: thigh, shin
+- **knit** (Lv3): When you knit, you make a cloth from a long wool thread, usually by hands with needles.  — 較難: thread
+- **knock** (Lv1): To rap one's knuckles against something, especially wood.  — 較難: rap, knuckles
+- **koala** (Lv3): A koala is a small mammal that climbs trees and lives in Australia.  — 較難: mammal
+- **kong** (Lv4): A set of four identical tiles.  — 較難: tiles, identical
+- **korea** (Lv4): An Asian peninsula separating the Yellow Sea and the Sea of Japan.  — 較難: peninsula
+- **lab** (Lv4): A workplace for the conduct of scientific research.  — 較難: conduct, research, workplace, scientific
+- **lace** (Lv3): Lace is a fabric, patterned with open holes in the work, made by machine or by hand.  — 較難: fabric
+- **language** (Lv1): A language is all the words used by a group of people, and grammar.  — 較難: grammar
+- **lap** (Lv2): The loose part of a coat.  — 較難: loose
+- **large** (Lv1): Of considerable or relatively great size or extent.  — 較難: extent, considerable
+- **laser** (Lv5): A device that produces a monochromatic, coherent beam of light.  — 較難: monochromatic, coherent, device, beam
+- **last** (Lv1): The last or lowest in an ordering or series.  — 較難: series
+- **later** (Lv1): The comparative form of late.  — 較難: comparative
+- **latest** (Lv2): The superlative form of late.  — 較難: superlative
+- **latitude** (Lv6): The angular distance north or south from a planet's equator, measured along the meridian of that particular point.  — 較難: equator, angular, meridian
+- **lawn** (Lv3): Ground that is covered with grass that is mowed short.  — 較難: mowed
+- **layman** (Lv6): Someone who is not a clergyman or a professional person.  — 較難: clergyman, professional
+- **least** (Lv1): Having the smallest amount of a characteristic in a group.  — 較難: characteristic
+- **leather** (Lv3): A tanned animal skin.  — 較難: tanned
+- **leisure** (Lv3): Leisure is time that is free from work or other duties, when a person can relax and do what they enjoy.  — 較難: relax
+- **lemon** (Lv1): A lemon is a yellow citrus fruit that has a sour taste.  — 較難: citrus
+- **lengthen** (Lv4): If you lengthen something, you make it longer in length or duration.  — 較難: duration
+- **lens** (Lv2): A lens is a specially shaped piece of glass that is used in cameras or telescopes to bend light.  — 較難: telescopes
+- **leopard** (Lv3): A leopard is a type of large cat that has spots and lives in Africa and parts of Asia.  — 較難: africa
+- **less** (Lv1): A quantifier meaning not as great in amount or degree.  — 較難: quantifier
+- **liberal** (Lv2): If something is liberal, it allows for change, flexibility, and free thought.  — 較難: flexibility
+- **liberate** (Lv6): If a person is liberated, they are set free from imprisonment, slavery, or oppression.  — 較難: oppression, imprisonment, slavery
+- **lick** (Lv3): When you lick something, you touch it with your tongue in order to taste or moisten.  — 較難: moisten
+- **lid** (Lv2): The top or cover of a container.  — 較難: container
+- **lifeguard** (Lv4): A lifeguard is an expert swimmer who watches a pool, lake or any other type of water, in order to help swimmers.  — 較難: swimmer, swimmers
+- **lifetime** (Lv3): A lifetime is the duration of the life of someone or something.  — 較難: duration
+- **lighthouse** (Lv3): A lighthouse is a tower built on the shore to light the way to shore for ships.  — 較難: tower
+- **lightning** (Lv3): A flash of light caused by electrical discharge in the atmosphere.  — 較難: discharge, atmosphere, flash
+- **lily** (Lv3): Any of several flowers in the genus Lilium of the family Liliaceae, which includes a great many ornamental species.  — 較難: ornamental, genus, species
+- **limp** (Lv6): A limp is an irregular gait.  — 較難: gait, irregular
+- **ling** (Lv4): Any of various codlike saltwater fish often used as food by humans, those of the genus Molva, in the family Lotidae.  — 較難: saltwater, codlike, genus, various
+- **lion** (Lv1): A type of big cat from Africa, India and some of Europe.  — 較難: africa
+- **lip** (Lv1): The edge of an opening, especially, the human mouth.  — 較難: opening
+- **liquor** (Lv4): Liquor is a liquid that is obtained by cooking meat or vegetables.  — 較難: obtained
+- **listener** (Lv2): A listener is a person who listens to something talking, usually in an attentive manner.  — 較難: attentive
+- **litter** (Lv3): Litter is rubbish that is left alone on the floor.  — 較難: rubbish
+- **liver** (Lv2): A large organ in the body that makes bile, and controls chemicals in the blood.  — 較難: bile
+- **lizard** (Lv6): Any of many kinds of reptiles that has four legs, a long tail, and no shell.  — 較難: reptiles
+- **local** (Lv2): Something is local if it comes from a specific place.  — 較難: specific
+- **location** (Lv3): A location is a place or a site.  — 較難: site
+- **lock** (Lv3): A lock is a metal thing on a door that stops people from opening the door unless they have the right key to open it.  — 較難: opening
+- **lodge** (Lv6): A building in an outdoorsy setting, where people can rent a room.  — 較難: outdoorsy, setting
+- **logical** (Lv4): If something is logical, it is about or related to logic.  — 較難: logic
+- **lone** (Lv2): If you are lone, you are isolated and have no companion.  — 較難: isolated, companion
+- **longitude** (Lv6): The distance from an angle going east or west measured from any angle in comparison to the prime meridian, which is Greenwich, England.  — 較難: meridian, prime, comparison
+- **loose** (Lv3): If something is loose, it moves easily or may come away from what it is attached to.  — 較難: attached
+- **lotion** (Lv6): A lotion is a cream or ointment used on the skin to clean, heal or protect.  — 較難: ointment, heal
+- **louvre** (Lv4): An art museum that is a famous tourist attraction in Paris.  — 較難: attraction, paris, tourist
+- **loyalty** (Lv4): Loyalty is the quality or state of a person or group of persons being loyal to someone or something.  — 較難: loyal
+- **luggage** (Lv3): Cases used to carry belongings when traveling.  — 較難: belongings
+- **lullaby** (Lv6): A quiet song intended to lull a child to sleep.  — 較難: lull, intended
+- **lung** (Lv3): Your lungs are part of your body that is inside your chest.  — 較難: chest
+- **machinery** (Lv4): The group of machines that make up a production apparatus in a plant.  — 較難: apparatus
+- **magazine** (Lv2): A magazine is a publication that is printed regularly, and is often about a topic like a hobby, sports or news.  — 較難: publication
+- **magic** (Lv1): Having supernatural talents, properties or qualities attributed to magic.  — 較難: attributed, supernatural, properties, talents
+- **magician** (Lv3): A magician is a man who uses magic, who has magical or mystical powers.  — 較難: mystical
+- **magnet** (Lv3): A magnet is a natural object which can attract magnetic objects such as steel or iron.  — 較難: attract
+- **maiden** (Lv6): An unmarried girl.  — 較難: unmarried
+- **male** (Lv2): A person, animal, or plant that is male produces sperm or pollen.  — 較難: pollen, sperm
+- **mango** (Lv2): A mango is a sweet tropical fruit with smooth yellow or red skin, soft yellow or orange flesh and a very large seed inside.  — 較難: flesh, tropical
+- **marathon** (Lv4): Any long and arduous undertaking.  — 較難: arduous, undertaking
+- **marble** (Lv3): Marble is a hard stone, typically white or light yellow, polished smooth and shiny, used in making walls, floors or sculptures.  — 較難: polished, sculptures, shiny
+- **march** (Lv3): A formal, rhythmic way of walking.  — 較難: rhythmic
+- **mask** (Lv2): A mask is something you wear over your face for protection, or to disguise yourself.  — 較難: disguise, protection
+- **massage** (Lv5): A massage is an act of rubbing, kneading or hitting the skin.  — 較難: kneading
+- **masterwork** (Lv4): A piece done to prove possession of skill sufficient to be ranked a master.  — 較難: possession, ranked, sufficient
+- **mat** (Lv2): A mat is a floor covering, similar to a rug.  — 較難: rug
+- **matter** (Lv1): A matter is something that you can talk about or do something about a topic or a situation.  — 較難: situation
+- **mattress** (Lv5): A mattress is a fabric case with springs, put on top of a bed.  — 較難: fabric
+- **mayday** (Lv4): An international distress signal used by shipping and aircraft.  — 較難: distress, signal
+- **mayer** (Lv4): United States physicist noted for her research on the structure of the atom.  — 較難: atom, physicist, research, united, structure
+- **meadow** (Lv3): An open field or grassy area.  — 較難: grassy
+- **means** (Lv2): How a result is obtained or an end is achieved.  — 較難: obtained, achieved
+- **measures** (Lv4): Any maneuver made as part of progress toward a goal.  — 較難: maneuver
+- **meat** (Lv1): Meat is the muscle of animals that we eat.  — 較難: muscle
+- **medal** (Lv3): A medal is flat and usually round metal thing that you take as an award.  — 較難: award
+- **media** (Lv1): A means or instrumentality for storing or communicating information.  — 較難: instrumentality, information, communicating
+- **mei** (Lv4): N Japanese ornamental tree with fragrant white or pink blossoms and small yellow fruits.  — 較難: ornamental, fragrant, blossoms
+- **melody** (Lv2): A melody is the sequence of notes that make a piece of music.  — 較難: sequence
+- **melon** (Lv3): A melon is any of various plants of the family Cucurbitaceae grown for food.  — 較難: various
+- **melt** (Lv3): To change from a solid state to a liquid state, usually by a gradual heat.  — 較難: solid
+- **memorable** (Lv4): When something is memorable, it is very important or remarkable and is easy to remember.  — 較難: remarkable
+- **memorial** (Lv4): Serving as a remembrance of someone or something.  — 較難: serving, remembrance
+- **merchant** (Lv4): A merchant is someone who sells goods.  — 較難: goods
+- **mere** (Lv4): You use mere to show how small or unimportant something is or seems to be.  — 較難: unimportant
+- **merit** (Lv4): A merit is something that deserves good or bad recognition.  — 較難: deserves, recognition
+- **mess** (Lv3): A mess is a dirty or untidy place or situation.  — 較難: untidy, situation
+- **message** (Lv2): A message is information that is sent between living things and is sent from one person to the other.  — 較難: information
+- **messy** (Lv4): In a disorderly state.  — 較難: disorderly
+- **metal** (Lv2): Metal is a hard material, often shiny and easy to conduct electricity.  — 較難: conduct, shiny, electricity
+- **meter** (Lv2): The basic unit of length adopted under the Systeme International d'Unites.  — 較難: adopted
+- **method** (Lv2): A process by which a task is completed.  — 較難: process
+- **metropolitan** (Lv5): Pertaining to the see or province of a metropolitan.  — 較難: pertaining, province
+- **microphone** (Lv3): Device for converting sound waves into electrical energy.  — 較難: converting, device
+- **microwave** (Lv3): A short electromagnetic wave.  — 較難: electromagnetic
+- **middle** (Lv1): Located in the middle.  — 較難: located
+- **midnight** (Lv2): Twelve o'clock at night exactly.  — 較難: o'clock
+- **might** (Lv0): The power, strength, force or influence of a person or group.  — 較難: strength
+- **mighty** (Lv3): Having or showing great strength or force or intensity.  — 較難: intensity, strength
+- **mike** (Lv3): Device for converting sound waves into electrical energy.  — 較難: converting, device
+- **mile** (Lv2): A mile is a measurement of distance.  — 較難: measurement
+- **military** (Lv2): If something is military, it is a characteristic of people in the armed forces.  — 較難: characteristic, armed
+- **milkfish** (Lv4): Chanos chanos, an important food fish in southeast Asia.  — 較難: chanos, southeast
+- **million** (Lv1): A very large indefinite number.  — 較難: indefinite
+- **mine** (Lv0): A mine is a large hole in the ground from which rocks and minerals are taken.  — 較難: minerals
+- **mineral** (Lv4): A mineral is a substance in the earth such as calcium, salt, iron, etc.  — 較難: calcium, substance
+- **ming** (Lv4): Ming is a surname.  — 較難: surname
+- **ministry** (Lv4): A ministry is a government department, such as the ministry of defense.  — 較難: defense
+- **minor** (Lv2): A minor change, problem, injury, etc. is not very important.  — 較難: injury
+- **mint** (Lv5): Mint is a plant that can be eaten in the genus Mentha which has very strong-smelling leaves.  — 較難: genus
+- **minute** (Lv1): A minute is a short time equal to sixty seconds.  — 較難: sixty
+- **miracle** (Lv3): A miracle is an amazing thing that happened that seemed very unlikely to happen.  — 較難: unlikely, amazing
+- **mirror** (Lv2): A very reflective surface which light can bounce off of.  — 較難: reflective, bounce
+- **misbehave** (Lv4): If somebody misbehaves, they behave in an inappropriate or incorrect way.  — 較難: inappropriate, incorrect
+- **mischief** (Lv4): Mischief is the intention to cause minor trouble or the trouble caused.  — 較難: intention
+- **miserable** (Lv4): Of the weather, extremely unpleasant due to being cold, wet, overcast, etc.  — 較難: overcast, unpleasant
+- **misery** (Lv3): Misery is great unhappiness or sadness.  — 較難: unhappiness, sadness
+- **misinterpret** (Lv5): If you misinterpret a person, you interpret them wrongly.  — 較難: wrongly, interpret
+- **missile** (Lv3): An object intended to be launched at a target.  — 較難: intended, launched
+- **mission** (Lv3): A mission is a quest given by someone to gain something.  — 較難: quest
+- **mist** (Lv3): Water vapor that you can see.  — 較難: vapor
+- **mistake** (Lv1): A mistake is something that is done wrong or is incorrect.  — 較難: incorrect
+- **moan** (Lv5): A low, mournful cry of pain, sorrow or pleasure.  — 較難: mournful, sorrow
+- **mobile** (Lv3): Something capable of being moved is said to be mobile.  — 較難: capable
+- **model** (Lv2): A model is a something that is made to look or act like something else, usually being smaller or simpler than the original.  — 較難: original
+- **molly** (Lv4): Popular aquarium fish.  — 較難: aquarium
+- **monk** (Lv3): A male member of a monastic order who has devoted his life for religious service.  — 較難: devoted, religious
+- **monkey** (Lv1): A monkey is a primate with a long tail that climbs trees.  — 較難: primate
+- **monster** (Lv3): An imaginary creature usually having various human and animal parts.  — 較難: imaginary, various, creature
+- **moral** (Lv3): A moral action or decision is one that is good or right not evil or harmful.  — 較難: harmful
+- **more** (Lv0): Quantifier meaning greater in number.  — 較難: quantifier
+- **mosquito** (Lv3): A mosquito is a flying insect that is known for stinging animals and humans to suck their blood.  — 較難: stinging, suck
+- **most** (Lv0): Having the largest amount of a characteristic in a group.  — 較難: characteristic
+- **motel** (Lv3): A motel is a place where people pay to stay in a room overnight, usually for only a few days.  — 較難: overnight
+- **moth** (Lv3): Moths are nocturnal insects with two pairs of broad and dull wings covered in microscopic scales.  — 較難: nocturnal, microscopic, scales
+- **motorcycle** (Lv2): A motorcycle is a vehicle with two wheels and an engine.  — 較難: vehicle
+- **mountain** (Lv1): A natural rise of the Earth's surface having considerable mass.  — 較難: considerable
+- **mountainous** (Lv4): Like a mountain in size and impressiveness.  — 較難: impressiveness
+- **mozart** (Lv4): Mozart is a surname.  — 較難: surname
+- **much** (Lv0): Great in quantity or degree or extent.  — 較難: extent
+- **mud** (Lv1): Mud is dirt with water in it.  — 較難: dirt
+- **murmur** (Lv4): A murmur is a low, unclear sound.  — 較難: unclear
+- **museum** (Lv1): A museum is a building where pictures, sculptures and other arts are shown.  — 較難: sculptures
+- **mushroom** (Lv3): A mushroom is a fungus that grows on soil or on dying wood.  — 較難: fungus
+- **music** (Lv1): Sounds that are played on musical instruments or sung with a certain rhythm and harmony, and forming melodies.  — 較難: rhythm, harmony
+- **mustard** (Lv5): Mustard is a yellow sauce which can go on hotdogs, etc.  — 較難: hotdogs, sauce
+- **napkin** (Lv3): A small piece of table linen that is used to wipe the mouth and to cover the lap in order to protect clothing.  — 較難: linen, wipe
+- **nationality** (Lv4): People having common origins or traditions and often comprising a nation.  — 較難: comprising
+- **nature** (Lv1): The outdoors or outside.  — 較難: outdoors
+- **neck** (Lv1): The part of the body between the head and the torso.  — 較難: torso
+- **necklace** (Lv2): A necklace is a piece of jewelry that is worn around the neck.  — 較難: jewelry
+- **necktie** (Lv3): A strip of cloth worn around the neck and tied in the front.  — 較難: strip
+- **needle** (Lv2): A needle is a small, long, thin sharp metal thing with a hole in it, used for sewing.  — 較難: sewing
+- **needy** (Lv4): Desiring constant affirmation.  — 較難: affirmation, constant, desiring
+- **negative** (Lv2): Not positive or neutral.  — 較難: neutral
+- **nerve** (Lv2): A nerve is a cell in the body that sends signals.  — 較難: signals
+- **nervous** (Lv2): If you are nervous, you are tense and worried about something.  — 較難: tense
+- **nevertheless** (Lv4): You use nevertheless to add surprising information or something in contrast to what was already said or written.  — 較難: contrast, information
+- **news** (Lv1): News is information about things that happened a short time ago, especially on the radio, TV or in newspapers.  — 較難: information
+- **next** (Lv1): Nearest in place or position, having nothing similar intervening.  — 較難: intervening
+- **night** (Lv1): The time when the Sun is below the horizon when the sky is dark.  — 較難: horizon
+- **nighttime** (Lv4): Pertaining to nighttime.  — 較難: pertaining
+- **nine** (Lv0): Ordinal ninth) Nine is the number that is after eight and before ten.  — 較難: ordinal, ninth
+- **noble** (Lv4): Having honorable qualities.  — 較難: honorable
+- **nod** (Lv2): A sign of assent or salutation or command.  — 較難: assent, salutation
+- **noisy** (Lv1): If someone or something is noisy, it is loud and usually annoying.  — 較難: annoying
+- **noodle** (Lv2): A noodle is a long thin food made of flour, water, and eggs.  — 較難: flour
+- **nor** (Lv2): Used to show two things that are both untrue or do not happen.  — 較難: untrue
+- **normal** (Lv3): A normal thing, or situation, is one that is not special.  — 較難: situation
+- **nose** (Lv1): The part of the face that sticks out and is used for breathing and smelling things.  — 較難: breathing
+- **not** (Lv0): Negation of a word or group of words.  — 較難: negation
+- **nothing** (Lv0): An absence of anything, including empty space, brightness, darkness, matter, or a vacuum.  — 較難: brightness, vacuum, including, darkness
+- **notice** (Lv1): If you notice something, you become aware of it.  — 較難: aware
+- **notorious** (Lv6): S known widely and usually unfavorably.  — 較難: unfavorably
+- **nov** (Lv4): The month following October and preceding December.  — 較難: preceding
+- **november** (Lv1): November is the eleventh month of the year.  — 較難: eleventh
+- **nuclear** (Lv4): Pertaining to the nucleus of an atom.  — 較難: pertaining, nucleus, atom
+- **nun** (Lv3): A woman religious.  — 較難: religious
+- **nutrient** (Lv5): A nutrient is a something that is eaten for nourishment or energy.  — 較難: nourishment
+- **nutrition** (Lv5): Nutrition is the organic process by which an organism takes in food for growth.  — 較難: organism, organic, process
+- **nutritionist** (Lv4): A nutritionist is an expert or specialist in nutrition.  — 較難: specialist
+- **oatmeal** (Lv6): Meal made from rolled or round oats.  — 較難: oats
+- **obedient** (Lv4): An obedient person someone who is willing to do what others tells them to do.  — 較難: others
+- **obsess** (Lv6): To be preoccupied with a single topic or emotion.  — 較難: preoccupied
+- **oct** (Lv4): The month following September and preceding November.  — 較難: preceding
+- **october** (Lv1): October is the tenth month of the year.  — 較難: tenth
+- **odd** (Lv3): If something is odd, it is not normal and usually you don't like it or don't understand it.  — 較難: normal
+- **offensive** (Lv4): Something offensive is mean, insulting, and unpleasant.  — 較難: unpleasant, insulting
+- **officer** (Lv1): An officer is a person in an army who has much authority.  — 較難: authority
+- **olid** (Lv4): Alt. of Olidous.  — 較難: alt
+- **olive** (Lv5): Of a grayish green color, that of an unripe olive.  — 較難: grayish, unripe
+- **oneself** (Lv1): A reflexive form of the indefinite pronoun one.  — 較難: reflexive, pronoun, indefinite
+- **online** (Lv1): A on a regular route of a railroad or bus or airline system.  — 較難: route, airline
+- **only** (Lv0): Without others or anything further.  — 較難: others
+- **oolong** (Lv4): Chinese tea leaves that have been partially fermented before being dried.  — 較難: fermented, partially
+- **opportunity** (Lv3): An opportunity is a time, place, or situation in which something can happen, usually something good.  — 較難: situation
+- **oppress** (Lv6): To keep down by unjust force.  — 較難: unjust
+- **or** (Lv0): A word used to link two alternative choices.  — 較難: alternative
+- **orbit** (Lv4): An orbit is a circular path achieved by an object that goes around another that is generally bigger.  — 較難: circular, achieved
+- **orchard** (Lv5): A garden or an area of land for the cultivation of fruit or nut trees.  — 較難: cultivation
+- **order** (Lv1): A command given by a superior that must be obeyed.  — 較難: superior
+- **ordinary** (Lv2): If something is ordinary, it is normal and not special.  — 較難: normal
+- **organ** (Lv2): An organ is a part of an animal or plant with a specific purpose, such as an eye or a heart.  — 較難: specific
+- **organic** (Lv3): If something is organic, it is related to or derived from living organisms.  — 較難: derived
+- **orientation** (Lv4): Someone's or something's orientation is the way they face, physically or psychologically.  — 較難: psychologically
+- **other** (Lv0): The other people or things, are those apart from the ones we have or were talking about.  — 較難: apart
+- **others** (Lv4): Those remaining after one or more people or items have left, or done something else, or been excluded.  — 較難: excluded, remaining
+- **outdoors** (Lv3): Not inside a house or under covered structure.  — 較難: structure
+- **outline** (Lv3): An outline is a sketch that shows the general shape of an object.  — 較難: sketch
+- **outrageous** (Lv6): Violating morality or decency.  — 較難: decency, morality, violating
+- **outstanding** (Lv4): If something is outstanding, it stands out from the others, usually in a good way.  — 較難: others
+- **over** (Lv0): In a location above something.  — 較難: location
+- **overcome** (Lv4): To overwhelm, especially with emotion.  — 較難: overwhelm
+- **overflow** (Lv6): The spillage resultant from overflowing.  — 較難: resultant, spillage
+- **overly** (Lv5): Overly means excessively.  — 較難: excessively
+- **overprotect** (Lv4): To protect to an excessive degree.  — 較難: excessive
+- **ox** (Lv3): An ox is an adult male of the cattle family whose sex organs have been removed.  — 較難: cattle
+- **oxygen** (Lv4): A nonmetallic bivalent element that is normally a colorless odorless tasteless nonflammable diatomic gas.  — 較難: odorless, nonflammable, diatomic, nonmetallic, bivalent, colorless, tasteless, gas, element
+- **oyster** (Lv6): Oysters are a family of bivalves with rough, thick shells.  — 較難: bivalves, rough
+- **ozone** (Lv6): An allotrope of oxygen having three atoms in the molecule instead of the usual two.  — 較難: allotrope, molecule, oxygen, atoms
+- **pack** (Lv1): A pack is a container that things are sold in.  — 較難: container
+- **pain** (Lv2): A strong feeling of hurt or discomfort.  — 較難: discomfort
+- **painful** (Lv2): If something is painful, is causes pain, either physical or mental.  — 較難: physical, mental
+- **pajamas** (Lv2): Pajamas are clothes worn at night, made up of soft loose-fitting pants and a soft shirt.  — 較難: loose
+- **pakistani** (Lv4): Something or someone that is Pakistani comes from Pakistan.  — 較難: pakistan
+- **palm** (Lv3): A palm is a type of tree that grows in tropical areas.  — 較難: tropical
+- **pam** (Lv4): The knave of clubs.  — 較難: knave
+- **pan** (Lv2): A pan is a metal container usually with one long handle.  — 較難: container
+- **pancake** (Lv3): A pancake is a thin cake made with batter that is fried in a pan with butter or oil.  — 較難: batter
+- **panic** (Lv3): Panic is a very strong and overwhelming fear which dominates thinking.  — 較難: overwhelming, dominates
+- **paper** (Lv1): Paper is a material for writing and drawing on and is made from wood pulp.  — 較難: pulp
+- **parachute** (Lv4): A parachute is something, usually a large piece of fabric, that helps to slow a person or object that is falling.  — 較難: fabric
+- **parade** (Lv3): A parade is an event which involves moving from one place to another.  — 較難: involves
+- **paradox** (Lv6): A statement that contradicts itself.  — 較難: contradicts
+- **parcel** (Lv3): The allotment of some amount by dividing something.  — 較難: allotment
+- **pardon** (Lv2): Forgiveness for an offence.  — 較難: forgiveness, offence
+- **paris** (Lv3): Paris is the capital of France.  — 較難: france
+- **park** (Lv1): A park is an outdoor area where people can relax and play.  — 較難: outdoor, relax
+- **parrot** (Lv3): A parrot is a type of tropical bird sometimes kept as a pet.  — 較難: tropical
+- **particularly** (Lv2): If something is particularly interesting, useful, important, etc., it is more so than usual or more than others.  — 較難: others
+- **passenger** (Lv3): A passenger is a person who is riding a vehicle—not the driver.  — 較難: riding, vehicle
+- **passport** (Lv3): A passport is an official document that identifies a person, and allows them to leave and come back to a country.  — 較難: document, identifies
+- **password** (Lv2): A secret word or phrase known only to a restricted group.  — 較難: restricted
+- **pasta** (Lv4): A dish that contains pasta as its main ingredient.  — 較難: ingredient
+- **pathetic** (Lv5): Inspiring mixed contempt and pity.  — 較難: contempt, inspiring, pity
+- **patrol** (Lv5): A patrol is a movement to keep watch over an area at regular intervals so as to ensure the area's security.  — 較難: intervals, ensure, security
+- **pattern** (Lv2): A pattern is a design that uses the same set of elements many times in the same order.  — 較難: elements
+- **pave** (Lv3): To cover something with paving slabs.  — 較難: slabs
+- **peacock** (Lv6): European butterfly having reddish-brown wings each marked with a purple eyespot.  — 較難: eyespot, reddish
+- **peanut** (Lv3): A peanut is a type of legume that looks like a nut.  — 較難: legume
+- **pear** (Lv2): A pear is an edible fruit that is made by the pear tree, looking like an apple, but with an elongated area around the stem.  — 較難: elongated, edible, stem
+- **pearl** (Lv3): A pearl is a round, white jewel that you get from inside of oysters.  — 較難: oysters, jewel
+- **pedal** (Lv5): A pedal is a kind of lever that is used by the foot to control a machine.  — 較難: lever
+- **people** (Lv1): Any group of human beings collectively.  — 較難: collectively
+- **percentage** (Lv4): A proportion in relation to a whole.  — 較難: proportion
+- **perception** (Lv5): A way of conceiving something.  — 較難: conceiving
+- **perfection** (Lv4): Perfection is the state or quality of having no mistakes, problems, or negative aspects.  — 較難: aspects
+- **permission** (Lv3): If you have permission to do something, then the person who has authority over you or over that thing allows you to do it.  — 較難: authority
+- **personality** (Lv2): A quality that make a person distinct from another.  — 較難: distinct
+- **petroleum** (Lv6): Petroleum is an oily flammable liquid found naturally under the Earth's surface.  — 較難: flammable, oily
+- **philosophy** (Lv4): The rational investigation of questions about existence and knowledge and ethics.  — 較難: rational, ethics, investigation
+- **photo** (Lv1): A photo is a picture created by a camera digitally or on film.  — 較難: digitally
+- **photograph** (Lv1): A photograph is a picture that is created by a camera digitally or on film.  — 較難: digitally
+- **physician** (Lv4): A licensed medical practitioner.  — 較難: practitioner, licensed
+- **piano** (Lv1): A percussive keyboard musical instrument, usually ranging over seven octaves, with white and black colored keys, played by pressing these keys, causing hammers to strike strings.  — 較難: percussive, octaves, keyboard, hammers
+- **pickle** (Lv4): A pickle is a sour green food made from a cucumber.  — 較難: cucumber
+- **pickup** (Lv5): A light truck with an open body and low sides and a tailboard.  — 較難: tailboard
+- **pie** (Lv1): A baked food that has a crust outside and a filling inside, as well as a crust on top.  — 較難: crust
+- **pig** (Lv1): A pig is a mammal.  — 較難: mammal
+- **pimple** (Lv6): A pimple is an inflamed spot on the surface of the skin that is usually painful and fills with pus.  — 較難: pus, inflamed
+- **pineapple** (Lv3): A pineapple is a large green-and-brown fruit with yellow flesh.  — 較難: flesh
+- **pitch** (Lv3): In baseball, a pitch is when the pitcher throws the ball to the batter, who tries to hit it.  — 較難: batter
+- **pity** (Lv3): An unfortunate development.  — 較難: unfortunate
+- **pizza** (Lv2): Italian open pie made of thin bread dough spread with a spiced mixture of e.g. tomato sauce and cheese.  — 較難: dough, sauce, italian, spiced
+- **place** (Lv1): An open space, particularly a city square, market square, or courtyard.  — 較難: courtyard
+- **plague** (Lv6): A plague is a contagious bacterial disease which causes fever and delirium.  — 較難: delirium, bacterial, contagious
+- **planet** (Lv1): Any of the nine large celestial bodies in the solar system that revolve around the sun and shine by reflected light.  — 較難: celestial, revolve, reflected, solar
+- **plastic** (Lv3): Plastic is a material that can change its shape and is used to pack products.  — 較難: products
+- **platform** (Lv2): A raised stage from which speeches are made and on which musical and other performances are made.  — 較難: performances
+- **pleasant** (Lv2): If something is pleasant, it is enjoyable or agreeable.  — 較難: agreeable, enjoyable
+- **plug** (Lv3): A plug is an object that fills a gap.  — 較難: gap
+- **plumber** (Lv4): A plumber is someone who installs and fixes pipes and drains to carry water, sewage and gas.  — 較難: sewage, installs, gas, drains
+- **pneumonia** (Lv6): Inflammation of the lungs caused by viruses, bacteria or other infectious microorganisms.  — 較難: microorganisms, infectious, inflammation, viruses, lungs, bacteria
+- **podcast** (Lv4): A podcast is a series of related digital files that are placed on the internet at regular times.  — 較難: series, digital
+- **poison** (Lv2): Poison is any substance that makes people or animals sick or kills them if it gets into their body.  — 較難: substance
+- **poke** (Lv5): To prod or jab with an object such as a finger or a stick.  — 較難: prod, jab
+- **policy** (Lv2): A policy is an official rule or idea that explain how to act in certain situations.  — 較難: situations
+- **polite** (Lv1): If you are polite, you treat people nicely and follow the social rules of your group.  — 較難: nicely
+- **politician** (Lv3): A politician is a person who is involved in politics, especially those in elected offices.  — 較難: involved, elected
+- **poll** (Lv3): A poll is a process of asking people for their opinions about something and counting the results.  — 較難: process
+- **pollute** (Lv3): To pollute means add dirt and other harmful things to water, land or air.  — 較難: harmful, dirt
+- **pollution** (Lv3): Pollution is when bad or harmful things are put into the environment.  — 較難: harmful
+- **pop** (Lv2): A loud sound, like a cork coming out of a bottle.  — 較難: cork, coming
+- **porcelain** (Lv3): Porcelain is a white translucent ceramic.  — 較難: translucent, ceramic
+- **port** (Lv2): A port is a place for ships to stop to trade or refuel.  — 較難: refuel
+- **post** (Lv2): Post is the letters and parcels that you send to other people.  — 較難: parcels
+- **pot** (Lv1): A metal container for cooking.  — 較難: container
+- **pottery** (Lv3): Pottery is items made from clay and then baked to make them hard.  — 較難: clay
+- **poultry** (Lv6): Poultry is any type of meat from domestic fowls.  — 較難: fowls
+- **pound** (Lv2): A pound is a unit of currency used in Britain.  — 較難: currency
+- **powder** (Lv3): Powder is the small parts that are made from any dry substance that is pounded, or ground into dust.  — 較難: dust, substance
+- **power** (Lv1): Strength, energy, force, control.  — 較難: strength
+- **powerful** (Lv2): Having great power or force or potency or effect.  — 較難: potency
+- **prayer** (Lv2): The act of communicating with a deity.  — 較難: deity, communicating
+- **preach** (Lv6): When someone preaches, he gives a speech or sermon before a group of people.  — 較難: sermon
+- **precaution** (Lv5): Previous caution or care.  — 較難: caution, previous
+- **prejudice** (Lv5): An unreasonable hatred for a group, usually a race or a religion, etc.  — 較難: unreasonable, hatred
+- **preserve** (Lv4): To preserve is to keep something from decay or loss.  — 較難: decay
+- **pretty** (Lv1): Somewhat, fairly, quite.  — 較難: fairly
+- **priest** (Lv2): A priest is a person who leads or performs ceremonies in a religion.  — 較難: ceremonies, performs
+- **primarily** (Lv2): Primarily means mostly.  — 較難: mostly
+- **primary** (Lv2): First or earliest in a group or series.  — 較難: series
+- **print** (Lv2): Books and other material created by printing presses, considered collectively or as a medium.  — 較難: collectively
+- **prisoner** (Lv2): A person who is confined.  — 較難: confined
+- **privacy** (Lv4): If you have privacy, you are not watched or disturbed by others.  — 較難: disturbed, others
+- **process** (Lv3): A process is a series of steps that you take for a particular purpose.  — 較難: series
+- **producer** (Lv3): Producer is one who participates in creating of goods and services for money.  — 較難: goods
+- **professional** (Lv4): About a job such as doctor, lawyer, accountant, etc.  — 較難: accountant
+- **project** (Lv2): A planned undertaking.  — 較難: undertaking
+- **projection** (Lv5): A projection is when something juts out.  — 較難: juts
+- **proof** (Lv3): Proof is evidence which shows something is correct.  — 較難: evidence
+- **prosperity** (Lv4): Prosperity refers to the state when someone has a lot of money or good fortune.  — 較難: refers, fortune
+- **prosperous** (Lv4): Something that is prosperous is financially successful.  — 較難: financially
+- **provider** (Lv4): A provider is someone who provides a service or commodity.  — 較難: commodity
+- **pub** (Lv3): A place which serves alcoholic and non-alcoholic drinks, and sometimes food.  — 較難: alcoholic
+- **pudding** (Lv2): Pudding is a dessert made with cake, bread or rice and often fruit, usually hot.  — 較難: dessert
+- **pulse** (Lv5): A pulse is a rhythmic, soft beating of the arteries, for example, as felt in the wrists.  — 較難: arteries, rhythmic, wrists
+- **punch** (Lv3): A hit done with your fist.  — 較難: fist
+- **punish** (Lv2): To punish someone means to cause someone to suffer, because they have broken a rule.  — 較難: suffer
+- **pure** (Lv3): If something is pure, it is not dirty or covered by anything that makes it unclean.  — 較難: unclean
+- **purple** (Lv2): Of a purple hue.  — 較難: hue
+- **quality** (Lv2): Quality is goodness.  — 較難: goodness
+- **queer** (Lv3): If something is queer, it is a little bit strange, it is not quite normal.  — 較難: normal
+- **quilt** (Lv4): A quilt is a bed cover made of two layers of cloth with a filling of wool, cotton, or down held together by patterned stitching.  — 較難: layers, cotton, stitching
+- **quotation** (Lv4): A quotation is a sentence or phrase that was said by someone and is now being used or referred to by somebody else.  — 較難: referred
+- **rabbit** (Lv1): A mammal with long ears.  — 較難: mammal
+- **race** (Lv1): A race is when people compete to see who is the fastest at either driving or running.  — 較難: compete
+- **rack** (Lv5): Framework for holding objects.  — 較難: framework
+- **radiation** (Lv5): The shooting forth of anything from a point or surface, like diverging rays of light.  — 較難: diverging, rays
+- **radio** (Lv1): Medium for communication.  — 較難: communication
+- **radius** (Lv6): A radius is a straight line between the centre of a circle and its circumference.  — 較難: circumference
+- **rainbow** (Lv1): A rainbow is an arch of colors in the sky that you can see in the rain when the sun is at your back.  — 較難: arch
+- **raincoat** (Lv2): A waterproof coat to be worn in the rain.  — 較難: waterproof
+- **rank** (Lv3): A row or line of people standing abreast of one another.  — 較難: abreast
+- **rash** (Lv6): Rashes are red spots on your skin that may cause irritation.  — 較難: irritation
+- **rat** (Lv2): Rats are medium-sized rodents.  — 較難: rodents
+- **rate** (Lv3): A magnitude or frequency relative to a time unit.  — 較難: frequency, magnitude
+- **raw** (Lv3): If something is raw, it has not been cooked, processed, prepared, etc.  — 較難: processed
+- **ray** (Lv3): A ray is a line of light or energy, coming out from where it starts.  — 較難: coming
+- **razor** (Lv3): A razor is a type of knife that is used to shave hair.  — 較難: shave
+- **ready** (Lv1): Prepared for immediate action or use.  — 較難: immediate
+- **realism** (Lv5): Realism is the quality of being real, as opposed to stylized or fictional.  — 較難: stylized, opposed, fictional
+- **realize** (Lv2): If you realize something, you become aware of it.  — 較難: aware
+- **rear** (Lv5): Being behind, or in the hindmost part.  — 較難: hindmost
+- **recall** (Lv4): If you recall something, you think about something you learned or experienced in the past.  — 較難: learned
+- **receiver** (Lv3): Set that receives radio or tv signals.  — 較難: signals
+- **recreation** (Lv4): Recreation is any activity that amuses or is fun.  — 較難: amuses
+- **reef** (Lv6): A reef is a long chain of rocks or coral that is found in the ocean.  — 較難: coral
+- **reflection** (Lv4): A reflection is an image made by reflected light, such as what you see in a mirror.  — 較難: reflected
+- **reflectometry** (Lv4): The science of the design and use of reflectometers.  — 較難: reflectometers
+- **reform** (Lv4): A reform is a change to an institution's rules or ways something works to improve it.  — 較難: institution's
+- **refrigeration** (Lv4): The process of transferring heat from an object in order to cool it.  — 較難: transferring, process
+- **refugee** (Lv4): A refugee is a person who is forced to leave their own country in order to escape war or natural disasters.  — 較難: disasters
+- **refuse** (Lv2): Show unwillingness towards.  — 較難: unwillingness
+- **rehearsal** (Lv5): A rehearsal is a practice session before a performance.  — 較難: session, performance
+- **relate** (Lv2): If you relate, you tell something in a way that is descriptive.  — 較難: descriptive
+- **relation** (Lv2): A relation is the way two things are towards each other or in comparison with each other.  — 較難: comparison
+- **release** (Lv3): The event of setting free.  — 較難: setting
+- **relentless** (Lv6): A relentless person is someone who is harsh or inflexible.  — 較難: inflexible, harsh
+- **relieve** (Lv4): Provide physical relief, as from pain.  — 較難: physical
+- **remedy** (Lv4): A remedy is something that corrects or counteracts something.  — 較難: counteracts
+- **republic** (Lv3): A republic is a country that has leaders elected that are by the people.  — 較難: elected
+- **researcher** (Lv4): A scientist who devotes himself to doing research.  — 較難: devotes, scientist
+- **reservation** (Lv4): The act of reserving or withholding something.  — 較難: withholding
+- **resistance** (Lv4): The act of resisting, or the capacity to resist.  — 較難: capacity
+- **respectable** (Lv4): If a person is respectable, the deserve respect.  — 較難: deserve
+- **respectful** (Lv4): A respectful person shows respect to others.  — 較難: others
+- **result** (Lv2): The solution of a mathematical equation.  — 較難: equation, mathematical
+- **reunion** (Lv4): A reunion is the act of coming back together.  — 較難: coming
+- **review** (Lv2): An essay or article that gives a critical evaluation.  — 較難: critical, evaluation
+- **rhyme** (Lv4): Correspondence in the sounds of two or more lines.  — 較難: correspondence
+- **riches** (Lv2): Money, goods, wealth, treasure.  — 較難: goods
+- **rifle** (Lv5): A firearm fired from the shoulder.  — 較難: firearm
+- **ring** (Lv1): A characteristic sound.  — 較難: characteristic
+- **riot** (Lv5): A riot is a violent disturbance of the public peace by a crowd.  — 較難: disturbance, violent
+- **risotto** (Lv4): Risotto is a type of food made with rice cooked with broth.  — 較難: broth
+- **ritual** (Lv5): A ritual is a ceremony that always follows the same steps.  — 較難: ceremony
+- **rival** (Lv5): Having the same pretensions or claims.  — 較難: pretensions
+- **rob** (Lv3): If you rob something or someone, you steal from them.  — 較難: steal
+- **robe** (Lv3): A robe is a long loose item of clothing.  — 較難: loose
+- **rock** (Lv1): A hard substance that forms naturally in the Earth's surface.  — 較難: substance
+- **rocket** (Lv3): A rocket is an object that can be sent into space for science experiments.  — 較難: experiments
+- **role** (Lv2): The role of a person or thing is the job that they do in a certain situation.  — 較難: situation
+- **rose** (Lv1): A rose is a kind of shrub with red, pink, white or yellow flowers.  — 較難: shrub
+- **rot** (Lv3): If something rots it spoils.  — 較難: spoils
+- **rough** (Lv3): Having small bumps on it.  — 較難: bumps
+- **royal** (Lv2): To be royal means that someone is of a monarch or their family.  — 較難: monarch
+- **rubber** (Lv2): A material made from the sap of trees.  — 較難: sap
+- **rug** (Lv3): A rug is a piece of cloth used to cover the floor, just like a carpet.  — 較難: carpet
+- **ruin** (Lv4): To cause the fiscal ruin of.  — 較難: fiscal
+- **rule** (Lv1): A rule is a statement that tells whether you might get spanked for master baiting in class.  — 較難: spanked, baiting
+- **rust** (Lv3): Rust is a reddish material that forms on metal objects when in contact with moisture.  — 較難: reddish, moisture
+- **salad** (Lv1): A salad is a food that is made of uncooked vegetables.  — 較難: uncooked
+- **salt** (Lv1): Salt is a strong-tasting white powder used to improve the flavor of food or to preserve it.  — 較難: preserve, flavor, powder
+- **samsung** (Lv4): A consumer electronic device manufactured by the South Korean conglomerate company Samsung.  — 較難: conglomerate, korean, consumer, device, manufactured, electronic
+- **sanitation** (Lv6): The state of being clean and conducive to health.  — 較難: conducive
+- **satellite** (Lv4): Man-made equipment that orbits around the earth or the moon.  — 較難: equipment, orbits
+- **satisfaction** (Lv4): Satisfaction is a feeling when a need or want has been fulfilled or achieved.  — 較難: fulfilled, achieved
+- **saudi** (Lv4): A person from Saudi Arabia or of Saudi Arabian descent.  — 較難: descent, arabia
+- **scales** (Lv3): An ordered reference standard.  — 較難: reference
+- **scammer** (Lv4): A person who swindles you by means of deception or fraud.  — 較難: swindles, fraud, deception
+- **scarf** (Lv3): A scarf is a long item of clothing to wrap around the neck.  — 較難: wrap
+- **scholarship** (Lv3): A grant-in-aid to a student.  — 較難: grant
+- **scream** (Lv3): If you scream, you yell or shout loudly.  — 較難: yell
+- **script** (Lv5): A written version of a play or other dramatic composition.  — 較難: version, composition, dramatic
+- **scrub** (Lv3): A thicket or jungle, often specified by the name of the prevailing plant.  — 較難: thicket, prevailing, specified, jungle
+- **scuba** (Lv4): A device that lets divers breathe under water.  — 較難: divers, device, breathe
+- **sculpture** (Lv4): A three-dimensional work of plastic art.  — 較難: dimensional, plastic
+- **seafood** (Lv2): Seafood is any fish, shellfish, or underwater life that can be eaten.  — 較難: shellfish, underwater
+- **seal** (Lv3): A mammal that lives in watch.  — 較難: mammal
+- **seesaw** (Lv2): A structure composed of a plank, balanced in the middle, used as a game in which one person goes up as the other goes down.  — 較難: plank, composed, structure
+- **seize** (Lv4): If you seize something, you take it with force and without consent by the owner.  — 較難: consent
+- **sender** (Lv5): Someone who transmits a message.  — 較難: transmits
+- **sensor** (Lv5): A sensor is a device that measures a physical quantity and responds to it accordingly.  — 較難: accordingly, device, measures, physical
+- **sentence** (Lv1): A string of words satisfying the grammatical rules of a language.  — 較難: grammatical
+- **seoul** (Lv4): Seoul is the capital of South Korea.  — 較難: korea
+- **separate** (Lv2): Being separate means that a piece of an object is not connected to or attached to the rest of the object.  — 較難: attached, connected
+- **separation** (Lv3): Separation is the time when two things are apart and separated.  — 較難: apart
+- **sept** (Lv4): The month following August and preceding October.  — 較難: preceding
+- **september** (Lv1): September is the ninth month of the year.  — 較難: ninth
+- **sergeant** (Lv6): A sergeant is a noncomissioned officer in the army, higher in rank than a corporal but lower in rank than a staff sergeant.  — 較難: noncomissioned, corporal, rank, staff
+- **serious** (Lv1): Without humor or expression of happiness.  — 較難: humor
+- **service** (Lv1): An action or work by one person that can be consumed by another person.  — 較難: consumed
+- **seven** (Lv0): The cardinal number that is the sum of six and one.  — 較難: cardinal, sum
+- **seventy** (Lv1): The cardinal number that is the product of ten and seven.  — 較難: cardinal, product
+- **sexual** (Lv3): Arising from the fact of being male or female.  — 較難: arising
+- **sexy** (Lv3): Having sex appeal.  — 較難: appeal
+- **shall** (Lv0): Shall is usually used to make a suggestion about your own actions.  — 較難: suggestion
+- **shameful** (Lv4): If something is shameful, it causes shame or disgrace.  — 較難: disgrace
+- **shape** (Lv1): The shape of a thing is its external form.  — 較難: external
+- **shareholder** (Lv5): Shareholder is the person who shares stocks of a company.  — 較難: stocks
+- **shepherd** (Lv3): A shepherd manages a herd of sheep.  — 較難: herd
+- **shine** (Lv2): If something shines, light comes from it, or it reflects light.  — 較難: reflects
+- **shiny** (Lv3): If something is shiny it reflects light, or a makes light.  — 較難: reflects
+- **shipment** (Lv4): A shipment is a load of goods that is transported in any way possible.  — 較難: goods, transported
+- **shoes** (Lv1): A particular situation.  — 較難: situation
+- **shoot** (Lv2): When you shoot, you use a weapon to throw something at a very fast speed at someone or something.  — 較難: weapon
+- **shopkeeper** (Lv2): A merchant who owns or manages a shop.  — 較難: merchant
+- **shortcoming** (Lv6): A deficiency or falling short.  — 較難: deficiency
+- **shorts** (Lv1): Trousers that end at or above the knee.  — 較難: trousers
+- **shortsighted** (Lv6): S lacking foresight or scope.  — 較難: foresight, scope
+- **shovel** (Lv3): A shovel is an object made for scooping or digging.  — 較難: scooping
+- **shower** (Lv1): A shower is a place with water spraying down to clean something.  — 較難: spraying
+- **shrimp** (Lv3): Small slender-bodied chiefly marine decapod crustaceans with a long tail and single pair of pincers.  — 較難: pincers, crustaceans, decapod, chiefly, marine, slender
+- **shu** (Lv4): Acronym of special handling unit.  — 較難: acronym
+- **shy** (Lv2): When you are shy, you are easily frightened, afraid, or careful.  — 較難: frightened
+- **siege** (Lv5): A siege is a prolonged military assault on a place with the intent of conquering it.  — 較難: intent, assault, prolonged, conquering
+- **sigh** (Lv3): An utterance made by exhaling audibly.  — 較難: utterance, exhaling, audibly
+- **sin** (Lv3): A sin is a bad action that breaks laws or rules, especially religious ones.  — 較難: religious
+- **single** (Lv2): Not accompanied by anything else.  — 較難: accompanied
+- **sink** (Lv3): A basin used for holding water for washing.  — 較難: basin
+- **sip** (Lv3): If you sip a drink, you drink it slowly by taking small mouthfuls at a time.  — 較難: mouthfuls
+- **six** (Lv0): Ordinal sixth) Six is the number that is after five and before seven.  — 較難: ordinal
+- **skin** (Lv2): A natural protective body covering and site of the sense of touch.  — 較難: site
+- **skip** (Lv3): An act of overlooking something on purpose.  — 較難: overlooking
+- **skirt** (Lv1): A skirt is a loose cloth that a woman uses to cover her legs.  — 較難: loose
+- **slide** (Lv2): A slide is a structure, usually on a playground, that you slide down.  — 較難: structure
+- **slippers** (Lv2): Low footwear that can be slipped on and off easily.  — 較難: footwear
+- **slippery** (Lv3): Causing or tending to cause things to slip or slide.  — 較難: tending
+- **slogan** (Lv4): A slogan is like a motto, but longer.  — 較難: motto
+- **smart** (Lv1): Someone who is smart shows intelligence.  — 較難: intelligence
+- **smell** (Lv1): The sensation that results when olfactory receptors in the nose are stimulated by particular chemicals in gaseous form.  — 較難: olfactory, gaseous, stimulated, sensation, receptors
+- **smoke** (Lv1): Smoke is the gray or black substance that goes up into the air when something burns.  — 較難: substance
+- **snail** (Lv2): A snail is a mollusc that moves very slowly.  — 較難: mollusc
+- **snake** (Lv1): A snake is a long, thin reptile with no legs.  — 較難: reptile
+- **sneakers** (Lv6): A canvas shoe with a pliable rubber sole.  — 較難: pliable, canvas, sole
+- **snore** (Lv6): If a person or animal snores, they breathe during sleep with a harsh, snorting noises that is caused by an obstruction in air movement.  — 較難: snorting, obstruction, harsh, breathe
+- **snow** (Lv1): Snow is precipitation that is white and frozen.  — 較難: precipitation, frozen
+- **so** (Lv0): To the extent.  — 較難: extent
+- **soap** (Lv2): Soap is a solid or liquid that you use to wash things.  — 較難: solid
+- **socks** (Lv2): Hosiery consisting of a cloth covering for the foot.  — 較難: hosiery, consisting
+- **soda** (Lv2): Soda is the chemical compound sodium bicarbonate.  — 較難: bicarbonate, compound, sodium
+- **sodium** (Lv4): A silvery soft waxy metallic element of the alkali metal group.  — 較難: waxy, silvery, alkali, metallic, element
+- **solemn** (Lv6): When an event is solemn, it is very serious and dignified.  — 較難: dignified
+- **some** (Lv0): Relatively many but unspecified in number.  — 較難: unspecified
+- **someday** (Lv3): Some unspecified time in the future.  — 較難: unspecified
+- **something** (Lv0): An uncertain or unspecified thing.  — 較難: unspecified, uncertain
+- **sometime** (Lv3): At an indefinite but stated time in the past or future.  — 較難: indefinite
+- **sometimes** (Lv1): Things that happen sometimes only happen at certain times, or on certain occasions, but not every time.  — 較難: occasions
+- **somewhat** (Lv2): To a limited extent or degree.  — 較難: extent
+- **somewhere** (Lv1): In an uncertain or unspecified location.  — 較難: unspecified, uncertain, location
+- **song** (Lv1): A song is some music with words in verse.  — 較難: verse
+- **sophisticated** (Lv5): When something is sophisticated, it is very complicated and difficult to understand for someone who is not knowledgeable in that area.  — 較難: knowledgeable, complicated
+- **sore** (Lv1): Causing pain or discomfort.  — 較難: discomfort
+- **sorrow** (Lv3): Sorrow is sadness or unhappiness.  — 較難: unhappiness, sadness
+- **sorrowful** (Lv6): Experiencing or marked by or expressing sorrow especially that associated with irreparable loss.  — 較難: irreparable, associated
+- **sorry** (Lv1): Of a person, regretful or apologetic for one's actions.  — 較難: regretful, apologetic
+- **sound** (Lv1): The particular auditory effect produced by a given cause.  — 較難: auditory
+- **soup** (Lv1): Soup is a food usually made by boiling meat and vegetables in water to give the water flavour.  — 較難: flavour
+- **sour** (Lv2): A sour taste is like the taste of an acid.  — 較難: acid
+- **source** (Lv2): The source of some material, an idea, a product, etc. is the place it came from originally.  — 較難: product
+- **southern** (Lv2): A southern place, accent, person, etc. is in, from, or about the south.  — 較難: accent
+- **spaghetti** (Lv3): Spaghetti is a type of pasta made using long thin noodles.  — 較難: pasta
+- **speak** (Lv1): To communicate with one's voice, to say words out loud.  — 較難: communicate
+- **spectacular** (Lv5): When something is spectacular, it is very amazing and fascinating, making people surprised and excited about it.  — 較難: fascinating, amazing
+- **spectrum** (Lv5): An ordered array of the components of an emission or wave.  — 較難: array, emission, components
+- **spicy** (Lv5): A spicy food feels hot in your mouth because of chilies or similar spices.  — 較難: chilies
+- **spider** (Lv2): A spider is an arthropod with eight legs that makes webs to catch its food.  — 較難: arthropod, webs
+- **spill** (Lv3): To drop something so that it spreads out or makes a mess.  — 較難: mess
+- **spin** (Lv3): Circular motion, usually rapid.  — 較難: circular
+- **spinach** (Lv3): Spinach is a green vegetable with soft leaves that people often eat raw in salads or cooked in many dishes.  — 較難: raw
+- **spiral** (Lv6): Helical, like a spiral.  — 較難: helical
+- **spirit** (Lv2): A spirit is a being that has no physical body, and cannot usually be seen or touched.  — 較難: physical
+- **spit** (Lv3): If you spit something out of your mouth, you eject it from your mouth with force.  — 較難: eject
+- **spite** (Lv3): Feeling a need to see others suffer.  — 較難: others, suffer
+- **splendid** (Lv4): If something is splendid, it is very impressive and magnificent.  — 較難: magnificent
+- **splendor** (Lv6): A quality that outshines the usual.  — 較難: outshines
+- **sport** (Lv2): Sport is physical exercise which involves players playing in a team.  — 較難: physical, involves
+- **spray** (Lv3): A spray is a fine and gentle mist of liquid.  — 較難: mist
+- **spy** (Lv3): A spy is a person whose job is to get secret information.  — 較難: information
+- **square** (Lv1): A polygon with four straight sides of equal length and four right angles.  — 較難: polygon
+- **squash** (Lv5): A sport played in a walled court with a soft rubber ball and bats like tennis racquets.  — 較難: racquets
+- **squirrel** (Lv3): A squirrel is a small animal that lives in trees and has a bushy tail.  — 較難: bushy
+- **stable** (Lv3): If something is stable, it is unlikely to move or change.  — 較難: unlikely
+- **stadium** (Lv3): A venue where sporting events are held.  — 較難: venue
+- **stage** (Lv2): A high floor where some people perform while other people watch.  — 較難: perform
+- **stake** (Lv5): A stick or rod with a sharp point.  — 較難: rod
+- **stance** (Lv5): A stance is the posture of how someone stands.  — 較難: posture
+- **statement** (Lv2): To provide an official document of a proposition, especially in the UK, a Statement of Special Educational Needs.  — 較難: document, proposition, educational
+- **statistic** (Lv4): A single item in a statistical study.  — 較難: statistical
+- **steak** (Lv2): A steak is thick slice of meat cut for roasting, usually beef.  — 較難: slice, roasting
+- **steakhouse** (Lv4): A restaurant that specializes in good cuts of meat, particularly steak.  — 較難: specializes
+- **steal** (Lv3): If you steal, you take somebody's money or things without their permission.  — 較難: somebody's, permission
+- **steam** (Lv3): A substance like air, made of water that is very hot.  — 較難: substance
+- **steel** (Lv2): A very strong metal made of iron and other substances mixed together.  — 較難: substances
+- **steep** (Lv3): If a hill or slope is steep, it goes up at a high angle.  — 較難: slope
+- **stereo** (Lv4): A stereo is a system that directs sound through multiple speakers so that it seems to surround the listener and to come from more than one source.  — 較難: multiple, surround
+- **stick** (Lv2): To cut a piece of wood to be the stick member of a cope-and-stick joint.  — 較難: cope
+- **stingy** (Lv4): If a person is stingy, they are mean and unwilling to spend.  — 較難: unwilling
+- **stir** (Lv3): If you stir something, you move it in a circular movement.  — 較難: circular
+- **stitch** (Lv3): A stitch is a little circle of thread, used to join cloth together.  — 較難: thread
+- **stockings** (Lv4): Close-fitting hosiery to cover the foot and leg.  — 較難: hosiery
+- **stomach** (Lv3): The place in the body where food is digested.  — 較難: digested
+- **stomachache** (Lv2): If you have a stomachache, you have a pain in your stomach.  — 較難: stomach
+- **stone** (Lv2): A stone is a hard, solid piece of earth.  — 較難: solid
+- **stool** (Lv3): A stool is a seat for one person that does not have a back or an armrest.  — 較難: armrest
+- **storm** (Lv2): A storm is bad weather with high winds that disturbs the atmosphere.  — 較難: disturbs, atmosphere
+- **story** (Lv1): A story is a piece of text that tells someone who reads it about a real or fictional event.  — 較難: fictional
+- **strand** (Lv5): If you strand your boat, you drive it aground on the shore.  — 較難: aground
+- **strange** (Lv1): Unusual or odd.  — 較難: odd
+- **straw** (Lv3): Straw is dried grasses, such as wheat, without the seeds.  — 較難: wheat
+- **stray** (Lv6): Having gone astray.  — 較難: astray
+- **stress** (Lv2): Stress is emotional pressure that makes you worry because things are not going well.  — 較難: emotional
+- **strike** (Lv2): When a group of people stop working to improve or defend their working conditions or pay, they go on strike.  — 較難: defend
+- **string** (Lv1): A string is a long, thin and flexible cord that is used for tying.  — 較難: cord, flexible
+- **strong** (Lv1): Having big muscles.  — 較難: muscles
+- **stylish** (Lv6): If a person is stylish, they have elegance or taste in manners or dress.  — 較難: elegance
+- **submarine** (Lv4): A submarine is a boat that can go underwater.  — 較難: underwater
+- **subsidy** (Lv5): A subsidy is a type of financial support, especially the use of tax revenues to support things which might otherwise fail.  — 較難: revenues, financial, otherwise
+- **subtle** (Lv5): Able to make fine distinctions.  — 較難: distinctions
+- **sudden** (Lv2): Happening without warning or in a short space of time.  — 較難: warning
+- **suffer** (Lv3): When you suffer, you have pain or sadness, or otherwise feel very bad.  — 較難: sadness, otherwise
+- **sugar** (Lv1): Sugar is a small white powder.  — 較難: powder
+- **suggest** (Lv2): If a person says an option, he or she is suggesting.  — 較難: option
+- **summary** (Lv3): A summary is a short explanation of a longer idea, article, story, etc.  — 較難: explanation
+- **sun** (Lv1): A star, especially a star that is at the center of a solar system.  — 較難: solar
+- **sunflower** (Lv5): A sunflower is a large yellow flower that sprouts every year.  — 較難: sprouts
+- **sunglass** (Lv3): Spectacles that are darkened or polarized to protect the eyes from the glare of the sun.  — 較難: darkened, spectacles, polarized, glare
+- **sunset** (Lv3): It is the part of the day when the sun disappears on the western horizon.  — 較難: horizon
+- **supercomputing** (Lv4): The design and use of supercomputers.  — 較難: supercomputers
+- **supermarket** (Lv1): A supermarket is a big store that sells groceries, as well as other common household things like clothing.  — 較難: household, groceries
+- **superstar** (Lv5): Someone who is dazzlingly skilled in any field.  — 較難: dazzlingly
+- **superstition** (Lv5): An irrational belief arising from ignorance or fear.  — 較難: irrational, ignorance, arising
+- **supervisor** (Lv5): A supervisor is a person who monitors someone to make the work sure they comply with the requirements needed.  — 較難: comply, monitors
+- **supplier** (Lv4): Someone whose business is to supply a particular service or commodity.  — 較難: commodity
+- **supposedly** (Lv5): A matter of supposition.  — 較難: supposition
+- **surgeon** (Lv4): A person that does surgery.  — 較難: surgery
+- **surgery** (Lv4): Surgery is a way of removing, repairing or replacing a part of a body that involves incisions.  — 較難: incisions, involves, replacing
+- **surprise** (Lv1): A thing that surprises someone, mostly something good.  — 較難: mostly
+- **surround** (Lv3): When you surround something, you confine that object on all sides of it.  — 較難: confine
+- **survivor** (Lv3): A survivor is a person who is alive after a tragedy or major accident.  — 較難: tragedy
+- **suspicious** (Lv4): If someone or something is suspicious, you do not trust that person, you suspect that he is doing something shady, or that something odd is happening.  — 較難: shady, odd
+- **swan** (Lv3): A swan is a waterbird with a long neck.  — 較難: waterbird
+- **sweater** (Lv2): A sweater is a warm piece of clothing people mostly wear during winter.  — 較難: mostly
+- **sweep** (Lv2): When you sweep the floor, you use the broom to clean it.  — 較難: broom
+- **swine** (Lv4): A swine is a technical or archaic word for a pig, for example the term swine flu is still used today.  — 較難: archaic, technical
+- **switch** (Lv2): A switch is what you use to turn lights or other machines and equipment on and off.  — 較難: equipment
+- **sword** (Lv3): A sword is a weapon made of metal which is long, thin and sharp, like a very long knife.  — 較難: weapon
+- **syllable** (Lv4): A syllable is a word or part of a word that has one vowel sound in it.  — 較難: vowel
+- **syndrome** (Lv5): A complex of concurrent things.  — 較難: concurrent
+- **systematic** (Lv4): Characterized by order and planning.  — 較難: characterized
+- **tablet** (Lv3): A tablet is a small, hard medicine or vitamin that you take by mouth.  — 較難: vitamin
+- **tactics** (Lv5): The branch of military science dealing with detailed maneuvers to achieve objectives set by strategy.  — 較難: maneuvers, objectives, strategy, achieve
+- **tag** (Lv3): A small label.  — 較難: label
+- **taichung** (Lv4): A city in Taiwan.  — 較難: taiwan
+- **tailor** (Lv3): A tailor is someone who makes suits, trousers, and jackets for individual customers.  — 較難: trousers
+- **taiwan** (Lv4): Taiwan is a partly recognized country in Asia.  — 較難: partly, recognized
+- **taiwanese** (Lv4): Something or someone that is Taiwanese comes from Taiwan.  — 較難: taiwan
+- **taliban** (Lv4): A Taliban militia.  — 較難: militia
+- **talk** (Lv1): To communicate, usually by means of speech.  — 較難: communicate
+- **tank** (Lv3): A tank is a large, strong container for gas or liquid.  — 較難: container, gas
+- **tao** (Lv4): The ultimate principle of the universe.  — 較難: ultimate
+- **tap** (Lv3): To furnish with a tap so that liquid can be drawn.  — 較難: furnish
+- **taxi** (Lv1): A taxi is a vehicle driven by a taxi driver.  — 較難: vehicle
+- **teapot** (Lv2): Pot for brewing tea.  — 較難: brewing
+- **technician** (Lv4): A technician is someone who studies or practises technology.  — 較難: practises
+- **technique** (Lv3): A practical method or art applied to some particular task.  — 較難: practical
+- **techno** (Lv4): Techno is a type of music genre.  — 較難: genre
+- **technology** (Lv2): Technology is the tools, equipment, and activities that come from scientific knowledge.  — 較難: equipment, scientific
+- **teenager** (Lv1): A person between thirteen and nineteen years old.  — 較難: nineteen, thirteen
+- **telecommunications** (Lv6): N systems used in transmitting messages over a distance electronically.  — 較難: transmitting, electronically
+- **temple** (Lv1): A temple is a building used for religious activities.  — 較難: religious
+- **tempt** (Lv5): When you tempt someone, you try to get someone to do something, perhaps something bad or immoral.  — 較難: immoral
+- **ten** (Lv0): A set or group with ten elements.  — 較難: elements
+- **tendency** (Lv4): A tendency is an inclination of something to behave in a particular way or to go in a particular direction.  — 較難: inclination
+- **tennis** (Lv1): Tennis is a sport where players use a racquet to hit a ball over a net.  — 較難: racquet
+- **tense** (Lv4): Showing signs of stress or strain.  — 較難: strain
+- **ter** (Lv4): Acronym of triple ejector rack.  — 較難: ejector, acronym, rack, triple
+- **terrific** (Lv3): Very great or intense.  — 較難: intense
+- **terror** (Lv4): Very strong or intense fear.  — 較難: intense
+- **terrorism** (Lv2): Terrorism is the use of violence for political reasons.  — 較難: violence, political
+- **than** (Lv0): Used in comparisons, to introduce the basis of comparison.  — 較難: comparisons, comparison
+- **thankful** (Lv3): A feeling or showing gratitude.  — 較難: gratitude
+- **that** (Lv0): You use that to mark a clause as subordinate.  — 較難: subordinate, clause
+- **theory** (Lv3): A theory is an idea that tries to explain an observation.  — 較難: observation
+- **there** (Lv0): In or at a place or location that is perceived to be away from, or at a relative distance from, the speaker.  — 較難: perceived, location
+- **these** (Lv0): The plural of this.  — 較難: plural
+- **thief** (Lv2): A thief is a person who steals.  — 較難: steals
+- **thing** (Lv0): A special situation.  — 較難: situation
+- **thirty** (Lv1): The cardinal number that is the product of ten and three.  — 較難: cardinal, product
+- **though** (Lv1): Despite the fact that.  — 較難: despite
+- **thought** (Lv2): When you have a thought, you have an idea or concept in your mind.  — 較難: concept
+- **thoughtful** (Lv4): If someone is thoughtful, then he or she likes to think, or, is kind and caring towards others.  — 較難: others
+- **threaten** (Lv3): To make a threat against someone.  — 較難: threat
+- **three** (Lv0): The cardinal number that is the sum of one and one and one.  — 較難: cardinal, sum
+- **throne** (Lv5): The chair of state for a monarch, bishop, etc.  — 較難: monarch
+- **thunder** (Lv2): Thunder is the sound made by lightning.  — 較難: lightning
+- **tie** (Lv1): A tie is a piece of cloth that you wear around your neck as a decoration.  — 較難: decoration
+- **tiger** (Lv1): A tiger is a mammal.  — 較難: mammal
+- **tighten** (Lv3): If you tighten something, you make it tighter.  — 較難: tighter
+- **timeline** (Lv4): To analyse a sequence of events or activities.  — 較難: analyse, sequence
+- **timid** (Lv4): If a person is timid, he or she does not have the courage or confidence to complete something.  — 較難: confidence
+- **tip** (Lv1): The tip of something is the farthest point of it.  — 較難: farthest
+- **tissue** (Lv2): A piece of tissue is a sheet of paper that can absorb very well.  — 較難: absorb
+- **tobacco** (Lv3): Tobacco is a plant that is used to make cigarettes.  — 較難: cigarettes
+- **tofu** (Lv2): Cheeselike food made of curdled soybean milk.  — 較難: curdled, cheeselike
+- **tolerable** (Lv4): If something is tolerable, it can be tolerated or endured.  — 較難: endured, tolerated
+- **tolerance** (Lv4): Your tolerance for drugs, alcohol, danger, pain, etc. is your ability to take them without a bad effect.  — 較難: alcohol
+- **tomato** (Lv1): A tomato is a red, roundish fruit, roughly the size of a fist.  — 較難: roundish, roughly, fist
+- **too** (Lv0): Too means to a higher degree than is desirable, permissible, or possible.  — 較難: permissible, desirable
+- **tool** (Lv1): A tool is an object that you use to do a specific job, such as a hammer.  — 較難: specific, hammer
+- **toothache** (Lv2): A pain or ache in a tooth.  — 較難: ache
+- **toothbrush** (Lv2): Toothbrush is a brush that is used with a toothpaste to clean the teeth.  — 較難: toothpaste
+- **topic** (Lv1): A topic is a general idea that someone is speaking about at a specific time.  — 較難: specific
+- **tornado** (Lv6): A strong wind that moves in a circle with a cloud shaped like a funnel.  — 較難: funnel
+- **tortoise** (Lv4): A tortoise is a type of reptile that lives on land.  — 較難: reptile
+- **totally** (Lv2): To the fullest extent or degree.  — 較難: extent
+- **tournament** (Lv5): A tournament is a series of games until a winner is decided.  — 較難: series
+- **tower** (Lv3): A tower is a tall building or structure.  — 較難: structure
+- **trade** (Lv2): Trade is the buying and selling of goods.  — 較難: goods
+- **trader** (Lv3): A trader is someone who tries to make a profit by buying something at a low price and then selling it at a higher price.  — 較難: profit
+- **tragedy** (Lv4): A tragedy is a disaster that usually involves someone getting injured or dying and can affect the lives of many others.  — 較難: injured, others, disaster, involves
+- **tragic** (Lv4): When an event is tragic, it is causing a lot of pain and suffering for those involved in that event.  — 較難: involved, suffering
+- **train** (Lv1): A long vehicle with many cars that are joined together.  — 較難: vehicle
+- **traitor** (Lv5): A traitor is a person who you believed that he was a friend or an ally and then causes you a great harm.  — 較難: ally, harm
+- **trap** (Lv2): A trap is a machine or other device made to catch and sometimes kill animals.  — 較難: device
+- **trash** (Lv2): Useless things that are discarded.  — 較難: discarded, useless
+- **treasure** (Lv2): Treasure is a collection of valuable things, such as gold, diamonds, money, etc.  — 較難: collection
+- **tremble** (Lv4): To tremble is to vibrate a little bit.  — 較難: vibrate
+- **tribute** (Lv5): Something given or done as an expression of esteem.  — 較難: esteem
+- **trip** (Lv1): A trip is a journey to a place.  — 較難: journey
+- **tropical** (Lv3): Relating to or situated in or characteristic of the tropics.  — 較難: characteristic, situated
+- **truck** (Lv1): A truck is a vehicle that is often used to carry or pull big loads.  — 較難: vehicle
+- **truly** (Lv2): In accordance with the facts.  — 較難: accordance
+- **tsunami** (Lv4): A tsunami is a very large water wave formed in the ocean and can destroy buildings and people, usually due to an earthquake or volcanic eruption.  — 較難: eruption, volcanic, destroy
+- **tub** (Lv3): A tub is a container with a flat bottom.  — 較難: container
+- **tumor** (Lv5): A tumor is an abnormal growth of tissue in a human or animal.  — 較難: abnormal
+- **tuna** (Lv5): A tuna is any one of several kinds of fish in the family Scombridae, of the genus Thunnus.  — 較難: genus
+- **tunnel** (Lv3): A tunnel is a big hole for vehicles to drive in.  — 較難: vehicles
+- **turtle** (Lv2): A turtle is an aquatic reptile.  — 較難: aquatic, reptile
+- **tv** (Lv1): Broadcasting visual images of stationary or moving objects.  — 較難: stationary, visual, broadcasting
+- **twice** (Lv1): Doubled in quantity, intensity, or degree.  — 較難: intensity
+- **twinkle** (Lv6): A rapid change in brightness.  — 較難: brightness
+- **two** (Lv0): The cardinal number that is the sum of one and one or a numeral representing this number.  — 較難: numeral, cardinal, sum, representing
+- **type** (Lv1): A type is one thing or a group of things that are all members of a larger group because of some similarity.  — 較難: similarity
+- **typical** (Lv2): If something is typical, it is normal, and not special.  — 較難: normal
+- **underlying** (Lv3): The present participle of underlie.  — 較難: underlie, participle
+- **undo** (Lv5): If you undo an action, you reverse it.  — 較難: reverse
+- **university** (Lv2): The body of faculty and students at a university.  — 較難: faculty
+- **untruthfully** (Lv4): If you do something untruthfully, you do it in a untruthful way.  — 較難: untruthful
+- **upload** (Lv2): If you upload something, you transfer it from the computer you are using to a remote computer with an internet connection.  — 較難: transfer, remote
+- **upon** (Lv2): On or onto.  — 較難: onto
+- **used** (Lv2): Employed in accomplishing something.  — 較難: accomplishing
+- **vacancy** (Lv4): A vacancy is an unoccupied position or job.  — 較難: unoccupied
+- **vacant** (Lv3): Void of thought or knowledge.  — 較難: void
+- **van** (Lv3): A van is a long vehicle with four wheels and an engine.  — 較難: vehicle
+- **vapor** (Lv6): A vapor is a cloudy or other matter in the air, like mist, steam or fumes.  — 較難: fumes, steam, mist
+- **vehicle** (Lv3): A conveyance that transports people or objects.  — 較難: conveyance, transports
+- **venture** (Lv5): A venture is an undertaking.  — 較難: undertaking
+- **very** (Lv0): To a great extent or degree.  — 較難: extent
+- **vessel** (Lv4): A vessel is a pot or container.  — 較難: container
+- **vest** (Lv3): A vest is a piece of clothing that covers the chest.  — 較難: chest
+- **vice** (Lv6): A vice is an immoral or bad habit.  — 較難: immoral
+- **vicious** (Lv5): Someone or something that is vicious is evil, immoral, aggressive, or violent.  — 較難: immoral, aggressive, violent
+- **vietnamese** (Lv4): Something or someone that is Vietnamese comes from Vietnam.  — 較難: vietnam
+- **viewer** (Lv5): Someone who views a spectacle.  — 較難: spectacle
+- **vinegar** (Lv5): Vinegar is a liquid made by fermenting fruit or grain.  — 較難: fermenting
+- **vineyard** (Lv6): A vineyard is a plantation of grapes.  — 較難: plantation
+- **violation** (Lv4): An infraction or a failure to follow a rule.  — 較難: infraction
+- **vitamin** (Lv3): A vitamin is something that we need in our food to help us live, that is different from protein, carbohydrates, fat or minerals.  — 較難: carbohydrates, minerals, protein
+- **vocational** (Lv6): If something is vocational, it is related to a vocation.  — 較難: vocation
+- **vongole** (Lv4): Said of pasta served in a sauce with clams and other ingredients, such as olive oil and tomatoes.  — 較難: clams, olive, ingredients, pasta, sauce
+- **vote** (Lv2): A vote is a formal way of choosing things that are controlled by the majority.  — 較難: majority
+- **voter** (Lv3): Someone who votes or is entitled to vote.  — 較難: entitled
+- **wages** (Lv3): Your wages are the sums of money paid to you for your work.  — 較難: sums
+- **wagon** (Lv3): A wagon is a cart with four wheels.  — 較難: cart
+- **waist** (Lv2): Your waist is the narrow point between your hips and your chest.  — 較難: chest
+- **walnut** (Lv6): A walnut is a large light brown nut having a wrinkled eatable seed with a hard shell.  — 較難: eatable, wrinkled
+- **warn** (Lv3): If you warn someone about something, is to make them aware of a danger approaching.  — 較難: aware
+- **wary** (Lv5): If you are wary of something or someone, you are cautious because you do not know much about them and you believe they may be dangerous.  — 較難: cautious
+- **water** (Lv1): Water is a clear liquid of the chemical compound H₂O that all living things need in order to live.  — 較難: compound
+- **wax** (Lv3): Wax is a solid material made of animal fat.  — 較難: solid
+- **weapon** (Lv3): A weapon is a tool that you use in a fight, such as a knife, a gun, or a bomb.  — 較難: bomb
+- **weave** (Lv3): To form something by passing lengths or strands of material over and under one another.  — 較難: strands
+- **web** (Lv3): A web is a series of lines, ideas, or thoughts connected.  — 較難: series, connected
+- **weed** (Lv3): A weed is an unwanted plant.  — 較難: unwanted
+- **weep** (Lv3): To weep is to cry or bawl.  — 較難: bawl
+- **welcome** (Lv1): To greet or affirm the arrival of someone.  — 較難: affirm
+- **wharf** (Lv6): A wharf is a man-made place for ships to moor.  — 較難: moor
+- **what** (Lv0): What is used to ask for information about things.  — 較難: information
+- **whatever** (Lv2): S one or some or every or all without specification.  — 較難: specification
+- **whatsoever** (Lv5): S one or some or every or all without specification.  — 較難: specification
+- **wheat** (Lv3): A kind of grain that is used to make flour for bread.  — 較難: flour
+- **wheel** (Lv2): A wheel is a round thing on a cart or carriage or train or other machine that moves.  — 較難: carriage, cart
+- **wheelchair** (Lv5): A wheelchair is a chair with large wheels that is used by a sick or disabled person.  — 較難: disabled
+- **where** (Lv0): While on the contrary.  — 較難: contrary
+- **whip** (Lv3): A whip is a long, thin leather instrument.  — 較難: leather
+- **whiskey** (Lv6): An alcoholic liquor made from fermented grain.  — 較難: fermented, alcoholic, liquor
+- **wholesale** (Lv6): Of or relating to sale in large quantities, for resale.  — 較難: resale
+- **wild** (Lv2): If an animal or plant is wild it is not tame.  — 較難: tame
+- **wildlife** (Lv5): Wildlife is the natural stock of animals and plants found in a particular place.  — 較難: stock
+- **windshield** (Lv5): Transparent screen to protect occupants of a vehicle.  — 較難: occupants, transparent, vehicle
+- **wine** (Lv2): Wine is an alcoholic drink made from grapes or other fruit.  — 較難: alcoholic
+- **wire** (Lv2): A wire is a long, thin metal thing, mostly for the purpose of making a connection from electric power to a machine.  — 較難: mostly
+- **wisdom** (Lv3): Wisdom is the skillful use of knowledge and insight to make a good decision.  — 較難: insight, skillful
+- **wit** (Lv4): A message whose ingenuity or verbal skill or incongruity has the power to evoke laughter.  — 較難: incongruity, ingenuity, evoke, verbal, laughter
+- **witch** (Lv4): A woman who does witchcraft or has magical powers.  — 較難: witchcraft, magical
+- **woe** (Lv6): Great sadness or distress.  — 較難: distress, sadness
+- **woodpecker** (Lv6): A woodpecker is a type of bird that pecks on wood.  — 較難: pecks
+- **woods** (Lv2): The trees and other plants in a large densely wooded area.  — 較難: densely
+- **woodworking** (Lv4): The crafts of carpentry, cabinet making and related skills of making things from wood.  — 較難: crafts, carpentry, cabinet
+- **workbook** (Lv2): A student's book or booklet containing problems with spaces for solving them.  — 較難: booklet
+- **worse** (Lv2): The comparative form of bad.  — 較難: comparative
+- **worst** (Lv2): The superlative form of bad.  — 較難: superlative
+- **wow** (Lv5): To amaze or awe.  — 較難: awe, amaze
+- **wright** (Lv4): Wright is a surname.  — 較難: surname
+- **wrinkle** (Lv6): A wrinkle is a line or crease on old and fragile skin, usually caused by old age or tiredness.  — 較難: tiredness, crease, fragile
+- **xyz** (Lv4): The color space of the tristimulus values X, Y, and Z.  — 較難: tristimulus
+- **year** (Lv1): A period of time akin to the time taken for the Earth to undergo a full cycle of seasons.  — 較難: akin, undergo
+- **yoga** (Lv6): Any of several Hindu or Buddhist disciplines aimed at training the consciousness for a state of perfect spiritual insight and tranquillity.  — 較難: tranquillity, insight, disciplines, spiritual, consciousness
+- **yogurt** (Lv6): Yogurt is a creamy, white food that is made when bacteria is added to milk.  — 較難: creamy, bacteria
+- **zebra** (Lv2): An animal that somewhat looks like a horse, but has black and white stripes.  — 較難: stripes
+- **zero** (Lv1): The numeric symbol that represents the cardinal number zero.  — 較難: numeric, cardinal, represents
+- **zipper** (Lv3): A zipper is a device used to join two pieces of cloth for a short amount of time.  — 較難: device

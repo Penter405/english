@@ -31,6 +31,7 @@ VERIFIED_ROOTS_PATH = BASE / 'database' / 'word_morphology_verified.json'  # Wik
 ETYM_PATH = BASE / 'database' / 'word_etymology_wiktionary.json'           # 兩來源無共識時: Wiktionary 古典語源 (單一來源)
 SENTENCES_PATH = BASE / 'database' / 'word_sentences.json'
 SIMPLE_DEFS_PATH = BASE / 'database' / 'simple_definitions.json'
+DIFF_PATH = BASE / 'database' / 'word_difficulty.json'   # 考試 Level + 常用度 (build_word_difficulty.py)
 ORIGINS_PATH = BASE / 'database' / 'word_origins.json'
 OUT_GRAPH = BASE / 'docs' / 'data' / 'graph.json'
 OUT_VOCAB = BASE / 'docs' / 'data' / 'vocab_data.json'
@@ -415,9 +416,15 @@ def main():
         print(f"  Loaded {len(sentences_db)} sentence records.")
 
     simple_defs_db = {}
+    simple_meta_db = {}
     if SIMPLE_DEFS_PATH.exists():
         with open(SIMPLE_DEFS_PATH, 'r', encoding='utf-8') as f:
-            simple_defs_db = json.load(f)
+            raw_simple = json.load(f)
+        if isinstance(raw_simple, dict) and 'words' in raw_simple:   # v2 格式 (含難度檢查結果)
+            simple_meta_db = raw_simple['words']
+            simple_defs_db = {w: v['text'] for w, v in simple_meta_db.items()}
+        else:
+            simple_defs_db = raw_simple
         print(f"  Loaded {len(simple_defs_db)} simple English definitions.")
 
     origins_db = {}
@@ -624,8 +631,8 @@ def main():
                     "w": vw,
                     "lv": ew.get("level", 0),
                     "pos": v.get("pos", []) or ew.get("pos", []),
-                    "en": en_defs or [f"Variant form of {orig_key} ({v['relation']})"],
-                    "simple_en": simple_defs_db.get(vw, f"Related form of {orig_key}."),
+                    "en": en_defs,   # 不放 "Variant form of …" 模板句；前端會指向原型
+                    "simple_en": simple_defs_db.get(vw, ""),   # 變化形不放模板句，前端改指向原型
                     "zh": zh_defs,
                     "forms": ew.get("forms", {}),
                     "fam": [v2["word"] for v2 in variants if v2["word"] != vw][:10],
@@ -651,6 +658,21 @@ def main():
     with open(OUT_GRAPH, 'w', encoding='utf-8') as f:
         json.dump(graph_out, f, ensure_ascii=False, indent=2)
     print(f"Wrote {OUT_GRAPH} ({os.path.getsize(OUT_GRAPH)//1024} KB)")
+
+    # ---- 難度標示 + 基礎解釋的難度檢查結果
+    diff_db = {}
+    if DIFF_PATH.exists():
+        with open(DIFF_PATH, 'r', encoding='utf-8') as f:
+            diff_db = json.load(f)['words']
+    for w, vd in vocab_data.items():
+        di = diff_db.get(w)
+        if di:
+            vd['diff'] = {'e': di['est_level'], 'l': di['level'], 'z': di['zipf'], 's': di['stars']}
+        sm = simple_meta_db.get(w)
+        if sm:
+            vd['simple_meta'] = {'t': sm['tier'],
+                                 'h': [[h, diff_db.get(h, {}).get('est_level', 0)] for h in sm['hard_words']]}
+    print(f"  Attached difficulty to {sum(1 for v in vocab_data.values() if 'diff' in v)} words.")
 
     with open(OUT_VOCAB, 'w', encoding='utf-8') as f:
         json.dump(vocab_data, f, ensure_ascii=False)

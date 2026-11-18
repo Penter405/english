@@ -1737,3 +1737,128 @@ select option {
 .root-breakdown-box .root-explanation + .root-pills {
   margin-top: 12px;
 }
+
+/* ===== 合併後的英文解釋 (基礎解釋 = 第 1 條) ===== */
+.def-list {
+  margin: 0;
+  padding-left: 1.4em;
+}
+
+.def-list .def-item {
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.def-list .simple-first {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  margin-bottom: 14px;
+}
+
+.def-list .simple-first::marker {
+  color: #34d399;
+  font-weight: 700;
+}
+
+.simple-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.simple-label {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #34d399;
+  letter-spacing: 0.05em;
+}
+
+.simple-tier {
+  font-size: 0.74rem;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  border: 1px solid transparent;
+}
+
+.simple-tier.tier0 { color: #6ee7b7; background: rgba(16, 185, 129, 0.12); border-color: rgba(16, 185, 129, 0.3); }
+.simple-tier.tier1 { color: #fde68a; background: rgba(250, 204, 21, 0.1); border-color: rgba(250, 204, 21, 0.3); }
+.simple-tier.tier2 { color: #fdba74; background: rgba(249, 115, 22, 0.1); border-color: rgba(249, 115, 22, 0.3); }
+
+.def-list .simple-def-text {
+  font-size: 1.08rem;
+}
+
+.simple-hard {
+  margin-top: 8px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+}
+
+.hard-chip {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-full);
+  color: var(--text-secondary);
+  font-family: inherit;
+  font-size: 0.8rem;
+  padding: 2px 8px;
+  cursor: default;
+}
+
+.hard-chip span {
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  margin-left: 2px;
+}
+
+.hard-chip.clickable {
+  cursor: pointer;
+}
+
+.hard-chip.clickable:hover {
+  border-color: #818cf8;
+  color: var(--text-primary);
+}
+
+.inline-word {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--accent-tertiary);
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.def-level.est {
+  background: rgba(148, 163, 184, 0.12);
+  color: #cbd5e1;
+  border-color: rgba(148, 163, 184, 0.35);
+}
+
+.def-freq {
+  color: #fbbf24;
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  padding: 3px 4px;
+}
+
+.def-section .def-list li::before {
+  content: none;
+}
+
+.def-section .def-list li {
+  padding-left: 4px;
+}
+
+.def-section .def-list .simple-first {
+  padding-left: 14px;
+}
