@@ -12,6 +12,8 @@
 let cy = null;
 let graphData = null;
 let vocabData = null;
+let relationsData = null;      // 相近字 / 相反字 (獨立檔案，第一次開單字視窗才載入)
+let relationsPromise = null;
 let nodeMap = {};
 let childrenMap = {};
 let parentMap = {};
@@ -71,6 +73,8 @@ async function initGraph() {
     buildTreeMaps();
     renderGraph();
     loadingEl.style.display = 'none';
+    // 首頁顯示後再背景預載相近字 / 相反字 (約 300 KB)，不拖慢首頁
+    setTimeout(() => loadRelations().catch(() => {}), 1500);
   } catch (err) {
     console.error('Failed to load graph:', err);
     loadingEl.style.display = 'none';
@@ -910,6 +914,9 @@ function showDefinition(word, lang = 'en', isSubSearch = false) {
     }
   }
 
+  // Synonyms / Antonyms Box (資料另外載入，見 loadRelations)
+  contentHtml += `<div id="def-relations" class="relations-box" data-word="${word}"></div>`;
+
   // Root & Affix Breakdown Box — 只顯示 Wiktionary + MorphoLex 兩來源一致的資料
   if (vd.roots) {
     const r = vd.roots;
@@ -1010,9 +1017,82 @@ function showDefinition(word, lang = 'en', isSubSearch = false) {
   }
 
   document.getElementById('def-content').innerHTML = contentHtml;
+  renderRelations(word);
 
   overlay.classList.add('visible');
   popup.classList.add('visible');
+}
+
+// ===== 相近字 / 相反字 =====
+// docs/data/word_relations.json 由 scripts/build_word_relations.py 產生
+// (Simple English Wiktionary + WordNet)。和 vocab_data.json 分開放，避免主資料檔變更大。
+function loadRelations() {
+  if (!relationsPromise) {
+    relationsPromise = fetch('./data/word_relations.json')
+      .then(res => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+      })
+      .then(data => { relationsData = data.words || {}; return relationsData; })
+      .catch(err => {
+        console.warn('word_relations.json 載入失敗:', err);
+        relationsPromise = null;   // 下次開視窗再試
+        relationsData = null;
+        throw err;
+      });
+  }
+  return relationsPromise;
+}
+
+function relationsHtml(word) {
+  const vd = vocabData[word] || {};
+  const origin = (vd.origin || '').toLowerCase();
+  const rel = relationsData[word] || (origin && relationsData[origin]) || null;
+  const viaOrigin = !relationsData[word] && rel && origin !== word;
+  if (!rel || (!rel.s && !rel.a)) return '';
+
+  const srcName = { s: 'Simple English Wiktionary', w: 'WordNet', sw: 'Simple English Wiktionary + WordNet' };
+  const chip = ([w, lv, src], kind) => {
+    const known = !!vocabData[w];
+    const zh = known && vocabData[w].zh && vocabData[w].zh[0]
+      ? vocabData[w].zh[0].replace(/\\r|\r/g, '').replace(/"/g, '&quot;') : '';
+    const lvTxt = lv == null ? '' : (lv >= 7 ? '高' : `Lv${lv}`);
+    const lvCls = lv >= 1 && lv <= 6 ? `lv${lv}` : 'lvx';
+    const title = `${zh ? zh + '\n' : ''}來源：${srcName[src] || src}${known ? '\n點選查詢' : '\n(網站沒有收錄這個字)'}`;
+    const click = known ? `onclick="showDefinition('${w.replace(/'/g, "\\'")}', 'en', true)"` : '';
+    return `<button class="rel-chip ${kind} ${known ? 'clickable' : ''}" ${click} title="${title}">
+        <span class="rel-word">${w}</span>${lvTxt ? `<span class="rel-lv ${lvCls}">${lvTxt}</span>` : ''}${src === 'sw' ? '<span class="rel-both" title="兩個資料庫都列出">✓</span>' : ''}
+      </button>`;
+  };
+  const row = (label, cls, list) => list && list.length ? `
+      <div class="rel-row">
+        <span class="rel-label ${cls}">${label}</span>
+        <div class="rel-chips">${list.map(x => chip(x, cls)).join('')}</div>
+      </div>` : '';
+
+  return `
+    <div class="relations-header">
+      <span class="relations-title">🔁 相近字 / 相反字</span>
+      <span class="relations-src" title="Simple English Wiktionary + Princeton WordNet；✓ = 兩個資料庫都列出">Wiktionary + WordNet</span>
+    </div>
+    ${viaOrigin ? `<div class="rel-note">「${word}」沒有單獨資料，以下是原型 <b>${origin}</b> 的相近字 / 相反字。</div>` : ''}
+    ${row('≈ 相近字', 'syn', rel.s)}
+    ${row('↔ 相反字', 'ant', rel.a)}`;
+}
+
+function renderRelations(word) {
+  const box = document.getElementById('def-relations');
+  if (!box) return;
+  const fill = () => {
+    const el = document.getElementById('def-relations');
+    if (!el || el.dataset.word !== word) return;   // 使用者已經換到別的字
+    const html = relationsHtml(word);
+    el.innerHTML = html;
+    el.style.display = html ? '' : 'none';
+  };
+  if (relationsData) { fill(); return; }
+  box.innerHTML = '<div class="rel-loading">相近字 / 相反字載入中…</div>';
+  loadRelations().then(fill).catch(() => { box.style.display = 'none'; });
 }
 
 function closeDefinition() {

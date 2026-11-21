@@ -1862,3 +1862,82 @@ select option {
 .def-section .def-list .simple-first {
   padding-left: 14px;
 }
+
+/* ===== 相近字 / 相反字 (Synonyms / Antonyms) ===== */
+.relations-box {
+  margin-top: var(--space-md);
+  padding: var(--space-md);
+  background: var(--bg-glass);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+}
+.relations-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-sm);
+}
+.relations-title { font-weight: 700; color: var(--text-primary); }
+.relations-src {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  padding: 2px 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-full);
+}
+.rel-note, .rel-loading { font-size: 0.82rem; color: var(--text-secondary); margin-bottom: var(--space-sm); }
+.rel-row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  padding: 6px 0;
+}
+.rel-row + .rel-row { border-top: 1px dashed rgba(255, 255, 255, 0.08); }
+.rel-label {
+  flex: 0 0 auto;
+  min-width: 4.6em;
+  padding-top: 5px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+.rel-label.syn { color: #6ee7b7; }
+.rel-label.ant { color: #fca5a5; }
+.rel-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.rel-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-full);
+  cursor: default;
+  font-family: inherit;
+  transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+}
+.rel-chip.clickable { color: var(--text-primary); cursor: pointer; }
+.rel-chip.syn.clickable { border-color: rgba(110, 231, 183, 0.35); background: rgba(16, 185, 129, 0.08); }
+.rel-chip.ant.clickable { border-color: rgba(252, 165, 165, 0.35); background: rgba(239, 68, 68, 0.08); }
+.rel-chip.clickable:hover { transform: translateY(-1px); background: var(--bg-glass-hover); }
+.rel-word { font-weight: 600; }
+.rel-lv {
+  font-size: 0.68rem;
+  padding: 0 5px;
+  border-radius: var(--radius-full);
+  line-height: 1.5;
+}
+.rel-lv.lv1 { color: var(--lv1-color); background: var(--lv1-bg); }
+.rel-lv.lv2 { color: var(--lv2-color); background: var(--lv2-bg); }
+.rel-lv.lv3 { color: var(--lv3-color); background: var(--lv3-bg); }
+.rel-lv.lv4 { color: var(--lv4-color); background: var(--lv4-bg); }
+.rel-lv.lv5 { color: var(--lv5-color); background: var(--lv5-bg); }
+.rel-lv.lv6 { color: var(--lv6-color); background: var(--lv6-bg); }
+.rel-lv.lvx { color: var(--text-muted); background: rgba(255, 255, 255, 0.06); }
+.rel-both { font-size: 0.7rem; color: #a5b4fc; }
+@media (max-width: 600px) {
+  .rel-row { flex-direction: column; gap: 4px; }
+  .rel-label { padding-top: 0; }
+}

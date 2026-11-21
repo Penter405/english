@@ -105,3 +105,20 @@ py scripts/build_word_difficulty.py
 py scripts/build_simple_definitions.py
 py scripts/build_web_graph.py
 ```
+
+## 4. 相近字 / 相反字：`docs/data/word_relations.json`
+
+| 來源 | 內容 | 授權 |
+|---|---|---|
+| [Simple English Wiktionary](https://simple.wiktionary.org)（`database/raw/simple_wiktionary.jsonl.gz`，和第 3 節同一個檔） | 依義項列出的 synonyms / antonyms，用字簡單 | CC-BY-SA |
+| [Princeton WordNet 3.0](https://wordnet.princeton.edu)（經 NLTK 自動下載） | 同義詞集的其他詞、詞條直接反義詞 | WordNet License |
+
+```bash
+py scripts/build_word_relations.py      # 第一次會自動 nltk.download('wordnet')
+```
+
+- **獨立檔案、不覆蓋 `vocab_data.json`**：主資料檔已約 25 MB，所以相近字 / 相反字另存一個約 300 KB 的檔案。網站首頁顯示後才在背景載入，重跑 `build_web_graph.py` 也不會動到它。
+- 每個字最多 10 個相近字、8 個相反字。排序：網站查得到的字（可以點）→ 兩個資料庫都列出（網站上打 ✓）→ 等級簡單。
+- 過濾：只收和這個字詞性相符的義項；WordNet 只用每個詞性最主要的 2 個義項找相近字；不收同字族變化形、縮寫、WordNet 的多字片語與連字號複合字、太罕見的字。
+- 變化形（例如 happier）沒有單獨資料，網站會改顯示原型 happy 的資料。
+- 已知限制：資料庫本身偶有怪的配對（例如 happy 的相反字有 moving），需要的話可以在腳本裡加人工排除清單。
